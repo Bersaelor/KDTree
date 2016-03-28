@@ -5,6 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
 [![Platform](https://img.shields.io/cocoapods/p/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
 
+Swift implementation of a k-dimensional binary space partitioning tree.
+The KDTree is implemented as an immutable enum, inspired by functional trees from https://www.objc.io/books/functional-swift/.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -19,10 +22,6 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "KDTree"
 ```
-
-## Author
-
-Konrad Feiler, konrad@tactica.de
 
 ## License
 
