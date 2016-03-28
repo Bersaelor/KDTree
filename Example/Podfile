@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'KDTree_Example', :exclusive => true do
+  pod 'KDTree', :path => '../'
+end
+
+target 'KDTree_Tests', :exclusive => true do
+  pod 'KDTree', :path => '../'
+
+  pod 'Quick', '~> 0.8'
+  pod 'Nimble', '~> 3.0'
+end
