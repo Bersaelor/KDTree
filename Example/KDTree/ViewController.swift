@@ -21,18 +21,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let _ = Array<String>()
+        var arr = Array<String>()
         
-        var points = [CGPoint]()
-        for _ in 0...10000 {
-            points.append(CGPoint(x: CGFloat.random(), y: CGFloat.random()))
-        }
-        
-        let date_start = NSDate()
-        
-        let kdTree = KDTree(values: points)
-        
-        print("\(-date_start.timeIntervalSinceNow)")
+        arr.reduce(0) { $0 + $1.characters.count }
+                
+        let _ = Dictionary<String,String>()
+    
     }
     
     override func didReceiveMemoryWarning() {
