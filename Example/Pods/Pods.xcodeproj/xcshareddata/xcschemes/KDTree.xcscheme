@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6F014594CED878088E2F659C'
+               BlueprintIdentifier = 'DD1079E59577F0A84F28F085'
                BlueprintName = 'KDTree'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'KDTree.framework'>

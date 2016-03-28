@@ -1,8 +1,12 @@
+//
+//  KDTree+Equatable.swift
+//  Pods
+//
+//  Created by Konrad Feiler on 28/03/16.
+//
+//
 
-public protocol KDTreeGrowing: Equatable {
-    static func kdTreeMetric(a: Self, b: Self) -> Double
-    static var kdDimensionFunctions: [Self -> Double] { get }
-}
+import Foundation
 
 public enum KDTree<Element: KDTreeGrowing> {
     case Leaf
@@ -38,7 +42,7 @@ public enum KDTree<Element: KDTreeGrowing> {
     /// - Complexity: O(1)
     public var isEmpty: Bool {
         switch self {
-        case let .Leaf: return true
+        case .Leaf: return true
         default: return false
         }
     }
@@ -82,7 +86,7 @@ public enum KDTree<Element: KDTreeGrowing> {
         }
     }
     
-    /// Insert `newValue` into the KDTree. Tree might not be balanced anymore after this
+    /// Return a KDTree with the element inserted. Tree might not be balanced anymore after this
     ///
     /// - Complexity: O(n log n )..
     public func insert(newValue: Element, dim: Int = 0) -> KDTree {
@@ -106,6 +110,9 @@ public enum KDTree<Element: KDTreeGrowing> {
         }    
     }
     
+    /// Return a KDTree with the element removed.
+    ///
+    /// If element is not contained the new KDTree will be equal to the old one
     public func remove(valueToBeRemoved: Element, dim: Int = 0) -> KDTree {
         switch self {
         case .Leaf:
@@ -129,11 +136,12 @@ public enum KDTree<Element: KDTreeGrowing> {
         }
     }
     
+    /// Return the maximum distance of this KDTrees farthest leaf
     public var depth: Int {
         switch self {
         case .Leaf:
             return 0
-        case let .Node(left, value, dim, right):
+        case let .Node(left, _, _, right):
             let maxSubTreeDepth = max(left.depth, right.depth)
             return 1 + maxSubTreeDepth
         }
@@ -151,7 +159,7 @@ extension KDTree { //SequenceType like
         switch self {
         case .Leaf:
             return []
-        case let .Node(left, value, dim, right):
+        case let .Node(left, value, _, right):
             return try left.map(transform) + [transform(value)] + right.map(transform)
         }
     }
@@ -198,7 +206,7 @@ extension KDTree { //SequenceType like
         switch self {
         case .Leaf:
             return
-        case let .Node(left, value, dim, right):
+        case let .Node(left, value, _, right):
             try left.forEach(body)
             try body(value)
             try right.forEach(body)
@@ -214,7 +222,7 @@ extension KDTree { //SequenceType like
         switch self {
         case .Leaf:
             return initial
-        case let .Node(left, value, dim, right):
+        case let .Node(left, value, _, right):
             var result = try combine(initial, value)
             result = try left.reduce(result, combine: combine)
             result = try right.reduce(result, combine: combine)
@@ -222,27 +230,3 @@ extension KDTree { //SequenceType like
         }
     }
 }
-
-extension KDTree : CustomStringConvertible, CustomDebugStringConvertible {
-    
-    /// A textual representation of `self`.
-    public var description: String {
-        switch self {
-        case .Leaf:
-            return ","
-        case let .Node(left, value, dim, right):
-            return left.description + String(value) + right.description
-        }
-    }
-    
-    /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String {
-        switch self {
-        case .Leaf:
-            return ","
-        case let .Node(left, value, _, right):
-            return "[ \(left.debugDescription) \(String(value)) \(right.debugDescription)]"
-        }
-    }
-}
-
