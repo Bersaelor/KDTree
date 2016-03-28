@@ -19,12 +19,12 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/KDTree"
+  s.homepage         = "https://github.com/Bersaelor/KD-Tree"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Konrad Feiler" => "konrad@tactica.de" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/KDTree.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/Bersaelor/KD-Tree.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/bersaelor'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true

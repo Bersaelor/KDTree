@@ -1,0 +1,6 @@
+framework module Pods_KDTree_Tests {
+  umbrella header "Pods-KDTree_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

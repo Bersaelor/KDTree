@@ -7,18 +7,37 @@
 //
 
 import UIKit
+import KDTree
+
+extension CGFloat {
+    static func random(start start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
+        return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
+    }
+}
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let _ = Array<String>()
+        
+        var points = [CGPoint]()
+        for _ in 0...10000 {
+            points.append(CGPoint(x: CGFloat.random(), y: CGFloat.random()))
+        }
+        
+        let date_start = NSDate()
+        
+        let kdTree = KDTree(values: points)
+        
+        print("\(-date_start.timeIntervalSinceNow)")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 

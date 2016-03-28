@@ -1,0 +1,26 @@
+{
+  "name": "KDTree",
+  "version": "0.1.0",
+  "summary": "A short description of KDTree.",
+  "description": "",
+  "homepage": "https://github.com/Bersaelor/KD-Tree",
+  "license": "MIT",
+  "authors": {
+    "Konrad Feiler": "konrad@tactica.de"
+  },
+  "source": {
+    "git": "https://github.com/Bersaelor/KD-Tree.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/bersaelor",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "KDTree": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}
