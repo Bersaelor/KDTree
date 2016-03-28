@@ -23,8 +23,6 @@ class ViewController: UIViewController {
         
         var arr = Array<String>()
         
-        arr.removeLast()
-        
         arr.reduce(0) { $0 + $1.characters.count }
                 
         let _ = Dictionary<String,String>()

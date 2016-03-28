@@ -10,7 +10,7 @@ extension CGFloat {
     }
 }
 
-class TableOfContentsSpec: QuickSpec {
+class BasicSpec: QuickSpec {
     override func spec() {
         
         describe("big KDTree") {

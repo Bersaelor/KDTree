@@ -149,6 +149,15 @@ public enum KDTree<Element: KDTreeGrowing> {
     
 }
 
+//MARK: Nearest Neighbour
+extension KDTree {
+    public func nearest(toElement element: Element) -> Element? {
+
+        
+        return nil
+    }
+}
+
 extension KDTree { //SequenceType like
     
     /// Returns an `Array` containing the results of mapping `transform`
