@@ -8,16 +8,16 @@
 
 import UIKit
 
-extension CGPoint: KDTreeGrowing {
-    public static func kdTreeMetric(a: CGPoint, b: CGPoint) -> Double {
-        let x = a.x - b.x
-        let y = a.y - b.y
-        return Double(x*x + y*y)
-    }
-    
+extension CGPoint: KDTreePoint {
     public static var kdDimensionFunctions: [CGPoint -> Double] {
         return [{ a in Double(a.x) },
                 { a in Double(a.y) }]
+    }
+
+    public func distance(otherPoint: CGPoint) -> Double {
+        let x = self.x - otherPoint.x
+        let y = self.y - otherPoint.y
+        return Double(x*x + y*y)
     }
 
 }

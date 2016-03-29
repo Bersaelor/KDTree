@@ -8,7 +8,8 @@
 !Under Construction!
 
 Swift implementation of a k-dimensional binary space partitioning tree.
-The KDTree is implemented as an immutable enum, inspired by functional trees from https://www.objc.io/books/functional-swift/.
+The KDTree is implemented as an immutable enum, inspired by functional trees from [objc.io](https://www.objc.io/books/functional-swift/).
+KDTree algorithm according to [Wikipedia](https://en.wikipedia.org/wiki/K-d_tree) and [ubilabs js example](https://github.com/ubilabs/kd-tree-javascript).
 
 ## Usage
 

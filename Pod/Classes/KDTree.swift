@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum KDTree<Element: KDTreeGrowing> {
+public enum KDTree<Element: KDTreePoint> {
     case Leaf
     indirect case Node(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>)
     //    case Node(left: KDTree<Element>, value: T, parent: KDTree<Element>?, right: KDTree<Element>)
@@ -145,16 +145,6 @@ public enum KDTree<Element: KDTreeGrowing> {
             let maxSubTreeDepth = max(left.depth, right.depth)
             return 1 + maxSubTreeDepth
         }
-    }
-    
-}
-
-//MARK: Nearest Neighbour
-extension KDTree {
-    public func nearest(toElement element: Element) -> Element? {
-
-        
-        return nil
     }
 }
 

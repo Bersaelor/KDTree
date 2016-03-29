@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol KDTreeGrowing: Equatable {
-    static func kdTreeMetric(a: Self, b: Self) -> Double
+public protocol KDTreePoint: Equatable {
     static var kdDimensionFunctions: [Self -> Double] { get }
+    func distance(otherPoint: Self) -> Double
 }

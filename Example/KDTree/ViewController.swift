@@ -21,10 +21,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var arr = Array<String>()
+//        var arr = Array<String>()
+//        
+//        arr.reduce(0) { $0 + $1.characters.count }
         
-        arr.reduce(0) { $0 + $1.characters.count }
-                
         let _ = Dictionary<String,String>()
     
     }
