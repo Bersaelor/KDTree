@@ -30,41 +30,40 @@ class BasicSpec: QuickSpec {
             context("from CGPoints") {
                 
                 it("should not be empty") {
-//                    expect(kdTree).toNot(beEmpty())
-                    expect(kdTree.isEmpty).to(beFalse())
+                    expect(kdTree.isEmpty) == false
                 }
 
                 it("count equals points") {
-                    expect(kdTree.count).to(equal(points.count))
+                    expect(kdTree.count) == points.count
                 }
 
                 it("as many elements as points") {
-                    expect(kdTree.elements.count).to(equal(points.count))
+                    expect(kdTree.elements.count) == points.count
                 }
 
                 it("insert should increment") {
-                    expect(kdTreePlus.count).to(equal(points.count + 1))
+                    expect(kdTreePlus.count) == points.count + 1
                 }
                 
                 it("remove should decrement") {
-                    expect(kdTreePlus.remove(testPoint).count).to(equal(points.count))
+                    expect(kdTreePlus.remove(testPoint).count) == points.count
                 }
                 
                 it("equals KDTree from reverse elements") {
-                    expect(kdTree).to(equal(KDTree(values: points.reverse())))
+                    expect(kdTree) == KDTree(values: points.reverse())
                 }
                 
                 it("should not be equal kdTreePlus") {
-                    expect(kdTreePlus).notTo(equal(kdTree))
+                    expect(kdTreePlus) != kdTree
                 }
                 
                 it("removing point that isn't contained should keep equal") {
-                    expect(kdTreePlus).to(equal(kdTreePlus.remove(testPoint2)))
+                    expect(kdTreePlus) == kdTreePlus.remove(testPoint2)
                 }
                 
                 it("should contain inserted point") {
 //                    expect(kdTreePlus).to(contain(testPoint))
-                    expect(kdTreePlus.contains(testPoint)).to(beTrue())
+                    expect(kdTreePlus.contains(testPoint)) == true
                 }
                 
                 it("remove many should still have correct count") {
@@ -90,18 +89,18 @@ class BasicSpec: QuickSpec {
             let tenPoints = Array(1...10).map({x in CGPoint(x: x, y: x)})
             let tenTree = KDTree(values: tenPoints)
             it("filter x > 5 contains 5") {
-                expect(tenTree.filter({$0.x > 5}).count).to(equal(5))
+                expect(tenTree.filter({$0.x > 5}).count) == 5
             }
             
             let sum = tenTree.reduce(0) { $0 + Int($1.x)}
             it("sum should be 55") {
-                expect(sum).to(equal(55))
+                expect(sum) == 55
             }
             
             it("array map to equal tree map") {
                 let filterAndMap = tenTree.filter({$0.x > 5}).map({ $0.x + $0.y})
                 let mapAndFilter = tenTree.map({ $0.x + $0.y}).filter({$0 > 10})
-                expect(mapAndFilter).to(equal(filterAndMap))
+                expect(mapAndFilter) == filterAndMap
             }
             
             context("Average norm by forEach") {

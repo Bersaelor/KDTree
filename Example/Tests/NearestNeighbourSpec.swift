@@ -12,7 +12,7 @@ class NearestNeighbourSpec: QuickSpec {
             let tenTree = KDTree(values: tenPoints)
             let testPoint = CGPoint(x: 5.2, y: 5.5)
             it("filter x > 5 contains 5") {
-                expect(tenTree.nearest(toElement: testPoint)).toNot(beNil())
+                expect(tenTree.nearest(toElement: testPoint)) != nil
             }
             
         }
