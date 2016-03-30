@@ -14,7 +14,7 @@ extension CGPoint: KDTreePoint {
                 { a in Double(a.y) }]
     }
 
-    public func distance(otherPoint: CGPoint) -> Double {
+    public func kdDistance(otherPoint: CGPoint) -> Double {
         let x = self.x - otherPoint.x
         let y = self.y - otherPoint.y
         return Double(x*x + y*y)

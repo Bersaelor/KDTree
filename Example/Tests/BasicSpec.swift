@@ -16,16 +16,24 @@ extension CGPoint {
     }
 }
 
-extension CGRect: KDTreeGrowing {
-    public static func kdTreeMetric(a: CGRect, b: CGRect) -> Double {
-        let x = a.midX - b.midX
-        let y = a.midY - b.midY
+extension CGRect: KDTreePoint {
+    
+    public func kdDistance(otherPoint: CGRect) -> Double {
+        let x = self.midX - otherPoint.midX
+        let y = self.midY - otherPoint.midY
         return Double(x*x + y*y)
     }
     
     public static var kdDimensionFunctions: [CGRect -> Double] {
         return [{ a in Double(a.midX) },
                 { a in Double(a.midY) }]
+    }
+}
+
+extension Array {
+    func randomElement() -> Element? {
+        guard !self.isEmpty else { return nil }
+        return self[Int(arc4random())%self.count]
     }
 }
 
@@ -137,7 +145,6 @@ class BasicSpec: QuickSpec {
                 })
                 let avg = sum / Double(tenPoints.count)
                 it("should be") {
-                    print("avg: \(avg)")
                     expect(avg).to(beCloseTo(7.78, within: 0.1))
                 }
             }

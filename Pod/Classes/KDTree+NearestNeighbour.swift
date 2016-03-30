@@ -46,7 +46,7 @@ private class NeighbourSearchData<Element: KDTreePoint> {
             case .Leaf:
                 print("WARNING: There should be no leaves in the pathStack")
             case let .Node(left, value, dim, right):
-                let currentDistance = value.distance(searchPoint)
+                let currentDistance = value.kdDistance(searchPoint)
                 if currentDistance < bestDistance {
                     self.bestDistance = currentDistance
                     self.currentBest = value
@@ -78,7 +78,7 @@ extension KDTree {
         case .Leaf:
             return
         case let .Node(.Leaf, value, _, .Leaf):
-            let currentDistance = value.distance(searchData.searchPoint)
+            let currentDistance = value.kdDistance(searchData.searchPoint)
             if currentDistance < searchData.bestDistance {
                 searchData.bestDistance = currentDistance
                 searchData.currentBest = value
@@ -107,13 +107,13 @@ extension KDTree {
     public func nearest(toElement element: Element) -> Element? {
         guard !self.isEmpty else { return nil }
         
-        print("Finding nearest neigbour of \(element)")
+//        print("Finding nearest neigbour of \(element)")
         let searchData = NeighbourSearchData(searchPoint: element)
         self.findBestDown(searchData)
-        print("currentBest: \(searchData.currentBest)")
-        print("path stack: \(searchData.pathStack)")
+//        print("currentBest: \(searchData.currentBest)")
+//        print("path stack: \(searchData.pathStack)")
         searchData.bubbleUp()
-        print("currentBest: \(searchData.currentBest) after bubbling up")
+//        print("currentBest: \(searchData.currentBest) after bubbling up")
         
         return searchData.currentBest
     }

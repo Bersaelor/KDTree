@@ -170,7 +170,7 @@ extension KDTree { //SequenceType like
     /// where a map would keep the balance intact.
     ///
     /// - Complexity: O(N).
-    public func map<T: KDTreeGrowing>(@noescape transform: (Element) throws -> T) rethrows -> KDTree<T> {
+    public func map<T: KDTreePoint>(@noescape transform: (Element) throws -> T) rethrows -> KDTree<T> {
         switch self {
         case .Leaf:
             return .Leaf
