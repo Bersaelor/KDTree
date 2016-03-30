@@ -119,6 +119,7 @@ public enum KDTree<Element: KDTreePoint> {
             return self
         case let .Node(left, value, dim, right):
             if value == valueToBeRemoved {
+                //TODO: could be optimized by finding an appropriate replacement value from the subtree
                 return KDTree(values: left.elements + right.elements)
             }
             else {
@@ -154,17 +155,37 @@ extension KDTree { //SequenceType like
     /// over `self`.
     ///
     /// - Complexity: O(N).
-    public func map<T>(@noescape transform: (Element) throws -> T) rethrows -> [T] {
+    public func mapToArray<T>(@noescape transform: (Element) throws -> T) rethrows -> [T] {
         switch self {
         case .Leaf:
             return []
         case let .Node(left, value, _, right):
-            return try left.map(transform) + [transform(value)] + right.map(transform)
+            return try left.mapToArray(transform) + [transform(value)] + right.mapToArray(transform)
         }
     }
-    
+
+    /// Returns a `KDTree` containing the results of mapping `transform`
+    /// over `self`. 
+    /// **IMPORTANT NOTE:** In general the resulting Tree won't be balanced at all. There are however specific cases 
+    /// where a map would keep the balance intact.
+    ///
+    /// - Complexity: O(N).
+    public func map<T: KDTreeGrowing>(@noescape transform: (Element) throws -> T) rethrows -> KDTree<T> {
+        switch self {
+        case .Leaf:
+            return .Leaf
+        case let .Node(left, value, dim, right):
+            let transformedValue = try transform(value)
+            let leftTree = try left.map(transform)
+            let rightTree = try right.map(transform)
+            return KDTree<T>.Node(left: leftTree, value: transformedValue, dimension: dim, right: rightTree)
+        }
+    }
+
     /// Returns a `KDTree` containing the elements of `self`,
     /// in order, that satisfy the predicate `includeElement`.
+    ///
+    /// - Complexity: O(N).
     public func filter(@noescape includeElement: (Element) throws -> Bool) rethrows -> KDTree {
         switch self {
         case .Leaf:

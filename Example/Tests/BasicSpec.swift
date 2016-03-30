@@ -10,6 +10,25 @@ extension CGFloat {
     }
 }
 
+extension CGPoint {
+    var norm: Double {
+        return sqrt(Double(self.x*self.x + self.y*self.y))
+    }
+}
+
+extension CGRect: KDTreeGrowing {
+    public static func kdTreeMetric(a: CGRect, b: CGRect) -> Double {
+        let x = a.midX - b.midX
+        let y = a.midY - b.midY
+        return Double(x*x + y*y)
+    }
+    
+    public static var kdDimensionFunctions: [CGRect -> Double] {
+        return [{ a in Double(a.midX) },
+                { a in Double(a.midY) }]
+    }
+}
+
 class BasicSpec: QuickSpec {
     override func spec() {
         
@@ -98,11 +117,19 @@ class BasicSpec: QuickSpec {
             }
             
             it("array map to equal tree map") {
-                let filterAndMap = tenTree.filter({$0.x > 5}).map({ $0.x + $0.y})
-                let mapAndFilter = tenTree.map({ $0.x + $0.y}).filter({$0 > 10})
+                let filterAndMap = tenTree.filter({$0.x > 5}).mapToArray({ $0.x + $0.y })
+                let mapAndFilter = tenTree.mapToArray({ $0.x + $0.y }).filter({$0 > 10})
                 expect(mapAndFilter) == filterAndMap
             }
-            
+
+            it("filtered map to Tree of Rects equals mapped filter") {
+                let filterAndMap = tenTree.filter({ $0.norm > 5 }).map({ CGRectMake($0.x, $0.y, 0.0, 0.0)
+                    .insetBy(dx: -0.5, dy: -0.5) })
+                let mapAndFilter = tenTree.map({ CGRectMake($0.x, $0.y, 0.0, 0.0)
+                    .insetBy(dx: -0.5, dy: -0.5) }).filter({ $0.origin.norm > 4.5 })
+                expect(mapAndFilter) == filterAndMap
+            }
+
             context("Average norm by forEach") {
                 var sum = 0.0
                 tenPoints.forEach({ p in
