@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KDTree
 
 extension CGFloat {
     static func random(start start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
@@ -32,6 +31,10 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func dismissPresentedViewController(sender: UIControl) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

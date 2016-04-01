@@ -3,6 +3,7 @@ use_frameworks!
 
 target 'KDTree_Example', :exclusive => true do
   pod 'KDTree', :path => '../'
+  pod 'XCGLogger', '~> 3.3'
 end
 
 target 'KDTree_Tests', :exclusive => true do

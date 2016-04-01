@@ -233,6 +233,21 @@ extension KDTree { //SequenceType like
         }
     }
     
+    /// Call `body` on each node in `self` in the same order as a
+    /// *for-in loop.*
+    public func investigateTree(body: (node: KDTree, parents: [KDTree], depth: Int) -> Void,
+                                parents: [KDTree] = [], depth: Int = 0) {
+        switch self {
+        case .Leaf:
+            return
+        case let .Node(left, value, _, right):
+            body(node: self, parents: parents, depth: depth)
+            let nextParents = [self] + parents
+            left.investigateTree(body, parents: nextParents, depth: depth+1)
+            right.investigateTree(body, parents: nextParents, depth: depth+1)
+        }
+    }
+    
     /// Returns the result of repeatedly calling `combine` with an
     /// accumulated value initialized to `initial` and each element of
     /// `self`, in turn, i.e. return

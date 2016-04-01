@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +18,84 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzr-GZ-if7">
+                                <rect key="frame" x="20" y="20" width="560" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9kn-fd-1nJ"/>
+                                </constraints>
+                                <state key="normal" title="Visual Tree-Algorithm Explanation"/>
+                                <connections>
+                                    <segue destination="B5l-OV-rT5" kind="presentation" id="PQf-e0-PP4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xzr-GZ-if7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="2ff-ns-r7w"/>
+                            <constraint firstItem="xzr-GZ-if7" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="RZR-Yb-27L"/>
+                            <constraint firstItem="xzr-GZ-if7" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="nBT-gz-qbf"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="420" y="430"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oUE-Nk-EtS">
+            <objects>
+                <navigationController id="B5l-OV-rT5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TDl-3g-j0J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cVw-6w-nEA" kind="relationship" relationship="rootViewController" id="hgP-PL-623"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXW-UW-CRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="8"/>
+        </scene>
+        <!--KDTree-->
+        <scene sceneID="47X-Y0-xJ5">
+            <objects>
+                <viewController id="cVw-6w-nEA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Sl-RP-EoK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pfq-Pi-Dl3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TMG-lQ-cNO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvC-5d-3NM" customClass="IllustrationView" customModule="KDTree_Example" customModuleProvider="target">
+                                <rect key="frame" x="5" y="74" width="590" height="535"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HvC-5d-3NM" secondAttribute="height" multiplier="140:127" id="r87-iO-Mfl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HvC-5d-3NM" firstAttribute="centerX" secondItem="TMG-lQ-cNO" secondAttribute="centerX" id="1Z9-KU-3Lg"/>
+                            <constraint firstItem="HvC-5d-3NM" firstAttribute="width" secondItem="TMG-lQ-cNO" secondAttribute="width" constant="-10" id="bno-me-9Gj"/>
+                            <constraint firstItem="HvC-5d-3NM" firstAttribute="top" secondItem="8Sl-RP-EoK" secondAttribute="bottom" constant="10" id="mzH-DB-ghC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="KDTree" id="Fer-eL-h6A">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="vkV-nx-tyz">
+                            <connections>
+                                <action selector="dismissPresentedViewController:" destination="My4-HM-tfJ" id="e9s-uR-VYv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="My4-HM-tfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1867" y="8"/>
         </scene>
     </scenes>
 </document>
