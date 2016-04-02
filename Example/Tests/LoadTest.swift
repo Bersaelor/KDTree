@@ -13,6 +13,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     var points: [CGPoint] = []
     var testPoints: [CGPoint] = []
     var largeTree: KDTree<CGPoint> = KDTree(values: [])
+    var nearestPointsFromArray: [CGPoint] = []
     
     override func setUp() {
         super.setUp()
@@ -20,6 +21,19 @@ class NearestNeighbourLoadTest: XCTestCase {
         points = Array(0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
         testPoints = Array(0..<1000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
         largeTree = KDTree(values: self.points)
+        
+        nearestPointsFromArray = testPoints.map { (searchPoint: CGPoint) -> CGPoint in
+            var bestDistance = Double.infinity
+            let nearest = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
+                let testDistance = searchPoint.unsquaredDistance(testPoint)
+                if testDistance < bestDistance {
+                    bestDistance = testDistance
+                    return testPoint
+                }
+                return bestPoint
+            })
+            return nearest
+        }
     }
     
     override func tearDown() {
@@ -85,24 +99,9 @@ class NearestNeighbourLoadTest: XCTestCase {
     }
     
     func test05_NearestNeighbourPerformance() {
-        let searchPoints = testPoints[0..<100]
-        
-        let nearestPointsFromArray = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
-            var bestDistance = Double.infinity
-            let nearest = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                let testDistance = searchPoint.unsquaredDistance(testPoint)
-                if testDistance < bestDistance {
-                    bestDistance = testDistance
-                    return testPoint
-                }
-                return bestPoint
-            })
-            return nearest
-        }
-        
         var nearestPointsFromTree = [CGPoint]()
         self.measureBlock {
-            nearestPointsFromTree = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
+            nearestPointsFromTree = self.testPoints.map { (searchPoint: CGPoint) -> CGPoint in
                 return self.largeTree.nearest(toElement: searchPoint) ?? CGPoint.zero
             }
         }
@@ -111,7 +110,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     }
     
     func test05b_NearestNeighbourComparisonArray() {
-        let searchPoints = testPoints[0..<100]
+        let searchPoints = testPoints
         
         self.measureBlock {
             let _ = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
@@ -127,5 +126,16 @@ class NearestNeighbourLoadTest: XCTestCase {
                 return nearest
             }
         }
+    }
+    
+    func test05_kNearestNeighbourPerformance() {
+        var nearestPointsFromTree = [CGPoint]()
+        self.measureBlock {
+            nearestPointsFromTree = self.testPoints.map { (searchPoint: CGPoint) -> CGPoint in
+                return self.largeTree.nearestK(1, toElement: searchPoint).first ?? CGPoint.zero
+            }
+        }
+        
+        XCTAssertEqual(nearestPointsFromArray, nearestPointsFromTree, "Nearest points via Array should equal nearest points via Tree")
     }
 }
