@@ -64,7 +64,7 @@ class IllustrationView: UIView {
             //check up if it's really the closest
             var bestDistance = Double.infinity
             let nearestFromArray = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                let testDistance = tappedPoint.kdDistance(testPoint)
+                let testDistance = tappedPoint.unsquaredDistance(testPoint)
                 if testDistance < bestDistance {
                     bestDistance = testDistance
                     return testPoint
@@ -74,8 +74,8 @@ class IllustrationView: UIView {
             
             if nearestFromArray != nearestPoint {
                 xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoint)")
-                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.kdDistance(tappedPoint))")
-                xcLog.debug("nearest: \(nearestPoint!.kdDistance(tappedPoint))")
+                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.unsquaredDistance(tappedPoint))")
+                xcLog.debug("nearest: \(nearestPoint!.unsquaredDistance(tappedPoint))")
                 
                 xcLog.debug("---")
             }
@@ -113,8 +113,16 @@ class IllustrationView: UIView {
         if let nearestPoint = nearestPoint {
             UIColor.purpleColor().setStroke()
             CGContextSetLineWidth(context, 1.0)
-            CGContextStrokeEllipseInRect(context, CGRect(x: cH*nearestPoint.x-1.5*dotSize,
-                y: cH*nearestPoint.y-1.5*dotSize, width: 3*dotSize, height: 3*dotSize))
+            CGContextStrokeEllipseInRect(context, CGRect(x: cH*nearestPoint.x-1.0*dotSize,
+                y: cH*nearestPoint.y-1.0*dotSize, width: 2*dotSize, height: 2*dotSize))
+            CGContextStrokePath(context)
+            
+            guard let tappedPoint = tappedPoint else { return }
+            UIColor.yellowColor().setStroke()
+            let distance = norm(nearestPoint - tappedPoint)
+            CGContextSetLineWidth(context, 1.0)
+            CGContextStrokeEllipseInRect(context, CGRect(x: cH*(tappedPoint.x-distance), y: cH*(tappedPoint.y-distance),
+                width: cH*2*distance, height: cH*2*distance))
             CGContextStrokePath(context)
         }
     }

@@ -10,5 +10,5 @@ import Foundation
 
 public protocol KDTreePoint: Equatable {
     static var kdDimensionFunctions: [Self -> Double] { get }
-    func kdDistance(otherPoint: Self) -> Double
+    func unsquaredDistance(otherPoint: Self) -> Double
 }
