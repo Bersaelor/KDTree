@@ -61,13 +61,13 @@
         <!--KDTree-->
         <scene sceneID="47X-Y0-xJ5">
             <objects>
-                <viewController id="cVw-6w-nEA" sceneMemberID="viewController">
+                <viewController id="cVw-6w-nEA" customClass="IllustrationViewController" customModule="KDTree_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Sl-RP-EoK"/>
                         <viewControllerLayoutGuide type="bottom" id="Pfq-Pi-Dl3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TMG-lQ-cNO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvC-5d-3NM" customClass="IllustrationView" customModule="KDTree_Example" customModuleProvider="target">
@@ -77,12 +77,66 @@
                                     <constraint firstAttribute="width" secondItem="HvC-5d-3NM" secondAttribute="height" multiplier="140:127" id="r87-iO-Mfl"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCE-Ht-X3r">
+                                <rect key="frame" x="5" y="617" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NfV-yn-Zvv"/>
+                                    <constraint firstAttribute="width" constant="100" id="a3C-Gq-Ngj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="23" minValue="5" maxValue="101" translatesAutoresizingMaskIntoConstraints="NO" id="jlP-ps-3ta">
+                                <rect key="frame" x="111" y="613" width="471" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="d1J-No-tWX"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pointsSliderChanged:" destination="cVw-6w-nEA" eventType="valueChanged" id="DMG-Gs-0Tr"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tapped: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-2y-1Gj">
+                                <rect key="frame" x="5" y="662" width="292" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="j7e-wi-Q3c"/>
+                                    <constraint firstAttribute="height" constant="21" id="xQL-vw-Ty8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearest: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjj-LU-fs3">
+                                <rect key="frame" x="305" y="662" width="275" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Uri-2G-Ama"/>
+                                    <constraint firstAttribute="height" constant="21" id="lwZ-r1-wiD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Uri-2G-Ama"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HvC-5d-3NM" firstAttribute="centerX" secondItem="TMG-lQ-cNO" secondAttribute="centerX" id="1Z9-KU-3Lg"/>
+                            <constraint firstItem="yjj-LU-fs3" firstAttribute="leading" secondItem="XD9-2y-1Gj" secondAttribute="trailing" constant="8" id="CFS-hM-lJJ"/>
+                            <constraint firstItem="jlP-ps-3ta" firstAttribute="leading" secondItem="dCE-Ht-X3r" secondAttribute="trailing" constant="8" id="TL8-Fb-N2W"/>
                             <constraint firstItem="HvC-5d-3NM" firstAttribute="width" secondItem="TMG-lQ-cNO" secondAttribute="width" constant="-10" id="bno-me-9Gj"/>
+                            <constraint firstItem="jlP-ps-3ta" firstAttribute="trailing" secondItem="TMG-lQ-cNO" secondAttribute="trailingMargin" id="eLk-AC-wzi"/>
+                            <constraint firstItem="XD9-2y-1Gj" firstAttribute="leading" secondItem="TMG-lQ-cNO" secondAttribute="leadingMargin" constant="-15" id="eu5-D1-CNr"/>
+                            <constraint firstItem="XD9-2y-1Gj" firstAttribute="top" secondItem="jlP-ps-3ta" secondAttribute="bottom" constant="19" id="kGC-xX-gMO"/>
+                            <constraint firstItem="dCE-Ht-X3r" firstAttribute="leading" secondItem="TMG-lQ-cNO" secondAttribute="leadingMargin" constant="-15" id="l6Q-XO-zOM"/>
+                            <constraint firstItem="yjj-LU-fs3" firstAttribute="top" secondItem="jlP-ps-3ta" secondAttribute="bottom" constant="19" id="mMB-OD-cLF"/>
                             <constraint firstItem="HvC-5d-3NM" firstAttribute="top" secondItem="8Sl-RP-EoK" secondAttribute="bottom" constant="10" id="mzH-DB-ghC"/>
+                            <constraint firstItem="yjj-LU-fs3" firstAttribute="trailing" secondItem="TMG-lQ-cNO" secondAttribute="trailingMargin" id="pqA-xF-kv3"/>
+                            <constraint firstItem="dCE-Ht-X3r" firstAttribute="top" secondItem="HvC-5d-3NM" secondAttribute="bottom" constant="8" id="qu3-6P-vgo"/>
+                            <constraint firstItem="jlP-ps-3ta" firstAttribute="top" secondItem="HvC-5d-3NM" secondAttribute="bottom" constant="4" id="r2h-r5-AuG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="KDTree" id="Fer-eL-h6A">
@@ -92,6 +146,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="illustrationView" destination="HvC-5d-3NM" id="cbF-Fs-aqv"/>
+                        <outlet property="nearestLabel" destination="yjj-LU-fs3" id="snZ-dQ-gH3"/>
+                        <outlet property="pointsLabel" destination="dCE-Ht-X3r" id="Kxn-Q9-ESF"/>
+                        <outlet property="tappedLabel" destination="XD9-2y-1Gj" id="OvR-7K-Ktn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My4-HM-tfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

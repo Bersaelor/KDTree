@@ -8,12 +8,11 @@
 
 import Foundation
 
-private struct StepDirection: OptionSetType {
-    let rawValue: Int
-
-    static let None  = StepDirection(rawValue: 0)
-    static let Left  = StepDirection(rawValue: 1 << 0)
-    static let Right = StepDirection(rawValue: 1 << 1)
+private enum StepDirection {
+    case None
+    case Left
+    case Right
+    case Both
 }
 
 private class SearchStep<Element: KDTreePoint> {
@@ -56,13 +55,13 @@ private class NeighbourSearchData<Element: KDTreePoint> {
                 //f(searchPoint) - f(value) is the distance of the searchPoint to the current hyperplane
                 let f = Element.kdDimensionFunctions[dim]
                 if abs(f(searchPoint) - f(value)) < self.bestDistance {
-                    if !currentStep.steppedDirections.contains(.Left) {
-                        currentStep.steppedDirections = [.Left, currentStep.steppedDirections]
-                        left.findBestDown(self)
-                    }
-                    else if !currentStep.steppedDirections.contains(.Right) {
-                        currentStep.steppedDirections = [currentStep.steppedDirections, .Right]
+                    if currentStep.steppedDirections == .Left {
+                        currentStep.steppedDirections = .Both
                         right.findBestDown(self)
+                    }
+                    else if currentStep.steppedDirections == .Right {
+                        currentStep.steppedDirections = .Both
+                        left.findBestDown(self)
                     }
                 }
             }

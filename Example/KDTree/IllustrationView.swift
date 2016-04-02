@@ -10,11 +10,20 @@ import UIKit
 import KDTree
 
 class IllustrationView: UIView {
-    private var pointNumber = 23
+    
+    var pointNumber = 23 {
+        didSet {
+            if pointNumber != oldValue { update() }
+        }
+    }
+    
     private var points: [CGPoint] = Array(0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
     private var tree: KDTree<CGPoint>?
     private var dotSize: CGFloat = 5.0
     private var cH: CGFloat { return 0.5 * 0.98 * min(self.bounds.height, self.bounds.width) }
+    
+    var tappedPoint: CGPoint?
+    var nearestPoint: CGPoint?
     
     final var handleRadius: CGFloat {
         return 0.575*cH
@@ -44,6 +53,36 @@ class IllustrationView: UIView {
         self.setNeedsDisplay()
     }
     
+    func pointTapped(point: CGPoint) {
+        let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        tappedPoint = 1.0/cH * (point - c)
+        xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
+        
+        if let tappedPoint = tappedPoint {
+            nearestPoint = tree?.nearest(toElement: tappedPoint)
+            
+            //check up if it's really the closest
+            var bestDistance = Double.infinity
+            let nearestFromArray = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
+                let testDistance = tappedPoint.kdDistance(testPoint)
+                if testDistance < bestDistance {
+                    bestDistance = testDistance
+                    return testPoint
+                }
+                return bestPoint
+            })
+            
+            if nearestFromArray != nearestPoint {
+                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoint)")
+                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.kdDistance(tappedPoint))")
+                xcLog.debug("nearest: \(nearestPoint!.kdDistance(tappedPoint))")
+                
+                xcLog.debug("---")
+            }
+        }
+        self.setNeedsDisplay()
+    }
+    
     override func drawRect(rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
             xcLog.error("failed to get graphics context")
@@ -59,8 +98,29 @@ class IllustrationView: UIView {
             CGContextFillEllipseInRect(context, CGRect(x: cH*point.x-0.5*dotSize, y: cH*point.y-0.5*dotSize, width: dotSize, height: dotSize))
         }
         
-        CGContextSetLineWidth(context, 1.0)
+        drawTreeInContext(context)
+
+        if let tappedPoint = tappedPoint {
+            UIColor.blackColor().setStroke()
+            CGContextMoveToPoint(context, cH*tappedPoint.x - 5.0, cH*tappedPoint.y - 5.0)
+            CGContextAddLineToPoint(context, cH*tappedPoint.x + 5, cH*tappedPoint.y + 5)
+            CGContextStrokePath(context)
+            CGContextMoveToPoint(context, cH*tappedPoint.x - 5, cH*tappedPoint.y + 5)
+            CGContextAddLineToPoint(context, cH*tappedPoint.x + 5, cH*tappedPoint.y - 5)
+            CGContextStrokePath(context)
+        }
         
+        if let nearestPoint = nearestPoint {
+            UIColor.purpleColor().setStroke()
+            CGContextSetLineWidth(context, 1.0)
+            CGContextStrokeEllipseInRect(context, CGRect(x: cH*nearestPoint.x-1.5*dotSize,
+                y: cH*nearestPoint.y-1.5*dotSize, width: 3*dotSize, height: 3*dotSize))
+            CGContextStrokePath(context)
+        }
+    }
+    
+    private func drawTreeInContext(context: CGContext) {
+        CGContextSetLineWidth(context, 1.0)
         tree?.investigateTree({ (node, parents, depth) in
             switch node {
             case .Leaf: break
@@ -99,7 +159,6 @@ class IllustrationView: UIView {
                         }
                     }
                 }
-
                 
                 if dimension == 0 {
                     UIColor.blueColor().setStroke()
