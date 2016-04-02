@@ -17,13 +17,19 @@ class IllustrationView: UIView {
         }
     }
     
+    var isKNearest = false {
+        didSet {
+            if isKNearest != oldValue { update() }
+        }
+    }
+    
     private var points: [CGPoint] = Array(0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
     private var tree: KDTree<CGPoint>?
     private var dotSize: CGFloat = 5.0
     private var cH: CGFloat { return 0.5 * 0.98 * min(self.bounds.height, self.bounds.width) }
     
     var tappedPoint: CGPoint?
-    var nearestPoint: CGPoint?
+    var nearestPoints: [CGPoint] = []
     
     final var handleRadius: CGFloat {
         return 0.575*cH
@@ -59,7 +65,8 @@ class IllustrationView: UIView {
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
         
         if let tappedPoint = tappedPoint {
-            nearestPoint = tree?.nearest(toElement: tappedPoint)
+            if isKNearest { nearestPoints = tree?.nearestK(5, toElement: tappedPoint) ?? [] }
+            else { nearestPoints = tree?.nearest(toElement: tappedPoint).map({ [$0] }) ?? [] }
             
             //check up if it's really the closest
             var bestDistance = Double.infinity
@@ -72,12 +79,10 @@ class IllustrationView: UIView {
                 return bestPoint
             })
             
-            if nearestFromArray != nearestPoint {
-                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoint)")
+            if nearestFromArray != nearestPoints.first {
+                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoints.first)")
                 xcLog.debug("nearestFromArray.distance: \(nearestFromArray.unsquaredDistance(tappedPoint))")
-                xcLog.debug("nearest: \(nearestPoint!.unsquaredDistance(tappedPoint))")
-                
-                xcLog.debug("---")
+                xcLog.debug("nearest: \(nearestPoints.first!.unsquaredDistance(tappedPoint))")
             }
         }
         self.setNeedsDisplay()
@@ -110,21 +115,22 @@ class IllustrationView: UIView {
             CGContextStrokePath(context)
         }
         
-        if let nearestPoint = nearestPoint {
+        for nearestPoint in nearestPoints {
             UIColor.purpleColor().setStroke()
             CGContextSetLineWidth(context, 1.0)
             CGContextStrokeEllipseInRect(context, CGRect(x: cH*nearestPoint.x-1.0*dotSize,
                 y: cH*nearestPoint.y-1.0*dotSize, width: 2*dotSize, height: 2*dotSize))
             CGContextStrokePath(context)
-            
-            guard let tappedPoint = tappedPoint else { return }
-            UIColor.yellowColor().setStroke()
-            let distance = norm(nearestPoint - tappedPoint)
-            CGContextSetLineWidth(context, 1.0)
-            CGContextStrokeEllipseInRect(context, CGRect(x: cH*(tappedPoint.x-distance), y: cH*(tappedPoint.y-distance),
-                width: cH*2*distance, height: cH*2*distance))
-            CGContextStrokePath(context)
         }
+        
+        //ring around tappedPoint and nearest elements
+        guard let tappedPoint = tappedPoint, farthestPoint = nearestPoints.last else { return }
+        UIColor.yellowColor().setStroke()
+        let distance = norm(farthestPoint - tappedPoint)
+        CGContextSetLineWidth(context, 1.0)
+        CGContextStrokeEllipseInRect(context, CGRect(x: cH*(tappedPoint.x-distance), y: cH*(tappedPoint.y-distance),
+            width: cH*2*distance, height: cH*2*distance))
+        CGContextStrokePath(context)
     }
     
     private func drawTreeInContext(context: CGContext) {

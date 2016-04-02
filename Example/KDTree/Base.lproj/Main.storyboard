@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="1152" y="8"/>
         </scene>
-        <!--KDTree-->
+        <!--Illustration View Controller-->
         <scene sceneID="47X-Y0-xJ5">
             <objects>
                 <viewController id="cVw-6w-nEA" customClass="IllustrationViewController" customModule="KDTree_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,7 +139,19 @@
                             <constraint firstItem="jlP-ps-3ta" firstAttribute="top" secondItem="HvC-5d-3NM" secondAttribute="bottom" constant="4" id="r2h-r5-AuG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="KDTree" id="Fer-eL-h6A">
+                    <navigationItem key="navigationItem" id="Fer-eL-h6A">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dNh-fB-U2R">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Nearest"/>
+                                <segment title="5 Nearest (kNN)"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentChanged:" destination="cVw-6w-nEA" eventType="valueChanged" id="0bx-C9-BFI"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Close" id="vkV-nx-tyz">
                             <connections>
                                 <action selector="dismissPresentedViewController:" destination="My4-HM-tfJ" id="e9s-uR-VYv"/>

@@ -48,6 +48,10 @@ class IllustrationViewController: UIViewController {
 
 //MARK: - Navigation
     
+    @IBAction func segmentChanged(sender: UISegmentedControl) {
+        illustrationView.isKNearest = sender.selectedSegmentIndex == 1
+    }
+    
     @IBAction func pointsSliderChanged(sender: UISlider) {
         illustrationView.pointNumber = Int(sender.value)
         pointsLabel.text = "Points: \(illustrationView.pointNumber)"
@@ -59,7 +63,7 @@ class IllustrationViewController: UIViewController {
         illustrationView.pointTapped(point)
         
         tappedLabel.text = illustrationView.tappedPoint.flatMap({"Tapped: \($0.shortDecimalDescription)"}) ?? "Tapped: nil"
-        nearestLabel.text = illustrationView.nearestPoint.flatMap({"Nearest: \($0.shortDecimalDescription)"}) ?? "Nearest: nil"
+        nearestLabel.text = illustrationView.nearestPoints.first.flatMap({"Nearest: \($0.shortDecimalDescription)"}) ?? "Nearest: nil"
     }
     
 }

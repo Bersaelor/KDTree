@@ -73,6 +73,7 @@ private struct Neighbours<Element> {
         if let index = nearestValues.indexOf({ return distance < $0.1 }) {
             var newValues = nearestValues
             newValues.insert((value, distance), atIndex: index)
+            if newValues.count > goalNumber { newValues.removeLast() }
             return Neighbours(goalNumber: goalNumber, values: newValues, sorted: true)
         }
         else {
