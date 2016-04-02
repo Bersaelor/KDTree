@@ -10,7 +10,7 @@ import UIKit
 
 extension CGPoint {
     var shortDecimalDescription: String {
-        return String(format: "(%.5f, %.5f)", self.x, self.y)
+        return String(format: "(%.3f, %.3f)", self.x, self.y)
     }
 }
 

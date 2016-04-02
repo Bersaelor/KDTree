@@ -97,22 +97,22 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tapped: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-2y-1Gj">
-                                <rect key="frame" x="5" y="662" width="292" height="21"/>
+                                <rect key="frame" x="5" y="662" width="175" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="292" id="j7e-wi-Q3c"/>
+                                    <constraint firstAttribute="width" constant="175" id="j7e-wi-Q3c"/>
                                     <constraint firstAttribute="height" constant="21" id="xQL-vw-Ty8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearest: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjj-LU-fs3">
-                                <rect key="frame" x="305" y="662" width="275" height="21"/>
+                                <rect key="frame" x="188" y="662" width="392" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="Uri-2G-Ama"/>
                                     <constraint firstAttribute="height" constant="21" id="lwZ-r1-wiD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
