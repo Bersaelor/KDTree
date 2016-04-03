@@ -26,8 +26,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Applications
 
-### Tesselations:
-![Example Illustration](/Screenshots/tesselations.jpg?raw=true)
+Tesselations:
+
+![Tesselation Example](/Screenshots/tesselations.png?raw=true)
+
+
 
 
 ## Installation
