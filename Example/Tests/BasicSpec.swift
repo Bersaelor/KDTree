@@ -18,7 +18,7 @@ extension CGPoint {
 
 extension CGRect: KDTreePoint {
     
-    public func unsquaredDistance(otherPoint: CGRect) -> Double {
+    public func squaredDistance(otherPoint: CGRect) -> Double {
         let x = self.midX - otherPoint.midX
         let y = self.midY - otherPoint.midY
         return Double(x*x + y*y)

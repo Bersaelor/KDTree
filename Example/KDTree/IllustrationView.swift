@@ -71,7 +71,7 @@ class IllustrationView: UIView {
             //check up if it's really the closest
             var bestDistance = Double.infinity
             let nearestFromArray = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                let testDistance = tappedPoint.unsquaredDistance(testPoint)
+                let testDistance = tappedPoint.squaredDistance(testPoint)
                 if testDistance < bestDistance {
                     bestDistance = testDistance
                     return testPoint
@@ -81,8 +81,8 @@ class IllustrationView: UIView {
             
             if nearestFromArray != nearestPoints.first {
                 xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoints.first)")
-                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.unsquaredDistance(tappedPoint))")
-                xcLog.debug("nearest: \(nearestPoints.first!.unsquaredDistance(tappedPoint))")
+                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(tappedPoint))")
+                xcLog.debug("nearest: \(nearestPoints.first!.squaredDistance(tappedPoint))")
             }
         }
         self.setNeedsDisplay()

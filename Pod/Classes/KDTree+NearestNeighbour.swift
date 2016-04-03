@@ -21,10 +21,10 @@ extension KDTree {
         switch self {
         case .Leaf: break
         case let .Node(.Leaf, value, _, .Leaf):
-            let currentDistance = value.unsquaredDistance(searchElement)
+            let currentDistance = value.squaredDistance(searchElement)
             if currentDistance < bestDistance { return (value, currentDistance) }
         case let .Node(left, value, dim, right):
-            let currentDistance = value.unsquaredDistance(searchElement)
+            let currentDistance = value.squaredDistance(searchElement)
 
             if currentDistance <= 0 {
                 return (value, 0.0)
@@ -93,7 +93,7 @@ extension KDTree {
         switch self {
         case .Leaf: break
         case let .Node(.Leaf, value, _, .Leaf):
-            let currentDistance = value.unsquaredDistance(searchElement)
+            let currentDistance = value.squaredDistance(searchElement)
             return bestValues.append(value, distance: currentDistance)
         case let .Node(left, value, dim, right):
             let dimensionFunction = Element.kdDimensionFunctions[dim]
@@ -105,7 +105,7 @@ extension KDTree {
             var newNeighbours = closerSubtree.nearestK(toElement: searchElement, bestValues: bestValues)
 
             //check the nodes value
-            let currentDistance = value.unsquaredDistance(searchElement)
+            let currentDistance = value.squaredDistance(searchElement)
             newNeighbours = newNeighbours.append(value, distance: currentDistance)
 
             //if the bestDistance so far intersects the hyperplane at the other side of this value
