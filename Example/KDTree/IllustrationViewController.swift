@@ -12,6 +12,10 @@ extension CGPoint {
     var shortDecimalDescription: String {
         return String(format: "(%.3f, %.3f)", self.x, self.y)
     }
+
+    static func random() -> CGPoint {
+        return CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))
+    }
 }
 
 class IllustrationViewController: UIViewController {
@@ -26,7 +30,7 @@ class IllustrationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(IllustrationViewController.illustrationTapped(_:)))
-        illustrationView.addGestureRecognizer(tapGR)
+        illustrationView.addGestureRecognizer(tapGR)        
     }
 
     override func didReceiveMemoryWarning() {
