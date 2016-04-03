@@ -28,6 +28,10 @@ public func norm(point: CGPoint) -> CGFloat {
     return sqrt(point.x * point.x + point.y * point.y)
 }
 
+public func maximumNorm(point: CGPoint) -> CGFloat {
+    return max(abs(point.x), abs(point.y))
+}
+
 public func * (scalar: CGFloat, right: CGPoint) -> CGPoint {
     return CGPoint(x: scalar * right.x, y: scalar * right.y)
 }

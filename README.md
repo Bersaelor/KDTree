@@ -24,7 +24,11 @@ Preliminary performance results can be gained by running the unit tests, the loa
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Applications
+
+### Tesselations:
+![Example Illustration](/Screenshots/tesselations.jpg?raw=true)
+
 
 ## Installation
 

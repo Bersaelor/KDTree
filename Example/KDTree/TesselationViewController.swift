@@ -16,12 +16,31 @@ class TesselationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        pointsLabel.text = "Points: \(fillFormView.points)"
+        
+
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(IllustrationViewController.illustrationTapped(_:)))
+        fillFormView.addGestureRecognizer(tapGR)
+        
+        pointsLabel.text = "Shapes: \(fillFormView.points)"
+        fillFormView.pointsUpdated = { [weak self] in
+            self?.pointsLabel.text = "Shapes: \($0)"
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+ 
+    func illustrationTapped(recognizer: UITapGestureRecognizer) {
+        let point = recognizer.locationInView(recognizer.view)
+        fillFormView.pointTapped(point)
+        
+    }
+    
+    
+    @IBAction func shapeChanged(sender: UISegmentedControl) {
+        fillFormView.chosenShape = sender.selectedSegmentIndex == 0 ? .Circle : .Square
     }
     
 }

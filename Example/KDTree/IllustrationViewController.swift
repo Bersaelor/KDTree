@@ -28,7 +28,6 @@ class IllustrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(IllustrationViewController.illustrationTapped(_:)))
         illustrationView.addGestureRecognizer(tapGR)        
     }
