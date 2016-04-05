@@ -59,7 +59,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     func test03_RemovePerformance() {
         var pointsLeft = points
         var pointsRemoved = [CGPoint]()
-        for _ in 0..<100 {
+        for _ in 0..<1000 {
             if let randomPoint = pointsLeft.randomElement() {
                 pointsRemoved.append(randomPoint)
                 pointsLeft.removeAtIndex(pointsLeft.indexOf(randomPoint)!)
@@ -72,7 +72,6 @@ class NearestNeighbourLoadTest: XCTestCase {
         }
         
         XCTAssertEqual(movingTree.count, points.count - pointsRemoved.count, "After Removing points = start - removed")
-
     }
 
     func test04_ReducePerformance() {

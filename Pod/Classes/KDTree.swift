@@ -8,6 +8,11 @@
 
 import Foundation
 
+private enum ReplacementDirection {
+    case Max
+    case Min
+}
+
 public enum KDTree<Element: KDTreePoint> {
     case Leaf
     indirect case Node(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>)
@@ -119,8 +124,18 @@ public enum KDTree<Element: KDTreePoint> {
             return self
         case let .Node(left, value, dim, right):
             if value == valueToBeRemoved {
-                //TODO: could be optimized by finding an appropriate replacement value from the subtree
-                return KDTree(values: left.elements + right.elements)
+                let (newLeftSubTree, leftReplacementValue) = left.findBestReplacement(dim, direction: ReplacementDirection.Max)
+                if let replacement = leftReplacementValue {
+                    return KDTree.Node(left: newLeftSubTree, value: replacement, dimension: dim, right: right)
+                }
+
+                let (newRightSubTree, rightReplacementValue) = right.findBestReplacement(dim, direction: ReplacementDirection.Min)
+                if let replacement = rightReplacementValue {
+                    return KDTree.Node(left: left, value: replacement, dimension: dim, right: newRightSubTree)
+                }
+                
+                //if neither left nor right has a replacement we can safely return an empty leaf
+                return KDTree.Leaf
             }
             else {
                 let f = Element.kdDimensionFunctions[dim]
@@ -132,6 +147,46 @@ public enum KDTree<Element: KDTreePoint> {
                 else {
                     return KDTree.Node(left: left, value: value, dimension: dim,
                                        right: right.remove(valueToBeRemoved, dim: nextDim))
+                }
+            }
+        }
+    }
+    
+    private func findBestReplacement(dimOfCut: Int, direction: ReplacementDirection) -> (KDTree, Element?) {
+        switch self {
+        case .Leaf:
+            return (self, nil)
+        case .Node(let left, let value, let dim, let right):
+            if dim == dimOfCut {
+                //look at the best side of the split for the best replacement
+                let subTree = (direction == .Min) ? left : right
+                let (newSubTree, replacement) = subTree.findBestReplacement(dim, direction: direction)
+                if let replacement = replacement {
+                    if direction == .Min { return (.Node(left: newSubTree, value: value, dimension: dim, right: right), replacement) }
+                    else { return (.Node(left: left, value: value, dimension: dim, right: newSubTree), replacement) }
+                }
+                //the own point is the optimum!
+                return (self.remove(value), value)
+            }
+            else {
+                //look at both side and the value and find the min/max regarding f() along the dimOfCut
+                let f = Element.kdDimensionFunctions[dimOfCut]
+                let nilDropIn = (direction == .Min) ? Double.infinity : -Double.infinity
+
+                let (newLeftSubTree, leftReplacementValue) = left.findBestReplacement(dimOfCut, direction: direction)
+                let (newRightSubTree, rightReplacementValue) = right.findBestReplacement(dimOfCut, direction: direction)
+                let dimensionValues: [Double] = [leftReplacementValue, rightReplacementValue, value].map({ element -> Double in
+                    return element.flatMap({ f($0) }) ?? nilDropIn
+                })
+                let optimumValue = (direction == .Min) ? dimensionValues.minElement() : dimensionValues.maxElement()
+                if let bestValue = leftReplacementValue where dimensionValues[0] == optimumValue {
+                    return (.Node(left: newLeftSubTree, value: value, dimension: dim, right: right), bestValue)
+                }
+                else if let bestValue = rightReplacementValue where dimensionValues[1] == optimumValue {
+                    return (.Node(left: left, value: value, dimension: dim, right: newRightSubTree), bestValue)
+                }
+                else { //the own point is the optimum!
+                    return (self.remove(value), value)
                 }
             }
         }

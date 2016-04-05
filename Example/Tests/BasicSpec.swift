@@ -89,7 +89,6 @@ class BasicSpec: QuickSpec {
                 }
                 
                 it("should contain inserted point") {
-//                    expect(kdTreePlus).to(contain(testPoint))
                     expect(kdTreePlus.contains(testPoint)) == true
                 }
                 
