@@ -102,8 +102,9 @@ class BasicSpec: QuickSpec {
                         smallerPoints.removeAtIndex(n)
                         smallerTree = smallerTree.remove(pointToBeRemoved)
                     }
+                    smallerPoints = smallerPoints.sort({ $0.x < $1.x })
                     
-                    expect(smallerPoints.count).to(equal(smallerTree.count))
+                    expect(smallerPoints) == smallerTree.elements.sort({ $0.x < $1.x })
                 }
                 
                 it("should be deeper then 2") {
