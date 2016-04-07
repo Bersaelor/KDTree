@@ -57,7 +57,7 @@ class FillWithFormsView: UIView {
         backgroundColor = UIColor.lightGrayColor()
         backgroundColor = UIColor.clearColor()
 
-        let randomTree = KDTree(values: Array(0..<initialPoints).map({_ in CGPoint.random()}))
+        let randomTree = KDTree(values: (0..<initialPoints).map({_ in CGPoint.random()}))
         discTree = randomTree.map { (point) -> Disc in
             let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15), saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
             let maxRadius = min(1 - abs(point.x), 1 - abs(point.y))

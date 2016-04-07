@@ -23,7 +23,7 @@ class IllustrationView: UIView {
         }
     }
     
-    private var points: [CGPoint] = Array(0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
+    private var points: [CGPoint] = (0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
     private var tree: KDTree<CGPoint>?
     private var dotSize: CGFloat = 5.0
     private var cH: CGFloat { return 0.5 * 0.98 * min(self.bounds.height, self.bounds.width) }
@@ -54,7 +54,7 @@ class IllustrationView: UIView {
     }
     
     func update() {
-        points =  Array(0..<pointNumber).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
+        points =  (0..<pointNumber).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
         tree = KDTree(values: points)
         self.setNeedsDisplay()
     }

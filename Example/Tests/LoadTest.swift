@@ -18,8 +18,8 @@ class NearestNeighbourLoadTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        points = Array(0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
-        testPoints = Array(0..<500).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        points = (0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        testPoints = (0..<500).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
         largeTree = KDTree(values: self.points)
         
         nearestPointsFromArray = testPoints.map { (searchPoint: CGPoint) -> CGPoint in
