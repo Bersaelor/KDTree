@@ -68,7 +68,10 @@ public enum KDTree<Element: KDTreePoint> {
         case .Leaf:
             return []
         case let .Node(left, value, _, right):
-            return [value] + left.elements + right.elements
+            var mappedTs = left.elements
+            mappedTs.append(value)
+            mappedTs.appendContentsOf(right.elements)
+            return mappedTs
         }
     }
     
@@ -215,7 +218,10 @@ extension KDTree { //SequenceType like
         case .Leaf:
             return []
         case let .Node(left, value, _, right):
-            return try left.mapToArray(transform) + [transform(value)] + right.mapToArray(transform)
+            var mappedTs = try left.mapToArray(transform)
+            try mappedTs.append(transform(value))
+            try mappedTs.appendContentsOf(right.mapToArray(transform))
+            return mappedTs
         }
     }
 
