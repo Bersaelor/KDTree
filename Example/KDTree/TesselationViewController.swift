@@ -15,9 +15,7 @@ class TesselationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
-
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(IllustrationViewController.illustrationTapped(_:)))
         fillFormView.addGestureRecognizer(tapGR)
         

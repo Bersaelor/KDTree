@@ -34,5 +34,4 @@ extension Disc: KDTreePoint {
     func squaredDistance(otherPoint: Disc) -> Double {
         return self.center.squaredDistance(otherPoint.center)
     }
-    
 }

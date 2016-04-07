@@ -19,5 +19,4 @@ extension CGPoint: KDTreePoint {
         let y = self.y - otherPoint.y
         return Double(x*x + y*y)
     }
-
 }
