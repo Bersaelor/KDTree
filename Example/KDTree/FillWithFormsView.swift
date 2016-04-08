@@ -88,13 +88,12 @@ class FillWithFormsView: UIView {
                 let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: UIColor.clearColor())
                 let maxshapeRadius = min(maxDiscSize, min(1 - abs(testDisc.center.x), 1 - abs(testDisc.center.y)))
                 let nearest8Discs = treeCopy.nearestK(8, toElement: testDisc)
-                let nearest8Distances = nearest8Discs.map { disc -> CGFloat in
-                    if strongself.chosenShape == .Circle {
-                        return norm(testDisc.center - disc.center) - disc.radius
-                    }
-                    return maximumNorm(testDisc.center - disc.center) - disc.radius
+                let closestDistance = nearest8Discs.reduce(CGFloat.infinity) { (currentMin, disc) -> CGFloat in
+                    let distance = (strongself.chosenShape == .Circle) ?
+                        norm(testDisc.center - disc.center) - disc.radius : maximumNorm(testDisc.center - disc.center) - disc.radius
+                    return min(currentMin, distance)
                 }
-                let shapeRadius = min(maxshapeRadius, nearest8Distances.minElement() ?? maxshapeRadius)
+                let shapeRadius = min(maxshapeRadius, closestDistance ?? maxshapeRadius)
                 
                 if shapeRadius >= minDiscSize {
                     newPoints += 1
