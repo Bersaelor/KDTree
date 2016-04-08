@@ -82,7 +82,7 @@ class FillWithFormsView: UIView {
         moreShapesOperation.addExecutionBlock { [weak self] in
             guard let strongself = self else { return }
             var treeCopy = strongself.discTree
-            var newPoints = strongself.points
+            var newPoints = 0
             for _ in 0...5*initialPoints {
                 if weakShapeOp?.cancelled == true { break }
                 let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: UIColor.clearColor())
@@ -105,9 +105,10 @@ class FillWithFormsView: UIView {
             if weakShapeOp?.cancelled == false {
                 dispatch_async(dispatch_get_main_queue()) { [weak self] in
                     self?.discTree = treeCopy
-                    self?.points = newPoints
+                    print("newPoints: \(newPoints)")
+                    self?.points = newPoints + strongself.points
                     self?.update()
-                    if self?.points < 4*initialPoints { self?.addMoreShapesBlock() }
+                    if newPoints > Int(0.1*Double(initialPoints)) { self?.addMoreShapesBlock() }
                 }
             }
         }

@@ -48,6 +48,7 @@
 		6687C4CFA6F020B943604A49237B630F /* String+FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBE4FA1BE988862965FC86E88A20A3 /* String+FileName.swift */; };
 		68527A7545342CBB4F923DC8543F7B20 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95D7885C02203B121201B42A6F285 /* DSL.m */; };
 		6ED0409031540D9B2AD7B061B608B0C9 /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AEBF09A5E2A3D5DCCEC9C7331D4781 /* DSL+Wait.swift */; };
+		71692BBB1CB5950500E4EB57 /* KDTree+RangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71692BBA1CB5950500E4EB57 /* KDTree+RangeSearch.swift */; };
 		7202A0B871C57B7857341D88C2883A3A /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA770B00F53566E61E030C009071B8F6 /* BeIdenticalTo.swift */; };
 		74DA186427645EF3212D2A5E77F3E3DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E351727CD07BB90B2A3CAE2C2433F6C5 /* Foundation.framework */; };
 		77207D604A90A9E21597270EA829AFF9 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57746D9C095745E51AE3E71EE9AE0A9C /* XCGLogger.swift */; };
@@ -220,6 +221,7 @@
 		6D5BD1D94DB1A3605723795A34325093 /* QCKDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QCKDSL.m; path = Sources/Quick/DSL/QCKDSL.m; sourceTree = "<group>"; };
 		6EC9E19007DFBB6EC0A119211D8DCDC0 /* Pods-KDTree_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Tests-resources.sh"; sourceTree = "<group>"; };
 		6F708698574DBE0D67811D0B465EA9A8 /* Pods_KDTree_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71692BBA1CB5950500E4EB57 /* KDTree+RangeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KDTree+RangeSearch.swift"; sourceTree = "<group>"; };
 		729C4A65158E4370BE9F4500AC462E1C /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/Quick/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		73649209E154BBD5C335FA61E0854B5F /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
 		74E3F6CBA9D58175EDA2F11A3B622563 /* KDTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KDTree.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				2D6370CBEE5C44CFACABEBEF80989D73 /* KDTree+CustomStringConvertible.swift */,
 				E5D2C3FED858C57FE9575FAC475463CB /* KDTree+Equatable.swift */,
 				F2CBEC9475FF44ECE75C34F9F667B38F /* KDTree+NearestNeighbour.swift */,
+				71692BBA1CB5950500E4EB57 /* KDTree+RangeSearch.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -968,6 +971,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71692BBB1CB5950500E4EB57 /* KDTree+RangeSearch.swift in Sources */,
 				3333BF76D7CC2C1FCDFCD49316E18A74 /* CGPoint+KDTreePoint.swift in Sources */,
 				9EE78318708EBE1CF81748F00F405E23 /* KDTree+CustomStringConvertible.swift in Sources */,
 				436897AFBE178636CDF27A73AC37C762 /* KDTree+Equatable.swift in Sources */,
@@ -1315,6 +1319,7 @@
 				PRODUCT_NAME = KDTree;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
