@@ -15,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
+		712EDA7B1CB5A4DE001F32F3 /* RangeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */; };
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
@@ -49,6 +50,7 @@
 		607FACE51AFB9204008FA782 /* KDTree_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KDTree_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* BasicSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSpec.swift; sourceTree = "<group>"; };
+		712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSearchTests.swift; sourceTree = "<group>"; };
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				607FACEB1AFB9204008FA782 /* BasicSpec.swift */,
 				71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */,
 				74887EFB1CABC258002AECF6 /* LoadTest.swift */,
+				712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -413,6 +416,7 @@
 				71C2077B1CA9C9C2009C9551 /* NearestNeighbourSpec.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* BasicSpec.swift in Sources */,
 				74887EFC1CABC258002AECF6 /* LoadTest.swift in Sources */,
+				712EDA7B1CB5A4DE001F32F3 /* RangeSearchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
