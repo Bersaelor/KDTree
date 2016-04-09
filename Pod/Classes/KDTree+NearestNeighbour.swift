@@ -68,7 +68,7 @@ private struct Neighbours {
     var count: Int { return nearestValues.count }
     let goalNumber: Int
     var full: Bool { return nearestValues.count >= goalNumber }
-    var biggestDistance: Double { return nearestValues.last?.distance ?? Double.infinity }
+    var biggestDistance: Double = Double.infinity
     
     init(goalNumber: Int, values: [ElementPair]) {
         var callbacks = CFBinaryHeapCallBacks()
@@ -80,10 +80,14 @@ private struct Neighbours {
     mutating func append(value: Any, distance: Double) {
         if let index = nearestValues.indexOf({ return distance < $0.distance }) {
             nearestValues.insert(ElementPair(distance: distance, point: value), atIndex: index)
-            if nearestValues.count > goalNumber { nearestValues.removeLast() }
+            if nearestValues.count > goalNumber {
+                nearestValues.removeLast()
+                biggestDistance = nearestValues.last!.distance
+            }
         }
         else {
             nearestValues.append(ElementPair(distance: distance, point: value))
+            biggestDistance = distance
         }
     }
 }
@@ -102,12 +106,6 @@ extension KDTree {
     
     private func nearestK(toElement searchElement: Element, inout bestValues: Neighbours) {
         switch self {
-        case .Leaf: break
-        case let .Node(.Leaf, value, _, .Leaf):
-            let currentDistance = value.squaredDistance(searchElement)
-            if !bestValues.full || currentDistance < bestValues.biggestDistance {
-                bestValues.append(value, distance: currentDistance)
-            }
         case let .Node(left, value, dim, right):
             let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)
             let isLeftOfValue = dimensionDifference > 0
@@ -128,6 +126,12 @@ extension KDTree {
                 let otherSubtree = isLeftOfValue ? right : left
                 otherSubtree.nearestK(toElement: searchElement, bestValues: &bestValues)
             }
+        case let .Node(.Leaf, value, _, .Leaf):
+            let currentDistance = value.squaredDistance(searchElement)
+            if !bestValues.full || currentDistance < bestValues.biggestDistance {
+                bestValues.append(value, distance: currentDistance)
+            }
+        case .Leaf: break
         }
     }
 }
