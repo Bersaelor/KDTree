@@ -101,7 +101,7 @@ extension KDTree {
     
     /// Returns the k nearest `KDTreePoint`s to the search point `toElement`,
     ///
-    /// - Complexity: O(N log N).
+    /// - Complexity: O(log N).
     public func nearestK(number: Int, toElement searchElement: Element) -> [Element] {
         var neighbours: Neighbours = Neighbours(goalNumber: number)
         self.nearestK(toElement: searchElement, bestValues: &neighbours)
