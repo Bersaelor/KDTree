@@ -58,25 +58,34 @@ extension KDTree {
     }
 }
 
-private struct Neighbours<Element> {
-    private var nearestValues: [(Element, Double)]
+
+private struct Neighbours {
+    //we need to put our Pair into a non-generic struct in order to be able to use a CFBinaryHeap
+    private struct ElementPair {
+        let distance: Double
+        let point: Any
+    }
+
+    private var nearestValues: [ElementPair]
     var count: Int { return nearestValues.count }
     let goalNumber: Int
     var full: Bool { return nearestValues.count >= goalNumber }
-    var biggestDistance: Double { return nearestValues.last?.1 ?? Double.infinity }
+    var biggestDistance: Double { return nearestValues.last?.distance ?? Double.infinity }
     
-    init(goalNumber: Int, values: [(Element, Double)]) {
+    init(goalNumber: Int, values: [ElementPair]) {
+        var callbacks = CFBinaryHeapCallBacks()
+        
         self.goalNumber = goalNumber
         self.nearestValues = values
     }
     
-    mutating func append(value: Element, distance: Double) {
-        if let index = nearestValues.indexOf({ return distance < $0.1 }) {
-            nearestValues.insert((value, distance), atIndex: index)
+    mutating func append(value: Any, distance: Double) {
+        if let index = nearestValues.indexOf({ return distance < $0.distance }) {
+            nearestValues.insert(ElementPair(distance: distance, point: value), atIndex: index)
             if nearestValues.count > goalNumber { nearestValues.removeLast() }
         }
         else {
-            nearestValues.append((value, distance))
+            nearestValues.append(ElementPair(distance: distance, point: value))
         }
     }
 }
@@ -88,12 +97,12 @@ extension KDTree {
     ///
     /// - Complexity: O(N log N).
     public func nearestK(number: Int, toElement searchElement: Element) -> [Element] {
-        var neighbours: Neighbours<Element> = Neighbours(goalNumber: number, values: [])
+        var neighbours: Neighbours = Neighbours(goalNumber: number, values: [])
         self.nearestK(toElement: searchElement, bestValues: &neighbours)
-        return neighbours.nearestValues.map { $0.0 }
+        return neighbours.nearestValues.map { $0.point as! Element }
     }
     
-    private func nearestK(toElement searchElement: Element, inout bestValues: Neighbours<Element>) {
+    private func nearestK(toElement searchElement: Element, inout bestValues: Neighbours) {
         switch self {
         case .Leaf: break
         case let .Node(.Leaf, value, _, .Leaf):
