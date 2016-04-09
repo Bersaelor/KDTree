@@ -25,9 +25,9 @@ import KDTree
 Make sure your data values conforom to 
 ```swift
 public protocol KDTreePoint: Equatable {
-static var dimensions: Int { get }
-func kdDimension(dimension: Int) -> Double
-func squaredDistance(otherPoint: Self) -> Double
+  static var dimensions: Int { get }
+  func kdDimension(dimension: Int) -> Double
+  func squaredDistance(otherPoint: Self) -> Double
 }
 ```
 (CGPoint conforms to KDTreePoint as part of the package)
@@ -41,7 +41,7 @@ let dataValues: [CustomDataPoint] = ...
 var tree: KDTree<CGPoint> = KDTree(values: dataValues)
 ```
 
-Then you can `insert()`, `remove()`, `map()`, `filter()`, `reduce()` and `forEach` on this tree with the expected results.
+Then you can `insert()`, `remove()`, `map()`, `filter()`, `reduce()` and `forEach()` on this tree with the expected results.
 
 ## Applications
 
@@ -61,11 +61,13 @@ let nearest: CGPoint? = tree.nearest(toElement: point)
 or the get the 10 nearest neighbours
 
 ```swift
-let nearestPoints: [CGPoint] = tree.nearestK(10, toElement: tappedPoint)
+let nearestPoints: [CGPoint] = tree.nearestK(10, toElement: point)
 ```
 
 Complexity is O(log N), while brute-force searching through an Array is of cource O(N).
-Preliminary performance results can be gained by running the unit tests, the load example has 10.000 random points in [-1,1]x[-1,1] and find the nearest points for 500 test points.
+
+Preliminary performance results can be gained by running the unit tests, the load example has 10.000 random points in [-1,1]x[-1,1] and find the nearest points for 500 test points:
+
 ![Performance Results](/Screenshots/performance.png?raw=true)
 
 
@@ -75,7 +77,11 @@ Preliminary performance results can be gained by running the unit tests, the loa
 
 ### Range-Search:
 
-
+It's also possible to use the KDTree to search for a range of values using:
+```swift
+let pointsInRange: [CGPoint] = tree.elementsInRange([(0.2, 0.4), (0.45, 0.75)])
+```
+I might add an example picture for this later.
 
 ## Installation
 
