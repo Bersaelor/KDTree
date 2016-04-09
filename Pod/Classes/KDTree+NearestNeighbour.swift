@@ -128,11 +128,6 @@ extension KDTree {
                 let otherSubtree = isLeftOfValue ? right : left
                 otherSubtree.nearestK(toElement: searchElement, bestValues: &bestValues)
             }
-        case let .Node(.Leaf, value, _, .Leaf):
-            let currentDistance = value.squaredDistance(searchElement)
-            if !bestValues.full || currentDistance < bestValues.biggestDistance {
-                bestValues.append(value, distance: currentDistance)
-            }
         case .Leaf: break
         }
     }

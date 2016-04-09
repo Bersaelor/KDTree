@@ -12,18 +12,13 @@ Pod::Spec.new do |s|
   s.summary          = "Swift implementation of a k-dimensional binary space partitioning tree."
 
 # This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
-                       DESC
+  s.description      = "Swift implementation of a k-dimensional binary space partitioning tree. Useful for O(log(N)) nearest neighbour searches."
 
-  s.homepage         = "https://github.com/Bersaelor/KD-Tree"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/Bersaelor/KDTree"
+  s.screenshots      = "https://raw.githubusercontent.com/Bersaelor/KDTree/master/Screenshots/kNearest.png", "https://raw.githubusercontent.com/Bersaelor/KDTree/master/Screenshots/tesselations.png"
   s.license          = 'MIT'
   s.author           = { "Konrad Feiler" => "konrad@tactica.de" }
-  s.source           = { :git => "https://github.com/Bersaelor/KD-Tree.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Bersaelor/KDTree.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/bersaelor'
 
   s.platform     = :ios, '8.0'

@@ -291,16 +291,15 @@ extension KDTree { //SequenceType like
     
     /// Call `body` on each node in `self` in the same order as a
     /// *for-in loop.*
-    public func investigateTree(body: (node: KDTree, parents: [KDTree], depth: Int) -> Void,
-                                parents: [KDTree] = [], depth: Int = 0) {
+    public func investigateTree(parents: [KDTree] = [], depth: Int = 0, body: (node: KDTree, parents: [KDTree], depth: Int) -> Void) {
         switch self {
         case .Leaf:
             return
-        case let .Node(left, value, _, right):
+        case let .Node(left, _, _, right):
             body(node: self, parents: parents, depth: depth)
             let nextParents = [self] + parents
-            left.investigateTree(body, parents: nextParents, depth: depth+1)
-            right.investigateTree(body, parents: nextParents, depth: depth+1)
+            left.investigateTree(nextParents, depth: depth+1, body: body)
+            right.investigateTree(nextParents, depth: depth+1, body: body)
         }
     }
     

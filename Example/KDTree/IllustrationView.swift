@@ -138,7 +138,7 @@ class IllustrationView: UIView {
     
     private func drawTreeInContext(context: CGContext) {
         CGContextSetLineWidth(context, 1.0)
-        tree?.investigateTree({ (node, parents, depth) in
+        tree?.investigateTree { (node, parents, depth) in
             switch node {
             case .Leaf: break
             case .Node(_, let value, let dimension, _):
@@ -193,6 +193,6 @@ class IllustrationView: UIView {
                 let textP = CGPoint(x: value.x * self.cH + 5, y: value.y * self.cH + 1)
                 (String(depth) as NSString).drawAtPoint(textP, withAttributes: [NSFontAttributeName: UIFont.systemFontOfSize(8)])
             }
-        })
+        }
     }
 }
