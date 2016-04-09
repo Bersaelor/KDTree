@@ -58,37 +58,41 @@ extension KDTree {
 
 
 private struct Neighbours {
-    //we need to put our Pair into a non-generic struct in order to be able to use a CFBinaryHeap
-    private struct ElementPair {
-        let distance: Double
-        let point: Any
-    }
+    typealias ElementPair = (distance: Double, point: Any)
 
-    private var nearestValues: [ElementPair]
-    var count: Int { return nearestValues.count }
-    let goalNumber: Int
-    var full: Bool { return nearestValues.count >= goalNumber }
+    private var nearestValues: [ElementPair] = []
+    private let goalNumber: Int
+    private var currentSize = 0
+    private var full: Bool = false
     var biggestDistance: Double = Double.infinity
     
-    init(goalNumber: Int, values: [ElementPair]) {
-        var callbacks = CFBinaryHeapCallBacks()
-        
+    init(goalNumber: Int) {
+        nearestValues.reserveCapacity(goalNumber)
         self.goalNumber = goalNumber
-        self.nearestValues = values
     }
     
     mutating func append(value: Any, distance: Double) {
+        guard !full || distance < biggestDistance else { return }
+
         if let index = nearestValues.indexOf({ return distance < $0.distance }) {
             nearestValues.insert(ElementPair(distance: distance, point: value), atIndex: index)
-            if nearestValues.count > goalNumber {
+            if full {
                 nearestValues.removeLast()
                 biggestDistance = nearestValues.last!.distance
             }
+            else {
+                currentSize += 1
+                full = currentSize >= goalNumber
+            }
         }
         else {
+            //not full so we append at the end
             nearestValues.append(ElementPair(distance: distance, point: value))
+            currentSize += 1
+            full = currentSize >= goalNumber
             biggestDistance = distance
         }
+
     }
 }
 
@@ -99,7 +103,7 @@ extension KDTree {
     ///
     /// - Complexity: O(N log N).
     public func nearestK(number: Int, toElement searchElement: Element) -> [Element] {
-        var neighbours: Neighbours = Neighbours(goalNumber: number, values: [])
+        var neighbours: Neighbours = Neighbours(goalNumber: number)
         self.nearestK(toElement: searchElement, bestValues: &neighbours)
         return neighbours.nearestValues.map { $0.point as! Element }
     }
@@ -116,9 +120,7 @@ extension KDTree {
 
             //check the nodes value
             let currentDistance = value.squaredDistance(searchElement)
-            if !bestValues.full || currentDistance < bestValues.biggestDistance {
-                bestValues.append(value, distance: currentDistance)
-            }
+            bestValues.append(value, distance: currentDistance)
 
             //if the bestDistance so far intersects the hyperplane at the other side of this value
             //there could be points in the other subtree
