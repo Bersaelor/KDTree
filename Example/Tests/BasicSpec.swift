@@ -17,16 +17,16 @@ extension CGPoint {
 }
 
 extension CGRect: KDTreePoint {
+    public static var dimensions = 2
+    
+    public func kdDimension(dimension: Int) -> Double {
+        return dimension == 0 ? Double(self.midX) : Double(self.midY)
+    }
     
     public func squaredDistance(otherPoint: CGRect) -> Double {
         let x = self.midX - otherPoint.midX
         let y = self.midY - otherPoint.midY
         return Double(x*x + y*y)
-    }
-    
-    public static var kdDimensionFunctions: [CGRect -> Double] {
-        return [{ a in Double(a.midX) },
-                { a in Double(a.midY) }]
     }
 }
 

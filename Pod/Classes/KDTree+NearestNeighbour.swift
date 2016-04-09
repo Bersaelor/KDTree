@@ -30,9 +30,7 @@ extension KDTree {
             let currentDistance = value.squaredDistance(searchElement)
             if currentDistance < bestDistance { return (value, currentDistance) }
         case let .Node(left, value, dim, right):
-
-            let dimensionFunction = Element.kdDimensionFunctions[dim]
-            let dimensionDifference = dimensionFunction(value) - dimensionFunction(searchElement)
+            let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)
             let isLeftOfValue = dimensionDifference > 0
             
             //check the best estimate side
@@ -111,8 +109,7 @@ extension KDTree {
                 bestValues.append(value, distance: currentDistance)
             }
         case let .Node(left, value, dim, right):
-            let dimensionFunction = Element.kdDimensionFunctions[dim]
-            let dimensionDifference = dimensionFunction(value) - dimensionFunction(searchElement)
+            let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)
             let isLeftOfValue = dimensionDifference > 0
             
             //check the best estimate side

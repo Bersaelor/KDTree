@@ -9,9 +9,10 @@
 import UIKit
 
 extension CGPoint: KDTreePoint {
-    public static var kdDimensionFunctions: [CGPoint -> Double] {
-        return [{ Double($0.x) },
-                { Double($0.y) }]
+    public static var dimensions = 2
+    
+    public func kdDimension(dimension: Int) -> Double {
+        return dimension == 0 ? Double(self.x) : Double(self.y)
     }
 
     public func squaredDistance(otherPoint: CGPoint) -> Double {

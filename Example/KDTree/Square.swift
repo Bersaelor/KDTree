@@ -26,9 +26,10 @@ func == (lhs: Square, rhs: Square) -> Bool {
 extension Square: Equatable {}
 
 extension Square: KDTreePoint {
-    static var kdDimensionFunctions: [Square -> Double] {
-        return [{ Double($0.center.x) },
-                { Double($0.center.y) }]
+    static var dimensions = 2
+    
+    func kdDimension(dimension: Int) -> Double {
+        return dimension == 0 ? Double(self.center.x) : Double(self.center.y)
     }
     
     func squaredDistance(otherPoint: Square) -> Double {

@@ -26,9 +26,10 @@ func == (lhs: Disc, rhs: Disc) -> Bool {
 extension Disc: Equatable {}
 
 extension Disc: KDTreePoint {
-    static var kdDimensionFunctions: [Disc -> Double] {
-        return [{ Double($0.center.x) },
-                { Double($0.center.y) }]
+    static var dimensions = 2
+    
+    func kdDimension(dimension: Int) -> Double {
+        return dimension == 0 ? Double(self.center.x) : Double(self.center.y)
     }
     
     func squaredDistance(otherPoint: Disc) -> Double {

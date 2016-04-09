@@ -23,6 +23,21 @@ func == (lhs: STPoint, rhs: STPoint) -> Bool {
 extension STPoint: Equatable {}
 
 extension STPoint: KDTreePoint {
+    internal static var dimensions = 4
+    
+    internal func kdDimension(dimension: Int) -> Double {
+        switch dimension {
+        case 0:
+            return Double(self.x)
+        case 1:
+            return Double(self.y)
+        case 2:
+            return Double(self.z)
+        default:
+            return Double(self.t)
+        }
+    }
+    
     static var kdDimensionFunctions: [STPoint -> Double] {
         return [{ Double($0.x) },
                 { Double($0.y) },

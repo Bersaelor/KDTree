@@ -24,14 +24,13 @@ public enum KDTree<Element: KDTreePoint> {
             return
         }
         
-        let currentSplittingDimension = depth % Element.kdDimensionFunctions.count
+        let currentSplittingDimension = depth % Element.dimensions
         if values.count == 1, let firstValue = values.first {
             self = .Node(left: .Leaf, value: firstValue, dimension: currentSplittingDimension, right: .Leaf)
         }
         else {
             let sortedValues = values.sort { (a, b) -> Bool in
-                let f = Element.kdDimensionFunctions[currentSplittingDimension]
-                return f(a) < f(b)
+                return a.kdDimension(currentSplittingDimension) < b.kdDimension(currentSplittingDimension)
             }
             let median = sortedValues.count / 2
             let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
@@ -83,8 +82,7 @@ public enum KDTree<Element: KDTreePoint> {
         case let .Node(left, v, dim, right):
             if value == v { return true }
             else {
-                let f = Element.kdDimensionFunctions[dim]
-                if f(value) < f(v) {
+                if value.kdDimension(dim) < v.kdDimension(dim) {
                     return left.contains(value)
                 }
                 else {
@@ -104,9 +102,8 @@ public enum KDTree<Element: KDTreePoint> {
         case let .Node(left, value, dim, right):
             if value == newValue { return self }
             else {
-                let f = Element.kdDimensionFunctions[dim]
-                let nextDim = (dim + 1) % Element.kdDimensionFunctions.count
-                if f(newValue) < f(value) {
+                let nextDim = (dim + 1) % Element.dimensions
+                if newValue.kdDimension(dim) < value.kdDimension(dim) {
                     return KDTree.Node(left: left.insert(newValue, dim: nextDim), value: value,
                                        dimension: dim, right: right)
                 }
@@ -141,9 +138,8 @@ public enum KDTree<Element: KDTreePoint> {
                 return KDTree.Leaf
             }
             else {
-                let f = Element.kdDimensionFunctions[dim]
-                let nextDim = (dim + 1) % Element.kdDimensionFunctions.count
-                if f(valueToBeRemoved) < f(value) {
+                let nextDim = (dim + 1) % Element.dimensions
+                if valueToBeRemoved.kdDimension(dim) < value.kdDimension(dim) {
                     return KDTree.Node(left: left.remove(valueToBeRemoved, dim: nextDim), value: value,
                                        dimension: dim, right: right)
                 }
@@ -173,13 +169,12 @@ public enum KDTree<Element: KDTreePoint> {
             }
             else {
                 //look at both side and the value and find the min/max regarding f() along the dimOfCut
-                let f = Element.kdDimensionFunctions[dimOfCut]
                 let nilDropIn = (direction == .Min) ? Double.infinity : -Double.infinity
 
                 let (newLeftSubTree, leftReplacementValue) = left.findBestReplacement(dimOfCut, direction: direction)
                 let (newRightSubTree, rightReplacementValue) = right.findBestReplacement(dimOfCut, direction: direction)
                 let dimensionValues: [Double] = [leftReplacementValue, rightReplacementValue, value].map({ element -> Double in
-                    return element.flatMap({ f($0) }) ?? nilDropIn
+                    return element.flatMap({ $0.kdDimension(dimOfCut) }) ?? nilDropIn
                 })
                 let optimumValue = (direction == .Min) ? dimensionValues.minElement() : dimensionValues.maxElement()
                 if let bestValue = leftReplacementValue where dimensionValues[0] == optimumValue {
