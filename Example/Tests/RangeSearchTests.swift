@@ -9,12 +9,14 @@
 import XCTest
 import KDTree
 
+// swiftlint:disable variable_name_min_length
 struct STPoint {
     let x: CGFloat
     let y: CGFloat
     let z: CGFloat
     let t: CGFloat
 }
+// swiftlint:enable variable_name_min_length
 
 func == (lhs: STPoint, rhs: STPoint) -> Bool {
     return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.t == rhs.t
@@ -69,7 +71,8 @@ class RangeSearchTests: XCTestCase {
         points = Array(0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
         largeTree = KDTree(values: self.points)
         
-        spaceTimePoints = Array(0..<300).map({_ in STPoint(x: CGFloat.random(), y: CGFloat.random(), z: CGFloat.random(), t: CGFloat.random())})
+        spaceTimePoints = Array(0..<300).map({_ in STPoint(x: CGFloat.random(), y: CGFloat.random(),
+            z: CGFloat.random(), t: CGFloat.random())})
         spaceTimeTree = KDTree(values: self.spaceTimePoints)
     }
     
@@ -92,7 +95,8 @@ class RangeSearchTests: XCTestCase {
             pointsInRangeTree = self.largeTree.elementsInRange(self.rangeIntervals)
         }
         print("pointsInRangeArray.count: \(pointsInRangeArray.count)")
-        XCTAssertEqual(pointsInRangeArray.sort({ $0.x <= $1.x }), pointsInRangeTree.sort({ $0.x <= $1.x }), "Points in Range via Tree should equal Points via Array")
+        XCTAssertEqual(pointsInRangeArray.sort({ $0.x <= $1.x }), pointsInRangeTree.sort({ $0.x <= $1.x }),
+                       "Points in Range via Tree should equal Points via Array")
     }
     
     func test01b_RangeSearchArrayComparison() {

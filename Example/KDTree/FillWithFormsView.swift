@@ -33,10 +33,12 @@ class FillWithFormsView: UIView {
         }
     }
     
-    private var closeDiscs: [Disc] = []
+    // swiftlint:disable variable_name_min_length
     private var cH: CGFloat { return 0.5 * min(self.bounds.height, self.bounds.width) }
+    // swiftlint:enable variable_name_min_length
+    private var closeDiscs: [Disc] = []
     private var discTree: KDTree<Disc> = KDTree<Disc>(values: [])
-    private lazy var downloadQueue:NSOperationQueue = {
+    private lazy var downloadQueue: NSOperationQueue = {
         var queue = NSOperationQueue()
         queue.name = "Shape creation queue"
         queue.maxConcurrentOperationCount = 1
@@ -59,7 +61,8 @@ class FillWithFormsView: UIView {
 
         let randomTree = KDTree(values: (0..<initialPoints).map({_ in CGPoint.random()}))
         discTree = randomTree.map { (point) -> Disc in
-            let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15), saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
+            let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15),
+                saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
             let maxRadius = min(1 - abs(point.x), 1 - abs(point.y))
             if let nearest = randomTree.nearest(toElement: point, maxDistance: Double(2*maxDiscSize)) {
                 let distance = chosenShape == .Circle ? norm(nearest - point) : maximumNorm(nearest - point)
@@ -97,7 +100,8 @@ class FillWithFormsView: UIView {
                 
                 if shapeRadius >= minDiscSize {
                     newPoints += 1
-                    let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15), saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
+                    let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15),
+                        saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
                     treeCopy = treeCopy.insert(Disc(center: testDisc.center, radius: shapeRadius, color: color))
                 }
             }
@@ -149,7 +153,8 @@ class FillWithFormsView: UIView {
         CGContextSetLineWidth(context, 1.0)
         discTree.forEach { (disc: Disc) in
             if closeDiscs.contains(disc) {
-                UIColor(hue: CGFloat.random(start: 0.35, end: 0.54), saturation: CGFloat.random(start: 0.75, end: 0.95), brightness: 0.9, alpha: 1.0).setFill()
+                UIColor(hue: CGFloat.random(start: 0.35, end: 0.54),
+                    saturation: CGFloat.random(start: 0.75, end: 0.95), brightness: 0.9, alpha: 1.0).setFill()
             }
             else { disc.color.setFill() }
             if chosenShape == .Circle { CGContextFillEllipseInRect(context, disc.rect) }

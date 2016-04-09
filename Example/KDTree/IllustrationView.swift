@@ -26,8 +26,10 @@ class IllustrationView: UIView {
     private var points: [CGPoint] = (0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
     private var tree: KDTree<CGPoint>?
     private var dotSize: CGFloat = 5.0
+    // swiftlint:disable variable_name_min_length
     private var cH: CGFloat { return 0.5 * 0.98 * min(self.bounds.height, self.bounds.width) }
-    
+    // swiftlint:enable variable_name_min_length
+
     var tappedPoint: CGPoint?
     var nearestPoints: [CGPoint] = []
     
@@ -100,7 +102,8 @@ class IllustrationView: UIView {
         
         for point in points {
             UIColor.blackColor().setFill()
-            CGContextFillEllipseInRect(context, CGRect(x: cH*point.x-0.5*dotSize, y: cH*point.y-0.5*dotSize, width: dotSize, height: dotSize))
+            CGContextFillEllipseInRect(context, CGRect(x: cH*point.x-0.5*dotSize, y: cH*point.y-0.5*dotSize,
+                width: dotSize, height: dotSize))
         }
         
         drawTreeInContext(context)

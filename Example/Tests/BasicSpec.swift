@@ -37,13 +37,14 @@ extension Array {
     }
 }
 
+// swiftlint:disable function_body_length
 class BasicSpec: QuickSpec {
     override func spec() {
         
         describe("big KDTree") {
             let points = (0..<1000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
-            let testPoint = CGPoint(x: 2,y: 2)
-            let testPoint2 = CGPoint(x: 5,y: 5)
+            let testPoint = CGPoint(x: 2, y: 2)
+            let testPoint2 = CGPoint(x: 5, y: 5)
             let kdTree = KDTree(values: points)
             let kdTreePlus = kdTree.insert(testPoint)
             
@@ -151,3 +152,4 @@ class BasicSpec: QuickSpec {
         }
     }
 }
+// swiftlint:enable function_body_length

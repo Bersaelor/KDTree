@@ -1,0 +1,31 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - opening_brace
+#  - variable_name
+#  - function_body_length
+  - statement_position
+#  - type_name
+#  - force_try
+#  - comma
+#  - trailing_semicolon
+#  - control_statement
+
+opt_in_rules: 
+   - empty_count
+   - force_unwrapping
+
+included: # paths to include during linting. `--path` is ignored if present. takes precendence over `excluded`.
+  -  
+excluded: # paths to ignore during linting. overridden by `included`.
+  - Carthage
+  - Pods
+  - Submodules
+line_length:
+  - 140
+  - 200
+type_body_length:
+  - 300 # warning
+  - 400 # error
+function_body_length:
+  - 60
+  - 120

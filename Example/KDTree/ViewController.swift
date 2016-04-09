@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 //        
 //        arr.reduce(0) { $0 + $1.characters.count }
         
-        let _ = Dictionary<String,String>()
+        let _ = Dictionary<String, String>()
     
     }
     
@@ -37,4 +37,3 @@ class ViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
-

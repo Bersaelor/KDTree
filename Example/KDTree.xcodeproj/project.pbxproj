@@ -210,6 +210,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				39E2B37246F02A0AD0E4838F /* Embed Pods Frameworks */,
 				55D11E9DA0125FDB495B6DD1 /* Copy Pods Resources */,
+				719D20A51CB92A250007926E /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -374,6 +375,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		719D20A51CB92A250007926E /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		E3C18C7095C7D5501D42481F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

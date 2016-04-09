@@ -84,7 +84,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         let avgPointTree = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
         print("avgPoint: \(avgPointTree)")
         
-        XCTAssertLessThan(avgPointTree.squaredDistance(CGPoint(x: 0.5 , y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
+        XCTAssertLessThan(avgPointTree.squaredDistance(CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
         XCTAssertEqual(avgPointTree, avgPoint, "Average point from tree equals average from points")
     }
     
@@ -94,7 +94,7 @@ class NearestNeighbourLoadTest: XCTestCase {
             sum = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
         }
         let avgPoint = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
-        XCTAssertLessThan(avgPoint.squaredDistance(CGPoint(x: 0.5 , y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
+        XCTAssertLessThan(avgPoint.squaredDistance(CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
     }
     
     func test05_NearestNeighbourPerformance() {
