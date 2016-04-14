@@ -1,16 +1,20 @@
 {
   "name": "KDTree",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "Swift implementation of a k-dimensional binary space partitioning tree.",
-  "description": "",
-  "homepage": "https://github.com/Bersaelor/KD-Tree",
+  "description": "Swift implementation of a k-dimensional binary space partitioning tree. Useful for O(log(N)) nearest neighbour searches.",
+  "homepage": "https://github.com/Bersaelor/KDTree",
+  "screenshots": [
+    "https://raw.githubusercontent.com/Bersaelor/KDTree/master/Screenshots/kNearest.png",
+    "https://raw.githubusercontent.com/Bersaelor/KDTree/master/Screenshots/tesselations.png"
+  ],
   "license": "MIT",
   "authors": {
     "Konrad Feiler": "konrad@tactica.de"
   },
   "source": {
-    "git": "https://github.com/Bersaelor/KD-Tree.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/Bersaelor/KDTree.git",
+    "tag": "0.1.1"
   },
   "social_media_url": "https://twitter.com/bersaelor",
   "platforms": {
