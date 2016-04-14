@@ -1,4 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
 use_frameworks!
 
 target 'KDTree_Example', :exclusive => true do
@@ -9,6 +10,6 @@ end
 target 'KDTree_Tests', :exclusive => true do
   pod 'KDTree', :path => '../'
 
-  pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
+  pod 'Quick', '~> 0.9'
+  pod 'Nimble', '~> 4.0'
 end
