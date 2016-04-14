@@ -1,6 +1,6 @@
 # KDTree
 
-[![CI Status](http://img.shields.io/travis/Konrad Feiler/KDTree.svg?style=flat)](https://travis-ci.org/Bersaelor/KDTree)
+[![CI Status](http://img.shields.io/travis/Bersaelor/KDTree.svg?style=flat)](https://travis-ci.org/Bersaelor/KDTree)
 [![Version](https://img.shields.io/cocoapods/v/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
 [![License](https://img.shields.io/cocoapods/l/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
 [![Platform](https://img.shields.io/cocoapods/p/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
