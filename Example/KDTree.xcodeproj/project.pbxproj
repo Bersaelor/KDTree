@@ -19,6 +19,9 @@
 		713204B31CD9497B001A1F44 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
 		713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
 		713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
+		713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
+		713204B81CD94CEA001A1F44 /* Disc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8D1CB1468100CB19A6 /* Disc.swift */; };
+		713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
@@ -677,8 +680,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713204B81CD94CEA001A1F44 /* Disc.swift in Sources */,
+				713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */,
 				71C1B4651CD946BF005436C3 /* ViewController.swift in Sources */,
 				71C1B4631CD946BF005436C3 /* AppDelegate.swift in Sources */,
+				713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

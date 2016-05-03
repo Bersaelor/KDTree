@@ -6,13 +6,27 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-import UIKit
+
+#if os(OSX)
+    import Cocoa
+    public typealias Color = NSColor
+#else
+    import UIKit
+    public typealias Color = UIColor
+#endif
+
 import KDTree
+
+extension CGFloat {
+    static func random(start start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
+        return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
+    }
+}
 
 struct Disc {
     let center: CGPoint
     let radius: CGFloat
-    let color: UIColor
+    let color: Color
     
     var rect: CGRect {
         return CGRect(x: center.x-radius, y: center.y-radius, width: 2*radius, height: 2*radius)
