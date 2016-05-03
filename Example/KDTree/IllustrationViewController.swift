@@ -8,16 +8,6 @@
 
 import UIKit
 
-extension CGPoint {
-    var shortDecimalDescription: String {
-        return String(format: "(%.3f, %.3f)", self.x, self.y)
-    }
-
-    static func random() -> CGPoint {
-        return CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))
-    }
-}
-
 class IllustrationViewController: UIViewController {
 
     @IBOutlet weak var illustrationView: IllustrationView!

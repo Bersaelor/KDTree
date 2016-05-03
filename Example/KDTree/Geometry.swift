@@ -6,7 +6,21 @@
 //  Copyright © 2016 Mathheartcode UG. All rights reserved.
 //
 
-import UIKit
+#if os(OSX)
+    import Cocoa
+#else
+    import UIKit
+#endif
+
+extension CGPoint {
+    var shortDecimalDescription: String {
+        return String(format: "(%.3f, %.3f)", self.x, self.y)
+    }
+    
+    static func random() -> CGPoint {
+        return CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))
+    }
+}
 
 public func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)

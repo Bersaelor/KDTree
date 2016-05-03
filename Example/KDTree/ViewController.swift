@@ -8,12 +8,6 @@
 
 import UIKit
 
-extension CGFloat {
-    static func random(start start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
-        return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
-    }
-}
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {

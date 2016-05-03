@@ -16,6 +16,12 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
 		712EDA7B1CB5A4DE001F32F3 /* RangeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */; };
+		713204B31CD9497B001A1F44 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
+		713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
+		713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
+		713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
+		713204B81CD94CEA001A1F44 /* Disc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8D1CB1468100CB19A6 /* Disc.swift */; };
+		713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
@@ -23,8 +29,15 @@
 		71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */; };
 		71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8D1CB1468100CB19A6 /* Disc.swift */; };
 		71BB4C921CB18F9500CB19A6 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C911CB18F9500CB19A6 /* Square.swift */; };
+		71C1B4631CD946BF005436C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4621CD946BF005436C3 /* AppDelegate.swift */; };
+		71C1B4651CD946BF005436C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4641CD946BF005436C3 /* ViewController.swift */; };
+		71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4661CD946BF005436C3 /* Assets.xcassets */; };
+		71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4681CD946BF005436C3 /* Main.storyboard */; };
+		71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */; };
 		71C2077B1CA9C9C2009C9551 /* NearestNeighbourSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */; };
 		74887EFC1CABC258002AECF6 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
+		D2631A64E144A6A0F1FA97ED /* Pods_KDTree_OSX_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F55E172A539475670E580D /* Pods_KDTree_OSX_Example.framework */; };
+		F4E3F716044231AA1EC662AD /* Pods_KDTree_OSX_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3BBAEA1441261CB88CE338 /* Pods_KDTree_OSX_ExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +48,20 @@
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
 			remoteInfo = KDTree;
 		};
+		71C1B4711CD946BF005436C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71C1B45F1CD946BF005436C3;
+			remoteInfo = KDTree_OSX_Example;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		077449DABDA783DC9F3DAF0F /* Pods-KDTree_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		400E568EFFFBD766D8325E3B /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_OSX_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_OSX_ExampleTests/Pods-KDTree_OSX_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		4598993F84E07C1CDFAAE891 /* Pods-KDTree_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		601A1A5E0F85DBC5D9226F94 /* Pods-KDTree_OSX_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_OSX_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* KDTree_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KDTree_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +72,9 @@
 		607FACE51AFB9204008FA782 /* KDTree_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KDTree_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* BasicSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSpec.swift; sourceTree = "<group>"; };
+		6893071CD519D64D3B3BFCDB /* Pods-KDTree_OSX_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_OSX_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.release.xcconfig"; sourceTree = "<group>"; };
 		712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSearchTests.swift; sourceTree = "<group>"; };
+		713204B41CD949EE001A1F44 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -58,14 +82,26 @@
 		71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselationViewController.swift; sourceTree = "<group>"; };
 		71BB4C8D1CB1468100CB19A6 /* Disc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disc.swift; sourceTree = "<group>"; };
 		71BB4C911CB18F9500CB19A6 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		71C1B4601CD946BF005436C3 /* KDTree_OSX_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KDTree_OSX_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71C1B4621CD946BF005436C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		71C1B4641CD946BF005436C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		71C1B4661CD946BF005436C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71C1B4691CD946BF005436C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		71C1B46B1CD946BF005436C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71C1B4701CD946BF005436C3 /* KDTree_OSX_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KDTree_OSX_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDTree_OSX_ExampleTests.swift; sourceTree = "<group>"; };
+		71C1B4761CD946BF005436C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestNeighbourSpec.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7EFD4F7401C00D63753F6746 /* Pods_KDTree_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8350CF3775D67D033B59843D /* Pods-KDTree_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
+		87F55E172A539475670E580D /* Pods_KDTree_OSX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_OSX_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A4160C6E63202C861511B9B /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_OSX_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_OSX_ExampleTests/Pods-KDTree_OSX_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A703D4B315634BAA1909E8BF /* Pods-KDTree_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example.release.xcconfig"; sourceTree = "<group>"; };
 		AC7200C6910D9D707BC72835 /* Pods_KDTree_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3BBAEA1441261CB88CE338 /* Pods_KDTree_OSX_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_OSX_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAD2F8B727A2480766EA435 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +122,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71C1B45D1CD946BF005436C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2631A64E144A6A0F1FA97ED /* Pods_KDTree_OSX_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71C1B46D1CD946BF005436C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4E3F716044231AA1EC662AD /* Pods_KDTree_OSX_ExampleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,6 +148,10 @@
 				A703D4B315634BAA1909E8BF /* Pods-KDTree_Example.release.xcconfig */,
 				077449DABDA783DC9F3DAF0F /* Pods-KDTree_Tests.debug.xcconfig */,
 				8350CF3775D67D033B59843D /* Pods-KDTree_Tests.release.xcconfig */,
+				601A1A5E0F85DBC5D9226F94 /* Pods-KDTree_OSX_Example.debug.xcconfig */,
+				6893071CD519D64D3B3BFCDB /* Pods-KDTree_OSX_Example.release.xcconfig */,
+				9A4160C6E63202C861511B9B /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */,
+				400E568EFFFBD766D8325E3B /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -106,6 +162,8 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for KDTree */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				71C1B4611CD946BF005436C3 /* KDTree_OSX_Example */,
+				71C1B4731CD946BF005436C3 /* KDTree_OSX_ExampleTests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				2963B657C7BFC2CF512A6CA9 /* Pods */,
 				9E3D65D7194158E838D77BA0 /* Frameworks */,
@@ -117,6 +175,8 @@
 			children = (
 				607FACD01AFB9204008FA782 /* KDTree_Example.app */,
 				607FACE51AFB9204008FA782 /* KDTree_Tests.xctest */,
+				71C1B4601CD946BF005436C3 /* KDTree_OSX_Example.app */,
+				71C1B4701CD946BF005436C3 /* KDTree_OSX_ExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* BasicSpec.swift */,
+				713204B41CD949EE001A1F44 /* TestHelpers.swift */,
 				71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */,
 				74887EFB1CABC258002AECF6 /* LoadTest.swift */,
 				712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */,
@@ -188,11 +249,34 @@
 			name = "UIView subclasses";
 			sourceTree = "<group>";
 		};
+		71C1B4611CD946BF005436C3 /* KDTree_OSX_Example */ = {
+			isa = PBXGroup;
+			children = (
+				71C1B4621CD946BF005436C3 /* AppDelegate.swift */,
+				71C1B4641CD946BF005436C3 /* ViewController.swift */,
+				71C1B4661CD946BF005436C3 /* Assets.xcassets */,
+				71C1B4681CD946BF005436C3 /* Main.storyboard */,
+				71C1B46B1CD946BF005436C3 /* Info.plist */,
+			);
+			path = KDTree_OSX_Example;
+			sourceTree = "<group>";
+		};
+		71C1B4731CD946BF005436C3 /* KDTree_OSX_ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */,
+				71C1B4761CD946BF005436C3 /* Info.plist */,
+			);
+			path = KDTree_OSX_ExampleTests;
+			sourceTree = "<group>";
+		};
 		9E3D65D7194158E838D77BA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				7EFD4F7401C00D63753F6746 /* Pods_KDTree_Example.framework */,
 				AC7200C6910D9D707BC72835 /* Pods_KDTree_Tests.framework */,
+				87F55E172A539475670E580D /* Pods_KDTree_OSX_Example.framework */,
+				BE3BBAEA1441261CB88CE338 /* Pods_KDTree_OSX_ExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,13 +326,54 @@
 			productReference = 607FACE51AFB9204008FA782 /* KDTree_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		71C1B45F1CD946BF005436C3 /* KDTree_OSX_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71C1B47B1CD946BF005436C3 /* Build configuration list for PBXNativeTarget "KDTree_OSX_Example" */;
+			buildPhases = (
+				5FA58771575DBF06A68F0306 /* Check Pods Manifest.lock */,
+				71C1B45C1CD946BF005436C3 /* Sources */,
+				71C1B45D1CD946BF005436C3 /* Frameworks */,
+				71C1B45E1CD946BF005436C3 /* Resources */,
+				59ABFCEAAC928BD247B03A32 /* Embed Pods Frameworks */,
+				F4B51C1BFECCDB1705B9EF5E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KDTree_OSX_Example;
+			productName = KDTree_OSX_Example;
+			productReference = 71C1B4601CD946BF005436C3 /* KDTree_OSX_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		71C1B46F1CD946BF005436C3 /* KDTree_OSX_ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71C1B47C1CD946BF005436C3 /* Build configuration list for PBXNativeTarget "KDTree_OSX_ExampleTests" */;
+			buildPhases = (
+				FC9FB35B80D9D07C03E089A5 /* Check Pods Manifest.lock */,
+				71C1B46C1CD946BF005436C3 /* Sources */,
+				71C1B46D1CD946BF005436C3 /* Frameworks */,
+				71C1B46E1CD946BF005436C3 /* Resources */,
+				F196DDE0BA94D0529AD7D1B3 /* Embed Pods Frameworks */,
+				09B0C3EB78DFDA9EA4745A2D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71C1B4721CD946BF005436C3 /* PBXTargetDependency */,
+			);
+			name = KDTree_OSX_ExampleTests;
+			productName = KDTree_OSX_ExampleTests;
+			productReference = 71C1B4701CD946BF005436C3 /* KDTree_OSX_ExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -258,6 +383,13 @@
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+					71C1B45F1CD946BF005436C3 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					71C1B46F1CD946BF005436C3 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 71C1B45F1CD946BF005436C3;
 					};
 				};
 			};
@@ -276,6 +408,8 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* KDTree_Example */,
 				607FACE41AFB9204008FA782 /* KDTree_Tests */,
+				71C1B45F1CD946BF005436C3 /* KDTree_OSX_Example */,
+				71C1B46F1CD946BF005436C3 /* KDTree_OSX_ExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +432,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71C1B45E1CD946BF005436C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */,
+				71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71C1B46E1CD946BF005436C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -314,6 +464,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		09B0C3EB78DFDA9EA4745A2D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_ExampleTests/Pods-KDTree_OSX_ExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		362904867D64A948526115A2 /* Check Pods Manifest.lock */ = {
@@ -376,6 +541,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		59ABFCEAAC928BD247B03A32 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FA58771575DBF06A68F0306 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		719D20A51CB92A250007926E /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +586,51 @@
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		E3C18C7095C7D5501D42481F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F196DDE0BA94D0529AD7D1B3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_ExampleTests/Pods-KDTree_OSX_ExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4B51C1BFECCDB1705B9EF5E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC9FB35B80D9D07C03E089A5 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -429,9 +669,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C2077B1CA9C9C2009C9551 /* NearestNeighbourSpec.swift in Sources */,
+				713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* BasicSpec.swift in Sources */,
 				74887EFC1CABC258002AECF6 /* LoadTest.swift in Sources */,
 				712EDA7B1CB5A4DE001F32F3 /* RangeSearchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71C1B45C1CD946BF005436C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				713204B81CD94CEA001A1F44 /* Disc.swift in Sources */,
+				713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */,
+				71C1B4651CD946BF005436C3 /* ViewController.swift in Sources */,
+				71C1B4631CD946BF005436C3 /* AppDelegate.swift in Sources */,
+				713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71C1B46C1CD946BF005436C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */,
+				713204B31CD9497B001A1F44 /* LoadTest.swift in Sources */,
+				713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +705,11 @@
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* KDTree_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+		71C1B4721CD946BF005436C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71C1B45F1CD946BF005436C3 /* KDTree_OSX_Example */;
+			targetProxy = 71C1B4711CD946BF005436C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -460,6 +728,14 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		71C1B4681CD946BF005436C3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71C1B4691CD946BF005436C3 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -580,10 +856,6 @@
 			baseConfigurationReference = 077449DABDA783DC9F3DAF0F /* Pods-KDTree_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -601,15 +873,83 @@
 			baseConfigurationReference = 8350CF3775D67D033B59843D /* Pods-KDTree_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
+			};
+			name = Release;
+		};
+		71C1B4771CD946BF005436C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 601A1A5E0F85DBC5D9226F94 /* Pods-KDTree_OSX_Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = KDTree_OSX_Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KDTree-OSX-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		71C1B4781CD946BF005436C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6893071CD519D64D3B3BFCDB /* Pods-KDTree_OSX_Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KDTree_OSX_Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KDTree-OSX-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		71C1B4791CD946BF005436C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A4160C6E63202C861511B9B /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = KDTree_OSX_ExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.konrad.KDTree-OSX-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_OSX_Example.app/Contents/MacOS/KDTree_OSX_Example";
+			};
+			name = Debug;
+		};
+		71C1B47A1CD946BF005436C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 400E568EFFFBD766D8325E3B /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = KDTree_OSX_ExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.konrad.KDTree-OSX-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_OSX_Example.app/Contents/MacOS/KDTree_OSX_Example";
 			};
 			name = Release;
 		};
@@ -639,6 +979,24 @@
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
 				607FACF41AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71C1B47B1CD946BF005436C3 /* Build configuration list for PBXNativeTarget "KDTree_OSX_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71C1B4771CD946BF005436C3 /* Debug */,
+				71C1B4781CD946BF005436C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71C1B47C1CD946BF005436C3 /* Build configuration list for PBXNativeTarget "KDTree_OSX_ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71C1B4791CD946BF005436C3 /* Debug */,
+				71C1B47A1CD946BF005436C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

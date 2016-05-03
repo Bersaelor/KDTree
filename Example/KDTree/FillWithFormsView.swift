@@ -6,7 +6,14 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-import UIKit
+#if os(OSX)
+    import Cocoa
+    public typealias View = NSView
+#else
+    import UIKit
+    public typealias View = UIView
+#endif
+
 import KDTree
 
 let initialPoints = 500
@@ -18,8 +25,8 @@ enum ShapeChosen {
     case Square
 }
 
-class FillWithFormsView: UIView {
-    
+class FillWithFormsView: View {
+
     var points = 0 {
         didSet { self.pointsUpdated?(points) }
     }
@@ -56,12 +63,14 @@ class FillWithFormsView: UIView {
     }
     
     func commonInit() {
-        backgroundColor = UIColor.lightGrayColor()
-        backgroundColor = UIColor.clearColor()
+        #if os(iOS)
+            backgroundColor = UIColor.lightGrayColor()
+            backgroundColor = UIColor.clearColor()
+        #endif
 
         let randomTree = KDTree(values: (0..<initialPoints).map({_ in CGPoint.random()}))
         discTree = randomTree.map { (point) -> Disc in
-            let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15),
+            let color = Color(hue: CGFloat.random(start: 0.05, end: 0.15),
                 saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
             let maxRadius = min(1 - abs(point.x), 1 - abs(point.y))
             if let nearest = randomTree.nearest(toElement: point, maxDistance: Double(2*maxDiscSize)) {
@@ -76,7 +85,7 @@ class FillWithFormsView: UIView {
         
         addMoreShapesBlock()
         
-        print("operationCount: \(downloadQueue.operationCount)")
+        xcLog.debug("operationCount: \(downloadQueue.operationCount)")
     }
     
     func addMoreShapesBlock() {
@@ -88,7 +97,7 @@ class FillWithFormsView: UIView {
             var newPoints = 0
             for _ in 0...5*initialPoints {
                 if weakShapeOp?.cancelled == true { break }
-                let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: UIColor.clearColor())
+                let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: Color.clearColor())
                 let maxshapeRadius = min(maxDiscSize, min(1 - abs(testDisc.center.x), 1 - abs(testDisc.center.y)))
                 let nearest8Discs = treeCopy.nearestK(8, toElement: testDisc)
                 let closestDistance = nearest8Discs.reduce(CGFloat.infinity) { (currentMin, disc) -> CGFloat in
@@ -100,7 +109,7 @@ class FillWithFormsView: UIView {
                 
                 if shapeRadius >= minDiscSize {
                     newPoints += 1
-                    let color = UIColor(hue: CGFloat.random(start: 0.05, end: 0.15),
+                    let color = Color(hue: CGFloat.random(start: 0.05, end: 0.15),
                         saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
                     treeCopy = treeCopy.insert(Disc(center: testDisc.center, radius: shapeRadius, color: color))
                 }
@@ -109,7 +118,7 @@ class FillWithFormsView: UIView {
             if weakShapeOp?.cancelled == false {
                 dispatch_async(dispatch_get_main_queue()) { [weak self] in
                     self?.discTree = treeCopy
-                    print("newPoints: \(newPoints)")
+                    xcLog.debug("newPoints: \(newPoints)")
                     self?.points = newPoints + strongself.points
                     self?.update()
                     if newPoints > Int(0.1*Double(initialPoints)) { self?.addMoreShapesBlock() }
@@ -124,27 +133,43 @@ class FillWithFormsView: UIView {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let tappedPoint = 1.0/cH * (point - c)
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
-        closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: UIColor.clearColor()))
+        closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clearColor()))
         
-        self.setNeedsDisplay()
+        
+        #if os(OSX)
+            self.needsDisplay = true
+        #else
+            self.setNeedsDisplay()
+        #endif
     }
+    
     
     func update() {
 
-        self.setNeedsDisplay()
+        #if os(OSX)
+            self.needsDisplay = true
+        #else
+            self.setNeedsDisplay()
+        #endif
     }
     
     override func drawRect(rect: CGRect) {
-        guard let context = UIGraphicsGetCurrentContext() else {
-            xcLog.error("failed to get graphics context")
-            return
-        }
+        #if os(OSX)
+            guard let context = NSGraphicsContext.currentContext()?.CGContext else {
+                xcLog.error("failed to get graphics context")
+                return
+            }
+        #else
+            guard let context = UIGraphicsGetCurrentContext() else {
+                xcLog.error("failed to get graphics context")
+                return
+            }
+        #endif
         
         CGContextClearRect(context, self.bounds)
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         CGContextTranslateCTM(context, c.x, c.y)
         CGContextScaleCTM(context, cH, cH)
-        
         
         drawTreeInContext(context)
     }
@@ -153,7 +178,7 @@ class FillWithFormsView: UIView {
         CGContextSetLineWidth(context, 1.0)
         discTree.forEach { (disc: Disc) in
             if closeDiscs.contains(disc) {
-                UIColor(hue: CGFloat.random(start: 0.35, end: 0.54),
+                Color(hue: CGFloat.random(start: 0.35, end: 0.54),
                     saturation: CGFloat.random(start: 0.75, end: 0.95), brightness: 0.9, alpha: 1.0).setFill()
             }
             else { disc.color.setFill() }

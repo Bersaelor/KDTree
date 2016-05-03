@@ -6,7 +6,7 @@
 //
 //
 
-import UIKit
+import Foundation
 
 extension CGPoint: KDTreePoint {
     public static var dimensions = 2
