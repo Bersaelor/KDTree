@@ -6,7 +6,11 @@
 //
 //
 
-import UIKit
+#if os(OSX)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 extension CGPoint: KDTreePoint {
     public static var dimensions = 2
