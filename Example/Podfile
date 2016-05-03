@@ -1,15 +1,37 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
 use_frameworks!
 
+def import_pods
+    pod 'KDTree', :path => '../'
+end
+
 target 'KDTree_Example', :exclusive => true do
-  pod 'KDTree', :path => '../'
-  pod 'XCGLogger', '~> 3.3'
+    platform :ios, '8.0'
+    
+    import_pods
+    
+    pod 'XCGLogger', '~> 3.3'
 end
 
 target 'KDTree_Tests', :exclusive => true do
-  pod 'KDTree', :path => '../'
+    platform :ios, '8.0'
+    
+    import_pods
+    
+    pod 'Quick', '~> 0.9'
+    pod 'Nimble', '~> 4.0'
+end
 
-  pod 'Quick', '~> 0.9'
-  pod 'Nimble', '~> 4.0'
+target 'KDTree_OSX_Example', :exclusive => true do
+    platform :osx, '10.10'
+
+    import_pods
+
+    pod 'XCGLogger', '~> 3.3'
+end
+
+target 'KDTree_OSX_ExampleTests', :exclusive => true do
+    platform :osx, '10.10'
+
+    import_pods
 end

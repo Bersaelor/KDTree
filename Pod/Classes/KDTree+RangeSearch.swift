@@ -24,7 +24,6 @@ extension KDTree {
     
     public func elementsInRange(intervals: [(Double, Double)]) -> [Element] {
         guard intervals.count == Element.dimensions else {
-            print("Warning: Please provide as man interval ranges as dimensionfunctions")
             return []
         }
         
@@ -37,11 +36,9 @@ extension KDTree {
             let dimensionValue = value.kdDimension(dim)
             if intervals[dim].0 < dimensionValue {
                 returnValues.appendContentsOf(left.elementsInRange(intervals))
-                print("Appended elements from lower side, count after: \(returnValues.count)")
             }
             if intervals[dim].1 > dimensionValue {
                 returnValues.appendContentsOf(right.elementsInRange(intervals))
-                print("Appended elements from higher side, count after: \(returnValues.count)")
             }
             return returnValues
         }
