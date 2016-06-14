@@ -25,7 +25,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         nearestPointsFromArray = testPoints.map { (searchPoint: CGPoint) -> CGPoint in
             var bestDistance = Double.infinity
             let nearest = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                let testDistance = searchPoint.squaredDistance(testPoint)
+                let testDistance = searchPoint.squaredDistance(to: testPoint)
                 if testDistance < bestDistance {
                     bestDistance = testDistance
                     return testPoint
@@ -41,7 +41,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     } 
 
     func test01_BuildingPerformance() {
-        self.measureBlock {
+        self.measure {
             let _ = KDTree(values: self.points)
         }
     }
@@ -49,7 +49,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     func test02_InsertPerformance() {
         let insertPoints = testPoints[0..<100]
         var movingTree = largeTree
-        self.measureBlock {
+        self.measure {
             for point in insertPoints { movingTree = movingTree.insert(point) }
         }
         
@@ -62,12 +62,12 @@ class NearestNeighbourLoadTest: XCTestCase {
         for _ in 0..<1000 {
             if let randomPoint = pointsLeft.randomElement() {
                 pointsRemoved.append(randomPoint)
-                pointsLeft.removeAtIndex(pointsLeft.indexOf(randomPoint)!)
+                pointsLeft.remove(at: pointsLeft.index(of: randomPoint)!)
             }
         }
         var movingTree = largeTree
 
-        self.measureBlock {
+        self.measure {
             for point in pointsRemoved { movingTree = movingTree.remove(point) }
         }
         
@@ -78,28 +78,28 @@ class NearestNeighbourLoadTest: XCTestCase {
         var sum = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
         let avgPoint = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
         
-        self.measureBlock {
+        self.measure {
             sum = self.largeTree.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
         }
         let avgPointTree = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
         print("avgPoint: \(avgPointTree)")
         
-        XCTAssertLessThan(avgPointTree.squaredDistance(CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
+        XCTAssertLessThan(avgPointTree.squaredDistance(to: CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
         XCTAssertEqual(avgPointTree, avgPoint, "Average point from tree equals average from points")
     }
     
     func test04b_ComparisonArrayReduce() {
         var sum = CGPoint.zero
-        self.measureBlock {
+        self.measure {
             sum = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
         }
         let avgPoint = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
-        XCTAssertLessThan(avgPoint.squaredDistance(CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
+        XCTAssertLessThan(avgPoint.squaredDistance(to: CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
     }
     
     func test05_NearestNeighbourPerformance() {
         var nearestPointsFromTree = [CGPoint]()
-        self.measureBlock {
+        self.measure {
             nearestPointsFromTree = self.testPoints.map { (searchPoint: CGPoint) -> CGPoint in
                 return self.largeTree.nearest(toElement: searchPoint) ?? CGPoint.zero
             }
@@ -111,11 +111,11 @@ class NearestNeighbourLoadTest: XCTestCase {
     func test05b_NearestNeighbourComparisonArray() {
         let searchPoints = testPoints
         
-        self.measureBlock {
+        self.measure {
             let _ = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
                 var bestDistance = Double.infinity
                 let nearest = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                    let testDistance = searchPoint.squaredDistance(testPoint)
+                    let testDistance = searchPoint.squaredDistance(to: testPoint)
                     if testDistance < bestDistance {
                         bestDistance = testDistance
                         return testPoint
@@ -132,14 +132,14 @@ class NearestNeighbourLoadTest: XCTestCase {
             let nearest = self.points.reduce([CGPoint](), combine: { (bestPoints: [CGPoint], testPoint: CGPoint) -> [CGPoint] in
                 guard bestPoints.count >= 5 else {
                     let newBestPoints = bestPoints + [testPoint]
-                    return newBestPoints.sort { searchPoint.squaredDistance($0) < searchPoint.squaredDistance($1) }
+                    return newBestPoints.sorted { searchPoint.squaredDistance(to: $0) < searchPoint.squaredDistance(to: $1) }
                 }
                 
-                let testDistance = searchPoint.squaredDistance(testPoint)
-                if let index = bestPoints.indexOf({testDistance < searchPoint.squaredDistance($0) }) {
+                let testDistance = searchPoint.squaredDistance(to: testPoint)
+                if let index = bestPoints.index(where: {testDistance < searchPoint.squaredDistance(to: $0) }) {
                     var newBestPoints = bestPoints
                     newBestPoints.removeLast()
-                    newBestPoints.insert(testPoint, atIndex: index)
+                    newBestPoints.insert(testPoint, at: index)
                     return newBestPoints
                 }
                 return bestPoints
@@ -148,13 +148,13 @@ class NearestNeighbourLoadTest: XCTestCase {
         }
 
         var nearest5PointsFromTree = [[CGPoint]]()
-        self.measureBlock {
+        self.measure {
             nearest5PointsFromTree = self.testPoints.map { (searchPoint: CGPoint) -> [CGPoint] in
                 return self.largeTree.nearestK(5, toElement: searchPoint)
             }
         }
         
-        nearest5PointsFromArray.enumerate().forEach { (index, pointsFromArray) in
+        nearest5PointsFromArray.enumerated().forEach { (index, pointsFromArray) in
             let nearestFromTree = nearest5PointsFromTree[index]
             XCTAssertEqual(nearestFromTree, pointsFromArray, "Nearest points via Array should equal nearest points via Tree")
         }

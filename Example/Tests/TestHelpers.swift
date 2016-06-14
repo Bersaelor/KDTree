@@ -10,7 +10,7 @@ import Foundation
 import KDTree
 
 extension CGFloat {
-    static func random(start start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
+    static func random(start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
         return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
     }
 }
@@ -24,11 +24,11 @@ extension CGPoint {
 extension CGRect: KDTreePoint {
     public static var dimensions = 2
     
-    public func kdDimension(dimension: Int) -> Double {
+    public func kdDimension(_ dimension: Int) -> Double {
         return dimension == 0 ? Double(self.midX) : Double(self.midY)
     }
     
-    public func squaredDistance(otherPoint: CGRect) -> Double {
+    public func squaredDistance(to otherPoint: CGRect) -> Double {
         let x = self.midX - otherPoint.midX
         let y = self.midY - otherPoint.midY
         return Double(x*x + y*y)

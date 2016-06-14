@@ -41,19 +41,19 @@ class IllustrationViewController: UIViewController {
 
 //MARK: - Navigation
     
-    @IBAction func segmentChanged(sender: UISegmentedControl) {
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         illustrationView.isKNearest = sender.selectedSegmentIndex == 1
     }
     
-    @IBAction func pointsSliderChanged(sender: UISlider) {
+    @IBAction func pointsSliderChanged(_ sender: UISlider) {
         illustrationView.pointNumber = Int(sender.value)
         pointsLabel.text = "Points: \(illustrationView.pointNumber)"
         
     }
     
-    func illustrationTapped(recognizer: UITapGestureRecognizer) {
-        let point = recognizer.locationInView(recognizer.view)
-        illustrationView.pointTapped(point)
+    func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
+        let point = recognizer.location(in: recognizer.view)
+        illustrationView.pointTapped(point: point)
         
         tappedLabel.text = illustrationView.tappedPoint.flatMap({"Tapped: \($0.shortDecimalDescription)"}) ?? "Tapped: nil"
         nearestLabel.text = illustrationView.nearestPoints.first.flatMap({"Nearest: \($0.shortDecimalDescription)"}) ?? "Nearest: nil"

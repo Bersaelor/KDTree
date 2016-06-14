@@ -28,12 +28,12 @@ extension Square: Equatable {}
 extension Square: KDTreePoint {
     static var dimensions = 2
     
-    func kdDimension(dimension: Int) -> Double {
+    func kdDimension(_ dimension: Int) -> Double {
         return dimension == 0 ? Double(self.center.x) : Double(self.center.y)
     }
     
-    func squaredDistance(otherPoint: Square) -> Double {
-        return self.center.squaredDistance(otherPoint.center)
+    func squaredDistance(to otherPoint: Square) -> Double {
+        return self.center.squaredDistance(to: otherPoint.center)
     }
     
 }

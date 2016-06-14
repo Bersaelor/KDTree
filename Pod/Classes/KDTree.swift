@@ -29,7 +29,7 @@ public enum KDTree<Element: KDTreePoint> {
             self = .Node(left: .Leaf, value: firstValue, dimension: currentSplittingDimension, right: .Leaf)
         }
         else {
-            let sortedValues = values.sort { (a, b) -> Bool in
+            let sortedValues = values.sorted { (a, b) -> Bool in
                 return a.kdDimension(currentSplittingDimension) < b.kdDimension(currentSplittingDimension)
             }
             let median = sortedValues.count / 2
@@ -69,13 +69,13 @@ public enum KDTree<Element: KDTreePoint> {
         case let .Node(left, value, _, right):
             var mappedTs = left.elements
             mappedTs.append(value)
-            mappedTs.appendContentsOf(right.elements)
+            mappedTs.append(contentsOf: right.elements)
             return mappedTs
         }
     }
     
     /// Returns `true` iff `element` is in `self`.
-    public func contains(value: Element) -> Bool {
+    public func contains(_ value: Element) -> Bool {
         switch self {
         case .Leaf:
             return false
@@ -95,7 +95,7 @@ public enum KDTree<Element: KDTreePoint> {
     /// Return a KDTree with the element inserted. Tree might not be balanced anymore after this
     ///
     /// - Complexity: O(n log n )..
-    public func insert(newValue: Element, dim: Int = 0) -> KDTree {
+    public func insert(_ newValue: Element, dim: Int = 0) -> KDTree {
         switch self {
         case .Leaf:
             return .Node(left: .Leaf, value: newValue, dimension: dim, right: .Leaf)
@@ -118,7 +118,7 @@ public enum KDTree<Element: KDTreePoint> {
     /// Return a KDTree with the element removed.
     ///
     /// If element is not contained the new KDTree will be equal to the old one
-    public func remove(valueToBeRemoved: Element, dim: Int = 0) -> KDTree {
+    public func remove(_ valueToBeRemoved: Element, dim: Int = 0) -> KDTree {
         switch self {
         case .Leaf:
             return self
@@ -151,7 +151,7 @@ public enum KDTree<Element: KDTreePoint> {
         }
     }
     
-    private func findBestReplacement(dimOfCut: Int, direction: ReplacementDirection) -> (KDTree, Element?) {
+    private func findBestReplacement(_ dimOfCut: Int, direction: ReplacementDirection) -> (KDTree, Element?) {
         switch self {
         case .Leaf:
             return (self, nil)
@@ -176,7 +176,7 @@ public enum KDTree<Element: KDTreePoint> {
                 let dimensionValues: [Double] = [leftReplacementValue, rightReplacementValue, value].map({ element -> Double in
                     return element.flatMap({ $0.kdDimension(dimOfCut) }) ?? nilDropIn
                 })
-                let optimumValue = (direction == .Min) ? dimensionValues.minElement() : dimensionValues.maxElement()
+                let optimumValue = (direction == .Min) ? dimensionValues.min() : dimensionValues.max()
                 if let bestValue = leftReplacementValue where dimensionValues[0] == optimumValue {
                     return (.Node(left: newLeftSubTree, value: value, dimension: dim, right: right), bestValue)
                 }
@@ -208,14 +208,14 @@ extension KDTree { //SequenceType like
     /// over `self`.
     ///
     /// - Complexity: O(N).
-    public func mapToArray<T>(@noescape transform: (Element) throws -> T) rethrows -> [T] {
+    public func mapToArray<T>(_ transform: @noescape (Element) throws -> T) rethrows -> [T] {
         switch self {
         case .Leaf:
             return []
         case let .Node(left, value, _, right):
             var mappedTs = try left.mapToArray(transform)
             try mappedTs.append(transform(value))
-            try mappedTs.appendContentsOf(right.mapToArray(transform))
+            try mappedTs.append(contentsOf: right.mapToArray(transform))
             return mappedTs
         }
     }
@@ -226,7 +226,7 @@ extension KDTree { //SequenceType like
     /// where a map would keep the balance intact.
     ///
     /// - Complexity: O(N).
-    public func map<T: KDTreePoint>(@noescape transform: (Element) throws -> T) rethrows -> KDTree<T> {
+    public func map<T: KDTreePoint>(_ transform: @noescape (Element) throws -> T) rethrows -> KDTree<T> {
         switch self {
         case .Leaf:
             return .Leaf
@@ -242,7 +242,7 @@ extension KDTree { //SequenceType like
     /// in order, that satisfy the predicate `includeElement`.
     ///
     /// - Complexity: O(N).
-    public func filter(@noescape includeElement: (Element) throws -> Bool) rethrows -> KDTree {
+    public func filter(_ includeElement: @noescape (Element) throws -> Bool) rethrows -> KDTree {
         switch self {
         case .Leaf:
             return self
@@ -278,7 +278,7 @@ extension KDTree { //SequenceType like
     ///   skip subsequent calls.
     ///
     /// - Complexity: O(`self.count`)
-    public func forEach(@noescape body: (Element) throws -> Void) rethrows {
+    public func forEach(_ body: @noescape (Element) throws -> Void) rethrows {
         switch self {
         case .Leaf:
             return
@@ -298,8 +298,8 @@ extension KDTree { //SequenceType like
         case let .Node(left, _, _, right):
             body(node: self, parents: parents, depth: depth)
             let nextParents = [self] + parents
-            left.investigateTree(nextParents, depth: depth+1, body: body)
-            right.investigateTree(nextParents, depth: depth+1, body: body)
+            left.investigateTree(parents: nextParents, depth: depth+1, body: body)
+            right.investigateTree(parents: nextParents, depth: depth+1, body: body)
         }
     }
     
@@ -308,7 +308,7 @@ extension KDTree { //SequenceType like
     /// `self`, in turn, i.e. return
     /// `combine(combine(...combine(combine(initial, self[0]),
     /// self[1]),...self[count-2]), self[count-1])`.
-    public func reduce<T>(initial: T, @noescape combine: (T, Element) throws -> T) rethrows -> T {
+    public func reduce<T>(_ initial: T, @noescape combine: (T, Element) throws -> T) rethrows -> T {
         switch self {
         case .Leaf:
             return initial

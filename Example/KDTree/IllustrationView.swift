@@ -50,7 +50,7 @@ class IllustrationView: UIView {
     }
     
     func commonInit() {
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear()
         
         tree = KDTree(values: points)
     }
@@ -73,7 +73,7 @@ class IllustrationView: UIView {
             //check up if it's really the closest
             var bestDistance = Double.infinity
             let nearestFromArray = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                let testDistance = tappedPoint.squaredDistance(testPoint)
+                let testDistance = tappedPoint.squaredDistance(to: testPoint)
                 if testDistance < bestDistance {
                     bestDistance = testDistance
                     return testPoint
@@ -83,61 +83,61 @@ class IllustrationView: UIView {
             
             if nearestFromArray != nearestPoints.first {
                 xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoints.first)")
-                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(tappedPoint))")
-                xcLog.debug("nearest: \(nearestPoints.first!.squaredDistance(tappedPoint))")
+                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
+                xcLog.debug("nearest: \(nearestPoints.first!.squaredDistance(to: tappedPoint))")
             }
         }
         self.setNeedsDisplay()
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
             xcLog.error("failed to get graphics context")
             return
         }
         
-        CGContextClearRect(context, self.bounds)
+        context.clear(self.bounds)
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        CGContextTranslateCTM(context, c.x, c.y)
+        context.translate(x: c.x, y: c.y)
         
         for point in points {
-            UIColor.blackColor().setFill()
-            CGContextFillEllipseInRect(context, CGRect(x: cH*point.x-0.5*dotSize, y: cH*point.y-0.5*dotSize,
+            UIColor.black().setFill()
+            context.fillEllipse(in: CGRect(x: cH*point.x-0.5*dotSize, y: cH*point.y-0.5*dotSize,
                 width: dotSize, height: dotSize))
         }
         
-        drawTreeInContext(context)
+        drawTreeInContext(context: context)
 
         if let tappedPoint = tappedPoint {
-            UIColor.blackColor().setStroke()
-            CGContextMoveToPoint(context, cH*tappedPoint.x - 5.0, cH*tappedPoint.y - 5.0)
-            CGContextAddLineToPoint(context, cH*tappedPoint.x + 5, cH*tappedPoint.y + 5)
-            CGContextStrokePath(context)
-            CGContextMoveToPoint(context, cH*tappedPoint.x - 5, cH*tappedPoint.y + 5)
-            CGContextAddLineToPoint(context, cH*tappedPoint.x + 5, cH*tappedPoint.y - 5)
-            CGContextStrokePath(context)
+            UIColor.black().setStroke()
+            context.moveTo(x: cH*tappedPoint.x - 5.0, y: cH*tappedPoint.y - 5.0)
+            context.addLineTo(x: cH*tappedPoint.x + 5, y: cH*tappedPoint.y + 5)
+            context.strokePath()
+            context.moveTo(x: cH*tappedPoint.x - 5, y: cH*tappedPoint.y + 5)
+            context.addLineTo(x: cH*tappedPoint.x + 5, y: cH*tappedPoint.y - 5)
+            context.strokePath()
         }
         
         for nearestPoint in nearestPoints {
-            UIColor.purpleColor().setStroke()
-            CGContextSetLineWidth(context, 1.0)
-            CGContextStrokeEllipseInRect(context, CGRect(x: cH*nearestPoint.x-1.0*dotSize,
+            UIColor.purple().setStroke()
+            context.setLineWidth(1.0)
+            context.strokeEllipse(in: CGRect(x: cH*nearestPoint.x-1.0*dotSize,
                 y: cH*nearestPoint.y-1.0*dotSize, width: 2*dotSize, height: 2*dotSize))
-            CGContextStrokePath(context)
+            context.strokePath()
         }
         
         //ring around tappedPoint and nearest elements
         guard let tappedPoint = tappedPoint, farthestPoint = nearestPoints.last else { return }
-        UIColor.yellowColor().setStroke()
-        let distance = norm(farthestPoint - tappedPoint)
-        CGContextSetLineWidth(context, 1.0)
-        CGContextStrokeEllipseInRect(context, CGRect(x: cH*(tappedPoint.x-distance), y: cH*(tappedPoint.y-distance),
+        UIColor.yellow().setStroke()
+        let distance = (farthestPoint - tappedPoint).norm
+        context.setLineWidth(1.0)
+        context.strokeEllipse(in: CGRect(x: cH*(tappedPoint.x-distance), y: cH*(tappedPoint.y-distance),
             width: cH*2*distance, height: cH*2*distance))
-        CGContextStrokePath(context)
+        context.strokePath()
     }
     
     private func drawTreeInContext(context: CGContext) {
-        CGContextSetLineWidth(context, 1.0)
+        context.setLineWidth(1.0)
         tree?.investigateTree { (node, parents, depth) in
             switch node {
             case .Leaf: break
@@ -178,20 +178,21 @@ class IllustrationView: UIView {
                 }
                 
                 if dimension == 0 {
-                    UIColor.blueColor().setStroke()
-                    CGContextMoveToPoint(context, self.cH*value.x, minPoint)
-                    CGContextAddLineToPoint(context, self.cH*value.x, maxPoint)
+                    UIColor.blue().setStroke()
+                    context.moveTo(x: self.cH*value.x, y: minPoint)
+                    context.addLineTo(x: self.cH*value.x, y: maxPoint)
                 }
                 else {
-                    UIColor.redColor().setStroke()
-                    CGContextMoveToPoint(context, minPoint, self.cH*value.y)
-                    CGContextAddLineToPoint(context, maxPoint, self.cH*value.y)
+                    UIColor.red().setStroke()
+                    context.moveTo(x: minPoint, y: self.cH*value.y)
+                    context.addLineTo(x: maxPoint, y: self.cH*value.y)
                     
                 }
-                CGContextStrokePath(context)
+                context.strokePath()
                 
                 let textP = CGPoint(x: value.x * self.cH + 5, y: value.y * self.cH + 1)
-                (String(depth) as NSString).drawAtPoint(textP, withAttributes: [NSFontAttributeName: UIFont.systemFontOfSize(8)])
+                (String(depth) as NSString).draw(at: textP,
+                                                 withAttributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8)])
             }
         }
     }

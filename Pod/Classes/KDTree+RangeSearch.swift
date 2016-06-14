@@ -9,11 +9,11 @@
 import Foundation
 
 extension KDTreePoint {
-    private func fitsInIntervalls(intervalls: [(Double, Double)]) -> Bool {
+    private func fitsIn(_ intervals: [(Double, Double)]) -> Bool {
         //make sure there is no dimension with the value outside of the interval
         let hasDimensionOutSide = (0..<Self.dimensions).contains({ (index: Int) -> Bool in
             let value = self.kdDimension(index)
-            return value < intervalls[index].0 || intervalls[index].1 < value
+            return value < intervals[index].0 || intervals[index].1 < value
         })
         return !hasDimensionOutSide
     }
@@ -22,7 +22,7 @@ extension KDTreePoint {
 
 extension KDTree {
     
-    public func elementsInRange(intervals: [(Double, Double)]) -> [Element] {
+    public func elementsIn(intervals: [(Double, Double)]) -> [Element] {
         guard intervals.count == Element.dimensions else {
             return []
         }
@@ -32,13 +32,13 @@ extension KDTree {
             return []
         case let .Node(left, value, dim, right):
             print("Stepping through node \(value), \(dim)")
-            var returnValues = value.fitsInIntervalls(intervals) ? [value] : []
+            var returnValues = value.fitsIn(intervals) ? [value] : []
             let dimensionValue = value.kdDimension(dim)
             if intervals[dim].0 < dimensionValue {
-                returnValues.appendContentsOf(left.elementsInRange(intervals))
+                returnValues.append(contentsOf: left.elementsIn(intervals: intervals))
             }
             if intervals[dim].1 > dimensionValue {
-                returnValues.appendContentsOf(right.elementsInRange(intervals))
+                returnValues.append(contentsOf: right.elementsIn(intervals: intervals))
             }
             return returnValues
         }
