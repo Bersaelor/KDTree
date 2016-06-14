@@ -1,9 +1,10 @@
 # KDTree
 
-[![CI Status](http://img.shields.io/travis/Bersaelor/KDTree.svg?style=flat)](https://travis-ci.org/Bersaelor/KDTree)
+[![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://swift.org/)
 [![Version](https://img.shields.io/cocoapods/v/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
 [![License](https://img.shields.io/cocoapods/l/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
 [![Platform](https://img.shields.io/cocoapods/p/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
+[![CI Status](http://img.shields.io/travis/Bersaelor/KDTree.svg?style=flat)](https://travis-ci.org/Bersaelor/KDTree)
 
 Swift implementation of a k-dimensional binary space partitioning tree.
 The KDTree is implemented as an immutable enum, inspired by functional trees from [objc.io](https://www.objc.io/books/functional-swift/).
