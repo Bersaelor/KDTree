@@ -92,6 +92,10 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "KDTree"
 ```
+For the bleeding edge Swift 3.0, try
+```ruby
+    pod 'KDTree', :git => 'https://github.com/Bersaelor/KDTree.git', :branch => 'swift_3.0'
+```
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
