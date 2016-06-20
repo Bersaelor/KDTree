@@ -8,11 +8,19 @@ DEPENDENCIES:
   - KDTree (from `../`)
   - Nimble (~> 4.0)
   - Quick (~> 0.9)
-  - XCGLogger (~> 3.3)
+  - XCGLogger (from `https://github.com/Bersaelor/XCGLogger.git`, branch `swift_2.3`)
 
 EXTERNAL SOURCES:
   KDTree:
     :path: "../"
+  XCGLogger:
+    :branch: swift_2.3
+    :git: https://github.com/Bersaelor/XCGLogger.git
+
+CHECKOUT OPTIONS:
+  XCGLogger:
+    :commit: 214ff707f817a6d77414cd133ec1ba33540a9e38
+    :git: https://github.com/Bersaelor/XCGLogger.git
 
 SPEC CHECKSUMS:
   KDTree: 823744f274e9770e990dbb8f14ede7b08dbe879b
@@ -20,6 +28,6 @@ SPEC CHECKSUMS:
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
 
-PODFILE CHECKSUM: eeaef6b64700d14447d3c22b61dcbe7eb3b3f63f
+PODFILE CHECKSUM: d27a68eaa72a0d293f3f18f5d455417e571b529b
 
 COCOAPODS: 1.0.1

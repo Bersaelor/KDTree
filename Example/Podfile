@@ -5,7 +5,8 @@ target 'KDTree_Example' do
     platform :ios, '8.0'
     
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger', '~> 3.3'
+#    pod 'XCGLogger', '~> 3.3'
+    pod 'XCGLogger', :git => 'https://github.com/Bersaelor/XCGLogger.git', :branch => 'swift_2.3'
     
     target 'KDTree_Tests' do
         inherit! :search_paths
@@ -21,7 +22,8 @@ target 'KDTree_OSX_Example' do
     platform :osx, '10.10'
 
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger', '~> 3.3'
+#    pod 'XCGLogger', '~> 3.3'
+    pod 'XCGLogger', :git => 'https://github.com/Bersaelor/XCGLogger.git', :branch => 'swift_2.3'
     
     target 'KDTree_OSX_ExampleTests' do
         inherit! :search_paths
