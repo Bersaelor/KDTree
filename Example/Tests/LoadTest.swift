@@ -62,7 +62,9 @@ class NearestNeighbourLoadTest: XCTestCase {
         for _ in 0..<1000 {
             if let randomPoint = pointsLeft.randomElement() {
                 pointsRemoved.append(randomPoint)
-                pointsLeft.remove(at: pointsLeft.index(of: randomPoint)!)
+                if let index = pointsLeft.index(of: randomPoint) {
+                    pointsLeft.remove(at: index)
+                }
             }
         }
         var movingTree = largeTree

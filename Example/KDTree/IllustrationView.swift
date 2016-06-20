@@ -26,9 +26,9 @@ class IllustrationView: UIView {
     private var points: [CGPoint] = (0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
     private var tree: KDTree<CGPoint>?
     private var dotSize: CGFloat = 5.0
-    // swiftlint:disable variable_name_min_length
+    // swiftlint:disable variable_name
     private var cH: CGFloat { return 0.5 * 0.98 * min(self.bounds.height, self.bounds.width) }
-    // swiftlint:enable variable_name_min_length
+    // swiftlint:enable variable_name
 
     var tappedPoint: CGPoint?
     var nearestPoints: [CGPoint] = []
@@ -84,7 +84,7 @@ class IllustrationView: UIView {
             if nearestFromArray != nearestPoints.first {
                 xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(nearestPoints.first)")
                 xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
-                xcLog.debug("nearest: \(nearestPoints.first!.squaredDistance(to: tappedPoint))")
+                xcLog.debug("nearest: \(nearestPoints.first?.squaredDistance(to: tappedPoint))")
             }
         }
         self.setNeedsDisplay()

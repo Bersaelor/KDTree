@@ -99,9 +99,9 @@ class BasicSpec: QuickSpec {
             }
 
             it("filtered map to Tree of Rects equals mapped filter") {
-                let filterAndMap = tenTree.filter({ $0.norm > 5 }).map({ CGRectMake($0.x, $0.y, 0.0, 0.0)
+                let filterAndMap = tenTree.filter({ $0.norm > 5 }).map({ CGRect(x: $0.x, y: $0.y, width: 0.0, height: 0.0)
                     .insetBy(dx: -0.5, dy: -0.5) })
-                let mapAndFilter = tenTree.map({ CGRectMake($0.x, $0.y, 0.0, 0.0)
+                let mapAndFilter = tenTree.map({ CGRect($0.x, $0.y, 0.0, 0.0)
                     .insetBy(dx: -0.5, dy: -0.5) }).filter({ $0.origin.norm > 4.5 })
                 expect(mapAndFilter) == filterAndMap
             }

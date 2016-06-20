@@ -688,26 +688,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
-				TargetAttributes = {
-					0FEB9F312B0E050B5797C57004A3E6F4 = {
-						DevelopmentTeam = H43Z4288RY;
-						DevelopmentTeamName = "mathHeartCode UG(haftungsbeschraenkt)";
-						LastSwiftMigration = 0800;
-					};
-					6F5603772AD631831D70CA9927BEC890 = {
-						DevelopmentTeam = H43Z4288RY;
-						DevelopmentTeamName = "mathHeartCode UG(haftungsbeschraenkt)";
-						LastSwiftMigration = 0800;
-					};
-					A013C173C243A2C0248D08B8AE3082D3 = {
-						DevelopmentTeam = H43Z4288RY;
-						DevelopmentTeamName = "mathHeartCode UG(haftungsbeschraenkt)";
-					};
-					C89EAD94B6BAAE2C76D2FDDECC2BA716 = {
-						DevelopmentTeam = H43Z4288RY;
-						DevelopmentTeamName = "mathHeartCode UG(haftungsbeschraenkt)";
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1073,7 +1053,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1234,7 +1213,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1360,7 +1338,6 @@
 				PRODUCT_NAME = KDTree;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1433,7 +1410,6 @@
 				PRODUCT_NAME = XCGLogger;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
