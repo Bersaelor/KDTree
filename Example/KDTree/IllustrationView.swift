@@ -26,9 +26,9 @@ class IllustrationView: UIView {
     private var points: [CGPoint] = (0..<23).map({_ in CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))})
     private var tree: KDTree<CGPoint>?
     private var dotSize: CGFloat = 5.0
-    // swiftlint:disable variable_name
+    // swiftlint:disable variable_name_min_length
     private var cH: CGFloat { return 0.5 * 0.98 * min(self.bounds.height, self.bounds.width) }
-    // swiftlint:enable variable_name
+    // swiftlint:enable variable_name_min_length
 
     var tappedPoint: CGPoint?
     var nearestPoints: [CGPoint] = []
@@ -140,20 +140,20 @@ class IllustrationView: UIView {
         context.setLineWidth(1.0)
         tree?.investigateTree { (node, parents, depth) in
             switch node {
-            case .Leaf: break
-            case .Node(_, let value, let dimension, _):
+            case .leaf: break
+            case .node(_, let value, let dimension, _):
                 var minPoint = -self.cH
                 var maxPoint = self.cH
                 if dimension == 0 {
                     for parent in parents {
-                        if case .Node(_, let parentValue, let parentDim, _) = parent
+                        if case .node(_, let parentValue, let parentDim, _) = parent
                             where parentDim == 1 && parentValue.y > value.y {
                             maxPoint = parentValue.y*self.cH
                             break
                         }
                     }
                     for parent in parents {
-                        if case .Node(_, let parentValue, let parentDim, _) = parent
+                        if case .node(_, let parentValue, let parentDim, _) = parent
                             where parentDim == 1 && parentValue.y < value.y {
                             minPoint = parentValue.y*self.cH
                             break
@@ -162,14 +162,14 @@ class IllustrationView: UIView {
                 }
                 else {
                     for parent in parents {
-                        if case .Node(_, let parentValue, let parentDim, _) = parent
+                        if case .node(_, let parentValue, let parentDim, _) = parent
                             where parentDim == 0 &&  parentValue.x > value.x {
                             maxPoint = parentValue.x*self.cH
                             break
                         }
                     }
                     for parent in parents {
-                        if case .Node(_, let parentValue, let parentDim, _) = parent
+                        if case .node(_, let parentValue, let parentDim, _) = parent
                             where parentDim == 0 &&  parentValue.x < value.x {
                             minPoint = parentValue.x*self.cH
                             break

@@ -10,9 +10,9 @@ import Foundation
 
 public func == <T: KDTreePoint> (lhs: KDTree<T>, rhs: KDTree<T>) -> Bool {
     switch (lhs, rhs) {
-    case (.Leaf, .Leaf):
+    case (.leaf, .leaf):
         return true
-    case (let .Node(lleft, lvalue, _, lright), let .Node(rleft, rvalue, _, rright)) :
+    case (let .node(lleft, lvalue, _, lright), let .node(rleft, rvalue, _, rright)) :
         return lvalue == rvalue && lleft == rleft && lright == rright
     default:
         return false

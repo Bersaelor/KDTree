@@ -40,9 +40,9 @@ class FillWithFormsView: View {
         }
     }
     
-    // swiftlint:disable variable_name
+    // swiftlint:disable variable_name_min_length
     private var cH: CGFloat { return 0.5 * min(self.bounds.height, self.bounds.width) }
-    // swiftlint:enable variable_name
+    // swiftlint:enable variable_name_min_length
     private var closeDiscs: [Disc] = []
     private var discTree: KDTree<Disc> = KDTree<Disc>(values: [])
     private lazy var downloadQueue: OperationQueue = {

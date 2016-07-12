@@ -9,14 +9,14 @@
 import XCTest
 import KDTree
 
-// swiftlint:disable variable_name
+// swiftlint:disable variable_name_min_length
 struct STPoint {
     let x: CGFloat
     let y: CGFloat
     let z: CGFloat
     let t: CGFloat
 }
-// swiftlint:enable variable_name
+// swiftlint:enable variable_name_min_length
 
 func == (lhs: STPoint, rhs: STPoint) -> Bool {
     return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.t == rhs.t
@@ -92,7 +92,7 @@ class RangeSearchTests: XCTestCase {
         
         var pointsInRangeTree: [CGPoint] = []
         self.measure {
-            pointsInRangeTree = self.largeTree.elementsIn(intervals: self.rangeIntervals)
+            pointsInRangeTree = self.largeTree.elementsIn(self.rangeIntervals)
         }
         print("pointsInRangeArray.count: \(pointsInRangeArray.count)")
         XCTAssertEqual(pointsInRangeArray.sorted { $0.x <= $1.x }, pointsInRangeTree.sorted { $0.x <= $1.x },
@@ -127,7 +127,7 @@ class RangeSearchTests: XCTestCase {
         
         var pointsInRangeTree: [STPoint] = []
         self.measure {
-            pointsInRangeTree = self.spaceTimeTree.elementsIn(intervals: self.spaceTimeIntervals)
+            pointsInRangeTree = self.spaceTimeTree.elementsIn(self.spaceTimeIntervals)
         }
         print("pointsInRangeArray: \(pointsInRangeArray.count)")
         XCTAssertEqual(pointsInRangeArray.count, pointsInRangeTree.count, "Points in Range via Tree should equal Points via Array")

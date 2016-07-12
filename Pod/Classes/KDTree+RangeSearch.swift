@@ -22,23 +22,23 @@ extension KDTreePoint {
 
 extension KDTree {
     
-    public func elementsIn(intervals: [(Double, Double)]) -> [Element] {
+    public func elementsIn(_ intervals: [(Double, Double)]) -> [Element] {
         guard intervals.count == Element.dimensions else {
             return []
         }
         
         switch self {
-        case .Leaf:
+        case .leaf:
             return []
-        case let .Node(left, value, dim, right):
+        case let .node(left, value, dim, right):
             print("Stepping through node \(value), \(dim)")
             var returnValues = value.fitsIn(intervals) ? [value] : []
             let dimensionValue = value.kdDimension(dim)
             if intervals[dim].0 < dimensionValue {
-                returnValues.append(contentsOf: left.elementsIn(intervals: intervals))
+                returnValues.append(contentsOf: left.elementsIn(intervals))
             }
             if intervals[dim].1 > dimensionValue {
-                returnValues.append(contentsOf: right.elementsIn(intervals: intervals))
+                returnValues.append(contentsOf: right.elementsIn(intervals))
             }
             return returnValues
         }

@@ -97,15 +97,15 @@ public class XCGBaseLogDestination: XCGLogDestinationProtocol, CustomDebugString
         }
 
         if showThreadName {
-            if Thread.isMainThread() {
+            if Thread.isMainThread {
                 extendedDetails += "[main] "
             }
             else {
-                if let threadName = Thread.current().name where !threadName.isEmpty {
+                if let threadName = Thread.current.name where !threadName.isEmpty {
                     extendedDetails += "[" + threadName + "] "
                 }
                 else {
-                    extendedDetails += "[" + String(format:"%p", Thread.current()) + "] "
+                    extendedDetails += "[" + String(format:"%p", Thread.current) + "] "
                 }
             }
         }
@@ -273,7 +273,7 @@ public class XCGFileLogDestination: XCGBaseLogDestination {
         if let writeToFileURL = writeToFileURL,
           let path = writeToFileURL.path {
 
-            FileManager.default().createFile(atPath: path, contents: nil, attributes: nil)
+            FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
             do {
                 logFileHandle = try FileHandle(forWritingTo: writeToFileURL)
             }
@@ -513,7 +513,7 @@ public class XCGLogger: CustomDebugStringConvertible {
             }
 
             let defaultDateFormatter = DateFormatter()
-            defaultDateFormatter.locale = Locale.current()
+            defaultDateFormatter.locale = Locale.current
             defaultDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
             _dateFormatter = defaultDateFormatter
 
@@ -531,7 +531,7 @@ public class XCGLogger: CustomDebugStringConvertible {
         self.identifier = identifier
 
         // Check if XcodeColors is installed and enabled
-        if let xcodeColors = ProcessInfo.processInfo().environment["XcodeColors"] {
+        if let xcodeColors = ProcessInfo.processInfo.environment["XcodeColors"] {
             xcodeColorsEnabled = xcodeColors == "YES"
         }
 
@@ -635,7 +635,7 @@ public class XCGLogger: CustomDebugStringConvertible {
         let date = Date()
 
         var buildString = ""
-        if let infoDictionary = Bundle.main().infoDictionary {
+        if let infoDictionary = Bundle.main.infoDictionary {
             if let CFBundleShortVersionString = infoDictionary["CFBundleShortVersionString"] as? String {
                 buildString = "Version: \(CFBundleShortVersionString) "
             }
@@ -644,7 +644,7 @@ public class XCGLogger: CustomDebugStringConvertible {
             }
         }
 
-        let processInfo: ProcessInfo = ProcessInfo.processInfo()
+        let processInfo: ProcessInfo = ProcessInfo.processInfo
         let XCGLoggerVersionNumber = XCGLogger.Constants.versionString
 
         let logDetails: Array<XCGLogDetails> = [XCGLogDetails(logLevel: .info, date: date, logMessage: "\(processInfo.processName) \(buildString)PID: \(processInfo.processIdentifier)", functionName: "", fileName: "", lineNumber: 0),
