@@ -22,7 +22,7 @@ extension KDTree {
         return nearest(toElement: element, bestValue: nil, bestDistance: maxDistance).bestValue
     }
     
-    private func nearest(toElement searchElement: Element, bestValue: Element?, bestDistance: Double) -> (bestValue: Element?, bestDistance: Double) {
+    fileprivate func nearest(toElement searchElement: Element, bestValue: Element?, bestDistance: Double) -> (bestValue: Element?, bestDistance: Double) {
         switch self {
         case .leaf: break
         case let .node(.leaf, value, _, .leaf):
@@ -60,10 +60,10 @@ extension KDTree {
 private struct Neighbours {
     typealias ElementPair = (distance: Double, point: Any)
 
-    private var nearestValues: [ElementPair] = []
-    private let goalNumber: Int
-    private var currentSize = 0
-    private var full: Bool = false
+    fileprivate var nearestValues: [ElementPair] = []
+    fileprivate let goalNumber: Int
+    fileprivate var currentSize = 0
+    fileprivate var full: Bool = false
     var biggestDistance: Double = Double.infinity
     
     init(goalNumber: Int) {
@@ -108,7 +108,7 @@ extension KDTree {
         return neighbours.nearestValues.map { $0.point as! Element }
     }
     
-    private func nearestK(toElement searchElement: Element, bestValues: inout Neighbours) {
+    fileprivate func nearestK(toElement searchElement: Element, bestValues: inout Neighbours) {
         switch self {
         case let .node(left, value, dim, right):
             let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)

@@ -18,7 +18,7 @@ extension CGPoint {
     }
     
     static func random() -> CGPoint {
-        return CGPoint(x: CGFloat.random(start: -1, end: 1), y: CGFloat.random(start: -1, end: 1))
+        return CGPoint(x: CGFloat.random(-1, end: 1), y: CGFloat.random(-1, end: 1))
     }
     
     var norm: CGFloat {
@@ -60,7 +60,7 @@ extension CGPoint {
         return atan(normedVec.y / normedVec.x) + CGFloat(self.x < 0 ? M_PI : 0.0)
     }
     
-    public static func angledVec(angle: CGFloat) -> CGPoint {
+    public static func angledVec(_ angle: CGFloat) -> CGPoint {
         return CGPoint(x: cos(angle), y: sin(angle))
     }
 }

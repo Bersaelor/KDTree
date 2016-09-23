@@ -7,46 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003A5270A66B89AFDD371A8D17B1B6D2 /* ANSIColorLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC761C9A63C59301C3399CE1193EBA /* ANSIColorLogFormatter.swift */; };
 		0174CF57D4EE1342F5EC78D037770987 /* KDTree+NearestNeighbour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DCFEC211056ECA52D7E3C20ADB76F1 /* KDTree+NearestNeighbour.swift */; };
 		01EB2219CA2709CBC8195A1BB655F591 /* KDTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAAEA91C340AC44018A9FD9718D101F /* KDTree+Equatable.swift */; };
-		0358499C3ECF9CE8451282FC919657D4 /* XCGLogger-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C87448075B7AE0D37F0D23D26EF2973 /* XCGLogger-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04575FB7B8ABF670524F800A1C9F7BD7 /* TestDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20CF8FFB7B946D366BF7B11A24A4E4 /* TestDestination.swift */; };
 		047F3AA12E409C08373617DB7F2FE0EB /* KDTree-OSX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60F7FF80A05566B43ABF2B46E8C05714 /* KDTree-OSX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09B1B593AAD8B04DF02B2F7B1C3DB697 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3CD72C503FB6B21C2B3317260FFE4 /* ConsoleDestination.swift */; };
+		0AF1A2BCCA463CC863DD1E79ADEDDCB7 /* LogDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B932487BF3638ED5F19AB88367646 /* LogDetails.swift */; };
+		115ACFBD2D6EE208FE744B2EFCA4F7C9 /* XCGLogger-OSX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733993BD2FE44A655F22DD5DFDC2757 /* XCGLogger-OSX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14B33FAB46E0E85138B4721AB03FCA8E /* DevFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB7FFE72477CF2C19EE1439E60A123 /* DevFilter.swift */; };
+		1AD30CF48E82357CCB8C14BEC82086D2 /* TestDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20CF8FFB7B946D366BF7B11A24A4E4 /* TestDestination.swift */; };
 		1ADB76FCD60F84DEE5FB639E4FA53B0E /* KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FA587F5BBFD00AF8252EFCDF36929 /* KDTreePoint.swift */; };
 		1C6B7E36F872847A50C265D317D4FEEB /* KDTree-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD252E765C2BDDC83CD186B20331224 /* KDTree-iOS-dummy.m */; };
-		2CA49AE773DA0DCC6E45E88C5EE3ED73 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4621BFDEEC06492083D7FB5DD663135D /* Cocoa.framework */; };
+		2CA49AE773DA0DCC6E45E88C5EE3ED73 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
+		2E6049D4C7FC0BDBCB8596E21698DEBB /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA489FDBC724C43AF7FF8C0C3F222E6 /* BaseDestination.swift */; };
+		306808E0D703E1F2668B9C85C37DD1C1 /* XcodeColorsLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EF595DD6C80146998A773FB1D83B4B /* XcodeColorsLogFormatter.swift */; };
+		3103C81AA6B165A9CA4A920F3B60D83E /* XCGLogger-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC7B6ECBCB20EF59740F801181830DD4 /* XCGLogger-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33734DDDE90EB4D76FC353007F09309D /* XCGLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D127E84C608ED675C3E2BA2A8031D0F /* XCGLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3590FB13084485A95B2A630EE23630C0 /* KDTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE1EE1226917C599EABECB7EE57D02B /* KDTree.swift */; };
 		3592D381ACCAD7A57CBD8093303BED4D /* Pods-KDTree_OSX_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FAEEB4BA6A5AF7BDD062E531C230BEA /* Pods-KDTree_OSX_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		367D51FBA3DFEDD6B9FC31FB2633BB7C /* DestinationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61051D49D75432B3E1A0AC10553AA316 /* DestinationProtocol.swift */; };
 		38A5BFFD6C252C467909B19259452EB0 /* Pods-KDTree_OSX_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3756E5AAF8E08FA82294E7FCBA7E28 /* Pods-KDTree_OSX_Example-dummy.m */; };
 		3954F0EC803FFA51729942ADCC73B8CB /* KDTree+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509827595C67735895CADC6009CD821 /* KDTree+CustomStringConvertible.swift */; };
 		3E67861146916E28D374CBD211CF9056 /* Pods-KDTree_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BB9C028326C17AC66BD7A7BAD20B3 /* Pods-KDTree_Tests-dummy.m */; };
-		40CE8BA199AC0ECE8A8F09EF844A2C53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6E0A8DDE0120B826D660DE46E7826E /* Foundation.framework */; };
+		4063CE458041A65236EE73BBA6950AEE /* XCGLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D127E84C608ED675C3E2BA2A8031D0F /* XCGLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4118465DA1C0391ADE8B8ED80D929F03 /* XCGLogger-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B696E32B46794CBC0DAA9079C4709A /* XCGLogger-iOS-dummy.m */; };
+		41E4155011F83A99C406BC500AB499E9 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB041170BEDEBF19FFE8186124DA7D /* XCGLogger.swift */; };
 		472223AA6A7FC5F2C8E0892FC7E528BF /* Pods-KDTree_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5552500A7775CC87F99502DC3A2A0BE /* Pods-KDTree_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C589BE2DD6503272009E9C5A3A25E64 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB669977C299D53918740D61B3BAB7E /* HelperFunctions.swift */; };
 		4C773F929A9FFF3DC0161DBCFC865F59 /* KDTree-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 066CF72563AA98E42AD180BA636EE558 /* KDTree-OSX-dummy.m */; };
-		4D77A7B1B00D32153C04C5C5EE06F6D3 /* XCGLogger-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1927EE6CC96ED0556F141FB4FE8CCCDE /* XCGLogger-iOS-dummy.m */; };
 		53516687734A4BC2E591623DF33F527E /* KDTree-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DEC18A9A974B9CE13A1BF6CC4ADC254 /* KDTree-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		53B29CC241CE09D05492B2FDCEC51B0A /* DevFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB7FFE72477CF2C19EE1439E60A123 /* DevFilter.swift */; };
+		588604A8EB351B713F018AE5BF217C40 /* LogFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FF04CB89B6CE395C37CA5CD7BD1A9D /* LogFormatterProtocol.swift */; };
+		677D0A3ED8C5598BEC89F1158C4689D0 /* XcodeColorsLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EF595DD6C80146998A773FB1D83B4B /* XcodeColorsLogFormatter.swift */; };
+		6B9CFBDEFAA89CE198D4225136799E48 /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA848990CC1444FCA8591CE3133210F /* FileDestination.swift */; };
+		6E633BBDF8A3E3D7746146E2F8147FB9 /* UserInfoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32DCAA07BDEA43C8F046D915EF10A5 /* UserInfoFilter.swift */; };
+		6F485E2A99294A73C87E649F940499CB /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA489FDBC724C43AF7FF8C0C3F222E6 /* BaseDestination.swift */; };
+		7368879B6839B6470F04FF2BDC7B4E06 /* FileNameFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C1E73D6404B679166D6BBD955C7C1D /* FileNameFilter.swift */; };
+		7988E3A28322A50F9474E446813D96F8 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB041170BEDEBF19FFE8186124DA7D /* XCGLogger.swift */; };
 		7A64A0B41B212CB203BC135798B9B7AC /* CGPoint+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4E35FD9A5691F992C5BC5FCB2E2E4 /* CGPoint+KDTreePoint.swift */; };
+		7A8928ECA2993BDA69E8D21B5606FAB6 /* ANSIColorLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC761C9A63C59301C3399CE1193EBA /* ANSIColorLogFormatter.swift */; };
+		7DB5EC85D6B0FFF1FA72CF6140C6CCE2 /* DispatchQueue+XCGAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B788FB413606544304B22BD2431DF /* DispatchQueue+XCGAdditions.swift */; };
+		7DD108EC53DE8207F884C08DA75B8EDB /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA848990CC1444FCA8591CE3133210F /* FileDestination.swift */; };
+		7EF6C17F2C2F4628C90F95BAFE437A1D /* Base64LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649984948AE8A3AF306B5394FBF7DCD7 /* Base64LogFormatter.swift */; };
+		82117E71E1CA8F3041F8EDD8DE0991C4 /* PrePostFixLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C448770F234DFFD5115C437FB60FB2 /* PrePostFixLogFormatter.swift */; };
 		838C7CAE757001C4CADED33BF17A23CD /* KDTree+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509827595C67735895CADC6009CD821 /* KDTree+CustomStringConvertible.swift */; };
-		8670A5285088180AF73ED52CFA3366F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2F355F550B6A9F86194BB84D41A8CE /* Foundation.framework */; };
-		8D5F8C561FE3C6072498EDD31E6FB9AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2F355F550B6A9F86194BB84D41A8CE /* Foundation.framework */; };
+		84EE74209CA52795F58D71E8BD0A6407 /* FileNameFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C1E73D6404B679166D6BBD955C7C1D /* FileNameFilter.swift */; };
+		8670A5285088180AF73ED52CFA3366F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
+		8D5F8C561FE3C6072498EDD31E6FB9AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
 		8F78BA859B252B8AC557F7C6A821CC18 /* KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FA587F5BBFD00AF8252EFCDF36929 /* KDTreePoint.swift */; };
 		9201277A3300CBFECF08B27FB130718E /* Pods-KDTree_OSX_ExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E70A1AB09B5B951203CF22D9BB0F5AFF /* Pods-KDTree_OSX_ExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		920D32BD58E3067BC9676F28580D1995 /* XCGLogger-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B15524FE0123D58F3EC95F93D2E734A5 /* XCGLogger-OSX-dummy.m */; };
+		9421592B89631ECC979D26BB9C8D0F22 /* TagFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48636A5FC916DD28FBC2BDB5AE188A /* TagFilter.swift */; };
 		9A4A11F1BC6D70472FD418CDA3A2504B /* KDTree+RangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC022FEF874DB39F0C454331954E1C4 /* KDTree+RangeSearch.swift */; };
-		A46BEB2B47474C55DC66D54D001AF49E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2F355F550B6A9F86194BB84D41A8CE /* Foundation.framework */; };
-		A56BE52E2C9C11768EAE6241F1B14427 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BB2876D535C427F23D5F8E1DB1EF62 /* XCGLogger.swift */; };
-		A87179AB6907EA0D64B601C25554D288 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2F355F550B6A9F86194BB84D41A8CE /* Foundation.framework */; };
+		9AA674F0CA9A4738EE3D1062090BB25B /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3CD72C503FB6B21C2B3317260FFE4 /* ConsoleDestination.swift */; };
+		A46BEB2B47474C55DC66D54D001AF49E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
+		A87179AB6907EA0D64B601C25554D288 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
+		A917B8E38044E10835235AD5C02B731C /* AppleSystemLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37FC573534DA2C2700D188912689732 /* AppleSystemLogDestination.swift */; };
+		B06B3013F2ABE0FA6ACF73711BC3E65C /* Base64LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649984948AE8A3AF306B5394FBF7DCD7 /* Base64LogFormatter.swift */; };
+		B0C8FD9ECA6DE2E9A03DB048CC411256 /* PrePostFixLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C448770F234DFFD5115C437FB60FB2 /* PrePostFixLogFormatter.swift */; };
 		B1B93742D876EDF2F3BC935916B0C26F /* KDTree+RangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC022FEF874DB39F0C454331954E1C4 /* KDTree+RangeSearch.swift */; };
 		BA01FDCAEDA78D95FB6C65A7443F27F3 /* Pods-KDTree_OSX_ExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2304301E60E7A3EB5AA8ADB53D340C54 /* Pods-KDTree_OSX_ExampleTests-dummy.m */; };
-		BA6DB5BD7670A2BB866266BA77376577 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4621BFDEEC06492083D7FB5DD663135D /* Cocoa.framework */; };
+		BA6DB5BD7670A2BB866266BA77376577 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
+		C4573973875096CC5BCDBBB49E23A98B /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB669977C299D53918740D61B3BAB7E /* HelperFunctions.swift */; };
 		C483FB8059CF02DB8ADCB09EA9D32572 /* Pods-KDTree_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 83ED5B39A1ABA13F69D875ECEB298938 /* Pods-KDTree_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C59B488646FA2E33545EB6AC30EE561E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4621BFDEEC06492083D7FB5DD663135D /* Cocoa.framework */; };
+		C59B488646FA2E33545EB6AC30EE561E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
+		CF0EC15CD393335CFF24203B4F4172FF /* LogFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FF04CB89B6CE395C37CA5CD7BD1A9D /* LogFormatterProtocol.swift */; };
+		CF18AFE7358BCA6E775312E6AEC3D862 /* TagFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48636A5FC916DD28FBC2BDB5AE188A /* TagFilter.swift */; };
+		D3831AD485B24ABDD9B7C65A39B1BB70 /* FilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5EE92B1F066CF38BDD5571E8E26DE2 /* FilterProtocol.swift */; };
 		D388FE12C244AE3F14DDB7965D373BB0 /* Pods-KDTree_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B055C0136BCBC3E4162A3DA6563D29E /* Pods-KDTree_Example-dummy.m */; };
+		D4BF017CC62C96A38D89C36C89056BD1 /* UserInfoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32DCAA07BDEA43C8F046D915EF10A5 /* UserInfoFilter.swift */; };
+		D60F1EE26701783D3CFB94BB6F11CF6B /* LogDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B932487BF3638ED5F19AB88367646 /* LogDetails.swift */; };
 		D68F469AF79F177FDE87D0B137076ED0 /* KDTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE1EE1226917C599EABECB7EE57D02B /* KDTree.swift */; };
-		D913F2176D5FE0EE95FCEBFAE945110A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4621BFDEEC06492083D7FB5DD663135D /* Cocoa.framework */; };
+		D6E50309E7F7499ACD698A8500AF1071 /* FilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5EE92B1F066CF38BDD5571E8E26DE2 /* FilterProtocol.swift */; };
 		DA7E2E29B60568CC774972A97DD8A074 /* CGPoint+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4E35FD9A5691F992C5BC5FCB2E2E4 /* CGPoint+KDTreePoint.swift */; };
 		DB968747FBA99FAC2E41B716EFDCA13D /* KDTree+NearestNeighbour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DCFEC211056ECA52D7E3C20ADB76F1 /* KDTree+NearestNeighbour.swift */; };
-		F5B4C408993254D2E47B654B23E06F9B /* XCGLogger-OSX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 92AB91530E21BC599A3F2EC693A0B28F /* XCGLogger-OSX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F7063CA8B76337044D48EE8C84927A51 /* XCGLogger-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B977280505FA9959E1DFA553B82DDC54 /* XCGLogger-OSX-dummy.m */; };
-		F9CFA22546F37C23B22A0C41308A8BD2 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BB2876D535C427F23D5F8E1DB1EF62 /* XCGLogger.swift */; };
+		E206B87D42621678FFCC682C7E205477 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
+		E5DA5D8205291B6F4416E594D7AEB2DE /* DispatchQueue+XCGAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B788FB413606544304B22BD2431DF /* DispatchQueue+XCGAdditions.swift */; };
+		F641D36500F4FA288416101129D8DFA3 /* AppleSystemLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37FC573534DA2C2700D188912689732 /* AppleSystemLogDestination.swift */; };
+		FD276CF86C3C4827F1AECD50B79DEC1E /* DestinationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61051D49D75432B3E1A0AC10553AA316 /* DestinationProtocol.swift */; };
 		FFE8D54ECEE646B5B0DE5DAA5C5139D9 /* KDTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAAEA91C340AC44018A9FD9718D101F /* KDTree+Equatable.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,36 +121,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02F5EBFACB78374A2FC465C696CB0096 /* XCGLogger-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "XCGLogger-OSX.modulemap"; sourceTree = "<group>"; };
 		0611C568E6B8D3F53D633EEABE65B0A2 /* Pods-KDTree_OSX_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		066CF72563AA98E42AD180BA636EE558 /* KDTree-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KDTree-OSX-dummy.m"; sourceTree = "<group>"; };
+		0B48636A5FC916DD28FBC2BDB5AE188A /* TagFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TagFilter.swift; path = Sources/XCGLogger/Filters/TagFilter.swift; sourceTree = "<group>"; };
 		0E29CB414BDCDE8F3C744BC6625CAA36 /* Pods-KDTree_OSX_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0E369A0579717DA2E6E5D301C738C106 /* Pods-KDTree_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		0E6BB9C028326C17AC66BD7A7BAD20B3 /* Pods-KDTree_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_Tests-dummy.m"; sourceTree = "<group>"; };
-		111754DF4510713CB4B008D11A757D18 /* XCGLogger-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "XCGLogger-iOS.modulemap"; path = "../XCGLogger-iOS/XCGLogger-iOS.modulemap"; sourceTree = "<group>"; };
-		1927EE6CC96ED0556F141FB4FE8CCCDE /* XCGLogger-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCGLogger-iOS-dummy.m"; path = "../XCGLogger-iOS/XCGLogger-iOS-dummy.m"; sourceTree = "<group>"; };
+		19D4FCEE7B04D553FAA6B3AB2690DAC7 /* XCGLogger-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCGLogger-OSX-prefix.pch"; sourceTree = "<group>"; };
 		1DBDBAB657D70709BFBD29152764C4A0 /* Pods-KDTree_OSX_ExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_OSX_ExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1EBABD84C7B633E4613C04A45ABE7C10 /* Pods-KDTree_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2304301E60E7A3EB5AA8ADB53D340C54 /* Pods-KDTree_OSX_ExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_OSX_ExampleTests-dummy.m"; sourceTree = "<group>"; };
+		23D805CAD1D5B559E82AD3E96919E59F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24C448770F234DFFD5115C437FB60FB2 /* PrePostFixLogFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrePostFixLogFormatter.swift; path = Sources/XCGLogger/LogFormatters/PrePostFixLogFormatter.swift; sourceTree = "<group>"; };
+		2733993BD2FE44A655F22DD5DFDC2757 /* XCGLogger-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCGLogger-OSX-umbrella.h"; sourceTree = "<group>"; };
 		27A5AFCB2923663BA791C4C97E8A1D9B /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		27D078ECF0D3DA5EB8126785BF648006 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		287FEAAC96CA0C5FAD28B27EAD794743 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../KDTree-iOS/Info.plist"; sourceTree = "<group>"; };
 		28B70E9008551ABDF55799CF55D271F6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BB3A6F74E81B984881DDEBF825F0877 /* Pods_KDTree_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA848990CC1444FCA8591CE3133210F /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/XCGLogger/Destinations/FileDestination.swift; sourceTree = "<group>"; };
 		2D228502970257C2BCA52C42CAD5087F /* Pods-KDTree_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_Example.modulemap"; sourceTree = "<group>"; };
 		2F5360BD7ECF8BB46D202C5A6AA62919 /* Pods-KDTree_OSX_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_OSX_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2FA41C9C930521E9169B11B1159F3C32 /* XCGLogger-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "XCGLogger-OSX.modulemap"; sourceTree = "<group>"; };
 		2FC022FEF874DB39F0C454331954E1C4 /* KDTree+RangeSearch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "KDTree+RangeSearch.swift"; sourceTree = "<group>"; };
 		318FA587F5BBFD00AF8252EFCDF36929 /* KDTreePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KDTreePoint.swift; sourceTree = "<group>"; };
 		34CD83397E7DEA7BB8C3D67288C61F65 /* Pods-KDTree_OSX_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_Example-frameworks.sh"; sourceTree = "<group>"; };
 		393B4C21BCBBCA087185FDB3147D0AE0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A6E0A8DDE0120B826D660DE46E7826E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3CAAEA91C340AC44018A9FD9718D101F /* KDTree+Equatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "KDTree+Equatable.swift"; sourceTree = "<group>"; };
-		3F2F355F550B6A9F86194BB84D41A8CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		41FFFF6E13C0432F72E17EE7835B5639 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../XCGLogger-iOS/Info.plist"; sourceTree = "<group>"; };
+		432C57449F134D2C6038B05C8A511FFC /* XCGLogger-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCGLogger-iOS-prefix.pch"; path = "../XCGLogger-iOS/XCGLogger-iOS-prefix.pch"; sourceTree = "<group>"; };
 		447CD463875BB83B84EADCECD7D10347 /* Pods-KDTree_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Example.release.xcconfig"; sourceTree = "<group>"; };
-		4621BFDEEC06492083D7FB5DD663135D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		46DCFEC211056ECA52D7E3C20ADB76F1 /* KDTree+NearestNeighbour.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "KDTree+NearestNeighbour.swift"; sourceTree = "<group>"; };
-		4C87448075B7AE0D37F0D23D26EF2973 /* XCGLogger-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCGLogger-iOS-umbrella.h"; path = "../XCGLogger-iOS/XCGLogger-iOS-umbrella.h"; sourceTree = "<group>"; };
 		4D14D04934638A7AA2DCA09B80AE48DA /* KDTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KDTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DEC18A9A974B9CE13A1BF6CC4ADC254 /* KDTree-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KDTree-iOS-umbrella.h"; path = "../KDTree-iOS/KDTree-iOS-umbrella.h"; sourceTree = "<group>"; };
 		52C5D5E3FC93C819E8A2696CBD514963 /* Pods-KDTree_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Example-resources.sh"; sourceTree = "<group>"; };
@@ -119,53 +158,72 @@
 		59FDB3FB274724CA7D75CD72ABE1AD48 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B055C0136BCBC3E4162A3DA6563D29E /* Pods-KDTree_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_Example-dummy.m"; sourceTree = "<group>"; };
 		5E0649AD8B48B2FEF5DC028023F13157 /* Pods-KDTree_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Tests-resources.sh"; sourceTree = "<group>"; };
+		5EB669977C299D53918740D61B3BAB7E /* HelperFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HelperFunctions.swift; path = Sources/XCGLogger/Misc/HelperFunctions.swift; sourceTree = "<group>"; };
 		60F7FF80A05566B43ABF2B46E8C05714 /* KDTree-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KDTree-OSX-umbrella.h"; sourceTree = "<group>"; };
-		6722235D9AD7E0658819F114D5EBCE42 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61051D49D75432B3E1A0AC10553AA316 /* DestinationProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DestinationProtocol.swift; path = Sources/XCGLogger/Destinations/DestinationProtocol.swift; sourceTree = "<group>"; };
+		61A1E3A99534DCCB7365B3F460A1AE88 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../XCGLogger-iOS/Info.plist"; sourceTree = "<group>"; };
+		649984948AE8A3AF306B5394FBF7DCD7 /* Base64LogFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base64LogFormatter.swift; path = Sources/XCGLogger/LogFormatters/Base64LogFormatter.swift; sourceTree = "<group>"; };
+		66C1E73D6404B679166D6BBD955C7C1D /* FileNameFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileNameFilter.swift; path = Sources/XCGLogger/Filters/FileNameFilter.swift; sourceTree = "<group>"; };
+		66FF04CB89B6CE395C37CA5CD7BD1A9D /* LogFormatterProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogFormatterProtocol.swift; path = Sources/XCGLogger/LogFormatters/LogFormatterProtocol.swift; sourceTree = "<group>"; };
 		6838F669842120441FFCBD4DBD37B529 /* Pods-KDTree_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		69B3CD72C503FB6B21C2B3317260FFE4 /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/XCGLogger/Destinations/ConsoleDestination.swift; sourceTree = "<group>"; };
+		6B5EE92B1F066CF38BDD5571E8E26DE2 /* FilterProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilterProtocol.swift; path = Sources/XCGLogger/Filters/FilterProtocol.swift; sourceTree = "<group>"; };
+		6C5B788FB413606544304B22BD2431DF /* DispatchQueue+XCGAdditions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+XCGAdditions.swift"; path = "Sources/XCGLogger/Extensions/DispatchQueue+XCGAdditions.swift"; sourceTree = "<group>"; };
+		6D127E84C608ED675C3E2BA2A8031D0F /* XCGLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCGLogger.h; path = Sources/XCGLogger/XCGLogger.h; sourceTree = "<group>"; };
 		6D16A91ED7B904887C04BB8C22DC2F27 /* Pods_KDTree_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		740AB3D1DED4451435A32329633C1E05 /* XCGLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCGLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CB710B76118518E56A03846CCF33B4 /* Pods-KDTree_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		7680656C5A54F1CFC0EF0883EA12C0D7 /* Pods-KDTree_OSX_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_Example-resources.sh"; sourceTree = "<group>"; };
 		791E34102567E4D29BEFFDEEDC7377EF /* Pods-KDTree_OSX_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_OSX_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8137DC63A764991A526AF850AF57701A /* XCGLogger-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "XCGLogger-iOS.xcconfig"; path = "../XCGLogger-iOS/XCGLogger-iOS.xcconfig"; sourceTree = "<group>"; };
+		7D6F7F1F1BDE05626F70158958A874A0 /* XCGLogger-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "XCGLogger-iOS.modulemap"; path = "../XCGLogger-iOS/XCGLogger-iOS.modulemap"; sourceTree = "<group>"; };
 		83ED5B39A1ABA13F69D875ECEB298938 /* Pods-KDTree_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_Example-umbrella.h"; sourceTree = "<group>"; };
+		84B696E32B46794CBC0DAA9079C4709A /* XCGLogger-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCGLogger-iOS-dummy.m"; path = "../XCGLogger-iOS/XCGLogger-iOS-dummy.m"; sourceTree = "<group>"; };
+		86CB041170BEDEBF19FFE8186124DA7D /* XCGLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Sources/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
 		8AE1EE1226917C599EABECB7EE57D02B /* KDTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KDTree.swift; sourceTree = "<group>"; };
 		8B3756E5AAF8E08FA82294E7FCBA7E28 /* Pods-KDTree_OSX_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_OSX_Example-dummy.m"; sourceTree = "<group>"; };
 		8BBF929385B398FCC2DF50F849856357 /* Pods-KDTree_OSX_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_OSX_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		8FAEEB4BA6A5AF7BDD062E531C230BEA /* Pods-KDTree_OSX_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_OSX_Example-umbrella.h"; sourceTree = "<group>"; };
-		92AB91530E21BC599A3F2EC693A0B28F /* XCGLogger-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCGLogger-OSX-umbrella.h"; sourceTree = "<group>"; };
+		8FDB7FFE72477CF2C19EE1439E60A123 /* DevFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DevFilter.swift; path = Sources/XCGLogger/Filters/DevFilter.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9BD433B36E57A1D6EF9CE8F6C1A6EABF /* KDTree-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KDTree-iOS-prefix.pch"; path = "../KDTree-iOS/KDTree-iOS-prefix.pch"; sourceTree = "<group>"; };
+		9CA489FDBC724C43AF7FF8C0C3F222E6 /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/XCGLogger/Destinations/BaseDestination.swift; sourceTree = "<group>"; };
 		A0A145668D85E8539DC99C4039E6AF37 /* Pods-KDTree_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_Tests.modulemap"; sourceTree = "<group>"; };
 		A0EE5B0B2DC95D2EB77A7B081B8E8148 /* KDTree-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "KDTree-iOS.xcconfig"; path = "../KDTree-iOS/KDTree-iOS.xcconfig"; sourceTree = "<group>"; };
+		A16668C3C65480AA36E18FF179C6281D /* XCGLogger-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "XCGLogger-OSX.xcconfig"; sourceTree = "<group>"; };
 		A387478163109652B03F6F2F95DC2196 /* Pods-KDTree_OSX_ExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_ExampleTests-frameworks.sh"; sourceTree = "<group>"; };
 		A509827595C67735895CADC6009CD821 /* KDTree+CustomStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "KDTree+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		A5552500A7775CC87F99502DC3A2A0BE /* Pods-KDTree_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_Tests-umbrella.h"; sourceTree = "<group>"; };
-		A9BB2876D535C427F23D5F8E1DB1EF62 /* XCGLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = XCGLogger/Library/XCGLogger/XCGLogger.swift; sourceTree = "<group>"; };
 		AADC85F9CB2F9A708434D4DE373780C4 /* Pods-KDTree_OSX_ExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_ExampleTests-resources.sh"; sourceTree = "<group>"; };
 		AD7B5501071BCEBADBB34B5842BB6567 /* Pods-KDTree_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B15524FE0123D58F3EC95F93D2E734A5 /* XCGLogger-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XCGLogger-OSX-dummy.m"; sourceTree = "<group>"; };
 		B88214660F16503656864817BAC6E35F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B977280505FA9959E1DFA553B82DDC54 /* XCGLogger-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XCGLogger-OSX-dummy.m"; sourceTree = "<group>"; };
 		BAD252E765C2BDDC83CD186B20331224 /* KDTree-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KDTree-iOS-dummy.m"; path = "../KDTree-iOS/KDTree-iOS-dummy.m"; sourceTree = "<group>"; };
 		BBA0129467FCCE69419147BB1E23CEA8 /* KDTree-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KDTree-OSX-prefix.pch"; sourceTree = "<group>"; };
-		BEBB76FA46BC2E55A73FAA62E91970B0 /* XCGLogger-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCGLogger-iOS-prefix.pch"; path = "../XCGLogger-iOS/XCGLogger-iOS-prefix.pch"; sourceTree = "<group>"; };
-		BF04D521DB44FBA8BD85D404FB54FC37 /* XCGLogger-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCGLogger-OSX-prefix.pch"; sourceTree = "<group>"; };
 		C04AE1CDF3F65778BCB72AC0B8DF867C /* Pods-KDTree_OSX_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_OSX_ExampleTests.modulemap"; sourceTree = "<group>"; };
+		C37FC573534DA2C2700D188912689732 /* AppleSystemLogDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleSystemLogDestination.swift; path = Sources/XCGLogger/Destinations/AppleSystemLogDestination.swift; sourceTree = "<group>"; };
 		C614E772A0B14A3E26F90637D8B38E12 /* Pods-KDTree_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D04643F3B10D43F498EC4C3FC852AA64 /* Pods-KDTree_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B7381A97FEB621675F369BEDAC5FA1 /* Pods_KDTree_OSX_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_OSX_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63007B0311E31FE2509C3E740B5D5CF /* Pods-KDTree_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D7AC36D4579877E507F626CF301FDCAB /* KDTree-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "KDTree-iOS.modulemap"; path = "../KDTree-iOS/KDTree-iOS.modulemap"; sourceTree = "<group>"; };
+		DC32DCAA07BDEA43C8F046D915EF10A5 /* UserInfoFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserInfoFilter.swift; path = Sources/XCGLogger/Filters/UserInfoFilter.swift; sourceTree = "<group>"; };
+		DCAC761C9A63C59301C3399CE1193EBA /* ANSIColorLogFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ANSIColorLogFormatter.swift; path = Sources/XCGLogger/LogFormatters/ANSIColorLogFormatter.swift; sourceTree = "<group>"; };
+		DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		DF7B5959DC67B162819D3CFC583B31AC /* XCGLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCGLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA755978CDBDD4045ADA00E44A4986A /* KDTree-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "KDTree-OSX.modulemap"; sourceTree = "<group>"; };
 		E0537875B8FB7BE10D487119CD1964D5 /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E26C17CBD56F2B338070B0611B383E4D /* Pods-KDTree_OSX_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_OSX_Example.modulemap"; sourceTree = "<group>"; };
+		E5EF595DD6C80146998A773FB1D83B4B /* XcodeColorsLogFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XcodeColorsLogFormatter.swift; path = Sources/XCGLogger/LogFormatters/XcodeColorsLogFormatter.swift; sourceTree = "<group>"; };
 		E70A1AB09B5B951203CF22D9BB0F5AFF /* Pods-KDTree_OSX_ExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_OSX_ExampleTests-umbrella.h"; sourceTree = "<group>"; };
+		EB5B932487BF3638ED5F19AB88367646 /* LogDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogDetails.swift; path = Sources/XCGLogger/Misc/LogDetails.swift; sourceTree = "<group>"; };
+		EBBB4D0EFB44334306EC86F21C1E6FFE /* XCGLogger-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "XCGLogger-iOS.xcconfig"; path = "../XCGLogger-iOS/XCGLogger-iOS.xcconfig"; sourceTree = "<group>"; };
 		F10D91DC7480BAD687A660003581B10E /* KDTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KDTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB462663046183510F5D40856BD7B743 /* Pods-KDTree_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Example-frameworks.sh"; sourceTree = "<group>"; };
 		FBF4E35FD9A5691F992C5BC5FCB2E2E4 /* CGPoint+KDTreePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CGPoint+KDTreePoint.swift"; sourceTree = "<group>"; };
 		FC68777747797A982A6DD15CD0784133 /* KDTree-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "KDTree-OSX.xcconfig"; sourceTree = "<group>"; };
-		FD06B9A26AB1766228EF5040EB033BAA /* XCGLogger-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "XCGLogger-OSX.xcconfig"; sourceTree = "<group>"; };
+		FC7B6ECBCB20EF59740F801181830DD4 /* XCGLogger-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCGLogger-iOS-umbrella.h"; path = "../XCGLogger-iOS/XCGLogger-iOS-umbrella.h"; sourceTree = "<group>"; };
+		FD20CF8FFB7B946D366BF7B11A24A4E4 /* TestDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TestDestination.swift; path = Sources/XCGLogger/Destinations/TestDestination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,15 +251,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D34CAE018569364BB3DD14C8266C7EA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D913F2176D5FE0EE95FCEBFAE945110A /* Cocoa.framework in Frameworks */,
-				40CE8BA199AC0ECE8A8F09EF844A2C53 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5CDBBC724791A98A11E87C76C904B5DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,6 +272,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CA49AE773DA0DCC6E45E88C5EE3ED73 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EDF32DA21D33FB3DC50C2994F4A25F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E206B87D42621678FFCC682C7E205477 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,13 +312,32 @@
 			path = "Target Support Files/Pods-KDTree_OSX_ExampleTests";
 			sourceTree = "<group>";
 		};
-		0A6E1EC3BFC7799058CA0735B368469A /* XCGLogger */ = {
+		08A12DB2FE45F2E61838F7E099F1F11D /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				A9BB2876D535C427F23D5F8E1DB1EF62 /* XCGLogger.swift */,
-				6A2292FF680FA27F530D44255C67A961 /* Support Files */,
+				DCAC761C9A63C59301C3399CE1193EBA /* ANSIColorLogFormatter.swift */,
+				C37FC573534DA2C2700D188912689732 /* AppleSystemLogDestination.swift */,
+				649984948AE8A3AF306B5394FBF7DCD7 /* Base64LogFormatter.swift */,
+				9CA489FDBC724C43AF7FF8C0C3F222E6 /* BaseDestination.swift */,
+				69B3CD72C503FB6B21C2B3317260FFE4 /* ConsoleDestination.swift */,
+				61051D49D75432B3E1A0AC10553AA316 /* DestinationProtocol.swift */,
+				8FDB7FFE72477CF2C19EE1439E60A123 /* DevFilter.swift */,
+				6C5B788FB413606544304B22BD2431DF /* DispatchQueue+XCGAdditions.swift */,
+				2CA848990CC1444FCA8591CE3133210F /* FileDestination.swift */,
+				66C1E73D6404B679166D6BBD955C7C1D /* FileNameFilter.swift */,
+				6B5EE92B1F066CF38BDD5571E8E26DE2 /* FilterProtocol.swift */,
+				5EB669977C299D53918740D61B3BAB7E /* HelperFunctions.swift */,
+				EB5B932487BF3638ED5F19AB88367646 /* LogDetails.swift */,
+				66FF04CB89B6CE395C37CA5CD7BD1A9D /* LogFormatterProtocol.swift */,
+				24C448770F234DFFD5115C437FB60FB2 /* PrePostFixLogFormatter.swift */,
+				0B48636A5FC916DD28FBC2BDB5AE188A /* TagFilter.swift */,
+				FD20CF8FFB7B946D366BF7B11A24A4E4 /* TestDestination.swift */,
+				DC32DCAA07BDEA43C8F046D915EF10A5 /* UserInfoFilter.swift */,
+				6D127E84C608ED675C3E2BA2A8031D0F /* XCGLogger.h */,
+				86CB041170BEDEBF19FFE8186124DA7D /* XCGLogger.swift */,
+				E5EF595DD6C80146998A773FB1D83B4B /* XcodeColorsLogFormatter.swift */,
 			);
-			path = XCGLogger;
+			name = Core;
 			sourceTree = "<group>";
 		};
 		1B15F427BB9B6704EDAA52B4268BA2B0 /* Support Files */ = {
@@ -284,6 +360,15 @@
 			path = "Example/Pods/Target Support Files/KDTree-OSX";
 			sourceTree = "<group>";
 		};
+		3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEA55AE7EB4A1B09C009B82BA492BD02 /* iOS */,
+				9304B30CB87FDB77B6CEE9FB6B800855 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3DD3B7C05EF18FC855593610A481AAED /* Pod */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +380,7 @@
 		5B38F34E769B260672981645F1146BA3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0A6E1EC3BFC7799058CA0735B368469A /* XCGLogger */,
+				BB81967A91FBB1B712D09C38F4DF3AAD /* XCGLogger */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -311,41 +396,12 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6A2292FF680FA27F530D44255C67A961 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				41FFFF6E13C0432F72E17EE7835B5639 /* Info.plist */,
-				6722235D9AD7E0658819F114D5EBCE42 /* Info.plist */,
-				111754DF4510713CB4B008D11A757D18 /* XCGLogger-iOS.modulemap */,
-				8137DC63A764991A526AF850AF57701A /* XCGLogger-iOS.xcconfig */,
-				1927EE6CC96ED0556F141FB4FE8CCCDE /* XCGLogger-iOS-dummy.m */,
-				BEBB76FA46BC2E55A73FAA62E91970B0 /* XCGLogger-iOS-prefix.pch */,
-				4C87448075B7AE0D37F0D23D26EF2973 /* XCGLogger-iOS-umbrella.h */,
-				2FA41C9C930521E9169B11B1159F3C32 /* XCGLogger-OSX.modulemap */,
-				FD06B9A26AB1766228EF5040EB033BAA /* XCGLogger-OSX.xcconfig */,
-				B977280505FA9959E1DFA553B82DDC54 /* XCGLogger-OSX-dummy.m */,
-				BF04D521DB44FBA8BD85D404FB54FC37 /* XCGLogger-OSX-prefix.pch */,
-				92AB91530E21BC599A3F2EC693A0B28F /* XCGLogger-OSX-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/XCGLogger-OSX";
-			sourceTree = "<group>";
-		};
-		74F831A794AB26ECF0F4874F0780D4A6 /* OS X */ = {
-			isa = PBXGroup;
-			children = (
-				4621BFDEEC06492083D7FB5DD663135D /* Cocoa.framework */,
-				3A6E0A8DDE0120B826D660DE46E7826E /* Foundation.framework */,
-			);
-			name = "OS X";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				B966942A9646C0C16724087D2BE0EC8D /* Development Pods */,
-				B3C2D6331B16C7BB39A27BBF5EF96D41 /* Frameworks */,
+				3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */,
 				5B38F34E769B260672981645F1146BA3 /* Pods */,
 				A4FD3BF43C5CE4C9C508C8D71933621F /* Products */,
 				6365EA4ED39EC0F0C427AFDBB3742A18 /* Targets Support Files */,
@@ -360,6 +416,26 @@
 			);
 			name = KDTree;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		8911CD95B2D5E6ADFAC052FF7492ED1B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				61A1E3A99534DCCB7365B3F460A1AE88 /* Info.plist */,
+				23D805CAD1D5B559E82AD3E96919E59F /* Info.plist */,
+				7D6F7F1F1BDE05626F70158958A874A0 /* XCGLogger-iOS.modulemap */,
+				EBBB4D0EFB44334306EC86F21C1E6FFE /* XCGLogger-iOS.xcconfig */,
+				84B696E32B46794CBC0DAA9079C4709A /* XCGLogger-iOS-dummy.m */,
+				432C57449F134D2C6038B05C8A511FFC /* XCGLogger-iOS-prefix.pch */,
+				FC7B6ECBCB20EF59740F801181830DD4 /* XCGLogger-iOS-umbrella.h */,
+				02F5EBFACB78374A2FC465C696CB0096 /* XCGLogger-OSX.modulemap */,
+				A16668C3C65480AA36E18FF179C6281D /* XCGLogger-OSX.xcconfig */,
+				B15524FE0123D58F3EC95F93D2E734A5 /* XCGLogger-OSX-dummy.m */,
+				19D4FCEE7B04D553FAA6B3AB2690DAC7 /* XCGLogger-OSX-prefix.pch */,
+				2733993BD2FE44A655F22DD5DFDC2757 /* XCGLogger-OSX-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/XCGLogger-OSX";
 			sourceTree = "<group>";
 		};
 		8D2BC780E0CB35B77938350A61549CE6 /* Pods-KDTree_Tests */ = {
@@ -380,6 +456,14 @@
 			path = "Target Support Files/Pods-KDTree_Tests";
 			sourceTree = "<group>";
 		};
+		9304B30CB87FDB77B6CEE9FB6B800855 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
 		A4FD3BF43C5CE4C9C508C8D71933621F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,29 +479,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A50FA3F2F105BE3D66A32D196653395B /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3F2F355F550B6A9F86194BB84D41A8CE /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		B3C2D6331B16C7BB39A27BBF5EF96D41 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A50FA3F2F105BE3D66A32D196653395B /* iOS */,
-				74F831A794AB26ECF0F4874F0780D4A6 /* OS X */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B966942A9646C0C16724087D2BE0EC8D /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
 				8228AF86EFC9824A7C9E47A1576D8384 /* KDTree */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		BB81967A91FBB1B712D09C38F4DF3AAD /* XCGLogger */ = {
+			isa = PBXGroup;
+			children = (
+				08A12DB2FE45F2E61838F7E099F1F11D /* Core */,
+				8911CD95B2D5E6ADFAC052FF7492ED1B /* Support Files */,
+			);
+			path = XCGLogger;
 			sourceTree = "<group>";
 		};
 		BCD10F260000452AA0B7929C05656F0D /* Pods-KDTree_OSX_Example */ = {
@@ -470,6 +546,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		DEA55AE7EB4A1B09C009B82BA492BD02 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -481,11 +565,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		25E74725A2D61FD59EAB8C6D7F0591F4 /* Headers */ = {
+		40E4616B3C0B85281B80FA9FB959B992 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5B4C408993254D2E47B654B23E06F9B /* XCGLogger-OSX-umbrella.h in Headers */,
+				115ACFBD2D6EE208FE744B2EFCA4F7C9 /* XCGLogger-OSX-umbrella.h in Headers */,
+				4063CE458041A65236EE73BBA6950AEE /* XCGLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,11 +590,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4CE404859B35B36358A913BD597BE18 /* Headers */ = {
+		9B1D0A1AC964EB1176A3FB9F47805EFC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0358499C3ECF9CE8451282FC919657D4 /* XCGLogger-iOS-umbrella.h in Headers */,
+				3103C81AA6B165A9CA4A920F3B60D83E /* XCGLogger-iOS-umbrella.h in Headers */,
+				33734DDDE90EB4D76FC353007F09309D /* XCGLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,9 +664,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D175E042772D133FA2DAF9827AF5312 /* Build configuration list for PBXNativeTarget "XCGLogger-iOS" */;
 			buildPhases = (
-				6D610DD1B715C9289B67401E52330C2C /* Sources */,
+				44A559B274E11B8B9111959329046FD3 /* Sources */,
 				5CDBBC724791A98A11E87C76C904B5DA /* Frameworks */,
-				A4CE404859B35B36358A913BD597BE18 /* Headers */,
+				9B1D0A1AC964EB1176A3FB9F47805EFC /* Headers */,
 			);
 			buildRules = (
 			);
@@ -650,9 +736,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E340444FA607655123409F49E9643E30 /* Build configuration list for PBXNativeTarget "XCGLogger-OSX" */;
 			buildPhases = (
-				6B92321983573A1B2B5A7D77DD00B520 /* Sources */,
-				4D34CAE018569364BB3DD14C8266C7EA /* Frameworks */,
-				25E74725A2D61FD59EAB8C6D7F0591F4 /* Headers */,
+				07846F048BAA0B5E6D2DCDAAEE0525F9 /* Sources */,
+				8EDF32DA21D33FB3DC50C2994F4A25F1 /* Frameworks */,
+				40E4616B3C0B85281B80FA9FB959B992 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -688,6 +774,20 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					0FEB9F312B0E050B5797C57004A3E6F4 = {
+						LastSwiftMigration = 0800;
+					};
+					6F5603772AD631831D70CA9927BEC890 = {
+						LastSwiftMigration = 0800;
+					};
+					A013C173C243A2C0248D08B8AE3082D3 = {
+						LastSwiftMigration = 0800;
+					};
+					C89EAD94B6BAAE2C76D2FDDECC2BA716 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -722,6 +822,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		07846F048BAA0B5E6D2DCDAAEE0525F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A8928ECA2993BDA69E8D21B5606FAB6 /* ANSIColorLogFormatter.swift in Sources */,
+				A917B8E38044E10835235AD5C02B731C /* AppleSystemLogDestination.swift in Sources */,
+				B06B3013F2ABE0FA6ACF73711BC3E65C /* Base64LogFormatter.swift in Sources */,
+				2E6049D4C7FC0BDBCB8596E21698DEBB /* BaseDestination.swift in Sources */,
+				9AA674F0CA9A4738EE3D1062090BB25B /* ConsoleDestination.swift in Sources */,
+				FD276CF86C3C4827F1AECD50B79DEC1E /* DestinationProtocol.swift in Sources */,
+				53B29CC241CE09D05492B2FDCEC51B0A /* DevFilter.swift in Sources */,
+				E5DA5D8205291B6F4416E594D7AEB2DE /* DispatchQueue+XCGAdditions.swift in Sources */,
+				7DD108EC53DE8207F884C08DA75B8EDB /* FileDestination.swift in Sources */,
+				7368879B6839B6470F04FF2BDC7B4E06 /* FileNameFilter.swift in Sources */,
+				D6E50309E7F7499ACD698A8500AF1071 /* FilterProtocol.swift in Sources */,
+				C4573973875096CC5BCDBBB49E23A98B /* HelperFunctions.swift in Sources */,
+				D60F1EE26701783D3CFB94BB6F11CF6B /* LogDetails.swift in Sources */,
+				CF0EC15CD393335CFF24203B4F4172FF /* LogFormatterProtocol.swift in Sources */,
+				82117E71E1CA8F3041F8EDD8DE0991C4 /* PrePostFixLogFormatter.swift in Sources */,
+				CF18AFE7358BCA6E775312E6AEC3D862 /* TagFilter.swift in Sources */,
+				1AD30CF48E82357CCB8C14BEC82086D2 /* TestDestination.swift in Sources */,
+				D4BF017CC62C96A38D89C36C89056BD1 /* UserInfoFilter.swift in Sources */,
+				920D32BD58E3067BC9676F28580D1995 /* XCGLogger-OSX-dummy.m in Sources */,
+				7988E3A28322A50F9474E446813D96F8 /* XCGLogger.swift in Sources */,
+				306808E0D703E1F2668B9C85C37DD1C1 /* XcodeColorsLogFormatter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		185DADA0BC40A5D80A0AD6AE75A19AD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -745,21 +873,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B92321983573A1B2B5A7D77DD00B520 /* Sources */ = {
+		44A559B274E11B8B9111959329046FD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7063CA8B76337044D48EE8C84927A51 /* XCGLogger-OSX-dummy.m in Sources */,
-				F9CFA22546F37C23B22A0C41308A8BD2 /* XCGLogger.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D610DD1B715C9289B67401E52330C2C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4D77A7B1B00D32153C04C5C5EE06F6D3 /* XCGLogger-iOS-dummy.m in Sources */,
-				A56BE52E2C9C11768EAE6241F1B14427 /* XCGLogger.swift in Sources */,
+				003A5270A66B89AFDD371A8D17B1B6D2 /* ANSIColorLogFormatter.swift in Sources */,
+				F641D36500F4FA288416101129D8DFA3 /* AppleSystemLogDestination.swift in Sources */,
+				7EF6C17F2C2F4628C90F95BAFE437A1D /* Base64LogFormatter.swift in Sources */,
+				6F485E2A99294A73C87E649F940499CB /* BaseDestination.swift in Sources */,
+				09B1B593AAD8B04DF02B2F7B1C3DB697 /* ConsoleDestination.swift in Sources */,
+				367D51FBA3DFEDD6B9FC31FB2633BB7C /* DestinationProtocol.swift in Sources */,
+				14B33FAB46E0E85138B4721AB03FCA8E /* DevFilter.swift in Sources */,
+				7DB5EC85D6B0FFF1FA72CF6140C6CCE2 /* DispatchQueue+XCGAdditions.swift in Sources */,
+				6B9CFBDEFAA89CE198D4225136799E48 /* FileDestination.swift in Sources */,
+				84EE74209CA52795F58D71E8BD0A6407 /* FileNameFilter.swift in Sources */,
+				D3831AD485B24ABDD9B7C65A39B1BB70 /* FilterProtocol.swift in Sources */,
+				4C589BE2DD6503272009E9C5A3A25E64 /* HelperFunctions.swift in Sources */,
+				0AF1A2BCCA463CC863DD1E79ADEDDCB7 /* LogDetails.swift in Sources */,
+				588604A8EB351B713F018AE5BF217C40 /* LogFormatterProtocol.swift in Sources */,
+				B0C8FD9ECA6DE2E9A03DB048CC411256 /* PrePostFixLogFormatter.swift in Sources */,
+				9421592B89631ECC979D26BB9C8D0F22 /* TagFilter.swift in Sources */,
+				04575FB7B8ABF670524F800A1C9F7BD7 /* TestDestination.swift in Sources */,
+				6E633BBDF8A3E3D7746146E2F8147FB9 /* UserInfoFilter.swift in Sources */,
+				4118465DA1C0391ADE8B8ED80D929F03 /* XCGLogger-iOS-dummy.m in Sources */,
+				41E4155011F83A99C406BC500AB499E9 /* XCGLogger.swift in Sources */,
+				677D0A3ED8C5598BEC89F1158C4689D0 /* XcodeColorsLogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,38 +962,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		062A1C007B18246D6DD5A77DF163433A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD06B9A26AB1766228EF5040EB033BAA /* XCGLogger-OSX.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/XCGLogger-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = XCGLogger;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		194EBF87DB66B026A34702F580C0D10C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -897,7 +1003,7 @@
 		};
 		2288AC4EF0270A6ECB00E9E23870FD85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8137DC63A764991A526AF850AF57701A /* XCGLogger-iOS.xcconfig */;
+			baseConfigurationReference = EBBB4D0EFB44334306EC86F21C1E6FFE /* XCGLogger-iOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -920,6 +1026,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -954,6 +1061,7 @@
 				PRODUCT_NAME = Pods_KDTree_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1024,6 +1132,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1058,6 +1167,7 @@
 				PRODUCT_NAME = Pods_KDTree_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1089,6 +1199,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1132,7 +1243,7 @@
 		};
 		6D860E25B55CAB5930DEA8EE4E3F6433 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8137DC63A764991A526AF850AF57701A /* XCGLogger-iOS.xcconfig */;
+			baseConfigurationReference = EBBB4D0EFB44334306EC86F21C1E6FFE /* XCGLogger-iOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1154,6 +1265,7 @@
 				PRODUCT_NAME = XCGLogger;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1188,6 +1300,7 @@
 				PRODUCT_NAME = Pods_KDTree_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1224,6 +1337,38 @@
 				PRODUCT_NAME = Pods_KDTree_OSX_ExampleTests;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9C32D0E5B7A3FF0DB70F5F4C8CA8BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A16668C3C65480AA36E18FF179C6281D /* XCGLogger-OSX.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCGLogger-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = XCGLogger;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1297,6 +1442,37 @@
 			};
 			name = Debug;
 		};
+		BD83E7636D23165D90855AAD32021055 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A16668C3C65480AA36E18FF179C6281D /* XCGLogger-OSX.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCGLogger-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = XCGLogger;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CB4F2FD09742FBDC0DED24FAF962135E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0EE5B0B2DC95D2EB77A7B081B8E8148 /* KDTree-iOS.xcconfig */;
@@ -1321,38 +1497,8 @@
 				PRODUCT_NAME = KDTree;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CFE786B78F03F052FDA54D5F068A5072 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD06B9A26AB1766228EF5040EB033BAA /* XCGLogger-OSX.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/XCGLogger-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = XCGLogger;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1510,8 +1656,8 @@
 		E340444FA607655123409F49E9643E30 /* Build configuration list for PBXNativeTarget "XCGLogger-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				062A1C007B18246D6DD5A77DF163433A /* Debug */,
-				CFE786B78F03F052FDA54D5F068A5072 /* Release */,
+				9C32D0E5B7A3FF0DB70F5F4C8CA8BB2A /* Debug */,
+				BD83E7636D23165D90855AAD32021055 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

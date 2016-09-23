@@ -9,9 +9,9 @@
 import Foundation
 
 extension KDTreePoint {
-    private func fitsIn(_ intervals: [(Double, Double)]) -> Bool {
+    fileprivate func fitsIn(_ intervals: [(Double, Double)]) -> Bool {
         //make sure there is no dimension with the value outside of the interval
-        let hasDimensionOutSide = (0..<Self.dimensions).contains({ (index: Int) -> Bool in
+        let hasDimensionOutSide = (0..<Self.dimensions).contains(where: { (index: Int) -> Bool in
             let value = self.kdDimension(index)
             return value < intervals[index].0 || intervals[index].1 < value
         })

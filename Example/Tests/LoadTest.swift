@@ -24,14 +24,14 @@ class NearestNeighbourLoadTest: XCTestCase {
         
         nearestPointsFromArray = testPoints.map { (searchPoint: CGPoint) -> CGPoint in
             var bestDistance = Double.infinity
-            let nearest = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
+            let nearest = self.points.reduce(CGPoint.zero) { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
                 let testDistance = searchPoint.squaredDistance(to: testPoint)
                 if testDistance < bestDistance {
                     bestDistance = testDistance
                     return testPoint
                 }
                 return bestPoint
-            })
+            }
             return nearest
         }
     }
@@ -116,14 +116,14 @@ class NearestNeighbourLoadTest: XCTestCase {
         self.measure {
             let _ = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
                 var bestDistance = Double.infinity
-                let nearest = self.points.reduce(CGPoint.zero, combine: { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
+                let nearest = self.points.reduce(CGPoint.zero) { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
                     let testDistance = searchPoint.squaredDistance(to: testPoint)
                     if testDistance < bestDistance {
                         bestDistance = testDistance
                         return testPoint
                     }
                     return bestPoint
-                })
+                }
                 return nearest
             }
         }
@@ -131,7 +131,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     
     func test05_k5NearestNeighbour() {
         let nearest5PointsFromArray = testPoints.map { (searchPoint: CGPoint) -> [CGPoint] in
-            let nearest = self.points.reduce([CGPoint](), combine: { (bestPoints: [CGPoint], testPoint: CGPoint) -> [CGPoint] in
+            let nearest = self.points.reduce([CGPoint]()) { (bestPoints: [CGPoint], testPoint: CGPoint) -> [CGPoint] in
                 guard bestPoints.count >= 5 else {
                     let newBestPoints = bestPoints + [testPoint]
                     return newBestPoints.sorted { searchPoint.squaredDistance(to: $0) < searchPoint.squaredDistance(to: $1) }
@@ -145,7 +145,7 @@ class NearestNeighbourLoadTest: XCTestCase {
                     return newBestPoints
                 }
                 return bestPoints
-            })
+            }
             return nearest
         }
 

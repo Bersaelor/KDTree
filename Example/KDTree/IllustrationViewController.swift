@@ -53,7 +53,7 @@ class IllustrationViewController: UIViewController {
     
     func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
         let point = recognizer.location(in: recognizer.view)
-        illustrationView.pointTapped(point: point)
+        illustrationView.pointTapped(point)
         
         tappedLabel.text = illustrationView.tappedPoint.flatMap({"Tapped: \($0.shortDecimalDescription)"}) ?? "Tapped: nil"
         nearestLabel.text = illustrationView.nearestPoints.first.flatMap({"Nearest: \($0.shortDecimalDescription)"}) ?? "Nearest: nil"

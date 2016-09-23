@@ -1,27 +1,21 @@
 PODS:
   - KDTree (0.1.2)
-  - XCGLogger (3.3)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
   - KDTree (from `../`)
-  - XCGLogger (from `https://github.com/Bersaelor/XCGLogger.git`, branch `swift_3.0`)
+  - XCGLogger (~> 4.0.0)
 
 EXTERNAL SOURCES:
   KDTree:
     :path: "../"
-  XCGLogger:
-    :branch: swift_3.0
-    :git: https://github.com/Bersaelor/XCGLogger.git
-
-CHECKOUT OPTIONS:
-  XCGLogger:
-    :commit: 80594ce77d046b36c889a7fad9f5f3971b7aa93d
-    :git: https://github.com/Bersaelor/XCGLogger.git
 
 SPEC CHECKSUMS:
   KDTree: 823744f274e9770e990dbb8f14ede7b08dbe879b
-  XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: e9e44b0e33ec25639afff8edb61bc99e48d72d72
+PODFILE CHECKSUM: d6896ebdbbed6bd41fd9cca364e7a0ca9f2a442c
 
 COCOAPODS: 1.0.1

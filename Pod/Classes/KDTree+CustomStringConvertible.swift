@@ -16,7 +16,7 @@ extension KDTree : CustomStringConvertible, CustomDebugStringConvertible {
         case .leaf:
             return "🍁"
         case let .node(left, value, _, right):
-            return left.description + String(value) + right.description
+            return left.description + String(describing: value) + right.description
         }
     }
     
@@ -26,7 +26,7 @@ extension KDTree : CustomStringConvertible, CustomDebugStringConvertible {
         case .leaf:
             return "🍁"
         case let .node(left, value, _, right):
-            return "{\(left.debugDescription) \(String(value)) \(right.debugDescription)}"
+            return "{\(left.debugDescription) \(String(describing: value)) \(right.debugDescription)}"
         }
     }
 }

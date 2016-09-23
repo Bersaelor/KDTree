@@ -16,7 +16,6 @@ private enum ReplacementDirection {
 public enum KDTree<Element: KDTreePoint> {
     case leaf
     indirect case node(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>)
-    //    case Node(left: KDTree<Element>, value: T, parent: KDTree<Element>?, right: KDTree<Element>)
 
     public init(values: [Element], depth: Int = 0) {
         guard !values.isEmpty else {
@@ -177,10 +176,10 @@ public enum KDTree<Element: KDTreePoint> {
                     return element.flatMap({ $0.kdDimension(dimOfCut) }) ?? nilDropIn
                 })
                 let optimumValue = (direction == .min) ? dimensionValues.min() : dimensionValues.max()
-                if let bestValue = leftReplacementValue where dimensionValues[0] == optimumValue {
+                if let bestValue = leftReplacementValue , dimensionValues[0] == optimumValue {
                     return (.node(left: newLeftSubTree, value: value, dimension: dim, right: right), bestValue)
                 }
-                else if let bestValue = rightReplacementValue where dimensionValues[1] == optimumValue {
+                else if let bestValue = rightReplacementValue , dimensionValues[1] == optimumValue {
                     return (.node(left: left, value: value, dimension: dim, right: newRightSubTree), bestValue)
                 }
                 else { //the own point is the optimum!
@@ -291,12 +290,12 @@ extension KDTree { //SequenceType like
     
     /// Call `body` on each node in `self` in the same order as a
     /// *for-in loop.*
-    public func investigateTree(_ parents: [KDTree] = [], depth: Int = 0, body: (node: KDTree, parents: [KDTree], depth: Int) -> Void) {
+    public func investigateTree(_ parents: [KDTree] = [], depth: Int = 0, body: (_ node: KDTree, _ parents: [KDTree], _ depth: Int) -> Void) {
         switch self {
         case .leaf:
             return
         case let .node(left, _, _, right):
-            body(node: self, parents: parents, depth: depth)
+            body(self, parents, depth)
             let nextParents = [self] + parents
             left.investigateTree(nextParents, depth: depth+1, body: body)
             right.investigateTree(nextParents, depth: depth+1, body: body)
@@ -308,7 +307,7 @@ extension KDTree { //SequenceType like
     /// `self`, in turn, i.e. return
     /// `combine(combine(...combine(combine(initial, self[0]),
     /// self[1]),...self[count-2]), self[count-1])`.
-    public func reduce<T>(_ initial: T, @noescape combine: (T, Element) throws -> T) rethrows -> T {
+    public func reduce<T>(_ initial: T, combine: (T, Element) throws -> T) rethrows -> T {
         switch self {
         case .leaf:
             return initial

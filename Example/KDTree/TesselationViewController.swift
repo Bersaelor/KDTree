@@ -37,7 +37,7 @@ class TesselationViewController: UIViewController {
     
     
     @IBAction func shapeChanged(_ sender: UISegmentedControl) {
-        fillFormView.chosenShape = sender.selectedSegmentIndex == 0 ? .Circle : .Square
+        fillFormView.chosenShape = sender.selectedSegmentIndex == 0 ? .circle : .square
     }
     
 }
