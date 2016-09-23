@@ -207,7 +207,7 @@ extension KDTree { //SequenceType like
     /// over `self`.
     ///
     /// - Complexity: O(N).
-    public func mapToArray<T>(_ transform: @noescape (Element) throws -> T) rethrows -> [T] {
+    public func mapToArray<T>(_ transform: (Element) throws -> T) rethrows -> [T] {
         switch self {
         case .leaf:
             return []
@@ -225,7 +225,7 @@ extension KDTree { //SequenceType like
     /// where a map would keep the balance intact.
     ///
     /// - Complexity: O(N).
-    public func map<T: KDTreePoint>(_ transform: @noescape (Element) throws -> T) rethrows -> KDTree<T> {
+    public func map<T: KDTreePoint>(_ transform: (Element) throws -> T) rethrows -> KDTree<T> {
         switch self {
         case .leaf:
             return .leaf
@@ -241,7 +241,7 @@ extension KDTree { //SequenceType like
     /// in order, that satisfy the predicate `includeElement`.
     ///
     /// - Complexity: O(N).
-    public func filter(_ includeElement: @noescape (Element) throws -> Bool) rethrows -> KDTree {
+    public func filter(_ includeElement: (Element) throws -> Bool) rethrows -> KDTree {
         switch self {
         case .leaf:
             return self
@@ -277,7 +277,7 @@ extension KDTree { //SequenceType like
     ///   skip subsequent calls.
     ///
     /// - Complexity: O(`self.count`)
-    public func forEach(_ body: @noescape (Element) throws -> Void) rethrows {
+    public func forEach(_ body: (Element) throws -> Void) rethrows {
         switch self {
         case .leaf:
             return
