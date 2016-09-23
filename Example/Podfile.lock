@@ -1,5 +1,5 @@
 PODS:
-  - KDTree (0.1.2)
+  - KDTree (0.2.0)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
   - XCGLogger/Core (4.0.0)
@@ -13,9 +13,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KDTree: 823744f274e9770e990dbb8f14ede7b08dbe879b
+  KDTree: 3cef3b9ad3849772bb0406a472f229968ef8f092
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: d6896ebdbbed6bd41fd9cca364e7a0ca9f2a442c
+PODFILE CHECKSUM: cfc2ac833e10dd93b81673ac388ed0fc5aa8d293
 
 COCOAPODS: 1.0.1
