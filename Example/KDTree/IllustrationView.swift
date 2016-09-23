@@ -142,32 +142,21 @@ class IllustrationView: UIView {
             case .node(_, let value, let dimension, _):
                 var minPoint = -self.adjSize
                 var maxPoint = self.adjSize
-                if dimension == 0 {
-                    for parent in parents {
-                        if case .node(_, let parentValue, let parentDim, _) = parent, parentDim == 1 && parentValue.y > value.y {
-                            maxPoint = parentValue.y*self.adjSize
-                            break
-                        }
-                    }
-                    for parent in parents {
-                        if case .node(_, let parentValue, let parentDim, _) = parent, parentDim == 1 && parentValue.y < value.y {
-                            minPoint = parentValue.y*self.adjSize
-                            break
-                        }
+                let otherDimension = (dimension == 0) ? 1 : 0
+                for parent in parents {
+                    if case .node(_, let parentValue, let parentDim, _) = parent, parentDim == otherDimension,
+                        parentValue.kdDimension(otherDimension) > value.kdDimension(otherDimension)
+                    {
+                        maxPoint = CGFloat(parentValue.kdDimension(otherDimension))*self.adjSize
+                        break
                     }
                 }
-                else {
-                    for parent in parents {
-                        if case .node(_, let parentValue, let parentDim, _) = parent, parentDim == 0 &&  parentValue.x > value.x {
-                            maxPoint = parentValue.x*self.adjSize
-                            break
-                        }
-                    }
-                    for parent in parents {
-                        if case .node(_, let parentValue, let parentDim, _) = parent, parentDim == 0 &&  parentValue.x < value.x {
-                            minPoint = parentValue.x*self.adjSize
-                            break
-                        }
+                for parent in parents {
+                    if case .node(_, let parentValue, let parentDim, _) = parent, parentDim == otherDimension,
+                        parentValue.kdDimension(otherDimension) < value.kdDimension(otherDimension)
+                    {
+                        minPoint = CGFloat(parentValue.kdDimension(otherDimension))*self.adjSize
+                        break
                     }
                 }
                 
