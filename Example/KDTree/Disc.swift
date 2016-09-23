@@ -18,7 +18,7 @@
 import KDTree
 
 extension CGFloat {
-    static func random(start start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
+    static func random(_ start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
         return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
     }
 }
@@ -42,11 +42,11 @@ extension Disc: Equatable {}
 extension Disc: KDTreePoint {
     static var dimensions = 2
     
-    func kdDimension(dimension: Int) -> Double {
+    func kdDimension(_ dimension: Int) -> Double {
         return dimension == 0 ? Double(self.center.x) : Double(self.center.y)
     }
     
-    func squaredDistance(otherPoint: Disc) -> Double {
-        return self.center.squaredDistance(otherPoint.center)
+    func squaredDistance(to otherPoint: Disc) -> Double {
+        return self.center.squaredDistance(to: otherPoint.center)
     }
 }

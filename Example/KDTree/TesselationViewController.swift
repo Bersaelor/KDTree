@@ -30,15 +30,14 @@ class TesselationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
  
-    func illustrationTapped(recognizer: UITapGestureRecognizer) {
-        let point = recognizer.locationInView(recognizer.view)
-        fillFormView.pointTapped(point)
-        
+    func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
+        let point = recognizer.location(in: recognizer.view)
+        fillFormView.tapped(point)
     }
     
     
-    @IBAction func shapeChanged(sender: UISegmentedControl) {
-        fillFormView.chosenShape = sender.selectedSegmentIndex == 0 ? .Circle : .Square
+    @IBAction func shapeChanged(_ sender: UISegmentedControl) {
+        fillFormView.chosenShape = sender.selectedSegmentIndex == 0 ? .circle : .square
     }
     
 }

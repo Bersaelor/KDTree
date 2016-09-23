@@ -15,7 +15,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
 		625C588CBC2FC139B0E93182 /* Pods_KDTree_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC603E910B33686BF88B277F /* Pods_KDTree_Example.framework */; };
 		712EDA7B1CB5A4DE001F32F3 /* RangeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */; };
 		713204B31CD9497B001A1F44 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
@@ -36,7 +35,6 @@
 		71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4661CD946BF005436C3 /* Assets.xcassets */; };
 		71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4681CD946BF005436C3 /* Main.storyboard */; };
 		71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */; };
-		71C2077B1CA9C9C2009C9551 /* NearestNeighbourSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */; };
 		74887EFC1CABC258002AECF6 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -374,14 +372,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					71C1B45F1CD946BF005436C3 = {
@@ -668,9 +668,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C2077B1CA9C9C2009C9551 /* NearestNeighbourSpec.swift in Sources */,
 				713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* BasicSpec.swift in Sources */,
 				74887EFC1CABC258002AECF6 /* LoadTest.swift in Sources */,
 				712EDA7B1CB5A4DE001F32F3 /* RangeSearchTests.swift in Sources */,
 			);
@@ -827,12 +825,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9AF9F2C658DF6E488E4461D6 /* Pods-KDTree_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = KDTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -841,12 +847,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C21662931D2AD0332A01BA1B /* Pods-KDTree_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = KDTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -864,6 +879,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
 			};
 			name = Debug;
@@ -877,6 +893,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
 			};
 			name = Release;
@@ -885,6 +903,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90C698D9647F2FA603B9E5A9 /* Pods-KDTree_OSX_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -903,6 +922,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49E6BEB256637DEA593F5DF6 /* Pods-KDTree_OSX_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -913,6 +933,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KDTree-OSX-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -920,6 +941,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D25A52DFB11E96373D87BD47 /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -939,6 +961,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F0A8F65F153DF33183ABF7A0 /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -949,6 +972,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.konrad.KDTree-OSX-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_OSX_Example.app/Contents/MacOS/KDTree_OSX_Example";
 			};
 			name = Release;

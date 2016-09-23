@@ -9,14 +9,14 @@
 import XCTest
 import KDTree
 
-// swiftlint:disable variable_name_min_length
+// swiftlint:disable variable_name
 struct STPoint {
     let x: CGFloat
     let y: CGFloat
     let z: CGFloat
     let t: CGFloat
 }
-// swiftlint:enable variable_name_min_length
+// swiftlint:enable variable_name
 
 func == (lhs: STPoint, rhs: STPoint) -> Bool {
     return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.t == rhs.t
@@ -27,7 +27,7 @@ extension STPoint: Equatable {}
 extension STPoint: KDTreePoint {
     internal static var dimensions = 4
     
-    internal func kdDimension(dimension: Int) -> Double {
+    internal func kdDimension(_ dimension: Int) -> Double {
         switch dimension {
         case 0:
             return Double(self.x)
@@ -40,14 +40,14 @@ extension STPoint: KDTreePoint {
         }
     }
     
-    static var kdDimensionFunctions: [STPoint -> Double] {
+    static var kdDimensionFunctions: [(STPoint) -> Double] {
         return [{ Double($0.x) },
                 { Double($0.y) },
                 { Double($0.z) },
                 { Double($0.z) }]
     }
     
-    func squaredDistance(otherPoint: STPoint) -> Double {
+    func squaredDistance(to otherPoint: STPoint) -> Double {
         let x = self.x - otherPoint.x
         let y = self.y - otherPoint.y
         let z = self.z - otherPoint.z
@@ -91,11 +91,11 @@ class RangeSearchTests: XCTestCase {
         })
         
         var pointsInRangeTree: [CGPoint] = []
-        self.measureBlock {
-            pointsInRangeTree = self.largeTree.elementsInRange(self.rangeIntervals)
+        self.measure {
+            pointsInRangeTree = self.largeTree.elementsIn(self.rangeIntervals)
         }
         print("pointsInRangeArray.count: \(pointsInRangeArray.count)")
-        XCTAssertEqual(pointsInRangeArray.sort({ $0.x <= $1.x }), pointsInRangeTree.sort({ $0.x <= $1.x }),
+        XCTAssertEqual(pointsInRangeArray.sorted { $0.x <= $1.x }, pointsInRangeTree.sorted { $0.x <= $1.x },
                        "Points in Range via Tree should equal Points via Array")
     }
     
@@ -104,7 +104,7 @@ class RangeSearchTests: XCTestCase {
         let maxX = self.rangeIntervals[0].1
         let minY = self.rangeIntervals[1].0
         let maxY = self.rangeIntervals[1].1
-        self.measureBlock {
+        self.measure {
             let _ = self.points.filter({ (point: CGPoint) -> Bool in
                 return minX <= Double(point.x) && maxX > Double(point.x) && minY <= Double(point.y) && maxY > Double(point.y)
             })
@@ -126,8 +126,8 @@ class RangeSearchTests: XCTestCase {
         })
         
         var pointsInRangeTree: [STPoint] = []
-        self.measureBlock {
-            pointsInRangeTree = self.spaceTimeTree.elementsInRange(self.spaceTimeIntervals)
+        self.measure {
+            pointsInRangeTree = self.spaceTimeTree.elementsIn(self.spaceTimeIntervals)
         }
         print("pointsInRangeArray: \(pointsInRangeArray.count)")
         XCTAssertEqual(pointsInRangeArray.count, pointsInRangeTree.count, "Points in Range via Tree should equal Points via Array")
@@ -142,7 +142,7 @@ class RangeSearchTests: XCTestCase {
         let maxZ = self.spaceTimeIntervals[2].1
         let minT = self.spaceTimeIntervals[3].0
         let maxT = self.spaceTimeIntervals[3].1
-        self.measureBlock {
+        self.measure {
             let _ = self.spaceTimePoints.filter({ (point: STPoint) -> Bool in
                 return minX <= Double(point.x) && maxX >= Double(point.x) && minY <= Double(point.y) && maxY >= Double(point.y)
                     && minZ <= Double(point.z) && maxZ >= Double(point.z) && minT <= Double(point.t) && maxT >= Double(point.t)

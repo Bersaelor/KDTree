@@ -21,8 +21,8 @@ let maxDiscSize: CGFloat = 0.1
 let minDiscSize: CGFloat = 0.01
 
 enum ShapeChosen {
-    case Circle
-    case Square
+    case circle
+    case square
 }
 
 class FillWithFormsView: View {
@@ -30,9 +30,9 @@ class FillWithFormsView: View {
     var points = 0 {
         didSet { self.pointsUpdated?(points) }
     }
-    var pointsUpdated: (Int -> Void)?
+    var pointsUpdated: ((Int) -> Void)?
     
-    var chosenShape: ShapeChosen = .Circle {
+    var chosenShape: ShapeChosen = .circle {
         didSet {
             downloadQueue.cancelAllOperations()
             commonInit()
@@ -41,12 +41,12 @@ class FillWithFormsView: View {
     }
     
     // swiftlint:disable variable_name_min_length
-    private var cH: CGFloat { return 0.5 * min(self.bounds.height, self.bounds.width) }
+    fileprivate var adjSize: CGFloat { return 0.5 * min(self.bounds.height, self.bounds.width) }
     // swiftlint:enable variable_name_min_length
-    private var closeDiscs: [Disc] = []
-    private var discTree: KDTree<Disc> = KDTree<Disc>(values: [])
-    private lazy var downloadQueue: NSOperationQueue = {
-        var queue = NSOperationQueue()
+    fileprivate var closeDiscs: [Disc] = []
+    fileprivate var discTree: KDTree<Disc> = KDTree<Disc>(values: [])
+    fileprivate lazy var downloadQueue: OperationQueue = {
+        var queue = OperationQueue()
         queue.name = "Shape creation queue"
         queue.maxConcurrentOperationCount = 1
         return queue
@@ -64,59 +64,59 @@ class FillWithFormsView: View {
     
     func commonInit() {
         #if os(iOS)
-            backgroundColor = UIColor.lightGrayColor()
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.lightGray
+            backgroundColor = UIColor.clear
         #endif
 
         let randomTree = KDTree(values: (0..<initialPoints).map({_ in CGPoint.random()}))
         discTree = randomTree.map { (point) -> Disc in
-            let color = Color(hue: CGFloat.random(start: 0.05, end: 0.15),
-                saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
+            let color = Color(hue: CGFloat.random(0.05, end: 0.15),
+                saturation: CGFloat.random(0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
             let maxRadius = min(1 - abs(point.x), 1 - abs(point.y))
             if let nearest = randomTree.nearest(toElement: point, maxDistance: Double(2*maxDiscSize)) {
-                let distance = chosenShape == .Circle ? norm(nearest - point) : maximumNorm(nearest - point)
+                let distance = chosenShape == .circle ? (nearest - point).norm : (nearest - point).maximumNorm
                 let radius = min(0.5*distance, maxRadius)
                 
                 return Disc(center: point, radius: radius, color: color)
             }
-            else { return Disc(center: point, radius: CGFloat.random(start: minDiscSize, end: min(maxDiscSize, maxRadius)), color: color)  }
+            else { return Disc(center: point, radius: CGFloat.random(minDiscSize, end: min(maxDiscSize, maxRadius)), color: color)  }
         }
         points = initialPoints
         
         addMoreShapesBlock()
         
-        xcLog.debug("operationCount: \(downloadQueue.operationCount)")
+        xcLog.debug("operationCount: \(self.downloadQueue.operationCount)")
     }
     
     func addMoreShapesBlock() {
-        let moreShapesOperation = NSBlockOperation()
+        let moreShapesOperation = BlockOperation()
         weak var weakShapeOp = moreShapesOperation
         moreShapesOperation.addExecutionBlock { [weak self] in
             guard let strongself = self else { return }
             var treeCopy = strongself.discTree
             var newPoints = 0
             for _ in 0...5*initialPoints {
-                if weakShapeOp?.cancelled == true { break }
-                let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: Color.clearColor())
+                if weakShapeOp?.isCancelled == true { break }
+                let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: Color.clear)
                 let maxshapeRadius = min(maxDiscSize, min(1 - abs(testDisc.center.x), 1 - abs(testDisc.center.y)))
                 let nearest8Discs = treeCopy.nearestK(8, toElement: testDisc)
                 let closestDistance = nearest8Discs.reduce(CGFloat.infinity) { (currentMin, disc) -> CGFloat in
-                    let distance = (strongself.chosenShape == .Circle) ?
-                        norm(testDisc.center - disc.center) - disc.radius : maximumNorm(testDisc.center - disc.center) - disc.radius
+                    let distance = (strongself.chosenShape == .circle) ?
+                        (testDisc.center - disc.center).norm - disc.radius : (testDisc.center - disc.center).maximumNorm - disc.radius
                     return min(currentMin, distance)
                 }
-                let shapeRadius = min(maxshapeRadius, closestDistance ?? maxshapeRadius)
+                let shapeRadius = min(maxshapeRadius, closestDistance)
                 
                 if shapeRadius >= minDiscSize {
                     newPoints += 1
-                    let color = Color(hue: CGFloat.random(start: 0.05, end: 0.15),
-                        saturation: CGFloat.random(start: 0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
+                    let color = Color(hue: CGFloat.random(0.05, end: 0.15),
+                        saturation: CGFloat.random(0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
                     treeCopy = treeCopy.insert(Disc(center: testDisc.center, radius: shapeRadius, color: color))
                 }
             }
             
-            if weakShapeOp?.cancelled == false {
-                dispatch_async(dispatch_get_main_queue()) { [weak self] in
+            if weakShapeOp?.isCancelled == false {
+                DispatchQueue.main.async() { [weak self] in
                     self?.discTree = treeCopy
                     xcLog.debug("newPoints: \(newPoints)")
                     self?.points = newPoints + strongself.points
@@ -129,11 +129,11 @@ class FillWithFormsView: View {
         self.downloadQueue.addOperation(moreShapesOperation)
     }
     
-    func pointTapped(point: CGPoint) {
+    func tapped(_ point: CGPoint) {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        let tappedPoint = 1.0/cH * (point - c)
+        let tappedPoint = 1.0/adjSize * (point - c)
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
-        closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clearColor()))
+        closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
         
         #if os(OSX)
@@ -153,7 +153,7 @@ class FillWithFormsView: View {
         #endif
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         #if os(OSX)
             guard let context = NSGraphicsContext.currentContext()?.CGContext else {
                 xcLog.error("failed to get graphics context")
@@ -166,24 +166,24 @@ class FillWithFormsView: View {
             }
         #endif
         
-        CGContextClearRect(context, self.bounds)
+        context.clear(self.bounds)
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        CGContextTranslateCTM(context, c.x, c.y)
-        CGContextScaleCTM(context, cH, cH)
+        context.translateBy(x: c.x, y: c.y)
+        context.scaleBy(x: adjSize, y: adjSize)
         
         drawTreeInContext(context)
     }
     
-    private func drawTreeInContext(context: CGContext) {
-        CGContextSetLineWidth(context, 1.0)
+    fileprivate func drawTreeInContext(_ context: CGContext) {
+        context.setLineWidth(1.0)
         discTree.forEach { (disc: Disc) in
             if closeDiscs.contains(disc) {
-                Color(hue: CGFloat.random(start: 0.35, end: 0.54),
-                    saturation: CGFloat.random(start: 0.75, end: 0.95), brightness: 0.9, alpha: 1.0).setFill()
+                Color(hue: CGFloat.random(0.35, end: 0.54),
+                    saturation: CGFloat.random(0.75, end: 0.95), brightness: 0.9, alpha: 1.0).setFill()
             }
             else { disc.color.setFill() }
-            if chosenShape == .Circle { CGContextFillEllipseInRect(context, disc.rect) }
-            else { CGContextFillRect(context, disc.rect) }
+            if chosenShape == .circle { context.fillEllipse(in: disc.rect) }
+            else { context.fill(disc.rect) }
         }
     }
 

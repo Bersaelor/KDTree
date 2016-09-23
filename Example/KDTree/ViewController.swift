@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func dismissPresentedViewController(sender: UIControl) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissPresentedViewController(_ sender: UIControl) {
+        dismiss(animated: true, completion: nil)
     }
 }
