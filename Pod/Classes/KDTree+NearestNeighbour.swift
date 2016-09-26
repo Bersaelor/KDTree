@@ -124,7 +124,7 @@ extension KDTree {
 
             //if the bestDistance so far intersects the hyperplane at the other side of this value
             //there could be points in the other subtree
-            if dimensionDifference*dimensionDifference < bestValues.biggestDistance {
+            if dimensionDifference*dimensionDifference < bestValues.biggestDistance || !bestValues.full {
                 let otherSubtree = isLeftOfValue ? right : left
                 otherSubtree.nearestK(toElement: searchElement, bestValues: &bestValues)
             }
