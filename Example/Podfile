@@ -10,8 +10,8 @@ target 'KDTree_Example' do
     target 'KDTree_Tests' do
         inherit! :search_paths
         
-#        pod 'Quick', '~> 0.9'
-#        pod 'Nimble', '~> 4.0'
+        pod 'Quick', '~> 0.10.0'
+        pod 'Nimble', '~> 5.0.0'
     end
     
 end

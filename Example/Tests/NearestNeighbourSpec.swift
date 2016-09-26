@@ -42,6 +42,15 @@ class NearestNeighbourSpec: QuickSpec {
                     expect(tree.nearest(toElement: CGPoint(x: -0.1, y:0.5))) == points[3]
                 }
             }
+            
+            context("Distant subtree") {
+                let points = [CGPoint(x: 1, y: 1), CGPoint(x: 0, y: 1), CGPoint(x: -1, y: 1)]
+                let tree = KDTree(values: points)
+                
+                it("3 nearest points should be all 3") {
+                    expect(tree.nearestK(3, toElement: CGPoint(x: 1, y: 1))) == points
+                }
+            }
         }
     }
 }
