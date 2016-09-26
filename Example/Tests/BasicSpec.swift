@@ -45,7 +45,7 @@ class BasicSpec: QuickSpec {
                 }
                 
                 it("equals KDTree from reverse elements") {
-                    expect(kdTree) == KDTree(values: points.reverse())
+                    expect(kdTree) == KDTree(values: points.reversed())
                 }
                 
                 it("should not be equal kdTreePlus") {
@@ -66,12 +66,12 @@ class BasicSpec: QuickSpec {
                     for _ in 0..<50 {
                         let n = Int(arc4random() % UInt32(smallerPoints.count))
                         let pointToBeRemoved = smallerPoints[n]
-                        smallerPoints.removeAtIndex(n)
+                        smallerPoints.remove(at: n)
                         smallerTree = smallerTree.remove(pointToBeRemoved)
                     }
-                    smallerPoints = smallerPoints.sort({ $0.x < $1.x })
+                    smallerPoints = smallerPoints.sorted(by: { $0.x < $1.x })
                     
-                    expect(smallerPoints) == smallerTree.elements.sort({ $0.x < $1.x })
+                    expect(smallerPoints) == smallerTree.elements.sorted(by: { $0.x < $1.x })
                 }
                 
                 it("should be deeper then 2") {
@@ -101,7 +101,7 @@ class BasicSpec: QuickSpec {
             it("filtered map to Tree of Rects equals mapped filter") {
                 let filterAndMap = tenTree.filter({ $0.norm > 5 }).map({ CGRect(x: $0.x, y: $0.y, width: 0.0, height: 0.0)
                     .insetBy(dx: -0.5, dy: -0.5) })
-                let mapAndFilter = tenTree.map({ CGRect($0.x, $0.y, 0.0, 0.0)
+                let mapAndFilter = tenTree.map({ CGRect(x: $0.x, y: $0.y, width: 0.0, height: 0.0)
                     .insetBy(dx: -0.5, dy: -0.5) }).filter({ $0.origin.norm > 4.5 })
                 expect(mapAndFilter) == filterAndMap
             }

@@ -90,14 +90,14 @@ class NearestNeighbourLoadTest: XCTestCase {
         XCTAssertEqual(avgPointTree, avgPoint, "Average point from tree equals average from points")
     }
     
-    func test04b_ComparisonArrayReduce() {
-        var sum = CGPoint.zero
-        self.measure {
-            sum = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
-        }
-        let avgPoint = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
-        XCTAssertLessThan(avgPoint.squaredDistance(to: CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
-    }
+//    func test04b_ComparisonArrayReduce() {
+//        var sum = CGPoint.zero
+//        self.measure {
+//            sum = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
+//        }
+//        let avgPoint = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
+//        XCTAssertLessThan(avgPoint.squaredDistance(to: CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
+//    }
     
     func test05_NearestNeighbourPerformance() {
         var nearestPointsFromTree = [CGPoint]()
@@ -110,24 +110,24 @@ class NearestNeighbourLoadTest: XCTestCase {
         XCTAssertEqual(nearestPointsFromArray, nearestPointsFromTree, "Nearest points via Array should equal nearest points via Tree")
     }
     
-    func test05b_NearestNeighbourComparisonArray() {
-        let searchPoints = testPoints
-        
-        self.measure {
-            let _ = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
-                var bestDistance = Double.infinity
-                let nearest = self.points.reduce(CGPoint.zero) { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
-                    let testDistance = searchPoint.squaredDistance(to: testPoint)
-                    if testDistance < bestDistance {
-                        bestDistance = testDistance
-                        return testPoint
-                    }
-                    return bestPoint
-                }
-                return nearest
-            }
-        }
-    }
+//    func test05b_NearestNeighbourComparisonArray() {
+//        let searchPoints = testPoints
+//        
+//        self.measure {
+//            let _ = searchPoints.map { (searchPoint: CGPoint) -> CGPoint in
+//                var bestDistance = Double.infinity
+//                let nearest = self.points.reduce(CGPoint.zero) { (bestPoint: CGPoint, testPoint: CGPoint) -> CGPoint in
+//                    let testDistance = searchPoint.squaredDistance(to: testPoint)
+//                    if testDistance < bestDistance {
+//                        bestDistance = testDistance
+//                        return testPoint
+//                    }
+//                    return bestPoint
+//                }
+//                return nearest
+//            }
+//        }
+//    }
     
     func test05_k5NearestNeighbour() {
         let nearest5PointsFromArray = testPoints.map { (searchPoint: CGPoint) -> [CGPoint] in
