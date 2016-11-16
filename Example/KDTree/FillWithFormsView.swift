@@ -111,7 +111,7 @@ class FillWithFormsView: View {
                     newPoints += 1
                     let color = Color(hue: CGFloat.random(0.05, end: 0.15),
                         saturation: CGFloat.random(0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
-                    treeCopy = treeCopy.insert(Disc(center: testDisc.center, radius: shapeRadius, color: color))
+                    treeCopy = treeCopy.inserting(Disc(center: testDisc.center, radius: shapeRadius, color: color))
                 }
             }
             
