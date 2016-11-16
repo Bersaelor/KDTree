@@ -50,7 +50,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         let insertPoints = testPoints[0..<100]
         var movingTree = largeTree
         self.measure {
-            for point in insertPoints { movingTree = movingTree.insert(point) }
+            for point in insertPoints { movingTree = movingTree.inserting(point) }
         }
         
         XCTAssertEqual(movingTree.count, points.count + insertPoints.count, "After Insertion points = start + inserted")
@@ -70,7 +70,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         var movingTree = largeTree
 
         self.measure {
-            for point in pointsRemoved { movingTree = movingTree.remove(point) }
+            for point in pointsRemoved { movingTree = movingTree.removing(point) }
         }
         
         XCTAssertEqual(movingTree.count, points.count - pointsRemoved.count, "After Removing points = start - removed")
