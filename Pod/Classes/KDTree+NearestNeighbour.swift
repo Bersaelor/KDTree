@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: Nearest Neighbour
+// MARK: Nearest Neighbour
 extension KDTree {
     
     /// Returns a the nearest `KDTreePoint` to the search point `toElement`,
@@ -96,7 +96,7 @@ private struct Neighbours {
     }
 }
 
-//MARK: k Nearest Neighbour
+// MARK: k Nearest Neighbour
 extension KDTree {
     
     /// Returns the k nearest `KDTreePoint`s to the search point `toElement`,

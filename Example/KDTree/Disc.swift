@@ -6,7 +6,6 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-
 #if os(OSX)
     import Cocoa
     public typealias Color = NSColor

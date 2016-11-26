@@ -94,7 +94,7 @@ public enum KDTree<Element: KDTreePoint> {
     /// Return a KDTree with the element inserted. Tree might not be balanced anymore after this
     ///
     /// - Complexity: O(n log n )..
-    public func insert(_ newValue: Element, dim: Int = 0) -> KDTree {
+    public func inserting(_ newValue: Element, dim: Int = 0) -> KDTree {
         switch self {
         case .leaf:
             return .node(left: .leaf, value: newValue, dimension: dim, right: .leaf)
@@ -103,12 +103,12 @@ public enum KDTree<Element: KDTreePoint> {
             else {
                 let nextDim = (dim + 1) % Element.dimensions
                 if newValue.kdDimension(dim) < value.kdDimension(dim) {
-                    return KDTree.node(left: left.insert(newValue, dim: nextDim), value: value,
+                    return KDTree.node(left: left.inserting(newValue, dim: nextDim), value: value,
                                        dimension: dim, right: right)
                 }
                 else {
                     return KDTree.node(left: left, value: value, dimension: dim,
-                                       right: right.insert(newValue, dim: nextDim))
+                                       right: right.inserting(newValue, dim: nextDim))
                 }
             }
         }    
@@ -117,7 +117,7 @@ public enum KDTree<Element: KDTreePoint> {
     /// Return a KDTree with the element removed.
     ///
     /// If element is not contained the new KDTree will be equal to the old one
-    public func remove(_ valueToBeRemoved: Element, dim: Int = 0) -> KDTree {
+    public func removing(_ valueToBeRemoved: Element, dim: Int = 0) -> KDTree {
         switch self {
         case .leaf:
             return self
@@ -139,12 +139,12 @@ public enum KDTree<Element: KDTreePoint> {
             else {
                 let nextDim = (dim + 1) % Element.dimensions
                 if valueToBeRemoved.kdDimension(dim) < value.kdDimension(dim) {
-                    return KDTree.node(left: left.remove(valueToBeRemoved, dim: nextDim), value: value,
+                    return KDTree.node(left: left.removing(valueToBeRemoved, dim: nextDim), value: value,
                                        dimension: dim, right: right)
                 }
                 else {
                     return KDTree.node(left: left, value: value, dimension: dim,
-                                       right: right.remove(valueToBeRemoved, dim: nextDim))
+                                       right: right.removing(valueToBeRemoved, dim: nextDim))
                 }
             }
         }
@@ -164,7 +164,7 @@ public enum KDTree<Element: KDTreePoint> {
                     else { return (.node(left: left, value: value, dimension: dim, right: newSubTree), replacement) }
                 }
                 //the own point is the optimum!
-                return (self.remove(value), value)
+                return (self.removing(value), value)
             }
             else {
                 //look at both side and the value and find the min/max regarding f() along the dimOfCut
@@ -183,7 +183,7 @@ public enum KDTree<Element: KDTreePoint> {
                     return (.node(left: left, value: value, dimension: dim, right: newRightSubTree), bestValue)
                 }
                 else { //the own point is the optimum!
-                    return (self.remove(value), value)
+                    return (self.removing(value), value)
                 }
             }
         }

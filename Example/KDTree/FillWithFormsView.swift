@@ -111,7 +111,7 @@ class FillWithFormsView: View {
                     newPoints += 1
                     let color = Color(hue: CGFloat.random(0.05, end: 0.15),
                         saturation: CGFloat.random(0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
-                    treeCopy = treeCopy.insert(Disc(center: testDisc.center, radius: shapeRadius, color: color))
+                    treeCopy = treeCopy.inserting(Disc(center: testDisc.center, radius: shapeRadius, color: color))
                 }
             }
             
@@ -135,14 +135,12 @@ class FillWithFormsView: View {
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
         closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
-        
         #if os(OSX)
             self.needsDisplay = true
         #else
             self.setNeedsDisplay()
         #endif
     }
-    
     
     func update() {
 

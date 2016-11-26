@@ -27,7 +27,6 @@ class IllustrationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -38,8 +37,7 @@ class IllustrationViewController: UIViewController {
     }
     */
     
-
-//MARK: - Navigation
+    // MARK: - Navigation
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         illustrationView.isKNearest = sender.selectedSegmentIndex == 1

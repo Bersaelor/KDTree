@@ -13,7 +13,7 @@ class BasicSpec: QuickSpec {
             let testPoint = CGPoint(x: 2, y: 2)
             let testPoint2 = CGPoint(x: 5, y: 5)
             let kdTree = KDTree(values: points)
-            let kdTreePlus = kdTree.insert(testPoint)
+            let kdTreePlus = kdTree.inserting(testPoint)
             
             context("empty Tree") {
                 let emptyTree = KDTree<CGPoint>(values: [])
@@ -41,7 +41,7 @@ class BasicSpec: QuickSpec {
                 }
                 
                 it("remove should decrement") {
-                    expect(kdTreePlus.remove(testPoint).count) == points.count
+                    expect(kdTreePlus.removing(testPoint).count) == points.count
                 }
                 
                 it("equals KDTree from reverse elements") {
@@ -53,7 +53,7 @@ class BasicSpec: QuickSpec {
                 }
                 
                 it("removing point that isn't contained should keep equal") {
-                    expect(kdTreePlus) == kdTreePlus.remove(testPoint2)
+                    expect(kdTreePlus) == kdTreePlus.removing(testPoint2)
                 }
                 
                 it("should contain inserted point") {
@@ -67,7 +67,7 @@ class BasicSpec: QuickSpec {
                         let n = Int(arc4random() % UInt32(smallerPoints.count))
                         let pointToBeRemoved = smallerPoints[n]
                         smallerPoints.remove(at: n)
-                        smallerTree = smallerTree.remove(pointToBeRemoved)
+                        smallerTree = smallerTree.removing(pointToBeRemoved)
                     }
                     smallerPoints = smallerPoints.sorted(by: { $0.x < $1.x })
                     
