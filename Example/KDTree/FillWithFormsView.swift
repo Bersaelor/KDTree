@@ -135,14 +135,12 @@ class FillWithFormsView: View {
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
         closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
-        
         #if os(OSX)
             self.needsDisplay = true
         #else
             self.setNeedsDisplay()
         #endif
     }
-    
     
     func update() {
 
