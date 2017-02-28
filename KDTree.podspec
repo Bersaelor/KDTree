@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "KDTree"
-  s.version          = "0.3.0"
+  s.version          = "0.3.1"
   s.summary          = "Swift implementation of a k-dimensional binary space partitioning tree."
 
 # This description is used to generate tags and improve search results.

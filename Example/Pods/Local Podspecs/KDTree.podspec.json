@@ -1,6 +1,6 @@
 {
   "name": "KDTree",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "summary": "Swift implementation of a k-dimensional binary space partitioning tree.",
   "description": "Swift implementation of a k-dimensional binary space partitioning tree. Useful for O(log(N)) nearest neighbour searches.",
   "homepage": "https://github.com/Bersaelor/KDTree",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/Bersaelor/KDTree.git",
-    "tag": "0.2.2"
+    "tag": "0.3.1"
   },
   "social_media_url": "https://twitter.com/bersaelor",
   "platforms": {
