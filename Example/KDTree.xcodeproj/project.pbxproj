@@ -373,24 +373,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = H43Z4288RY;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					71C1B45F1CD946BF005436C3 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 					71C1B46F1CD946BF005436C3 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 						TestTargetID = 71C1B45F1CD946BF005436C3;
 					};
 				};
@@ -926,6 +928,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KDTree-OSX-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -945,6 +948,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -952,7 +956,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D25A52DFB11E96373D87BD47 /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -964,6 +967,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.konrad.KDTree-OSX-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_OSX_Example.app/Contents/MacOS/KDTree_OSX_Example";
 			};
 			name = Debug;
@@ -972,7 +976,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F0A8F65F153DF33183ABF7A0 /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -984,6 +987,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_OSX_Example.app/Contents/MacOS/KDTree_OSX_Example";
 			};
 			name = Release;

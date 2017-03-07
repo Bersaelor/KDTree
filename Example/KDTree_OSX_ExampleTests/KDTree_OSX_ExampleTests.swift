@@ -23,7 +23,7 @@ class KDTreeOSXExampleTests: XCTestCase {
     }
     
     func test01_BuildingPerformance() {
-        self.measureBlock {
+        self.measure {
             let _ = KDTree(values: self.points)
         }
     }
