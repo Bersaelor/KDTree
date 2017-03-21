@@ -28,6 +28,9 @@
 		7186FE831D99D99B00D8F292 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
 		7186FE851D99DBBF00D8F292 /* RangeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */; };
 		7186FE861D99DF0A00D8F292 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
+		719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */; };
+		719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAE1E81B8D900A09A3F /* Star.swift */; };
+		719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */; };
 		71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
 		71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */; };
 		71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8D1CB1468100CB19A6 /* Disc.swift */; };
@@ -74,6 +77,9 @@
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapViewController.swift; sourceTree = "<group>"; };
+		719CEFAE1E81B8D900A09A3F /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hygdata_v3.csv; sourceTree = "<group>"; };
 		71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillWithFormsView.swift; sourceTree = "<group>"; };
 		71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselationViewController.swift; sourceTree = "<group>"; };
 		71BB4C8D1CB1468100CB19A6 /* Disc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disc.swift; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */,
 				71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */,
+				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
+				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
+				719CEFAE1E81B8D900A09A3F /* Star.swift */,
 				716B72011CAF25B100A35BB6 /* Geometry.swift */,
 				716B71FC1CAEF44A00A35BB6 /* UIView subclasses */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -425,6 +434,7 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,6 +668,8 @@
 			files = (
 				71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */,
 				716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */,
+				719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */,
+				719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */,
 				716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */,

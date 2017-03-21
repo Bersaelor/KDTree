@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5l-OV-rT5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,21 +24,33 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzr-GZ-if7">
+                                <rect key="frame" x="16" y="64" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="9kn-fd-1nJ"/>
                                 </constraints>
                                 <state key="normal" title="Visual Tree-Algorithm Explanation"/>
                                 <connections>
-                                    <segue destination="B5l-OV-rT5" kind="presentation" id="PQf-e0-PP4"/>
+                                    <segue destination="cVw-6w-nEA" kind="show" id="oQ6-16-zxB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sec-cC-dHL">
+                                <rect key="frame" x="16" y="116" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fub-zs-e4d"/>
                                 </constraints>
-                                <state key="normal" title="Tesselations"/>
+                                <state key="normal" title="Random Tesselations"/>
                                 <connections>
-                                    <segue destination="Neb-VB-EbN" kind="presentation" id="1fm-Nk-Az2"/>
+                                    <segue destination="Owp-j3-gNR" kind="show" id="kau-Hc-gJg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhZ-HD-lFV">
+                                <rect key="frame" x="16" y="168" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="aFU-qS-V6v"/>
+                                </constraints>
+                                <state key="normal" title="Dataset"/>
+                                <connections>
+                                    <segue destination="SpN-iY-Gpw" kind="show" id="fDS-LO-p9B"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -46,8 +61,11 @@
                             <constraint firstItem="Sec-cC-dHL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="KB1-UY-QTT"/>
                             <constraint firstItem="xzr-GZ-if7" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="RZR-Yb-27L"/>
                             <constraint firstItem="Sec-cC-dHL" firstAttribute="top" secondItem="xzr-GZ-if7" secondAttribute="bottom" constant="8" id="SbG-MU-8pY"/>
+                            <constraint firstItem="XhZ-HD-lFV" firstAttribute="top" secondItem="Sec-cC-dHL" secondAttribute="bottom" constant="8" id="bNx-jL-EPy"/>
                             <constraint firstItem="Sec-cC-dHL" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="flt-aZ-pfl"/>
+                            <constraint firstItem="XhZ-HD-lFV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="hff-nl-bmK"/>
                             <constraint firstItem="xzr-GZ-if7" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="nBT-gz-qbf"/>
+                            <constraint firstItem="XhZ-HD-lFV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="nbI-Uc-Pyz"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -55,10 +73,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="7u6-cG-3Uf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="430"/>
+            <point key="canvasLocation" x="238" y="605"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oUE-Nk-EtS">
@@ -69,12 +88,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cVw-6w-nEA" kind="relationship" relationship="rootViewController" id="hgP-PL-623"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="s8Y-HK-a3l"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXW-UW-CRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="8"/>
+            <point key="canvasLocation" x="-538" y="605"/>
         </scene>
         <!--Illustration View Controller-->
         <scene sceneID="47X-Y0-xJ5">
@@ -89,12 +108,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvC-5d-3NM" customClass="IllustrationView" customModule="KDTree_Example" customModuleProvider="target">
+                                <rect key="frame" x="5" y="74" width="590" height="590"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HvC-5d-3NM" secondAttribute="height" multiplier="1:1" id="r87-iO-Mfl"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCE-Ht-X3r">
+                                <rect key="frame" x="15" y="672" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="NfV-yn-Zvv"/>
                                     <constraint firstAttribute="width" constant="100" id="a3C-Gq-Ngj"/>
@@ -104,6 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="23" minValue="5" maxValue="101" translatesAutoresizingMaskIntoConstraints="NO" id="jlP-ps-3ta">
+                                <rect key="frame" x="121" y="668" width="461" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="d1J-No-tWX"/>
                                 </constraints>
@@ -112,6 +134,7 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tapped: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-2y-1Gj">
+                                <rect key="frame" x="15" y="717" width="175" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="j7e-wi-Q3c"/>
                                     <constraint firstAttribute="height" constant="21" id="xQL-vw-Ty8"/>
@@ -121,6 +144,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearest: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjj-LU-fs3">
+                                <rect key="frame" x="198" y="717" width="382" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="Uri-2G-Ama"/>
                                     <constraint firstAttribute="height" constant="21" id="lwZ-r1-wiD"/>
@@ -165,11 +189,6 @@
                                 <action selector="segmentChanged:" destination="cVw-6w-nEA" eventType="valueChanged" id="0bx-C9-BFI"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="vkV-nx-tyz">
-                            <connections>
-                                <action selector="dismissPresentedViewController:" destination="My4-HM-tfJ" id="e9s-uR-VYv"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
@@ -182,23 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My4-HM-tfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="-92"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dxf-qI-Z41">
-            <objects>
-                <navigationController id="Neb-VB-EbN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="um0-s2-S8D">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Owp-j3-gNR" kind="relationship" relationship="rootViewController" id="Gac-yP-hqX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cFe-6l-dkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1154" y="783"/>
+            <point key="canvasLocation" x="1254" y="-313"/>
         </scene>
         <!--Tesselation View Controller-->
         <scene sceneID="f8C-hV-4cm">
@@ -213,12 +216,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnA-Ob-WXU" customClass="FillWithFormsView" customModule="KDTree_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lnA-Ob-WXU" secondAttribute="height" multiplier="1:1" id="rh4-LX-eyp"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euD-JM-X4M">
+                                <rect key="frame" x="20" y="672" width="140" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="AFv-Cy-r3n"/>
                                     <constraint firstAttribute="height" constant="21" id="gyY-pj-vOR"/>
@@ -250,11 +255,6 @@
                                 <action selector="shapeChanged:" destination="Owp-j3-gNR" eventType="valueChanged" id="bnx-qH-CK0"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="tXz-2K-1tb">
-                            <connections>
-                                <action selector="dismissPresentedViewController:" destination="TJh-Lv-rNU" id="2KD-Jp-8tm"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
@@ -265,7 +265,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJh-Lv-rNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="883"/>
+            <point key="canvasLocation" x="2418" y="144"/>
+        </scene>
+        <!--Star Map View Controller-->
+        <scene sceneID="lXZ-IQ-1Yn">
+            <objects>
+                <viewController id="SpN-iY-Gpw" customClass="StarMapViewController" customModule="KDTree_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0G4-0e-vkK"/>
+                        <viewControllerLayoutGuide type="bottom" id="fuc-01-b2r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gHa-Ww-7Xj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="r77-lH-SZg">
+                                <rect key="frame" x="290" y="390" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Mw4-AF-VMp"/>
+                                    <constraint firstAttribute="height" constant="20" id="yY5-gM-5az"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r77-lH-SZg" firstAttribute="centerY" secondItem="gHa-Ww-7Xj" secondAttribute="centerY" id="yG9-2R-SlP"/>
+                            <constraint firstItem="r77-lH-SZg" firstAttribute="centerX" secondItem="gHa-Ww-7Xj" secondAttribute="centerX" id="yqF-Bu-k7n"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="r77-lH-SZg" id="jeE-hb-KxR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81c-Bo-GI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2418" y="924"/>
         </scene>
     </scenes>
     <resources>
