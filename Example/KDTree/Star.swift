@@ -11,16 +11,13 @@ import KDTree
 
 // swiftlint:disable variable_name
 
-struct Star {
-    let db_id: Int
+struct StarData {
     let hip_id: Int?
     let hd_id: Int?
     let hr_id: Int?
     let gl_id: Int?
     let bayer_flamstedt: String
     let properName: String
-    let right_ascension: Double
-    let declination: Double
     let distance: Double
     let pmra: Double
     let pmdec: Double
@@ -29,6 +26,13 @@ struct Star {
     let absmag: Double
     let spect: String
     let ci: String
+}
+
+struct Star {
+    let dbID: Int
+    let right_ascension: Float
+    let declination: Float
+    let starData: Box<StarData>
     
     init? (row: String) {
         let fields = row.replacingOccurrences(of: "\"", with: "").components(separatedBy: ",")
@@ -37,9 +41,9 @@ struct Star {
             xcLog.error("Not enough rows in \(fields)")
             return nil
         }
-        guard let db_id = Int(fields[0]),
-            let right_ascension = Double(fields[7]),
-            let declination = Double(fields[8]),
+        guard let dbID = Int(fields[0]),
+            let right_ascension = Float(fields[7]),
+            let declination = Float(fields[8]),
             let dist = Double(fields[9]),
             let pmra = Double(fields[10]),
             let pmdec = Double(fields[11]),
@@ -50,32 +54,25 @@ struct Star {
                 xcLog.error("Invalid Row: \(row), \n fields: \(fields)")
                 return nil
         }
-        
-        self.db_id = db_id
-        self.hip_id = Int(fields[1])
-        self.hd_id = Int(fields[2])
-        self.hr_id = Int(fields[3])
-        self.gl_id = Int(fields[4])
-        self.bayer_flamstedt = fields[5]
-        self.properName = fields[6]
+
+        self.dbID = dbID
         self.right_ascension = right_ascension
         self.declination = declination
-        self.distance = dist
-        self.pmra = pmra
-        self.pmdec = pmdec
-        self.rv = rv
-        self.mag = mag
-        self.absmag = absmag
-        self.spect = fields[14]
-        self.ci = fields[15]
-
+        self.starData = Box(StarData(hip_id: Int(fields[1]),
+                                     hd_id: Int(fields[2]),
+                                     hr_id: Int(fields[3]),
+                                     gl_id: Int(fields[4]),
+                                     bayer_flamstedt: fields[5],
+                                     properName: fields[6],
+                                     distance: dist, pmra: pmra, pmdec: pmdec, rv: rv,
+                                     mag: mag, absmag: absmag, spect: fields[14], ci: fields[15]))
     }
 }
 
 // swiftlint:enable variable_name
 
 func == (lhs: Star, rhs: Star) -> Bool {
-    return lhs.db_id == rhs.db_id
+    return lhs.dbID == rhs.dbID
 }
 
 extension Star: Equatable {}

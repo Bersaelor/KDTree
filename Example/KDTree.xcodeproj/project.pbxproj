@@ -40,6 +40,7 @@
 		71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4661CD946BF005436C3 /* Assets.xcassets */; };
 		71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4681CD946BF005436C3 /* Main.storyboard */; };
 		71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */; };
+		71DACADD1E8668D40055B8F2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDTree_OSX_ExampleTests.swift; sourceTree = "<group>"; };
 		71C1B4761CD946BF005436C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestNeighbourSpec.swift; sourceTree = "<group>"; };
+		71DACADC1E8668D40055B8F2 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
 				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
 				719CEFAE1E81B8D900A09A3F /* Star.swift */,
+				71DACADC1E8668D40055B8F2 /* Box.swift */,
 				716B72011CAF25B100A35BB6 /* Geometry.swift */,
 				716B71FC1CAEF44A00A35BB6 /* UIView subclasses */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -675,6 +678,7 @@
 				71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				71BB4C921CB18F9500CB19A6 /* Square.swift in Sources */,
+				71DACADD1E8668D40055B8F2 /* Box.swift in Sources */,
 				716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */,
 				71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */,
 			);
