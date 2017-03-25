@@ -42,7 +42,7 @@ let dataValues: [CustomDataPoint] = ...
 var tree: KDTree<CGPoint> = KDTree(values: dataValues)
 ```
 
-Then you can `insert()`, `remove()`, `map()`, `filter()`, `reduce()` and `forEach()` on this tree with the expected results.
+Then you can `insert()`, `remove()`, `map()`, `filter()`, `reduce()` and `forEach()` on this tree with the expected results, as KDTree conforms to Sequence.
 
 ## Applications
 

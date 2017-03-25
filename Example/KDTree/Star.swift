@@ -35,7 +35,7 @@ struct Star {
     let starData: Box<StarData>
     
     init? (row: String) {
-        let fields = row.replacingOccurrences(of: "\"", with: "").components(separatedBy: ",")
+        let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
             xcLog.error("Not enough rows in \(fields)")
@@ -58,14 +58,15 @@ struct Star {
         self.dbID = dbID
         self.right_ascension = right_ascension
         self.declination = declination
-        self.starData = Box(StarData(hip_id: Int(fields[1]),
-                                     hd_id: Int(fields[2]),
-                                     hr_id: Int(fields[3]),
-                                     gl_id: Int(fields[4]),
-                                     bayer_flamstedt: fields[5],
-                                     properName: fields[6],
-                                     distance: dist, pmra: pmra, pmdec: pmdec, rv: rv,
-                                     mag: mag, absmag: absmag, spect: fields[14], ci: fields[15]))
+        let starData = StarData(hip_id: Int(fields[1]),
+                                hd_id: Int(fields[2]),
+                                hr_id: Int(fields[3]),
+                                gl_id: Int(fields[4]),
+                                bayer_flamstedt: fields[5],
+                                properName: fields[6],
+                                distance: dist, pmra: pmra, pmdec: pmdec, rv: rv,
+                                mag: mag, absmag: absmag, spect: fields[14], ci: fields[15])
+        self.starData = Box(starData)
     }
 }
 
@@ -88,5 +89,13 @@ extension Star: KDTreePoint {
         let x = self.right_ascension - otherPoint.right_ascension
         let y = self.declination - otherPoint.declination
         return Double(x*x + y*y)
+    }
+}
+
+extension Star: CustomDebugStringConvertible {
+    
+    public var debugDescription: String {
+        return "🌠: " + starData.value.properName
+            + ": \(right_ascension), \(declination), \(starData.value.distance)" + " mag: \(starData.value.mag)"
     }
 }

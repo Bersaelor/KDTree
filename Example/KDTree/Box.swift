@@ -14,17 +14,14 @@ final class Ref<T> {
 }
 
 struct Box<T> {
-    var ref: Ref<T>
-    init(_ value: T) { ref = Ref(value) }
+    //unmanaged because the assumption is that all data points are retained only once, and released at the end of the program
+    var ref: Unmanaged<Ref<T>>
+    init(_ value: T) { ref = Unmanaged.passRetained(Ref(value)) }
     
     var value: T {
-        get { return ref.value }
+        get { return ref.takeUnretainedValue().value }
         set {
-            if !isKnownUniquelyReferenced(&ref) {
-                ref = Ref(newValue)
-                return
-            }
-            ref.value = newValue
+            ref.takeUnretainedValue().value = newValue
         }
     }
 }
