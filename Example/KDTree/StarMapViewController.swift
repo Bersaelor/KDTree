@@ -48,26 +48,21 @@ class StarMapViewController: UIViewController {
     }
     
     private func loadCSVData(completion: (KDTree<Star>?) -> Void) {
-        do {
-            var startLoading = Date()
-            guard let fileUrl = Bundle.main.url(forResource: "hygdata_v3", withExtension: "csv") else {
-                completion(nil)
-                return }
-            
-            let file = try String(contentsOf: fileUrl)
-            xcLog.debug("Finished loading \(fileUrl)")
-            let rows = file.components(separatedBy: .newlines)
-            let stars = rows.dropFirst().flatMap { return Star(row:$0) }
-            xcLog.debug("Time to load stars: \(Date().timeIntervalSince(startLoading))s")
-            startLoading = Date()
-            let starTree = KDTree(values: stars)
-            xcLog.debug("Time to create Tree: \(Date().timeIntervalSince(startLoading))s")
-            completion(starTree)
-        }
-        catch {
-            xcLog.error(error)
+        var startLoading = Date()
+        
+        guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv"), let fileHandle = fopen(filePath, "r") else {
             completion(nil)
-        }
+            return }
+        defer { fclose(fileHandle) }
+        
+        let lines = lineIteratorC(file: fileHandle)
+        let stars = lines.dropFirst().flatMap { return Star(rowPtr :$0) }
+        xcLog.debug("Time to load stars: \(Date().timeIntervalSince(startLoading))s")
+        startLoading = Date()
+        let starTree = KDTree(values: stars)
+        xcLog.debug("Time to create Tree: \(Date().timeIntervalSince(startLoading))s")
+        completion(starTree)
+        completion(nil)
     }
     
     deinit {

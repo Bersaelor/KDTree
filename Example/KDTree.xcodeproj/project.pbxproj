@@ -41,6 +41,7 @@
 		71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4681CD946BF005436C3 /* Main.storyboard */; };
 		71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */; };
 		71DACADD1E8668D40055B8F2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
+		71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		71C1B4761CD946BF005436C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestNeighbourSpec.swift; sourceTree = "<group>"; };
 		71DACADC1E8668D40055B8F2 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		71DACAE01E86B3490055B8F2 /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
@@ -195,10 +197,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */,
 				71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */,
-				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
-				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
-				719CEFAE1E81B8D900A09A3F /* Star.swift */,
-				71DACADC1E8668D40055B8F2 /* Box.swift */,
+				71DACAE21E86B34F0055B8F2 /* Stars Example */,
 				716B72011CAF25B100A35BB6 /* Geometry.swift */,
 				716B71FC1CAEF44A00A35BB6 /* UIView subclasses */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -279,6 +278,18 @@
 				71C1B4761CD946BF005436C3 /* Info.plist */,
 			);
 			path = KDTree_OSX_ExampleTests;
+			sourceTree = "<group>";
+		};
+		71DACAE21E86B34F0055B8F2 /* Stars Example */ = {
+			isa = PBXGroup;
+			children = (
+				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
+				71DACAE01E86B3490055B8F2 /* LineGenerator.swift */,
+				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
+				719CEFAE1E81B8D900A09A3F /* Star.swift */,
+				71DACADC1E8668D40055B8F2 /* Box.swift */,
+			);
+			name = "Stars Example";
 			sourceTree = "<group>";
 		};
 		CAA472A1686B9714B52D97B5 /* Frameworks */ = {
@@ -675,6 +686,7 @@
 				719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */,
 				716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */,
 				71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				71BB4C921CB18F9500CB19A6 /* Square.swift in Sources */,
@@ -856,6 +868,7 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				DEVELOPMENT_TEAM = H43Z4288RY;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_SHADOW = YES;
@@ -864,6 +877,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -12,24 +12,24 @@ import KDTree
 // swiftlint:disable variable_name
 
 struct StarData {
-    let hip_id: Int?
-    let hd_id: Int?
-    let hr_id: Int?
-    let gl_id: Int?
-    let bayer_flamstedt: String
-    let properName: String
+    let hip_id: Int32?
+    let hd_id: Int32?
+    let hr_id: Int32?
+    let gl_id: Int32?
+    let bayer_flamstedt: String?
+    let properName: String?
     let distance: Double
     let pmra: Double
     let pmdec: Double
-    let rv: Double
+    let rv: Double?
     let mag: Double
     let absmag: Double
-    let spect: String
-    let ci: String
+    let spectralType: String?
+    let colorIndex: String?
 }
 
 struct Star {
-    let dbID: Int
+    let dbID: Int32
     let right_ascension: Float
     let declination: Float
     let starData: Box<StarData>
@@ -41,13 +41,13 @@ struct Star {
             xcLog.error("Not enough rows in \(fields)")
             return nil
         }
-        guard let dbID = Int(fields[0]),
+        
+        guard let dbID = Int32(fields[0]),
             let right_ascension = Float(fields[7]),
             let declination = Float(fields[8]),
             let dist = Double(fields[9]),
             let pmra = Double(fields[10]),
             let pmdec = Double(fields[11]),
-            let rv = Double(fields[12]),
             let mag = Double(fields[13]),
             let absmag = Double(fields[14])
             else {
@@ -58,14 +58,50 @@ struct Star {
         self.dbID = dbID
         self.right_ascension = right_ascension
         self.declination = declination
-        let starData = StarData(hip_id: Int(fields[1]),
-                                hd_id: Int(fields[2]),
-                                hr_id: Int(fields[3]),
-                                gl_id: Int(fields[4]),
+        let starData = StarData(hip_id: Int32(fields[1]),
+                                hd_id: Int32(fields[2]),
+                                hr_id: Int32(fields[3]),
+                                gl_id: Int32(fields[4]),
                                 bayer_flamstedt: fields[5],
                                 properName: fields[6],
+                                distance: dist, pmra: pmra, pmdec: pmdec, rv: Double(fields[12]),
+                                mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: fields[15])
+        self.starData = Box(starData)
+    }
+    
+    init? (rowPtr: UnsafeMutablePointer<CChar>) {
+        var index = 0
+
+        guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        
+        let hip_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
+        let hd_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
+        let hr_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
+        let gl_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
+        let bayerFlamstedt = readString(at: &index, stringPtr: rowPtr)
+        let properName = readString(at: &index, stringPtr: rowPtr)
+        guard let right_ascension: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let declination: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let dist: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let pmra: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let pmdec: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
+        guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let spectralType = readString(at: &index, stringPtr: rowPtr)
+        let colorIndex = readString(at: &index, stringPtr: rowPtr)
+
+        self.dbID = dbID
+        self.right_ascension = right_ascension
+        self.declination = declination
+        let starData = StarData(hip_id: hip_id,
+                                hd_id: hd_id,
+                                hr_id: hr_id,
+                                gl_id: gl_id,
+                                bayer_flamstedt: bayerFlamstedt,
+                                properName: properName,
                                 distance: dist, pmra: pmra, pmdec: pmdec, rv: rv,
-                                mag: mag, absmag: absmag, spect: fields[14], ci: fields[15])
+                                mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
         self.starData = Box(starData)
     }
 }
@@ -95,7 +131,69 @@ extension Star: KDTreePoint {
 extension Star: CustomDebugStringConvertible {
     
     public var debugDescription: String {
-        return "🌠: " + starData.value.properName
+        return "🌠: " + (starData.value.properName ?? "N.A.")
             + ": \(right_ascension), \(declination), \(starData.value.distance)" + " mag: \(starData.value.mag)"
     }
+}
+
+// MARK: CSV Helper Methods
+
+fileprivate func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointer<Int8>) -> Int {
+    var newIndex = index
+    while stringPtr[newIndex] != 0 && stringPtr[newIndex] != 44 { newIndex += 1 }
+    if stringPtr[newIndex] != 0 { //if not at end of file, jump over comma
+        newIndex += 1
+    }
+    return newIndex
+}
+
+fileprivate func readString(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> String? {
+    let startIndex = index
+    index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
+    
+    if index - startIndex > 1 {
+        let mutableStringPtr = UnsafeMutablePointer<Int8>(mutating: stringPtr)
+        stringPtr[index-1] = 0
+        defer { stringPtr[index-1] = 44 }
+        let newCPtr = mutableStringPtr.advanced(by: startIndex)
+        return String(utf8String: newCPtr)
+    }
+    return nil
+}
+
+fileprivate protocol HasCFormatterString {
+    static var cFormatString: String { get }
+    static var initialValue: Self { get }
+}
+
+extension Int32: HasCFormatterString {
+    static var cFormatString: String { return "d" }
+    static var initialValue: Int32 { return -1 }
+}
+
+extension Float: HasCFormatterString {
+    static var cFormatString: String { return "f" }
+    static var initialValue: Float { return 0.0 }
+}
+
+extension Double: HasCFormatterString {
+    static var cFormatString: String { return "lf" }
+    static var initialValue: Double { return 0.0 }
+}
+
+fileprivate func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8> ) -> T? {
+    let startIndex = index
+    index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
+    
+    if index - startIndex > 1 {
+        var value: T = T.initialValue
+        let newCPtr = stringPtr.advanced(by: startIndex)
+        var scanned: Int32 = -1
+        withUnsafeMutablePointer(to: &value, { valuePtr in
+            let args: [CVarArg] = [valuePtr]
+            scanned = vsscanf(newCPtr, "%\(index - startIndex)\(T.cFormatString)", getVaList(args))
+        })
+        return scanned > 0 ? value : nil
+    }
+    return nil
 }
