@@ -28,9 +28,10 @@ public enum KDTree<Element: KDTreePoint> {
             self = .node(left: .leaf, value: firstValue, dimension: currentSplittingDimension, right: .leaf)
         }
         else {
-            let sortedValues = values.sorted { (a, b) -> Bool in
+            let comparator = { (a: Element, b: Element) -> Bool in
                 return a.kdDimension(currentSplittingDimension) < b.kdDimension(currentSplittingDimension)
             }
+            let sortedValues = values.count > 1000 ? values.smoothsorted(by: comparator) : values.sorted(by: comparator)
             let median = sortedValues.count / 2
             let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
             let rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
