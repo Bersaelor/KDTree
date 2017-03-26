@@ -56,13 +56,15 @@ class StarMapViewController: UIViewController {
         defer { fclose(fileHandle) }
         
         let lines = lineIteratorC(file: fileHandle)
-        let stars = lines.dropFirst().flatMap { return Star(rowPtr :$0) }
+        let stars = lines.dropFirst().flatMap { linePtr -> Star? in
+            defer { free(linePtr) }
+            return Star(rowPtr :linePtr)
+        }
         xcLog.debug("Time to load stars: \(Date().timeIntervalSince(startLoading))s")
         startLoading = Date()
         let starTree = KDTree(values: stars)
         xcLog.debug("Time to create Tree: \(Date().timeIntervalSince(startLoading))s")
         completion(starTree)
-        completion(nil)
     }
     
     deinit {
