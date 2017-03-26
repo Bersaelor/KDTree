@@ -32,7 +32,7 @@ struct Star {
     let dbID: Int32
     let right_ascension: Float
     let declination: Float
-    let starData: Box<StarData>
+    let starData: Box<StarData>?
     
     init? (row: String) {
         let fields = row.components(separatedBy: ",")
@@ -69,6 +69,14 @@ struct Star {
         self.starData = Box(starData)
     }
     
+    init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
+        self.dbID = dbID
+        self.right_ascension = Float(ascension)
+        self.declination = Float(declination)
+        self.starData = starData
+    }
+    
+    /// High performance initializer
     init? (rowPtr: UnsafeMutablePointer<CChar>) {
         var index = 0
 
@@ -104,6 +112,12 @@ struct Star {
                                 mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
         self.starData = Box(starData)
     }
+    
+    func starMovedOn(ascension: Float, declination: Float) -> Star {
+        return Star(ascension: self.right_ascension + ascension,
+                    declination: self.declination + declination,
+                    dbID: self.dbID, starData: self.starData)
+    }
 }
 
 // swiftlint:enable variable_name
@@ -131,8 +145,8 @@ extension Star: KDTreePoint {
 extension Star: CustomDebugStringConvertible {
     
     public var debugDescription: String {
-        return "🌠: " + (starData.value.properName ?? "N.A.")
-            + ": \(right_ascension), \(declination), \(starData.value.distance)" + " mag: \(starData.value.mag)"
+        return "🌠: " + (starData?.value.properName ?? "N.A.")
+            + ": \(right_ascension), \(declination), \(starData?.value.distance)" + " mag: \(starData?.value.mag)"
     }
 }
 
