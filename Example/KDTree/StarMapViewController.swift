@@ -11,7 +11,7 @@ import KDTree
 
 class StarMapViewController: UIViewController {
     
-    var stars: KDTree<Star>? = nil
+    var stars: KDTree<Star>?
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var starMapView: StarMapView!
 
@@ -50,6 +50,28 @@ class StarMapViewController: UIViewController {
         
     }
     
+    @IBAction
+    func userTappedMap(recognizer: UITapGestureRecognizer) {
+        let point = recognizer.location(in: self.starMapView)
+        let tappedPosition = starMapView.starPosition(for: point)
+        let searchStar = Star(ascension: Float(tappedPosition.x), declination: Float(tappedPosition.y))
+
+        xcLog.debug("tappedPosition: \(tappedPosition)")
+        let startNN = Date()
+        var nearestStar = stars?.nearest(toElement: searchStar)
+        let nearestDistanceSqd = nearestStar?.squaredDistance(to: searchStar) ?? 10.0
+        if sqrt(nearestDistanceSqd) > Double(searchStar.right_ascension) { // tap close to or below ascension = 0
+            let searchStarModulo = searchStar.starMovedOn(ascension: 24.0, declination: 0.0)
+            if let leftSideNearest = stars?.nearest(toElement: searchStarModulo),
+                leftSideNearest.squaredDistance(to: searchStarModulo) < nearestDistanceSqd {
+                nearestStar = leftSideNearest.starMovedOn(ascension: -24.0, declination: 0.0)
+            }
+        }
+        
+        xcLog.debug("Found nearest star \(nearestStar?.dbID) in \(Date().timeIntervalSince(startNN))s")
+        self.starMapView.tappedStar = nearestStar
+    }
+        
     fileprivate func loadForwardStars() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             if let stars = self?.stars,

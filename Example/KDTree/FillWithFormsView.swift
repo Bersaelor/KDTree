@@ -116,7 +116,7 @@ class FillWithFormsView: View {
             }
             
             if weakShapeOp?.isCancelled == false {
-                DispatchQueue.main.async() { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     self?.discTree = treeCopy
                     xcLog.debug("newPoints: \(newPoints)")
                     self?.points = newPoints + strongself.points

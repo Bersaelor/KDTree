@@ -280,11 +280,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmH-xy-hnV" customClass="StarMapView" customModule="KDTree_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wmH-xy-hnV" secondAttribute="height" multiplier="1:1" id="ntF-fJ-IlP"/>
-                                </constraints>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bw0-jE-Zwm" appends="YES" id="gEx-jv-5Nn"/>
+                                </connections>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="r77-lH-SZg">
                                 <rect key="frame" x="290.5" y="390.5" width="20" height="20"/>
@@ -298,6 +299,7 @@
                         <constraints>
                             <constraint firstItem="wmH-xy-hnV" firstAttribute="top" secondItem="0G4-0e-vkK" secondAttribute="bottom" id="CJK-9q-Sky"/>
                             <constraint firstAttribute="trailing" secondItem="wmH-xy-hnV" secondAttribute="trailing" id="feC-qz-U24"/>
+                            <constraint firstItem="fuc-01-b2r" firstAttribute="top" secondItem="wmH-xy-hnV" secondAttribute="bottom" id="fvW-Kg-tN9"/>
                             <constraint firstItem="wmH-xy-hnV" firstAttribute="leading" secondItem="gHa-Ww-7Xj" secondAttribute="leading" id="wCN-7m-qaR"/>
                             <constraint firstItem="r77-lH-SZg" firstAttribute="centerY" secondItem="gHa-Ww-7Xj" secondAttribute="centerY" id="yG9-2R-SlP"/>
                             <constraint firstItem="r77-lH-SZg" firstAttribute="centerX" secondItem="gHa-Ww-7Xj" secondAttribute="centerX" id="yqF-Bu-k7n"/>
@@ -311,6 +313,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81c-Bo-GI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bw0-jE-Zwm">
+                    <connections>
+                        <action selector="userTappedMapWithRecognizer:" destination="SpN-iY-Gpw" id="Lnu-79-q8r"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2417.5999999999999" y="923.83808095952031"/>
         </scene>

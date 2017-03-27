@@ -95,7 +95,7 @@ struct Star {
             let pmdec = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
         let rv = readDouble(at: &index, stringPtr: rowPtr)
         guard let mag = readDouble(at: &index, stringPtr: rowPtr),
-            let absmag = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
+            let absmag = readDouble(at: &index, stringPtr: rowPtr), mag < 7 else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex = readString(at: &index, stringPtr: rowPtr)
 

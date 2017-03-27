@@ -13,7 +13,11 @@ class StarMapView: UIView {
     var tappedPoint: CGPoint?
 
     var centerPoint = CGPoint.zero
-    var radius: CGFloat = 5.0
+    var radius: CGFloat = 3.0
+    
+    var tappedStar: Star? = nil {
+        didSet { self.setNeedsDisplay() }
+    }
     
     var stars: [Star]? {
         didSet {
@@ -42,6 +46,12 @@ class StarMapView: UIView {
     static let minSize: CGFloat = 0.5
     static let maxSize: CGFloat = 10.0
     
+    func starPosition(for point: CGPoint) -> CGPoint {
+        let relativeToCenter = point - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        let radiusInPix = 0.5 * self.bounds.width / radius
+        return 1.0/radiusInPix * relativeToCenter + centerPoint
+    }
+    
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
             xcLog.error("failed to get graphics context")
@@ -69,11 +79,36 @@ class StarMapView: UIView {
             let relativePosition = radiusInPix*(starPosition - centerPoint) - dotSize * CGPoint(x: 0.5, y: 0.5)
 //            xcLog.debug("Drawing star \(star.starData?.value.properName ?? "Unnamed")"
 //                + " at \(relativePosition) with magnitude \(star.starData?.value.mag ?? 0.0)")
-            context.move(to: relativePosition)
             let rect = CGRect(origin: relativePosition, size: CGSize(width: dotSize, height: dotSize))
             context.fillEllipse(in: rect)
         }
-
+        
+        if let tappedStar = tappedStar {
+            let starPosition = CGPoint(x: CGFloat(tappedStar.right_ascension), y: CGFloat(tappedStar.declination))
+            let circleSize: CGFloat = 15
+            let relativePosition: CGPoint = radiusInPix*(starPosition - centerPoint) - circleSize * CGPoint(x: 0.5, y: 0.5)
+            let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
+            xcLog.debug("relativePosition: \(relativePosition)")
+            UIColor.orange.setStroke()
+            context.strokeEllipse(in: rect)
+            guard let starData = tappedStar.starData?.value else { return }
+            let glieseName: String? = starData.gl_id.flatMap { (id: Int32) -> String in  return "Gliese\(id)" }
+            let hdName: String? = starData.hd_id.flatMap { (id: Int32) -> String in  return "HD\(id)" }
+            let hrName: String? = starData.hr_id.flatMap { (id: Int32) -> String in  return "HR\(id)" }
+            let idName: String = "HYG\(tappedStar.dbID)"
+            let textString: String = starData.properName
+                ?? glieseName ?? starData.bayer_flamstedt ?? hdName ?? hrName ?? idName
+            let isLeftOfCenter = relativePosition.x < c.x
+            let textPosition: CGPoint  = radiusInPix*(starPosition - centerPoint)
+                +  circleSize * (isLeftOfCenter ? CGPoint(x: -0.8, y: -0.8) : CGPoint(x: 0.8, y: -0.8))
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = isLeftOfCenter ? .left : .right
+            let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 1.0),
+                              NSForegroundColorAttributeName: UIColor.orange,
+                              NSParagraphStyleAttributeName: paragraphStyle]
+            xcLog.debug("textString: \(textString)")
+            (textString as NSString).draw(at: textPosition, withAttributes: attributes)
+        }
     }
 
 }
