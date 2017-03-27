@@ -64,11 +64,12 @@ class StarMapViewController: UIViewController {
 
                 //add the points on the other side of the y-axis in case part of the screen is below
                 if currentCenter.x < currentRadius {
-                    starsVisible += stars.elementsIn([
+                    let leftIntervals: [(Double, Double)] = [
                         (Double( 24.0 + currentCenter.x - currentRadius), Double(24.0 + currentCenter.x + currentRadius)),
-                        (Double(currentCenter.y - currentRadius), Double(currentCenter.y + currentRadius))]).map { (star) -> Star in
-                            return star.starMovedOn(ascension: -24.0, declination: 0.0)
-                    }
+                        (Double(currentCenter.y - currentRadius), Double(currentCenter.y + currentRadius))]
+                    starsVisible += stars.elementsIn(leftIntervals).map({ (star: Star) -> Star in
+                        return star.starMovedOn(ascension: -24.0, declination: 0.0)
+                    })
                 }
                 xcLog.debug("Finished RangeSearch with \(starsVisible.count) stars, after \(Date().timeIntervalSince(startRangeSearch))s")
                 

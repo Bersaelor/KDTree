@@ -35,6 +35,7 @@ public func + (left: CGPoint, right: CGPoint) -> CGPoint {
 }
 
 public func += (left: inout CGPoint, right: CGPoint) {
+    // swiftlint:disable:next shorthand_operator
     left = left + right
 }
 
@@ -43,6 +44,7 @@ public func - (left: CGPoint, right: CGPoint) -> CGPoint {
 }
 
 public func -= (left: inout CGPoint, right: CGPoint) {
+    // swiftlint:disable:next shorthand_operator
     left = left - right
 }
 

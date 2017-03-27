@@ -1,5 +1,5 @@
 PODS:
-  - KDTree (0.3.1)
+  - KDTree (0.4.0)
   - Nimble (6.0.1)
   - Quick (1.1.0)
   - XCGLogger (4.0.0):
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KDTree: 22654d1a9a0dc1a627d862bce2e7e2b5dcbc9a77
+  KDTree: 84c3d9bbe5ebb48ca1553d5929762a0200722dd7
   Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
