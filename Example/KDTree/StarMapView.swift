@@ -17,7 +17,7 @@ class StarMapView: View {
     var tappedPoint: CGPoint?
 
     var centerPoint = CGPoint.zero
-    var radius: CGFloat = 0.125
+    var radius: CGFloat = 0.085
     
     var tappedStar: Star? = nil {
         didSet { xPlatformNeedsDisplay() }
@@ -49,7 +49,7 @@ class StarMapView: View {
     static let ascensionRange: CGFloat = 24.0
     static let declinationRange: CGFloat = 180
     
-    static let minSize: CGFloat = 1.0
+    static let minSize: CGFloat = 0.5
     static let maxSize: CGFloat = 12.0
     
     func currentRadii() -> CGSize {
@@ -126,11 +126,7 @@ class StarMapView: View {
     }
     
     private func drawStarText(for star: Star, position: CGPoint, circleSize: CGFloat) {
-        #if os(OSX)
-            let verticalAdjustment = 1.0
-        #else
-            let verticalAdjustment = -1.0
-        #endif
+        let verticalAdjustment = 1.0
         
         guard let starData = star.starData?.value else { return }
         let glieseName: String? = starData.gl_id
@@ -150,10 +146,9 @@ class StarMapView: View {
         (textString as NSString).draw(in: CGRect(pointA: textInnerCorner, pointB: textOuterCorner), withAttributes: attributes)
     }
 
-    
+    // swiftlint:disable variable_name
     /// RGB <0,1> <- BV <-0.4,+2.0> [-]
     private func bv2ToRGB(for bv: CGFloat, spectralType: String? = nil, logging: Bool = false) -> Color {
-
         if let spectralType = spectralType {
             if spectralType.hasPrefix("M6") {
                 var r: CGFloat = 1.0; var g: CGFloat = 0.765; var b: CGFloat = 0.44
