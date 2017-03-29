@@ -101,7 +101,6 @@ class StarMapView: View {
             let circleSize: CGFloat = 15
             let relativePosition: CGPoint = radiusInPix*(starPosition - centerPoint) - circleSize * CGPoint(x: 0.5, y: 0.5)
             let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
-            xcLog.debug("relativePosition: \(relativePosition)")
             Color.orange.setStroke()
             context.strokeEllipse(in: rect)
             guard let starData = tappedStar.starData?.value else { return }
@@ -111,16 +110,16 @@ class StarMapView: View {
             let idName: String = "HYG\(tappedStar.dbID)"
             let textString: String = starData.properName
                 ?? glieseName ?? starData.bayer_flamstedt ?? hdName ?? hrName ?? idName
-            let isLeftOfCenter = relativePosition.x < c.x
-            let textPosition: CGPoint  = radiusInPix*(starPosition - centerPoint)
-                +  circleSize *  CGPoint(x: isLeftOfCenter ? 0.8 : -0.8, y: verticalAdjustment * 0.8)
+            let isLeftOfCenter = relativePosition.x < 0.0
+            let textInnerCorner: CGPoint = radiusInPix*(starPosition - centerPoint)
+                +  circleSize *  CGPoint(x: isLeftOfCenter ? 0.52 : -0.52, y: verticalAdjustment * 0.55)
+            let textOuterCorner = textInnerCorner + CGPoint(x: isLeftOfCenter ? 200 : -200, y: verticalAdjustment * 14.0)
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center // isLeftOfCenter ? .left : .right
+            paragraphStyle.alignment = isLeftOfCenter ? .left : .right
             let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 12.0),
                               NSForegroundColorAttributeName: Color.orange,
                               NSParagraphStyleAttributeName: paragraphStyle]
-            xcLog.debug("textString: \(textString)")
-            (textString as NSString).draw(at: textPosition, withAttributes: attributes)
+            (textString as NSString).draw(in: CGRect(pointA: textInnerCorner, pointB: textOuterCorner), withAttributes: attributes)
         }
     }
 

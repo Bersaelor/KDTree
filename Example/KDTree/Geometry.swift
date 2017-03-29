@@ -12,6 +12,19 @@
     import UIKit
 #endif
 
+extension CGRect {
+    
+    /// Spans the Rectangle between two points
+    ///
+    /// - Parameters:
+    ///   - pointA: One corner point
+    ///   - pointB: Another corner point
+    public init(pointA: CGPoint, pointB: CGPoint) {
+        self.origin = CGPoint(x: min(pointA.x, pointB.x), y: min(pointA.y, pointB.y))
+        self.size = CGSize(width: fabs(pointA.x - pointB.x), height: fabs(pointA.y - pointB.y))
+    }
+}
+
 extension CGPoint {
     var shortDecimalDescription: String {
         return String(format: "(%.3f, %.3f)", self.x, self.y)
