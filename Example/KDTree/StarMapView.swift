@@ -90,6 +90,12 @@ class StarMapView: View {
             context.fillEllipse(in: rect)
         }
         
+        #if os(OSX)
+            let verticalAdjustment = 1.0
+        #else
+            let verticalAdjustment = -1.0
+        #endif
+        
         if let tappedStar = tappedStar {
             let starPosition = CGPoint(x: CGFloat(tappedStar.right_ascension), y: CGFloat(tappedStar.declination))
             let circleSize: CGFloat = 15
@@ -107,10 +113,10 @@ class StarMapView: View {
                 ?? glieseName ?? starData.bayer_flamstedt ?? hdName ?? hrName ?? idName
             let isLeftOfCenter = relativePosition.x < c.x
             let textPosition: CGPoint  = radiusInPix*(starPosition - centerPoint)
-                +  circleSize * (isLeftOfCenter ? CGPoint(x: -0.8, y: -0.8) : CGPoint(x: 0.8, y: -0.8))
+                +  circleSize *  CGPoint(x: isLeftOfCenter ? 0.8 : -0.8, y: verticalAdjustment * 0.8)
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = isLeftOfCenter ? .left : .right
-            let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 1.0),
+            paragraphStyle.alignment = .center // isLeftOfCenter ? .left : .right
+            let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 12.0),
                               NSForegroundColorAttributeName: Color.orange,
                               NSParagraphStyleAttributeName: paragraphStyle]
             xcLog.debug("textString: \(textString)")

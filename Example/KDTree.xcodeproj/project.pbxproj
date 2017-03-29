@@ -890,7 +890,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9AF9F2C658DF6E488E4461D6 /* Pods-KDTree_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
@@ -915,7 +914,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C21662931D2AD0332A01BA1B /* Pods-KDTree_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
@@ -939,7 +937,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CA9AFCB856DDD567CE693E74 /* Pods-KDTree_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -958,7 +955,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C65221F04F9484F8E3E25A68 /* Pods-KDTree_Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -974,7 +970,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90C698D9647F2FA603B9E5A9 /* Pods-KDTree_OSX_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -996,7 +991,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49E6BEB256637DEA593F5DF6 /* Pods-KDTree_OSX_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";

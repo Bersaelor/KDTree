@@ -1,6 +1,6 @@
 PODS:
   - KDTree (0.4.0)
-  - Nimble (6.0.1)
+  - Nimble (6.1.0)
   - Quick (1.1.0)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
@@ -8,7 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - KDTree (from `../`)
-  - Nimble (~> 6.0.1)
+  - Nimble (~> 6.1.0)
   - Quick (~> 1.1.0)
   - XCGLogger (~> 4.0.0)
 
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   KDTree: 84c3d9bbe5ebb48ca1553d5929762a0200722dd7
-  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  Nimble: c53e6903fee94041b90ded74f135820437d8bf59
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: b7d64a4ec1ebc0107e6adb33be4f2b3e04df3a4f
+PODFILE CHECKSUM: c5a0360f17341ac37e239a5a60843df7d245921c
 
 COCOAPODS: 1.1.1
