@@ -14,9 +14,19 @@
     public typealias View = UIView
 #endif
 
+extension View {
+    func xPlatformNeedsDisplay() {
+        #if os(OSX)
+            self.needsDisplay = true
+        #else
+            self.setNeedsDisplay()
+        #endif
+    }
+}
+
 import KDTree
 
-let initialPoints = 500
+let initialPoints = 1000
 let maxDiscSize: CGFloat = 0.1
 let minDiscSize: CGFloat = 0.01
 
@@ -135,20 +145,11 @@ class FillWithFormsView: View {
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
         closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
-        #if os(OSX)
-            self.needsDisplay = true
-        #else
-            self.setNeedsDisplay()
-        #endif
+        xPlatformNeedsDisplay()
     }
     
     func update() {
-
-        #if os(OSX)
-            self.needsDisplay = true
-        #else
-            self.setNeedsDisplay()
-        #endif
+        xPlatformNeedsDisplay()
     }
     
     override func draw(_ rect: CGRect) {

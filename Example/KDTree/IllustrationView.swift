@@ -56,13 +56,13 @@ class IllustrationView: UIView {
     func update() {
         points =  (0..<pointNumber).map({_ in CGPoint(x: CGFloat.random(-1, end: 1), y: CGFloat.random(-1, end: 1))})
         tree = KDTree(values: points)
-        self.setNeedsDisplay()
+        self.xPlatformNeedsDisplay()
     }
     
     func pointTapped(_ point: CGPoint) {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         tappedPoint = 1.0/adjSize * (point - c)
-        xcLog.debug("c: \(c), tappedPoint: \(self.tappedPoint)")
+        xcLog.debug("c: \(c), tappedPoint: \(String(describing: self.tappedPoint))")
         
         if let tappedPoint = tappedPoint {
             if isKNearest { nearestPoints = tree?.nearestK(5, toElement: tappedPoint) ?? [] }
@@ -80,12 +80,12 @@ class IllustrationView: UIView {
             })
             
             if nearestFromArray != nearestPoints.first {
-                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(self.nearestPoints.first)")
+                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(String(describing: self.nearestPoints.first))")
                 xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
-                xcLog.debug("nearest: \(self.nearestPoints.first?.squaredDistance(to: tappedPoint))")
+                xcLog.debug("nearest: \(String(describing: self.nearestPoints.first?.squaredDistance(to: tappedPoint)))")
             }
         }
-        self.setNeedsDisplay()
+        self.xPlatformNeedsDisplay()
     }
     
     override func draw(_ rect: CGRect) {

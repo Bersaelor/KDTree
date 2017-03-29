@@ -95,7 +95,7 @@ struct Star {
             let pmdec = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
         let rv = readDouble(at: &index, stringPtr: rowPtr)
         guard let mag = readDouble(at: &index, stringPtr: rowPtr),
-            let absmag = readDouble(at: &index, stringPtr: rowPtr), mag < 7 else { return nil }
+            let absmag = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex = readString(at: &index, stringPtr: rowPtr)
 
@@ -145,8 +145,10 @@ extension Star: KDTreePoint {
 extension Star: CustomDebugStringConvertible {
     
     public var debugDescription: String {
+        let distanceString = String(describing: starData?.value.distance)
+        let magString = String(describing: starData?.value.mag)
         return "🌠: " + (starData?.value.properName ?? "N.A.")
-            + ": \(right_ascension), \(declination), \(starData?.value.distance)" + " mag: \(starData?.value.mag)"
+            + ": \(right_ascension), \(declination), \( distanceString ) mag: \(magString)"
     }
 }
 

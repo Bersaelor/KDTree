@@ -6,9 +6,13 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-import UIKit
+#if os(OSX)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
-class StarMapView: UIView {
+class StarMapView: View {
 
     var tappedPoint: CGPoint?
 
@@ -16,13 +20,13 @@ class StarMapView: UIView {
     var radius: CGFloat = 3.0
     
     var tappedStar: Star? = nil {
-        didSet { self.setNeedsDisplay() }
+        didSet { xPlatformNeedsDisplay() }
     }
     
     var stars: [Star]? {
         didSet {
             xcLog.debug("Now showing \(self.stars?.count ?? 0)")
-            self.setNeedsDisplay()
+            xPlatformNeedsDisplay()
         }
     }
     
@@ -39,11 +43,10 @@ class StarMapView: UIView {
     }
     
     func commonInit() {
-        backgroundColor = UIColor.black
-        
+
     }
     
-    static let minSize: CGFloat = 0.5
+    static let minSize: CGFloat = 1.0
     static let maxSize: CGFloat = 10.0
     
     func starPosition(for point: CGPoint) -> CGPoint {
@@ -53,12 +56,16 @@ class StarMapView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        guard let context = UIGraphicsGetCurrentContext() else {
-            xcLog.error("failed to get graphics context")
-            return
-        }
-        
+        #if os(OSX)
+            guard let context = NSGraphicsContext.current()?.cgContext else { return }
+        #else
+            guard let context = UIGraphicsGetCurrentContext() else { return }
+        #endif
+
         context.clear(self.bounds)
+
+        Color.black.setFill()
+        context.fillEllipse(in: rect)
         
         //recenter in middle
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
@@ -70,7 +77,7 @@ class StarMapView: UIView {
         
         xcLog.debug("linearDotFactor: \(linearDotFactor), absoluteAddition: \(absoluteAddition)")
 
-        UIColor.white.setFill()
+        Color.white.setFill()
         for star in self.stars ?? [] {
             let starPosition = CGPoint(x: CGFloat(star.right_ascension), y: CGFloat(star.declination))
             let mag = CGFloat(star.starData?.value.mag ?? 0.0)
@@ -89,7 +96,7 @@ class StarMapView: UIView {
             let relativePosition: CGPoint = radiusInPix*(starPosition - centerPoint) - circleSize * CGPoint(x: 0.5, y: 0.5)
             let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
             xcLog.debug("relativePosition: \(relativePosition)")
-            UIColor.orange.setStroke()
+            Color.orange.setStroke()
             context.strokeEllipse(in: rect)
             guard let starData = tappedStar.starData?.value else { return }
             let glieseName: String? = starData.gl_id.flatMap { (id: Int32) -> String in  return "Gliese\(id)" }
@@ -103,8 +110,8 @@ class StarMapView: UIView {
                 +  circleSize * (isLeftOfCenter ? CGPoint(x: -0.8, y: -0.8) : CGPoint(x: 0.8, y: -0.8))
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = isLeftOfCenter ? .left : .right
-            let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 1.0),
-                              NSForegroundColorAttributeName: UIColor.orange,
+            let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 1.0),
+                              NSForegroundColorAttributeName: Color.orange,
                               NSParagraphStyleAttributeName: paragraphStyle]
             xcLog.debug("textString: \(textString)")
             (textString as NSString).draw(at: textPosition, withAttributes: attributes)

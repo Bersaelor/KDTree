@@ -43,6 +43,15 @@
 		71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
 		71DACADD1E8668D40055B8F2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
 		71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
+		7446914C1E8A86F60040A093 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7446914B1E8A86F60040A093 /* StarViewController.swift */; };
+		7446914D1E8A87020040A093 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
+		7446914E1E8A870F0040A093 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAE1E81B8D900A09A3F /* Star.swift */; };
+		7446914F1E8A870F0040A093 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
+		744691501E8A87140040A093 /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */; };
+		744691511E8A87170040A093 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
+		744691531E8A9B580040A093 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691521E8A9B580040A093 /* WindowController.swift */; };
+		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
+		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +109,9 @@
 		71C74C871E884CEC0057B4F2 /* StarMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapView.swift; sourceTree = "<group>"; };
 		71DACADC1E8668D40055B8F2 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		71DACAE01E86B3490055B8F2 /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
+		7446914B1E8A86F60040A093 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
+		744691521E8A9B580040A093 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
@@ -265,7 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				71C1B4621CD946BF005436C3 /* AppDelegate.swift */,
+				744691521E8A9B580040A093 /* WindowController.swift */,
 				71C1B4641CD946BF005436C3 /* ViewController.swift */,
+				7446914B1E8A86F60040A093 /* StarViewController.swift */,
 				71C1B4661CD946BF005436C3 /* Assets.xcassets */,
 				71C1B4681CD946BF005436C3 /* Main.storyboard */,
 				71C1B46B1CD946BF005436C3 /* Info.plist */,
@@ -286,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
+				744691551E8AA50D0040A093 /* StarHelper.swift */,
 				71C74C871E884CEC0057B4F2 /* StarMapView.swift */,
 				71DACAE01E86B3490055B8F2 /* LineGenerator.swift */,
 				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
@@ -399,7 +414,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -469,6 +484,7 @@
 			files = (
 				71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */,
 				71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */,
+				744691501E8A87140040A093 /* hygdata_v3.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */,
+				744691561E8AA50D0040A093 /* StarHelper.swift in Sources */,
 				716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */,
 				719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */,
 				719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */,
@@ -716,11 +733,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7446914F1E8A870F0040A093 /* Box.swift in Sources */,
+				744691571E8AA50D0040A093 /* StarHelper.swift in Sources */,
 				713204B81CD94CEA001A1F44 /* Disc.swift in Sources */,
 				713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */,
 				71C1B4651CD946BF005436C3 /* ViewController.swift in Sources */,
 				71C1B4631CD946BF005436C3 /* AppDelegate.swift in Sources */,
+				7446914D1E8A87020040A093 /* StarMapView.swift in Sources */,
+				7446914C1E8A86F60040A093 /* StarViewController.swift in Sources */,
+				744691531E8A9B580040A093 /* WindowController.swift in Sources */,
+				744691511E8A87170040A093 /* LineGenerator.swift in Sources */,
 				713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */,
+				7446914E1E8A870F0040A093 /* Star.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,12 +980,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = KDTree_OSX_Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KDTree-OSX-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

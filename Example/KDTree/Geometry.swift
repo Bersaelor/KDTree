@@ -59,7 +59,7 @@ public func *= (left: inout CGPoint, right: CGFloat) {
 extension CGPoint {
     public var angle: CGFloat {
         let normedVec = 1.0/self.norm * self
-        return atan(normedVec.y / normedVec.x) + CGFloat(self.x < 0 ? M_PI : 0.0)
+        return atan(normedVec.y / normedVec.x) + self.x < 0 ? CGFloat.pi : 0.0
     }
     
     public static func angledVec(_ angle: CGFloat) -> CGPoint {
