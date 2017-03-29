@@ -17,6 +17,10 @@ class WindowController: NSWindowController {
     
     @IBAction func starMapTapped(_ sender: Any) {
         print("User tapped star Map")
+        
+        if let starVC = self.contentViewController as? StarViewController {
+            starVC.reloadStars()
+        }
     }
 
     @IBAction func tesselationTapped(_ sender: Any) {

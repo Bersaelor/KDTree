@@ -31,19 +31,19 @@ class StarHelper: NSObject {
         completion(starTree)
     }
     
-    static func loadForwardStars(stars: KDTree<Star>, currentCenter: CGPoint, radius: CGFloat, completion: @escaping ([Star]) -> Void) {
+    static func loadForwardStars(stars: KDTree<Star>, currentCenter: CGPoint, radii: CGSize, completion: @escaping ([Star]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let startRangeSearch = Date()
             
             var starsVisible = stars.elementsIn([
-                (Double(currentCenter.x - radius), Double(currentCenter.x + radius)),
-                (Double(currentCenter.y - radius), Double(currentCenter.y + radius))])
+                (Double(currentCenter.x - radii.width), Double(currentCenter.x + radii.width)),
+                (Double(currentCenter.y - radii.height), Double(currentCenter.y + radii.height))])
             
             //add the points on the other side of the y-axis in case part of the screen is below
-            if currentCenter.x < radius {
+            if currentCenter.x < radii.width {
                 let leftIntervals: [(Double, Double)] = [
-                    (Double( 24.0 + currentCenter.x - radius), Double(24.0 + currentCenter.x + radius)),
-                    (Double(currentCenter.y - radius), Double(currentCenter.y + radius))]
+                    (Double( 24.0 + currentCenter.x - radii.width), Double(24.0 + currentCenter.x + radii.width)),
+                    (Double(currentCenter.y - radii.height), Double(currentCenter.y + radii.height))]
                 starsVisible += stars.elementsIn(leftIntervals).map({ (star: Star) -> Star in
                     return star.starMovedOn(ascension: -24.0, declination: 0.0)
                 })

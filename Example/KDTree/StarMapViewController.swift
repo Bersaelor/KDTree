@@ -42,7 +42,7 @@ class StarMapViewController: UIViewController {
                     if let stars = stars, let starMapView = self?.starMapView {
                         StarHelper.loadForwardStars(stars: stars,
                                                     currentCenter: starMapView.centerPoint,
-                                                    radius: starMapView.radius) { (starsVisible) in
+                                                    radii: starMapView.currentRadii()) { (starsVisible) in
                             starMapView.stars = starsVisible
                         }
                     }

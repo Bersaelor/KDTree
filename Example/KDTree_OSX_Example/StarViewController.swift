@@ -36,14 +36,18 @@ class StarViewController: NSViewController {
                     xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                     self?.loadingIndicator.stopAnimation(nil)
                     
-                    if let stars = stars, let starMapView = self?.starMapView {
-                        StarHelper.loadForwardStars(stars: stars,
-                                                    currentCenter: starMapView.centerPoint,
-                                                    radius: starMapView.radius) { (starsVisible) in
-                                                        starMapView.stars = starsVisible
-                        }
-                    }
+                    self?.reloadStars()
                 }
+            }
+        }
+    }
+    
+    func reloadStars() {
+        if let stars = stars, let starMapView = self.starMapView {
+            StarHelper.loadForwardStars(stars: stars,
+                                        currentCenter: starMapView.centerPoint,
+                                        radii: starMapView.currentRadii()) { (starsVisible) in
+                                            starMapView.stars = starsVisible
             }
         }
     }

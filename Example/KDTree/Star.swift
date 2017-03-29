@@ -15,7 +15,7 @@ struct StarData {
     let hip_id: Int32?
     let hd_id: Int32?
     let hr_id: Int32?
-    let gl_id: Int32?
+    let gl_id: String?
     let bayer_flamstedt: String?
     let properName: String?
     let distance: Double
@@ -25,7 +25,7 @@ struct StarData {
     let mag: Double
     let absmag: Double
     let spectralType: String?
-    let colorIndex: String?
+    let colorIndex: Float?
 }
 
 struct Star {
@@ -33,6 +33,10 @@ struct Star {
     let right_ascension: Float
     let declination: Float
     let starData: Box<StarData>?
+    
+    var starPoint: CGPoint {
+        return CGPoint(x: CGFloat(self.right_ascension), y: CGFloat(self.declination))
+    }
     
     init? (row: String) {
         let fields = row.components(separatedBy: ",")
@@ -61,11 +65,11 @@ struct Star {
         let starData = StarData(hip_id: Int32(fields[1]),
                                 hd_id: Int32(fields[2]),
                                 hr_id: Int32(fields[3]),
-                                gl_id: Int32(fields[4]),
+                                gl_id: fields[4],
                                 bayer_flamstedt: fields[5],
                                 properName: fields[6],
                                 distance: dist, pmra: pmra, pmdec: pmdec, rv: Double(fields[12]),
-                                mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: fields[15])
+                                mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }
     
@@ -85,7 +89,7 @@ struct Star {
         let hip_id = readInt32(at: &index, stringPtr: rowPtr)
         let hd_id = readInt32(at: &index, stringPtr: rowPtr)
         let hr_id = readInt32(at: &index, stringPtr: rowPtr)
-        let gl_id = readInt32(at: &index, stringPtr: rowPtr)
+        let gl_id = readString(at: &index, stringPtr: rowPtr)
         let bayerFlamstedt = readString(at: &index, stringPtr: rowPtr)
         let properName = readString(at: &index, stringPtr: rowPtr)
         guard let right_ascension = readFloat(at: &index, stringPtr: rowPtr),
@@ -97,7 +101,7 @@ struct Star {
         guard let mag = readDouble(at: &index, stringPtr: rowPtr),
             let absmag = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
-        let colorIndex = readString(at: &index, stringPtr: rowPtr)
+        let colorIndex = readFloat(at: &index, stringPtr: rowPtr)
 
         self.dbID = dbID
         self.right_ascension = right_ascension
@@ -147,8 +151,9 @@ extension Star: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = String(describing: starData?.value.distance)
         let magString = String(describing: starData?.value.mag)
-        return "🌠: " + (starData?.value.properName ?? "N.A.")
-            + ": \(right_ascension), \(declination), \( distanceString ) mag: \(magString)"
+        return "🌠: " + (starData?.value.properName ?? "N.A.") + ", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))"
+            + "GL(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):"
+            + "\(right_ascension), \(declination), \( distanceString ) mag: \(magString)"
     }
 }
 
