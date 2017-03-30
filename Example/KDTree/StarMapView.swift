@@ -133,8 +133,9 @@ class StarMapView: View {
         let hdName: String? = starData.hd_id.flatMap { (id: Int32) -> String in  return "HD\(id)" }
         let hrName: String? = starData.hr_id.flatMap { (id: Int32) -> String in  return "HR\(id)" }
         let idName: String = "HYG\(star.dbID)"
-        let textString: String = starData.properName
+        var textString: String = starData.properName
             ?? glieseName ?? starData.bayer_flamstedt ?? hdName ?? hrName ?? idName
+        textString += String(format: " (%.1fly)", 3.262*starData.distance)
         let isLeftOfCenter = position.x < 0.0
         let textInnerCorner = position + circleSize * CGPoint(x: isLeftOfCenter ? 0.9 : 0.05, y: verticalAdjustment * 1.05)
         let textOuterCorner = textInnerCorner + CGPoint(x: isLeftOfCenter ? 200 : -200, y: verticalAdjustment * 14.0)
