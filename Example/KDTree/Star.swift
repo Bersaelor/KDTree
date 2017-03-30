@@ -84,24 +84,24 @@ struct Star {
     init? (rowPtr: UnsafeMutablePointer<CChar>) {
         var index = 0
 
-        guard let dbID = readInt32(at: &index, stringPtr: rowPtr) else { return nil }
+        guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         
-        let hip_id = readInt32(at: &index, stringPtr: rowPtr)
-        let hd_id = readInt32(at: &index, stringPtr: rowPtr)
-        let hr_id = readInt32(at: &index, stringPtr: rowPtr)
+        let hip_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
+        let hd_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
+        let hr_id: Int32? = readNumber(at: &index, stringPtr: rowPtr)
         let gl_id = readString(at: &index, stringPtr: rowPtr)
         let bayerFlamstedt = readString(at: &index, stringPtr: rowPtr)
         let properName = readString(at: &index, stringPtr: rowPtr)
-        guard let right_ascension = readFloat(at: &index, stringPtr: rowPtr),
-            let declination = readFloat(at: &index, stringPtr: rowPtr),
-            let dist = readDouble(at: &index, stringPtr: rowPtr),
-            let pmra = readDouble(at: &index, stringPtr: rowPtr),
-            let pmdec = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
-        let rv = readDouble(at: &index, stringPtr: rowPtr)
-        guard let mag = readDouble(at: &index, stringPtr: rowPtr),
-            let absmag = readDouble(at: &index, stringPtr: rowPtr) else { return nil }
+        guard let right_ascension: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let declination: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let dist: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let pmra: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let pmdec: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
+        guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
-        let colorIndex = readFloat(at: &index, stringPtr: rowPtr)
+        let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
 
         self.dbID = dbID
         self.right_ascension = right_ascension
@@ -183,78 +183,23 @@ fileprivate func readString(at index: inout Int, stringPtr: UnsafeMutablePointer
 }
 
 fileprivate protocol HasCFormatterString {
-    static var cFormatString: String { get }
+    static var cFormatString: [Int8] { get }
     static var initialValue: Self { get }
 }
 
 extension Int32: HasCFormatterString {
-    static var cFormatString: String { return "d" }
-    static var initialValue: Int32 { return -1 }
+    static let cFormatString: [Int8] = [37, 100] // %d
+    static let initialValue: Int32 = -1
 }
 
 extension Float: HasCFormatterString {
-    static var cFormatString: String { return "f" }
-    static var initialValue: Float { return 0.0 }
+    static let cFormatString: [Int8] = [37, 102] // %f
+    static let initialValue: Float = 0.0
 }
 
 extension Double: HasCFormatterString {
-    static var cFormatString: String { return "lf" }
-    static var initialValue: Double { return 0.0 }
-}
-
-fileprivate let intFormatPtr: [Int8] = [37, 100]
-fileprivate let floatFormatPtr: [Int8] = [37, 102]
-fileprivate let doubleFormatPtr: [Int8] = [37, 108, 102]
-
-fileprivate func readInt32(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> Int32? {
-    let startIndex = index
-    index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
-    
-    if index - startIndex > 1 {
-        var value: Int32 = -1
-        let newCPtr = stringPtr.advanced(by: startIndex)
-        var scanned: Int32 = -1
-        withUnsafeMutablePointer(to: &value, { valuePtr in
-            let args: [CVarArg] = [valuePtr]
-            scanned = vsscanf(newCPtr, intFormatPtr, getVaList(args))
-        })
-        return scanned > 0 ? value : nil
-    }
-    return nil
-}
-
-fileprivate func readFloat(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> Float? {
-    let startIndex = index
-    index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
-    
-    if index - startIndex > 1 {
-        var value: Float = 0
-        let newCPtr = stringPtr.advanced(by: startIndex)
-        var scanned: Int32 = -1
-        withUnsafeMutablePointer(to: &value, { valuePtr in
-            let args: [CVarArg] = [valuePtr]
-            scanned = vsscanf(newCPtr, floatFormatPtr, getVaList(args))
-        })
-        return scanned > 0 ? value : nil
-    }
-    return nil
-}
-
-fileprivate func readDouble(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> Double? {
-    let startIndex = index
-    index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
-    
-    if index - startIndex > 1 {
-        var value: Double = 0
-        let newCPtr = stringPtr.advanced(by: startIndex)
-        var scanned: Int32 = -1
-        withUnsafeMutablePointer(to: &value, { valuePtr in
-            let args: [CVarArg] = [valuePtr]
-            scanned = vsscanf(newCPtr, doubleFormatPtr, getVaList(args))
-        })
-        return scanned > 0 ? value : nil
-    }
-    return nil
+    static let cFormatString: [Int8] = [37, 108, 102] // %lf
+    static let initialValue: Double = 0.0
 }
 
 fileprivate func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8> ) -> T? {
@@ -267,7 +212,7 @@ fileprivate func readNumber<T: HasCFormatterString>(at index: inout Int, stringP
         var scanned: Int32 = -1
         withUnsafeMutablePointer(to: &value, { valuePtr in
             let args: [CVarArg] = [valuePtr]
-            scanned = vsscanf(newCPtr, "%\(index - startIndex)\(T.cFormatString)", getVaList(args))
+            scanned = vsscanf(newCPtr, T.cFormatString, getVaList(args))
         })
         return scanned > 0 ? value : nil
     }
