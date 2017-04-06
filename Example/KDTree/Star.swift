@@ -117,7 +117,7 @@ struct Star {
         self.starData = Box(starData)
     }
     
-    func starMovedOn(ascension: Float, declination: Float) -> Star {
+    func starMoved(ascension: Float, declination: Float) -> Star {
         return Star(ascension: self.right_ascension + ascension,
                     declination: self.declination + declination,
                     dbID: self.dbID, starData: self.starData)

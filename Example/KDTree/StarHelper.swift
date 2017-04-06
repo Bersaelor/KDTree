@@ -45,7 +45,7 @@ class StarHelper: NSObject {
                     (Double( 24.0 + currentCenter.x - radii.width), Double(24.0 + currentCenter.x + radii.width)),
                     (Double(currentCenter.y - radii.height), Double(currentCenter.y + radii.height))]
                 starsVisible += stars.elementsIn(leftIntervals).map({ (star: Star) -> Star in
-                    return star.starMovedOn(ascension: -24.0, declination: 0.0)
+                    return star.starMoved(ascension: -24.0, declination: 0.0)
                 })
             }
             xcLog.debug("Finished RangeSearch with \(starsVisible.count) stars, after \(Date().timeIntervalSince(startRangeSearch))s")
@@ -65,10 +65,10 @@ class StarHelper: NSObject {
         var nearestStar = stars.nearest(toElement: searchStar)
         let nearestDistanceSqd = nearestStar?.squaredDistance(to: searchStar) ?? 10.0
         if sqrt(nearestDistanceSqd) > Double(searchStar.right_ascension) { // tap close to or below ascension = 0
-            let searchStarModulo = searchStar.starMovedOn(ascension: 24.0, declination: 0.0)
+            let searchStarModulo = searchStar.starMoved(ascension: 24.0, declination: 0.0)
             if let leftSideNearest = stars.nearest(toElement: searchStarModulo),
                 leftSideNearest.squaredDistance(to: searchStarModulo) < nearestDistanceSqd {
-                nearestStar = leftSideNearest.starMovedOn(ascension: -24.0, declination: 0.0)
+                nearestStar = leftSideNearest.starMoved(ascension: -24.0, declination: 0.0)
             }
         }
         
