@@ -15,6 +15,7 @@ class PerformanceTests: XCTestCase {
         + Array(2...5).map({ num in    5000 * num}) as [Int]
         + Array(2...8).map({ num in   25000 * num}) as [Int]
         + Array(3...10).map({ num in 100000 * num}) as [Int]
+//        + Array(3...10).map({ num in 500000 * num}) as [Int]
     let testRepeats = 1000
     let testRepeatsBruteForce = 50
     
@@ -77,22 +78,51 @@ class PerformanceTests: XCTestCase {
                     return nearest
                 }
             }
-            
             XCTAssertEqual(nearestPointsBruteForce.prefix(self.testRepeatsBruteForce),
                            nearestPoints.prefix(self.testRepeatsBruteForce))
             
+            let intervals: [[(Double, Double)]] = (1...10).map({ _ in
+                let xStart = CGFloat.random(0.0, end: 0.9)
+                let yStart = CGFloat.random(0.0, end: 0.9)
+                return [(Double(xStart), Double(xStart + 0.1)),
+                        (Double(yStart), Double(yStart + 0.1))]
+            })
+            var pointsInIntervalCount = [Int]()
+            let rangeSearchKDTree = measureAndReturn {
+                for interval in intervals {
+                    let pointsInRange = tree?.elementsIn(interval)
+                    pointsInIntervalCount.append(pointsInRange?.count ?? 0)
+                }
+            }
+
+            var pointsInIntervalCountLinear = [Int]()
+            let rangeSearchLinear = measureAndReturn {
+                for interval in intervals {
+                    let pointsInRange = points.filter({ (point) -> Bool in
+                        return interval[0].0 < Double(point.x) && interval[0].1 > Double(point.x)
+                            && interval[1].0 < Double(point.y) && interval[1].1 > Double(point.y)
+                    })
+                    pointsInIntervalCountLinear.append(pointsInRange.count)
+                }
+            }
+            XCTAssertEqual(pointsInIntervalCount, pointsInIntervalCount)
+            
             testResults.append([treeBuildTime,
                                 searchPointTotalTime/Double(nearestPoints.count),
-                                bruteForceSearch/Double(nearestPointsBruteForce.count)])
+                                bruteForceSearch/Double(nearestPointsBruteForce.count),
+                                rangeSearchKDTree/Double(pointsInIntervalCount.count),
+                                rangeSearchLinear/Double(pointsInIntervalCountLinear.count)])
 
             if let element = testResults.last {
                 print("build tree in \(element[0])s, find nearest in \(element[1])s, exhaustive search: \(element[2])s")
+                print("RangeSearch KDTree: \(element[3])s vs Linear \(element[4])s")
             }
         }
         
-        print("#points,build_tree,nearestNeighbour,LinearSearch")
+        print("#points,build_tree,NN_KDTREE,NN_LINEAR,range_KDTREE,range_Linear")
         for value in testResults.enumerated() {
-            print("\(testSteps[value.offset]),\(value.element[0]),\(value.element[1]),\(value.element[2])")
+            print("\(testSteps[value.offset]),\(value.element[0]),\(value.element[1]),"
+                + "\(value.element[2]),\(value.element[3]),\(value.element[4])")
         }
         
         XCTAssertEqual(testResults.count, testSteps.count)
