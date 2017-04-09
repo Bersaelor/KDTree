@@ -23,6 +23,12 @@ class IllustrationView: UIView {
         }
     }
     
+    var maxStep: Int? = nil {
+        didSet { self.xPlatformNeedsDisplay() }
+    }
+    
+    var treeDepth: Int?
+    
     fileprivate var points: [CGPoint] = (0..<23).map({_ in CGPoint(x: CGFloat.random(-1, end: 1), y: CGFloat.random(-1, end: 1))})
     fileprivate var tree: KDTree<CGPoint>?
     fileprivate var dotSize: CGFloat = 5.0
@@ -118,10 +124,7 @@ class IllustrationView: UIView {
         
         for nearestPoint in nearestPoints {
             UIColor.purple.setStroke()
-            context.setLineWidth(1.0)
-            context.strokeEllipse(in: CGRect(x: adjSize*nearestPoint.x-1.0*dotSize,
-                y: adjSize*nearestPoint.y-1.0*dotSize, width: 2*dotSize, height: 2*dotSize))
-            context.strokePath()
+            self.circle(point: nearestPoint, in: context)
         }
         
         //ring around tappedPoint and nearest elements
@@ -134,12 +137,31 @@ class IllustrationView: UIView {
         context.strokePath()
     }
     
+    fileprivate func circle(point: CGPoint, in context: CGContext) {
+        context.setLineWidth(1.0)
+        context.strokeEllipse(in: CGRect(x: adjSize*point.x-1.0*dotSize,
+                                         y: adjSize*point.y-1.0*dotSize,
+                                         width: 2*dotSize, height: 2*dotSize))
+        context.strokePath()
+    }
+    
     fileprivate func drawTreeInContext(_ context: CGContext) {
         context.setLineWidth(1.0)
         tree?.investigateTree { (node, parents, depth) in
+            if depth > treeDepth ?? 0 { treeDepth = depth }
+            if let maxStep = maxStep, maxStep < 0 || depth > maxStep/2 {
+                return
+            }
+            
             switch node {
             case .leaf: break
             case .node(_, let value, let dimension, _):
+                if let maxStep = maxStep, depth == maxStep/2 && maxStep % 2 == 0 {
+                    UIColor.purple.setStroke()
+                    self.circle(point: value, in: context)
+                    return
+                }
+                
                 var minPoint = -self.adjSize
                 var maxPoint = self.adjSize
                 let otherDimension = (dimension == 0) ? 1 : 0

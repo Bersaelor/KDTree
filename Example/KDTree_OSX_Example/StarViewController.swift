@@ -28,7 +28,7 @@ class StarViewController: NSViewController {
         
         //do not load csv during tests
         guard ProcessInfo.processInfo.environment["IN_TESTING"] == nil else {
-            return;
+            return
         }
         
         let startLoading = Date()

@@ -53,6 +53,7 @@
 		744691531E8A9B580040A093 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691521E8A9B580040A093 /* WindowController.swift */; };
 		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
+		7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		7446914B1E8A86F60040A093 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
 		744691521E8A9B580040A093 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
+		7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */,
 				716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */,
 				71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */,
 				71DACAE21E86B34F0055B8F2 /* Stars Example */,
@@ -716,6 +719,7 @@
 				71DACADD1E8668D40055B8F2 /* Box.swift in Sources */,
 				71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */,
 				716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */,
+				7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */,
 				71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
