@@ -26,6 +26,11 @@ class StarViewController: NSViewController {
         self.title = "StarMap"
         loadingIndicator.controlTint = NSControlTint.blueControlTint
         
+        //do not load csv during tests
+        guard ProcessInfo.processInfo.environment["IN_TESTING"] == nil else {
+            return;
+        }
+        
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
             StarHelper.loadCSVData { stars in
