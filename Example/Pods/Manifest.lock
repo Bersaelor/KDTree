@@ -1,16 +1,20 @@
 PODS:
   - KDTree (0.4.0)
   - Nimble (6.1.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - Quick (1.1.0)
-  - XCGLogger (4.0.0):
-    - XCGLogger/Core (= 4.0.0)
-  - XCGLogger/Core (4.0.0)
+  - XCGLogger (5.0.1):
+    - XCGLogger/Core (= 5.0.1)
+  - XCGLogger/Core (5.0.1):
+    - ObjcExceptionBridging
 
 DEPENDENCIES:
   - KDTree (from `../`)
   - Nimble (~> 6.1.0)
   - Quick (~> 1.1.0)
-  - XCGLogger (~> 4.0.0)
+  - XCGLogger (~> 5.0.1)
 
 EXTERNAL SOURCES:
   KDTree:
@@ -19,9 +23,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   KDTree: 84c3d9bbe5ebb48ca1553d5929762a0200722dd7
   Nimble: c53e6903fee94041b90ded74f135820437d8bf59
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
+  XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: c5a0360f17341ac37e239a5a60843df7d245921c
+PODFILE CHECKSUM: 24d910640cf3e55ae1ef3ad6a8b879a8286249ad
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
