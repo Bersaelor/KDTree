@@ -347,9 +347,20 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlf-OZ-GcX" customClass="IllustrationView" customModule="KDTree_Example" customModuleProvider="target">
                                 <rect key="frame" x="5" y="74" width="590" height="590"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="mT5-Dk-U6S">
+                                        <rect key="frame" x="10" y="511" width="135" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="8C7-R3-pnU"/>
+                                            <constraint firstAttribute="height" constant="37" id="wDo-cZ-2zt"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jlf-OZ-GcX" secondAttribute="height" multiplier="1:1" id="28O-Gy-Qdx"/>
+                                    <constraint firstItem="mT5-Dk-U6S" firstAttribute="leading" secondItem="jlf-OZ-GcX" secondAttribute="leading" constant="10" id="AFG-mk-ciT"/>
+                                    <constraint firstAttribute="bottom" secondItem="mT5-Dk-U6S" secondAttribute="bottom" constant="42" id="Oyw-1I-ql0"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzw-2d-TSN">
@@ -420,6 +431,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="arrowImageView" destination="mT5-Dk-U6S" id="5Gb-Qk-MjH"/>
                         <outlet property="illustrationView" destination="jlf-OZ-GcX" id="9fI-JE-mZB"/>
                         <outlet property="nearestLabel" destination="91R-Mp-FWh" id="Vbv-QC-rs6"/>
                         <outlet property="pointsLabel" destination="Wzw-2d-TSN" id="ie2-NN-7QN"/>
@@ -434,5 +446,6 @@
     <resources>
         <image name="Circle" width="30" height="30"/>
         <image name="Square" width="30" height="30"/>
+        <image name="arrow" width="145" height="37"/>
     </resources>
 </document>

@@ -14,6 +14,7 @@ class AlgorithmViewController: UIViewController {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var tappedLabel: UILabel!
     @IBOutlet weak var nearestLabel: UILabel!
+    @IBOutlet weak var arrowImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,10 @@ class AlgorithmViewController: UIViewController {
         }
         illustrationView.maxStep = currentStep
         
-        tappedLabel.text = (((currentStep+1)/2) % 2 == 0 ? "-→" : "↑") + "step: \(currentStep)"
+        arrowImageView.transform = ((currentStep+1)/2) % 2 == 0 ? CGAffineTransform.identity
+            : CGAffineTransform(rotationAngle: -0.5*CGFloat.pi)
+        
+        tappedLabel.text = "step: \(currentStep)"
         nearestLabel.text = currentStep % 2 == 0 ? "Find Median" : "Bisect Plane"
     }
 
