@@ -10,10 +10,16 @@ Swift implementation of a k-dimensional binary space partitioning tree.
 The KDTree is implemented as an immutable enum, inspired by functional trees from [objc.io](https://www.objc.io/books/functional-swift/).
 KDTree algorithm according to [Wikipedia](https://en.wikipedia.org/wiki/K-d_tree) and [ubilabs js example](https://github.com/ubilabs/kd-tree-javascript).
 
-Example Illustration:
-![Example Illustration](/Screenshots/kNearest.png?raw=true)
+Visual animation of creating a KDTree:
 
-The nodes have labels for their depths, the blue lines go through nodes that partition the plane vertically, the red ones for horizontal partitions.
+![Example Illustration](/Screenshots/tree_generation.gif?raw=true)
+
+Very simply put, a tree is created by:
+1. find the median point in the current direction
+2. bisect along the hyperplane(=line in 2D) going through the current median
+3. go one step deeper, same thing with next axis
+
+The blue lines go through nodes that partition the plane vertically, the red ones for horizontal partitions.
 
 
 ## Usage
@@ -47,6 +53,8 @@ Then you can `insert()`, `remove()`, `map()`, `filter()`, `reduce()` and `forEac
 ## Applications
 
 ### K-Nearest Neighbour:
+
+![Example Illustration](/Screenshots/kNearest.png?raw=true)
 
 Given a KDTree:
 
