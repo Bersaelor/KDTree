@@ -13,8 +13,8 @@ class PerformanceTests: XCTestCase {
     
     let testSteps: [Int] = Array(1...5).map({ num in  1000 * num}) as [Int]
         + Array(2...5).map({ num in    5000 * num}) as [Int]
-        + Array(2...8).map({ num in   25000 * num}) as [Int]
-        + Array(3...10).map({ num in 100000 * num}) as [Int]
+//        + Array(2...8).map({ num in   25000 * num}) as [Int]
+//        + Array(3...10).map({ num in 100000 * num}) as [Int]
 //        + Array(3...10).map({ num in 500000 * num}) as [Int]
     let testRepeats = 1000
     let testRepeatsBruteForce = 50
