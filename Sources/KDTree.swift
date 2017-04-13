@@ -13,10 +13,12 @@ private enum ReplacementDirection {
     case min
 }
 
+let buildQueue = DispatchQueue(label: "com.KDTree.buildqueue", attributes: .concurrent)
+
 public enum KDTree<Element: KDTreePoint> {
     case leaf
     indirect case node(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>)
-
+    
     public init(values: [Element], depth: Int = 0) {
         guard !values.isEmpty else {
             self = .leaf
@@ -32,11 +34,38 @@ public enum KDTree<Element: KDTreePoint> {
                 return a.kdDimension(currentSplittingDimension) < b.kdDimension(currentSplittingDimension)
             }
             let median = sortedValues.count / 2
-            let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
-            let rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
             
-            self = .node(left: leftTree, value: sortedValues[median],
-                         dimension: currentSplittingDimension, right: rightTree)
+            if sortedValues.count > 1000 && depth < 4 {
+                let semaphore = DispatchSemaphore(value: 0)
+                
+                var leftTree: KDTree<Element>?
+                var rightTree: KDTree<Element>?
+                
+                buildQueue.async {
+                    leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
+                    semaphore.signal()
+                }
+                
+                buildQueue.async {
+                    rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
+                    semaphore.signal()
+                }
+                
+                semaphore.wait()
+                semaphore.wait()
+                if let leftTree = leftTree, let rightTree = rightTree {
+                    self = KDTree.node(left: leftTree, value: sortedValues[median],
+                                       dimension: currentSplittingDimension, right: rightTree)
+                } else {
+                    fatalError("One of the two sides didn't build before semaphore signalled, this should never happen.")
+                }
+            } else {
+                let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
+                let rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
+                
+                self = .node(left: leftTree, value: sortedValues[median],
+                             dimension: currentSplittingDimension, right: rightTree)
+            }
         }
     }
     
