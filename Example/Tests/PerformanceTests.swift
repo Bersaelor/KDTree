@@ -81,7 +81,7 @@ class PerformanceTests: XCTestCase {
             XCTAssertEqual(nearestPointsBruteForce.prefix(self.testRepeatsBruteForce),
                            nearestPoints.prefix(self.testRepeatsBruteForce))
             
-            let intervals: [[(Double, Double)]] = (1...10).map({ _ in
+            let intervals: [[(Double, Double)]] = (1...5).map({ _ in
                 let xStart = CGFloat.random(0.0, end: 0.9)
                 let yStart = CGFloat.random(0.0, end: 0.9)
                 return [(Double(xStart), Double(xStart + 0.1)),
@@ -119,9 +119,9 @@ class PerformanceTests: XCTestCase {
             }
         }
         
-        print("#points,build_tree,NN_KDTREE,NN_LINEAR,range_KDTREE,range_Linear")
+        print("run,#points,build_tree,NN_KDTREE,NN_LINEAR,range_KDTREE,range_Linear")
         for value in testResults.enumerated() {
-            print("\(testSteps[value.offset]),\(value.element[0]),\(value.element[1]),"
+            print("\(value.offset),\(testSteps[value.offset]),\(value.element[0]),\(value.element[1]),"
                 + "\(value.element[2]),\(value.element[3]),\(value.element[4])")
         }
         
