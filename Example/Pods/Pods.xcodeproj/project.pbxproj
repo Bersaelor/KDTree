@@ -25,7 +25,6 @@
 		0F4E652ACAD07827186E7EE59894FA0E /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8E1A3086504F8BD31870EF959BF1E /* ExampleHooks.swift */; };
 		10316048F67296CB4B65A12976509C08 /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE5A16F9B6233DD22C18F32D803A47 /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		10DC329A478663DB26AEC937AC24CB3A /* ObjcExceptionBridging.h in Headers */ = {isa = PBXBuildFile; fileRef = F8E8C1D11BBC0711C97D8C76A4E14951 /* ObjcExceptionBridging.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1101275C16514D4E32DEDD7AA8BCCDAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		149281C0EB3A4F8C0BAD5DE460F37EBF /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19491BD35E5AB20F725763CFBFA309FB /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		1575DABC222CA58CCCE578530D3E6AAD /* KDTree+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FDB544F509A78684FB272E9346FEB /* KDTree+CustomStringConvertible.swift */; };
 		16809D9AE4268B705ED5E4B81B36BA75 /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BF177C0025AC25B047877ED3FAFA8 /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -36,6 +35,7 @@
 		1FEA803C482EE247551EA5D7CA7B97F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D5F68522EC814B8F6396CCD32DF6C9 /* Cocoa.framework */; };
 		235108328AF4079D35A2187A6E07C962 /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14513781BED73C94948479994E2AB06 /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		240F0DD3FF6C3EB32542629FCE10E9A8 /* Pods-KDTree_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 83ED5B39A1ABA13F69D875ECEB298938 /* Pods-KDTree_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		253C559C9819B9BA0F3296792A0676F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		2E8FD7A7F60C7348ABBF793CA44FA4C4 /* Pods-KDTree_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5552500A7775CC87F99502DC3A2A0BE /* Pods-KDTree_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F222C7C79044E938B23C40C046F7416 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A085542D275E998F55C079650DD9521 /* Match.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		30189A191F71D0FCA4C7136263635120 /* CGPoint+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CA7437181F80779B1CD6C0B3182C8 /* CGPoint+KDTreePoint.swift */; };
@@ -46,6 +46,7 @@
 		32AF894E7AA5DA2A6C1010B70EA14CDE /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C1DCFFB4D721ACEF519D9674205A78 /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		372D56FDD9BA0ED8F80AE1F46ACAB325 /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1922FEC7F8620B3A160B3E070F75B5C /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39A0C70E6C1149D106BDAA89FAD246E6 /* TestDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90458791CDC246B4080E19471BC48F9D /* TestDestination.swift */; };
+		3A4CF29E3EC99CCD531998A3E41E69F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		3F2CC55DDD7FFDB125EEA4C2BB90BABA /* KDTree-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AE2DEB13DCA04C23079F58F1009138C /* KDTree-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FBEEDF2A388BDDD2FCE1629E1EA9B6D /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FBB8D94EE0C027FCF2F457264E8D8E /* CwlCatchBadInstruction.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3FFBE4B39CCAA90F3738632B3497B78B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D5F68522EC814B8F6396CCD32DF6C9 /* Cocoa.framework */; };
@@ -60,22 +61,21 @@
 		48DEEAAE3FA60C918EB3B74F4FEE57B9 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5121EC3C3DA0C40823A2C596BE175 /* Closures.swift */; };
 		493538F9D29CD91934F823579FDABB88 /* Pods-KDTree_OSX_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FAEEB4BA6A5AF7BDD062E531C230BEA /* Pods-KDTree_OSX_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4972B50A38DE525FF0C43AEA937CA587 /* UserInfoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B258FA347C7CBAB306D9265B7A9A65E6 /* UserInfoFilter.swift */; };
-		4A3EF5E9E99A2455E62DFEFA9A6D8BE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		4A95AE37729D9B0503C8CBE7564B0F7E /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2501B9E801F188A573256DD2C9CFE42D /* Quick-dummy.m */; };
 		4AB14BC41D4FEEF312C218AE5595C4C7 /* FileNameFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E08CE103939342386BA8FAE7BB2FC /* FileNameFilter.swift */; };
 		4C789FF854296AEBC1C773029C479122 /* BaseQueuedDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501EBD4E979F2925E99F7503B219648F /* BaseQueuedDestination.swift */; };
-		4D438BEEB0297D1FD65EDA26C7A08418 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		4D55C624BAD1511493AFB5B68A81BD47 /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC0E5BEC1834496EF7D370D3DC36E6 /* ThrowError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		4E23704BC1D82D44E380814E61581FDE /* ObjcExceptionBridging-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C38912294BCDFF6FB56E174F1E2622D /* ObjcExceptionBridging-iOS-dummy.m */; };
-		4EFD40136F72FBE465050F1EF58B23DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		4F00E8848B1E8BDBA5E898E66B716C50 /* XCGLogger-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 544CEA90A5D12598124AB4EDFD495028 /* XCGLogger-OSX-dummy.m */; };
 		524894BF3D70FBCDA031B7D6F7486C37 /* BaseQueuedDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501EBD4E979F2925E99F7503B219648F /* BaseQueuedDestination.swift */; };
 		552EE94C505AE50EE24A70FE3767EE5C /* KDTree+RangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9820B931A28C137B4953C88E0598253 /* KDTree+RangeSearch.swift */; };
 		558C846FCA2C8F08809BA6E4FC6F90C7 /* ObjcExceptionBridging-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE754BC4694D140C591904B2B399ECF2 /* ObjcExceptionBridging-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		561FB367A1B638626BCA71054534491B /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEF77EA7D7BC999FA3FBB4B3D5C82B2 /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		56BE8C8D26BB9C2FECAC180CA089FFA5 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8824C3412375EA788FD57376DAC99A /* Example.swift */; };
+		58901ED193887DC58DF1401338AE8F98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		58FCDE07C40B62A3DB636C1B4938DCB9 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FB1265587A82356BCA7745A1BF0AE16 /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		596B4D33C6DE0E60571F4EBF70A32A63 /* XCGLogger-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35123B30982C1C3299C374730C5CD933 /* XCGLogger-iOS-dummy.m */; };
+		5A25CC74D4DE5411FC9F21D873C112BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		5B19CF334B9EA07CD9A2F3A283CB37C2 /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77857B92B9DDFB1B15F898D6F7699703 /* Stringers.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		5BF08988C833CDC01AFA57C10C8BE300 /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A423CA6184DD12818DDFFAFE47A3C1 /* BeLessThanOrEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		5CBA22027BA9E5D502117B9AB28514BA /* Quick.h in Headers */ = {isa = PBXBuildFile; fileRef = A88B0E61053C5E6B6D6183D4E018C71F /* Quick.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -97,13 +97,13 @@
 		6A8D3EB5A440A4A49593B276E38DC3AB /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = FF70DC29FC1AA284A610CD78559B1997 /* QCKDSL.m */; };
 		6BB5A2C9ECA93AEA9E334ED767EF1DB2 /* Base64LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742610399EC7B7F57D75F5405B3AF7D3 /* Base64LogFormatter.swift */; };
 		6CA0F5DB3DD8B836F5A5DF0F4E43FDF3 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F0DE2ACAD992A2E1144464559A3D9F /* NSBundle+CurrentTestBundle.swift */; };
+		6CBEDBA2BE015263A89DE13594C4982F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523BFD5371A604E4781631F6D6C358EC /* XCTest.framework */; };
 		6FC923D985B345295D47738BEFF25930 /* DestinationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98F2B9ACA56EBE23115C57C940F54 /* DestinationProtocol.swift */; };
 		6FCD62586F61C0879B081138A2A7A6EC /* UserInfoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B258FA347C7CBAB306D9265B7A9A65E6 /* UserInfoFilter.swift */; };
 		7177216FA8F8087E410610FAC3C92884 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6617069C665E24D859A2885D1A6B8A /* BeNil.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		728F15524E93F8590CC692DB7F67AF9C /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E9D6D84E8981E3E604867890841A1C /* BeAKindOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7300E1807CAA94E01D908A9C3DA9BB63 /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E9DC564F6A70BCFCADA1C90B5D52482 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7512723311C7F45B1091BFF2F04041F8 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B277CF1382087D223D6FF8DAFF56A7F /* AdapterProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		75DB7F8792F8AF56309D8FDBD2A5BAEC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B97D4A266468BF8961F14D4F6D3023 /* XCTest.framework */; };
 		75EDDEEBEA1B2AF03733A97FCA709F44 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = EECFED8D5B2336C46E3163EFCA83F1E3 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		76ABD37B65ABF2C1C37981CAC0051BF6 /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = D7420BB247A287479180C3AB76A37DE6 /* NMBExceptionCapture.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		77072982CE6BCB258EED8C61DA027A6F /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CD5EC7814792D7CDAF2B621E984C9CF /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -115,7 +115,6 @@
 		7FD4CA23E346416C642269D32203C027 /* KDTree+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3B8672CFF482C3BE50EF9DD65CCA /* KDTree+Sequence.swift */; };
 		80D25D168869F5B2328CAB78653D4E6B /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AEF3ED5B9766E4A56296871261A3C41 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80F887D2918AC4D16AFBBF469D7952A1 /* TestDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90458791CDC246B4080E19471BC48F9D /* TestDestination.swift */; };
-		831EB4E886FA93E4F6021D375DCC1119 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		84C78544178B9C9EE4A6B3A02DEDBE85 /* ObjcExceptionBridging.h in Headers */ = {isa = PBXBuildFile; fileRef = F8E8C1D11BBC0711C97D8C76A4E14951 /* ObjcExceptionBridging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84DFCE77838D7FA34475F66BE636CCE5 /* KDTree+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6FDB544F509A78684FB272E9346FEB /* KDTree+CustomStringConvertible.swift */; };
 		88D802FFAD3CE22370FBD52192DB0188 /* CGPoint+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054CA7437181F80779B1CD6C0B3182C8 /* CGPoint+KDTreePoint.swift */; };
@@ -146,6 +145,7 @@
 		A3F8D80670DB923F30E2A83DE9E3620B /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB152E615A0DE24677891085B831DE8 /* QuickConfiguration.m */; };
 		A43C8B46535609F51DF0C235441EA8C4 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E42AD4F9E8F200589FD6B7776EF99A /* World.swift */; };
 		A48BEAB5371DAB9C8DE8837AC5D0774E /* World+DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0B26326231DA6C276CBA1DB17FB654 /* World+DSL.swift */; };
+		A4CC1623FF64776C741EC2382B4C80AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		A75E6DACC41403C4D4008ED657F03E67 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC82F8439CA943AA4615C88ED5D24BE /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7DCF9B4B0B62C6903AE0F9321BF7270 /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F633645019A9320B345DAACF525203 /* BaseDestination.swift */; };
 		A9E537D3F5D0D2633FECBB022ED3904B /* FileNameFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E08CE103939342386BA8FAE7BB2FC /* FileNameFilter.swift */; };
@@ -161,6 +161,7 @@
 		B917802F567FA4746A88D5C49893F1EB /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CF02C395BF051D5F25CFA67686012AEC /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC89EB1D3D48CE13A5E74C98668C3BC9 /* KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE5B1B002ABA4C701ED4B34BF6146FF /* KDTreePoint.swift */; };
 		BD858A9B270C9B94EBD4CCB7A95D696B /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08DE59D7BC06B2A0C1E0744E707DCDF /* AsyncMatcherWrapper.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		BF63EB0A61D33340416431D40CCA394D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		C2DA7FFEF56471A87D9996EA03D269CC /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600F913FF9A9F543EC9292F9A2B352E9 /* SatisfyAnyOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C451CF8CF3B449A18450B1E34A994BBE /* NSString+QCKSelectorName.h in Headers */ = {isa = PBXBuildFile; fileRef = E68B452CF708C51E87AAB0105190E73C /* NSString+QCKSelectorName.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C47891B9BDE14DA6BEBAA5004A4C6F71 /* AppleSystemLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415F3F702961058730826CB9CF14CC6 /* AppleSystemLogDestination.swift */; };
@@ -176,7 +177,6 @@
 		CEF58C63769542505662517B6C236F18 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 908E062C8B71B6FB4961B547AB0D711F /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1E53A1CD44E32BB29F487AFD60C0499 /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2E38968BDF351723F55F1DCB4759EC /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D28B09C4D0AAAE8D9D8EF948FC974ECB /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283718243615F76E623967985A6BF23A /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		D4A42F9A8BF82AB1C2FA69E59A74919B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		D538EFA4FB119BE8892FD6AA00968B5A /* URL+XCGAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84577B6449C9E76470A07ED3B6B5780C /* URL+XCGAdditions.swift */; };
 		D78A9455EA8CAFAF42D9C494A1E045AB /* KDTree+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3B8672CFF482C3BE50EF9DD65CCA /* KDTree+Sequence.swift */; };
 		D7C4B2DB53EDF6DC5A5B7CA13C36E85F /* KDTree+NearestNeighbour.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1A9F7B02669E3CAA60BA86DDCFA421 /* KDTree+NearestNeighbour.swift */; };
@@ -187,6 +187,7 @@
 		DA0C5B9CAD4A94A34C4FE1C20ABC44E2 /* LogFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2FA6AC29C58D24E6B34DC8C18A723B /* LogFormatterProtocol.swift */; };
 		DDAAAD30CBD3079BBE089CB3C6DD16C3 /* NMBStringify.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BD678D9FD55482BEB8832509121774 /* NMBStringify.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DDEF0C541C9A87791B4911146653832B /* Base64LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742610399EC7B7F57D75F5405B3AF7D3 /* Base64LogFormatter.swift */; };
+		E03EBE59ECBF9545E5DB23CE7092F8E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */; };
 		E32DB961A1073E540A21B83BECF75541 /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CCAF15A52BC8598DC7814C1EBEEC16 /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		E52BC3B359A09BB291FAE5DA7FC1C28E /* AutoRotatingFileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE192D121AFD46B637F2DD8FE4F8663 /* AutoRotatingFileDestination.swift */; };
 		E6A6613A961E3A23BC09A3B6A5411F8F /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28E3F390AE825A59EF175B665557428 /* SuiteHooks.swift */; };
@@ -204,7 +205,6 @@
 		F8616FFD56A5B7A5C260F361EECAC1EB /* PrePostFixLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3262014DC0F2350795D5EDF1574B2F2 /* PrePostFixLogFormatter.swift */; };
 		F88B97765E96F5BB65EC3D87D518722A /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E8397C7D438515850488FC81CA0D /* HelperFunctions.swift */; };
 		F96A9BFDBF329DF71A87BD1E8C5DCB75 /* XCGLogger-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 26965FFC767E304C7D82D41467036C88 /* XCGLogger-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FCD84F7677054ECBCD8D7DA1C3B6BE23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */; };
 		FCE6B6415158C8A171A99F9E9DA91612 /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBB9CFC339BDD87CED9D9CE6E652FB5 /* Callsite.swift */; };
 		FD31318615491419F04D3AEFC67686B4 /* KDTree-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B06D73937533D6ED5938F52E5CC50 /* KDTree-OSX-dummy.m */; };
 		FD3BCB5E98E2880541793B6FC7405529 /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3203783ED3E78237DA9BF27B34B1DDC /* ExampleGroup.swift */; };
@@ -360,6 +360,7 @@
 		4F3259C6AF9542696DE836E52986D71F /* ObjcExceptionBridging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ObjcExceptionBridging.framework; path = "ObjcExceptionBridging-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		501EBD4E979F2925E99F7503B219648F /* BaseQueuedDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseQueuedDestination.swift; path = Sources/XCGLogger/Destinations/BaseQueuedDestination.swift; sourceTree = "<group>"; };
 		50F633645019A9320B345DAACF525203 /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/XCGLogger/Destinations/BaseDestination.swift; sourceTree = "<group>"; };
+		523BFD5371A604E4781631F6D6C358EC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		52C5D5E3FC93C819E8A2696CBD514963 /* Pods-KDTree_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Example-resources.sh"; sourceTree = "<group>"; };
 		544CEA90A5D12598124AB4EDFD495028 /* XCGLogger-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XCGLogger-OSX-dummy.m"; sourceTree = "<group>"; };
 		54EFBABC9B1E0603D3BB645326523166 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
@@ -400,6 +401,7 @@
 		7ABFD5D2F29AA3B0571A761CD233246D /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
 		7AFECF2D5E480BE7D7B66B00F3D6B849 /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/XCGLogger/Destinations/FileDestination.swift; sourceTree = "<group>"; };
 		7BFCEFA9E40B9AD347EB64B9AE8A1F47 /* ObjcExceptionBridging-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "ObjcExceptionBridging-OSX.modulemap"; sourceTree = "<group>"; };
+		7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7D2FA6AC29C58D24E6B34DC8C18A723B /* LogFormatterProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogFormatterProtocol.swift; path = Sources/XCGLogger/LogFormatters/LogFormatterProtocol.swift; sourceTree = "<group>"; };
 		7F146956FCA9AC1E93CC76B6BD5C1859 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB152E615A0DE24677891085B831DE8 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
@@ -427,7 +429,6 @@
 		912C5CABD981BA3B90D8D6B14806188F /* XCGLogger-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "XCGLogger-OSX.xcconfig"; sourceTree = "<group>"; };
 		91F0DE2ACAD992A2E1144464559A3D9F /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
 		92B2C0687405DBD39CD914534B75CC87 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
-		92B97D4A266468BF8961F14D4F6D3023 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C6EDF6BFA5EBE0FFA1733B5537A7B0 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Nimble/Utils/Async.swift; sourceTree = "<group>"; };
 		9826B2815AD6174A109DB75137666879 /* ObjcExceptionBridging-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ObjcExceptionBridging-OSX-dummy.m"; sourceTree = "<group>"; };
@@ -450,7 +451,6 @@
 		ABC71F9844B0E377DE2621FA080B201F /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Sources/Lib/CwlPreconditionTesting/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
 		AD7B5501071BCEBADBB34B5842BB6567 /* Pods-KDTree_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AEEF77EA7D7BC999FA3FBB4B3D5C82B2 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
-		B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B06CEA2F0DA049E557499C650684C051 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlDarwinDefinitions.swift; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
 		B08DE59D7BC06B2A0C1E0744E707DCDF /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Matchers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
 		B14513781BED73C94948479994E2AB06 /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
@@ -525,7 +525,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D438BEEB0297D1FD65EDA26C7A08418 /* Foundation.framework in Frameworks */,
+				A4CC1623FF64776C741EC2382B4C80AE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,7 +533,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				831EB4E886FA93E4F6021D375DCC1119 /* Foundation.framework in Frameworks */,
+				E03EBE59ECBF9545E5DB23CE7092F8E8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +549,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4A42F9A8BF82AB1C2FA69E59A74919B /* Foundation.framework in Frameworks */,
+				BF63EB0A61D33340416431D40CCA394D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,8 +565,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1101275C16514D4E32DEDD7AA8BCCDAC /* Foundation.framework in Frameworks */,
-				75DB7F8792F8AF56309D8FDBD2A5BAEC /* XCTest.framework in Frameworks */,
+				253C559C9819B9BA0F3296792A0676F6 /* Foundation.framework in Frameworks */,
+				6CBEDBA2BE015263A89DE13594C4982F /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +574,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A3EF5E9E99A2455E62DFEFA9A6D8BE5 /* Foundation.framework in Frameworks */,
+				3A4CF29E3EC99CCD531998A3E41E69F9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +582,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EFD40136F72FBE465050F1EF58B23DB /* Foundation.framework in Frameworks */,
+				5A25CC74D4DE5411FC9F21D873C112BD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +598,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCD84F7677054ECBCD8D7DA1C3B6BE23 /* Foundation.framework in Frameworks */,
+				58901ED193887DC58DF1401338AE8F98 /* Foundation.framework in Frameworks */,
 				EAF07BFE1E60598FAA951182E15467EA /* ObjcExceptionBridging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,15 +639,6 @@
 			);
 			name = "Pods-KDTree_OSX_ExampleTests";
 			path = "Target Support Files/Pods-KDTree_OSX_ExampleTests";
-			sourceTree = "<group>";
-		};
-		0F90118894443C069C3C4B684ACE6B0C /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				B0172180E08C1CEBAA67BE7D75725096 /* Foundation.framework */,
-				92B97D4A266468BF8961F14D4F6D3023 /* XCTest.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		2AAF6C7C688817A27F981D15F2355730 /* Support Files */ = {
@@ -692,7 +683,7 @@
 			isa = PBXGroup;
 			children = (
 				9055718F32F7E44EEEC2D434C5617962 /* ObjcExceptionBridging.framework */,
-				0F90118894443C069C3C4B684ACE6B0C /* iOS */,
+				76F3512DB39C0AC504EDFCF8F03B6559 /* iOS */,
 				30459D45C6EE706F58AECCBF6438B039 /* OS X */,
 			);
 			name = Frameworks;
@@ -782,6 +773,15 @@
 				6E5277EA808E041582D300B75F2FD1B6 /* XCGLogger */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		76F3512DB39C0AC504EDFCF8F03B6559 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7C609E8CCA8BF33E7F83C7B5973385D1 /* Foundation.framework */,
+				523BFD5371A604E4781631F6D6C358EC /* XCTest.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -1419,7 +1419,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -1757,7 +1757,227 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0B29B1C01AD54B872A443DC51DB20CB2 /* Debug */ = {
+		03AC808C37EA9473F443AA495796B520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0611C568E6B8D3F53D633EEABE65B0A2 /* Pods-KDTree_OSX_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KDTree_OSX_Example;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		115E990D99E04598D2EFD5789E381860 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3E3D13D104050E696784F35A80E66CB /* XCGLogger-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCGLogger-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = XCGLogger;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		15BCC7DEE7CBDB81595ED996EF310262 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C614E772A0B14A3E26F90637D8B38E12 /* Pods-KDTree_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KDTree_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		18B51DF40B29B074DCA3ECF3C389A2DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 447CD463875BB83B84EADCECD7D10347 /* Pods-KDTree_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KDTree_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1D98C6634EDC9CB5848E1AF8EF85A916 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 912C5CABD981BA3B90D8D6B14806188F /* XCGLogger-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCGLogger-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = XCGLogger;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1F9F43C43ABD345CF160A0492EC5AFF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 647EFBF8B5AB471B892DF744723ED8F2 /* ObjcExceptionBridging-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ObjcExceptionBridging-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ObjcExceptionBridging;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4480897209205285C98C98BF304D61A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 912C5CABD981BA3B90D8D6B14806188F /* XCGLogger-OSX.xcconfig */;
 			buildSettings = {
@@ -1785,6 +2005,7 @@
 				PRODUCT_NAME = XCGLogger;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1792,10 +2013,11 @@
 			};
 			name = Debug;
 		};
-		13D177870D4C299533F518C722C46F19 /* Release */ = {
+		46F8D5EE7319C02A02D2CA25A0D1DAA9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C5056F4655692626DC2BC2DA83446F8 /* KDTree-iOS.xcconfig */;
+			baseConfigurationReference = 11521D09DE8E5A31864792F65F4ECD2C /* Nimble.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1807,16 +2029,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-iOS/KDTree-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-iOS/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/KDTree-iOS/KDTree-iOS.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = KDTree;
+				PRODUCT_NAME = Nimble;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1824,46 +2047,11 @@
 			};
 			name = Release;
 		};
-		173DC7D4BD9C098DBF3294E76BF3C754 /* Debug */ = {
+		4DCBA2E058ADC71927A50F689C79B47C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D04643F3B10D43F498EC4C3FC852AA64 /* Pods-KDTree_Tests.debug.xcconfig */;
+			baseConfigurationReference = CD920D962771FF841E6A805B58814CD7 /* Quick.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KDTree_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1BD58E76DF71EBAF8436F32E7F92C28C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 647EFBF8B5AB471B892DF744723ED8F2 /* ObjcExceptionBridging-iOS.xcconfig */;
-			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1875,136 +2063,23 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ObjcExceptionBridging-iOS/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = ObjcExceptionBridging;
+				PRODUCT_NAME = Quick;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		23C804D0B4B10F2AEAF9DCA1535399F9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E29CB414BDCDE8F3C744BC6625CAA36 /* Pods-KDTree_OSX_Example.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KDTree_OSX_Example;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		472F79F5180C38C71374EC4BC2CA64E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3E3D13D104050E696784F35A80E66CB /* XCGLogger-iOS.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/XCGLogger-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = XCGLogger;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		50D4E878F814FB89B40BCBE2EB4EC2E6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
 		};
 		5824BFAD2902CD89B3BE4FF7E3BF3439 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2040,10 +2115,47 @@
 			};
 			name = Debug;
 		};
-		60BDBBE72F947229A99F7179FD268961 /* Release */ = {
+		59CC675475D0C9245B8795F70422C971 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD920D962771FF841E6A805B58814CD7 /* Quick.xcconfig */;
+			baseConfigurationReference = 81D7295F9CF3936404234998E470B360 /* KDTree-OSX.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-OSX/KDTree-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/KDTree-OSX/KDTree-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KDTree;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5AB06AD3B8F074E357DF810AC0B65CCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3E3D13D104050E696784F35A80E66CB /* XCGLogger-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2055,16 +2167,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCGLogger-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
+				MODULEMAP_FILE = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Quick;
+				PRODUCT_NAME = XCGLogger;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2072,9 +2185,44 @@
 			};
 			name = Release;
 		};
-		66DDFA3BB3D79B8355D90B6369CC3769 /* Release */ = {
+		5FFAD94EDBEB9990749756B06E43F0C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 912C5CABD981BA3B90D8D6B14806188F /* XCGLogger-OSX.xcconfig */;
+			baseConfigurationReference = 0C5056F4655692626DC2BC2DA83446F8 /* KDTree-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-iOS/KDTree-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KDTree-iOS/KDTree-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KDTree;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		628466D5C2B0ED7C08623B079F3C3517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E29CB414BDCDE8F3C744BC6625CAA36 /* Pods-KDTree_OSX_Example.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -2090,67 +2238,32 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/XCGLogger-OSX/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/XCGLogger-OSX/XCGLogger-OSX.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = XCGLogger;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KDTree_OSX_Example;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		809E1AF241963DA074CE8CB435C026F2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		83E4B06FA304D40DA3D7289FF7DF8BEF /* Release */ = {
+		7FA87A02EC26D53DA8CBE6B9BB64263B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E369A0579717DA2E6E5D301C738C106 /* Pods-KDTree_Tests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2176,81 +2289,19 @@
 				PRODUCT_NAME = Pods_KDTree_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		8A3D67E5775460A630B5AB2A39F77270 /* Debug */ = {
+		875FBA59622FD69E7658F9E24FD8789B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 647EFBF8B5AB471B892DF744723ED8F2 /* ObjcExceptionBridging-iOS.xcconfig */;
+			baseConfigurationReference = 0C5056F4655692626DC2BC2DA83446F8 /* KDTree-iOS.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ObjcExceptionBridging-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = ObjcExceptionBridging;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		91D32E8876162EACDD1E4359CBB09C4A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3E3D13D104050E696784F35A80E66CB /* XCGLogger-iOS.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/XCGLogger-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/XCGLogger-iOS/XCGLogger-iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = XCGLogger;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9751150608DA1E0B7B2B69086705C98B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11521D09DE8E5A31864792F65F4ECD2C /* Nimble.xcconfig */;
-			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2262,16 +2313,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-iOS/KDTree-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				MODULEMAP_FILE = "Target Support Files/KDTree-iOS/KDTree-iOS.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Nimble;
+				PRODUCT_NAME = KDTree;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2279,40 +2331,54 @@
 			};
 			name = Release;
 		};
-		A86805012A6DC5EB630102AFEEFBDB58 /* Release */ = {
+		AB5965931E2FEF61A7D4A8B15E01C838 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 447CD463875BB83B84EADCECD7D10347 /* Pods-KDTree_Example.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KDTree_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
 			};
-			name = Release;
+			name = Debug;
 		};
 		AC4D92D7EA0C88C174991A13A3890416 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2385,10 +2451,11 @@
 			};
 			name = Release;
 		};
-		B4C6E917ED2BC80CF8C10B5D93430E3D /* Debug */ = {
+		C1FD48BBC0EDFD0522EF1F3B57E5A73A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C5056F4655692626DC2BC2DA83446F8 /* KDTree-iOS.xcconfig */;
+			baseConfigurationReference = CD920D962771FF841E6A805B58814CD7 /* Quick.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2400,16 +2467,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-iOS/KDTree-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-iOS/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/KDTree-iOS/KDTree-iOS.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = KDTree;
+				PRODUCT_NAME = Quick;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2418,49 +2486,14 @@
 			};
 			name = Debug;
 		};
-		C4482905AE75A8D3857AEF4A17C99061 /* Release */ = {
+		D5BCE4CB6A01284BAC4E6F23B88017E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81D7295F9CF3936404234998E470B360 /* KDTree-OSX.xcconfig */;
+			baseConfigurationReference = 11521D09DE8E5A31864792F65F4ECD2C /* Nimble.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-OSX/KDTree-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/KDTree-OSX/KDTree-OSX.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = KDTree;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EC99BCE2D0EBC61B780BE9BF0F836BED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81D7295F9CF3936404234998E470B360 /* KDTree-OSX.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -2468,20 +2501,60 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-OSX/KDTree-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-OSX/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/KDTree-OSX/KDTree-OSX.modulemap";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = KDTree;
-				SDKROOT = macosx;
+				PRODUCT_NAME = Nimble;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D85950D167B8259855D01D993F37446C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D04643F3B10D43F498EC4C3FC852AA64 /* Pods-KDTree_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KDTree_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2524,78 +2597,9 @@
 			};
 			name = Release;
 		};
-		F217406ADF32DCBCB4A1A8911A79DE46 /* Debug */ = {
+		EDD656FD93CF37360C3772CE7CAE277C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C614E772A0B14A3E26F90637D8B38E12 /* Pods-KDTree_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KDTree_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F4DC37BF3CDB64CE8AE6271A00AFDAFF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD920D962771FF841E6A805B58814CD7 /* Quick.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Quick;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F7BED891829DEDEAC5E130E458DD4373 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0611C568E6B8D3F53D633EEABE65B0A2 /* Pods-KDTree_OSX_Example.debug.xcconfig */;
+			baseConfigurationReference = 81D7295F9CF3936404234998E470B360 /* KDTree-OSX.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -2603,7 +2607,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2611,58 +2615,100 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-OSX/KDTree-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-OSX/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KDTree_OSX_Example;
+				MODULEMAP_FILE = "Target Support Files/KDTree-OSX/KDTree-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KDTree;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		FD16A8312DB7DC3F39C4BBA96491697C /* Debug */ = {
+		F46056274A6DFD3504A937E4E676ED30 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11521D09DE8E5A31864792F65F4ECD2C /* Nimble.xcconfig */;
+			baseConfigurationReference = 647EFBF8B5AB471B892DF744723ED8F2 /* ObjcExceptionBridging-iOS.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ObjcExceptionBridging-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Nimble;
+				MODULEMAP_FILE = "Target Support Files/ObjcExceptionBridging-iOS/ObjcExceptionBridging-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ObjcExceptionBridging;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
+		};
+		F9B1F3FBD81BA88E3A7799E3C3E63DB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2670,8 +2716,8 @@
 		010FBC034E03BE3C98B11593479E6EFC /* Build configuration list for PBXNativeTarget "ObjcExceptionBridging-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8A3D67E5775460A630B5AB2A39F77270 /* Debug */,
-				1BD58E76DF71EBAF8436F32E7F92C28C /* Release */,
+				1F9F43C43ABD345CF160A0492EC5AFF1 /* Debug */,
+				F46056274A6DFD3504A937E4E676ED30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2688,8 +2734,8 @@
 		20DE20B8141070035D7447C62B7E42E5 /* Build configuration list for PBXNativeTarget "Pods-KDTree_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F217406ADF32DCBCB4A1A8911A79DE46 /* Debug */,
-				A86805012A6DC5EB630102AFEEFBDB58 /* Release */,
+				15BCC7DEE7CBDB81595ED996EF310262 /* Debug */,
+				18B51DF40B29B074DCA3ECF3C389A2DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2697,8 +2743,8 @@
 		2922661488CE68048F1D8EF8877EB368 /* Build configuration list for PBXNativeTarget "KDTree-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4C6E917ED2BC80CF8C10B5D93430E3D /* Debug */,
-				13D177870D4C299533F518C722C46F19 /* Release */,
+				5FFAD94EDBEB9990749756B06E43F0C3 /* Debug */,
+				875FBA59622FD69E7658F9E24FD8789B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2706,8 +2752,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50D4E878F814FB89B40BCBE2EB4EC2E6 /* Debug */,
-				809E1AF241963DA074CE8CB435C026F2 /* Release */,
+				AB5965931E2FEF61A7D4A8B15E01C838 /* Debug */,
+				F9B1F3FBD81BA88E3A7799E3C3E63DB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2715,8 +2761,8 @@
 		302149508E693E0628329C838D0E3ACD /* Build configuration list for PBXNativeTarget "XCGLogger-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0B29B1C01AD54B872A443DC51DB20CB2 /* Debug */,
-				66DDFA3BB3D79B8355D90B6369CC3769 /* Release */,
+				4480897209205285C98C98BF304D61A3 /* Debug */,
+				1D98C6634EDC9CB5848E1AF8EF85A916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2724,8 +2770,8 @@
 		768D54C2D7102F22EBEC0F6C343A6291 /* Build configuration list for PBXNativeTarget "KDTree-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC99BCE2D0EBC61B780BE9BF0F836BED /* Debug */,
-				C4482905AE75A8D3857AEF4A17C99061 /* Release */,
+				59CC675475D0C9245B8795F70422C971 /* Debug */,
+				EDD656FD93CF37360C3772CE7CAE277C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2733,8 +2779,8 @@
 		8A76DBF9B0401C55987C3FC4E0817E61 /* Build configuration list for PBXNativeTarget "XCGLogger-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				91D32E8876162EACDD1E4359CBB09C4A /* Debug */,
-				472F79F5180C38C71374EC4BC2CA64E9 /* Release */,
+				115E990D99E04598D2EFD5789E381860 /* Debug */,
+				5AB06AD3B8F074E357DF810AC0B65CCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2751,8 +2797,8 @@
 		97E10F8B511F718562F9FB15BA9B4EA9 /* Build configuration list for PBXNativeTarget "Pods-KDTree_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				173DC7D4BD9C098DBF3294E76BF3C754 /* Debug */,
-				83E4B06FA304D40DA3D7289FF7DF8BEF /* Release */,
+				D85950D167B8259855D01D993F37446C /* Debug */,
+				7FA87A02EC26D53DA8CBE6B9BB64263B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2760,8 +2806,8 @@
 		A4643C33D555A826D0CE464A8AE08DCB /* Build configuration list for PBXNativeTarget "Pods-KDTree_OSX_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F7BED891829DEDEAC5E130E458DD4373 /* Debug */,
-				23C804D0B4B10F2AEAF9DCA1535399F9 /* Release */,
+				03AC808C37EA9473F443AA495796B520 /* Debug */,
+				628466D5C2B0ED7C08623B079F3C3517 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2769,8 +2815,8 @@
 		B5147DF717A4E599A1203F9CF52340FB /* Build configuration list for PBXNativeTarget "Nimble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FD16A8312DB7DC3F39C4BBA96491697C /* Debug */,
-				9751150608DA1E0B7B2B69086705C98B /* Release */,
+				D5BCE4CB6A01284BAC4E6F23B88017E7 /* Debug */,
+				46F8D5EE7319C02A02D2CA25A0D1DAA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2778,8 +2824,8 @@
 		F57B892115CF0108623FF7B102B50678 /* Build configuration list for PBXNativeTarget "Quick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F4DC37BF3CDB64CE8AE6271A00AFDAFF /* Debug */,
-				60BDBBE72F947229A99F7179FD268961 /* Release */,
+				C1FD48BBC0EDFD0522EF1F3B57E5A73A /* Debug */,
+				4DCBA2E058ADC71927A50F689C79B47C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
