@@ -99,7 +99,7 @@ struct Star {
             let pmdec: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
         guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr), mag < 4.0 else { return nil }
+            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
 
@@ -152,7 +152,7 @@ extension Star: CustomDebugStringConvertible {
         let distanceString = String(describing: starData?.value.distance)
         let magString = String(describing: starData?.value.mag)
         return "🌠: " + (starData?.value.properName ?? "N.A.") + ", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))"
-            + "GL(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):"
+            + "Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):"
             + "\(right_ascension), \(declination), \( distanceString ) mag: \(magString)"
     }
 }

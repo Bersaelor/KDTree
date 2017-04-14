@@ -15,11 +15,15 @@
 #endif
 
 extension View {
-    func xPlatformNeedsDisplay() {
+    func xPlatformNeedsDisplay(rect: CGRect? = nil) {
         #if os(OSX)
             self.needsDisplay = true
         #else
-            self.setNeedsDisplay()
+            if let rect = rect {
+                self.setNeedsDisplay(rect)
+            } else {
+                self.setNeedsDisplay()
+            }
         #endif
     }
 }
@@ -165,7 +169,7 @@ class FillWithFormsView: View {
             }
         #endif
         
-        context.clear(self.bounds)
+        context.clear(rect)
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         context.translateBy(x: c.x, y: c.y)
         context.scaleBy(x: adjSize, y: adjSize)
