@@ -28,6 +28,9 @@
 		7186FE831D99D99B00D8F292 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
 		7186FE851D99DBBF00D8F292 /* RangeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */; };
 		7186FE861D99DF0A00D8F292 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
+		719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */; };
+		719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAE1E81B8D900A09A3F /* Star.swift */; };
+		719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */; };
 		71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
 		71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */; };
 		71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8D1CB1468100CB19A6 /* Disc.swift */; };
@@ -37,6 +40,20 @@
 		71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4661CD946BF005436C3 /* Assets.xcassets */; };
 		71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4681CD946BF005436C3 /* Main.storyboard */; };
 		71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */; };
+		71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
+		71DACADD1E8668D40055B8F2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
+		71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
+		740150FC1E9AA34200F0F4DA /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */; };
+		7446914C1E8A86F60040A093 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7446914B1E8A86F60040A093 /* StarViewController.swift */; };
+		7446914D1E8A87020040A093 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
+		7446914E1E8A870F0040A093 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAE1E81B8D900A09A3F /* Star.swift */; };
+		7446914F1E8A870F0040A093 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
+		744691501E8A87140040A093 /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */; };
+		744691511E8A87170040A093 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
+		744691531E8A9B580040A093 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691521E8A9B580040A093 /* WindowController.swift */; };
+		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
+		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
+		7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +91,9 @@
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapViewController.swift; sourceTree = "<group>"; };
+		719CEFAE1E81B8D900A09A3F /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hygdata_v3.csv; sourceTree = "<group>"; };
 		71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillWithFormsView.swift; sourceTree = "<group>"; };
 		71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselationViewController.swift; sourceTree = "<group>"; };
 		71BB4C8D1CB1468100CB19A6 /* Disc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disc.swift; sourceTree = "<group>"; };
@@ -88,6 +108,14 @@
 		71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDTree_OSX_ExampleTests.swift; sourceTree = "<group>"; };
 		71C1B4761CD946BF005436C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestNeighbourSpec.swift; sourceTree = "<group>"; };
+		71C74C871E884CEC0057B4F2 /* StarMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapView.swift; sourceTree = "<group>"; };
+		71DACADC1E8668D40055B8F2 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		71DACAE01E86B3490055B8F2 /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
+		740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		7446914B1E8A86F60040A093 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
+		744691521E8A9B580040A093 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
+		7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
@@ -185,8 +213,10 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */,
 				716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */,
 				71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */,
+				71DACAE21E86B34F0055B8F2 /* Stars Example */,
 				716B72011CAF25B100A35BB6 /* Geometry.swift */,
 				716B71FC1CAEF44A00A35BB6 /* UIView subclasses */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -214,6 +244,7 @@
 				71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */,
 				74887EFB1CABC258002AECF6 /* LoadTest.swift */,
 				712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */,
+				740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -252,7 +283,9 @@
 			isa = PBXGroup;
 			children = (
 				71C1B4621CD946BF005436C3 /* AppDelegate.swift */,
+				744691521E8A9B580040A093 /* WindowController.swift */,
 				71C1B4641CD946BF005436C3 /* ViewController.swift */,
+				7446914B1E8A86F60040A093 /* StarViewController.swift */,
 				71C1B4661CD946BF005436C3 /* Assets.xcassets */,
 				71C1B4681CD946BF005436C3 /* Main.storyboard */,
 				71C1B46B1CD946BF005436C3 /* Info.plist */,
@@ -267,6 +300,20 @@
 				71C1B4761CD946BF005436C3 /* Info.plist */,
 			);
 			path = KDTree_OSX_ExampleTests;
+			sourceTree = "<group>";
+		};
+		71DACAE21E86B34F0055B8F2 /* Stars Example */ = {
+			isa = PBXGroup;
+			children = (
+				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
+				744691551E8AA50D0040A093 /* StarHelper.swift */,
+				71C74C871E884CEC0057B4F2 /* StarMapView.swift */,
+				71DACAE01E86B3490055B8F2 /* LineGenerator.swift */,
+				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
+				719CEFAE1E81B8D900A09A3F /* Star.swift */,
+				71DACADC1E8668D40055B8F2 /* Box.swift */,
+			);
+			name = "Stars Example";
 			sourceTree = "<group>";
 		};
 		CAA472A1686B9714B52D97B5 /* Frameworks */ = {
@@ -373,7 +420,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -425,6 +472,7 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +490,7 @@
 			files = (
 				71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */,
 				71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */,
+				744691501E8A87140040A093 /* hygdata_v3.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +531,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0F8691971EDAC53496FA0961 /* [CP] Copy Pods Resources */ = {
@@ -542,7 +591,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4D54754E3E75EEF685F2AE8E /* [CP] Copy Pods Resources */ = {
@@ -631,7 +680,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D550B3E8AC5060CF45960B8E /* [CP] Check Pods Manifest.lock */ = {
@@ -646,7 +695,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -657,13 +706,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */,
+				744691561E8AA50D0040A093 /* StarHelper.swift in Sources */,
 				716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */,
+				719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */,
+				719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */,
 				716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */,
 				71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				71BB4C921CB18F9500CB19A6 /* Square.swift in Sources */,
+				71DACADD1E8668D40055B8F2 /* Box.swift in Sources */,
+				71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */,
 				716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */,
+				7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */,
 				71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,11 +740,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7446914F1E8A870F0040A093 /* Box.swift in Sources */,
+				744691571E8AA50D0040A093 /* StarHelper.swift in Sources */,
 				713204B81CD94CEA001A1F44 /* Disc.swift in Sources */,
 				713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */,
 				71C1B4651CD946BF005436C3 /* ViewController.swift in Sources */,
 				71C1B4631CD946BF005436C3 /* AppDelegate.swift in Sources */,
+				7446914D1E8A87020040A093 /* StarMapView.swift in Sources */,
+				7446914C1E8A86F60040A093 /* StarViewController.swift in Sources */,
+				744691531E8A9B580040A093 /* WindowController.swift in Sources */,
+				744691511E8A87170040A093 /* LineGenerator.swift in Sources */,
 				713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */,
+				7446914E1E8A870F0040A093 /* Star.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +761,7 @@
 			files = (
 				71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */,
 				713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */,
+				740150FC1E9AA34200F0F4DA /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,12 +898,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9AF9F2C658DF6E488E4461D6 /* Pods-KDTree_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				DEVELOPMENT_TEAM = H43Z4288RY;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_SHADOW = YES;
@@ -848,6 +912,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -857,7 +922,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C21662931D2AD0332A01BA1B /* Pods-KDTree_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
@@ -881,7 +945,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CA9AFCB856DDD567CE693E74 /* Pods-KDTree_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -900,7 +963,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C65221F04F9484F8E3E25A68 /* Pods-KDTree_Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -916,18 +978,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90C698D9647F2FA603B9E5A9 /* Pods-KDTree_OSX_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = KDTree_OSX_Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KDTree-OSX-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -936,7 +999,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49E6BEB256637DEA593F5DF6 /* Pods-KDTree_OSX_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "-";

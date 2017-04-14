@@ -10,6 +10,9 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet var tesselationView: FillWithFormsView!
+    @IBOutlet weak var clickGestureRecognizer: NSClickGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +23,11 @@ class ViewController: NSViewController {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    @IBAction func illustrationTapped(_ recognizer: NSClickGestureRecognizer) {
+        let point = recognizer.location(in: recognizer.view)
+        tesselationView.tapped(point)
     }
 
 }

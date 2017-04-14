@@ -12,6 +12,19 @@
     import UIKit
 #endif
 
+extension CGRect {
+    
+    /// Spans the Rectangle between two points
+    ///
+    /// - Parameters:
+    ///   - pointA: One corner point
+    ///   - pointB: Another corner point
+    public init(pointA: CGPoint, pointB: CGPoint) {
+        self.origin = CGPoint(x: min(pointA.x, pointB.x), y: min(pointA.y, pointB.y))
+        self.size = CGSize(width: fabs(pointA.x - pointB.x), height: fabs(pointA.y - pointB.y))
+    }
+}
+
 extension CGPoint {
     var shortDecimalDescription: String {
         return String(format: "(%.3f, %.3f)", self.x, self.y)
@@ -35,6 +48,7 @@ public func + (left: CGPoint, right: CGPoint) -> CGPoint {
 }
 
 public func += (left: inout CGPoint, right: CGPoint) {
+    // swiftlint:disable:next shorthand_operator
     left = left + right
 }
 
@@ -43,7 +57,12 @@ public func - (left: CGPoint, right: CGPoint) -> CGPoint {
 }
 
 public func -= (left: inout CGPoint, right: CGPoint) {
+    // swiftlint:disable:next shorthand_operator
     left = left - right
+}
+
+public func * (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x * right.x, y: left.y * right.y)
 }
 
 public func * (scalar: CGFloat, right: CGPoint) -> CGPoint {
@@ -57,7 +76,7 @@ public func *= (left: inout CGPoint, right: CGFloat) {
 extension CGPoint {
     public var angle: CGFloat {
         let normedVec = 1.0/self.norm * self
-        return atan(normedVec.y / normedVec.x) + CGFloat(self.x < 0 ? M_PI : 0.0)
+        return atan(normedVec.y / normedVec.x) + self.x < 0 ? CGFloat.pi : 0.0
     }
     
     public static func angledVec(_ angle: CGFloat) -> CGPoint {

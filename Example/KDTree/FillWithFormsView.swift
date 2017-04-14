@@ -14,9 +14,23 @@
     public typealias View = UIView
 #endif
 
+extension View {
+    func xPlatformNeedsDisplay(rect: CGRect? = nil) {
+        #if os(OSX)
+            self.needsDisplay = true
+        #else
+            if let rect = rect {
+                self.setNeedsDisplay(rect)
+            } else {
+                self.setNeedsDisplay()
+            }
+        #endif
+    }
+}
+
 import KDTree
 
-let initialPoints = 500
+let initialPoints = 1000
 let maxDiscSize: CGFloat = 0.1
 let minDiscSize: CGFloat = 0.01
 
@@ -116,7 +130,7 @@ class FillWithFormsView: View {
             }
             
             if weakShapeOp?.isCancelled == false {
-                DispatchQueue.main.async() { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     self?.discTree = treeCopy
                     xcLog.debug("newPoints: \(newPoints)")
                     self?.points = newPoints + strongself.points
@@ -135,20 +149,11 @@ class FillWithFormsView: View {
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
         closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
-        #if os(OSX)
-            self.needsDisplay = true
-        #else
-            self.setNeedsDisplay()
-        #endif
+        xPlatformNeedsDisplay()
     }
     
     func update() {
-
-        #if os(OSX)
-            self.needsDisplay = true
-        #else
-            self.setNeedsDisplay()
-        #endif
+        xPlatformNeedsDisplay()
     }
     
     override func draw(_ rect: CGRect) {
@@ -164,7 +169,7 @@ class FillWithFormsView: View {
             }
         #endif
         
-        context.clear(self.bounds)
+        context.clear(rect)
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         context.translateBy(x: c.x, y: c.y)
         context.scaleBy(x: adjSize, y: adjSize)

@@ -93,8 +93,9 @@ class BasicSpec: QuickSpec {
             }
             
             it("array map to equal tree map") {
-                let filterAndMap = tenTree.filter({$0.x > 5}).mapToArray({ $0.x + $0.y })
-                let mapAndFilter = tenTree.mapToArray({ $0.x + $0.y }).filter({$0 > 10})
+                let filteredTree: KDTree<CGPoint> = tenTree.filter({$0.x > 5})
+                let filterAndMap: [CGFloat] = filteredTree.map({ $0.x + $0.y })
+                let mapAndFilter = tenTree.map({ $0.x + $0.y }).filter({$0 > 10})
                 expect(mapAndFilter) == filterAndMap
             }
 
@@ -105,6 +106,15 @@ class BasicSpec: QuickSpec {
                     .insetBy(dx: -0.5, dy: -0.5) }).filter({ $0.origin.norm > 4.5 })
                 expect(mapAndFilter) == filterAndMap
             }
+            
+            it("Can be iterated as a sequence") {
+                var sum: CGFloat = 0
+                for element in tenTree {
+                    sum += element.x
+                }
+                
+                expect(sum).to(beCloseTo(55, within: 0.01))
+            }
 
             context("Average norm by forEach") {
                 var sum = 0.0
@@ -113,7 +123,7 @@ class BasicSpec: QuickSpec {
                 })
                 let avg = sum / Double(tenPoints.count)
                 it("should be") {
-                    expect(avg).to(beCloseTo(7.78, within: 0.1))
+                    expect(avg).to(beCloseTo(7.78, within: 0.01))
                 }
             }
         }

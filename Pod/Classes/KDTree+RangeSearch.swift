@@ -31,7 +31,6 @@ extension KDTree {
         case .leaf:
             return []
         case let .node(left, value, dim, right):
-            print("Stepping through node \(value), \(dim)")
             var returnValues = value.fitsIn(intervals) ? [value] : []
             let dimensionValue = value.kdDimension(dim)
             if intervals[dim].0 < dimensionValue {

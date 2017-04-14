@@ -5,13 +5,13 @@ target 'KDTree_Example' do
     platform :ios, '8.0'
     
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger', '~> 4.0.0'
+    pod 'XCGLogger', '~> 5.0.1'
 
     target 'KDTree_Tests' do
         inherit! :search_paths
         
         pod 'Quick', '~> 1.1.0'
-        pod 'Nimble', '~> 6.0.1'
+        pod 'Nimble', '~> 6.1.0'
     end
     
 end
@@ -21,7 +21,7 @@ target 'KDTree_OSX_Example' do
     platform :osx, '10.10'
 
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger', '~> 4.0.0'
+    pod 'XCGLogger', '~> 5.0.1'
 
     target 'KDTree_OSX_ExampleTests' do
         inherit! :search_paths

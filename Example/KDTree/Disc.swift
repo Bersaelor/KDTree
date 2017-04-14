@@ -9,9 +9,11 @@
 #if os(OSX)
     import Cocoa
     public typealias Color = NSColor
+    public typealias Font = NSFont
 #else
     import UIKit
     public typealias Color = UIColor
+    public typealias Font = UIFont
 #endif
 
 import KDTree

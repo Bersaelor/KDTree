@@ -195,30 +195,16 @@ public enum KDTree<Element: KDTreePoint> {
         case .leaf:
             return 0
         case let .node(left, _, _, right):
-            let maxSubTreeDepth = max(left.depth, right.depth)
+            let leftDepth = left.depth
+            let rightDepth = right.depth
+            let maxSubTreeDepth = leftDepth > rightDepth ? leftDepth : rightDepth
             return 1 + maxSubTreeDepth
         }
     }
 }
 
-extension KDTree { //SequenceType like
+extension KDTree { //SequenceType like, but keeping the KDTree datastructure
     
-    /// Returns an `Array` containing the results of mapping `transform`
-    /// over `self`.
-    ///
-    /// - Complexity: O(N).
-    public func mapToArray<T>(_ transform: (Element) throws -> T) rethrows -> [T] {
-        switch self {
-        case .leaf:
-            return []
-        case let .node(left, value, _, right):
-            var mappedTs = try left.mapToArray(transform)
-            try mappedTs.append(transform(value))
-            try mappedTs.append(contentsOf: right.mapToArray(transform))
-            return mappedTs
-        }
-    }
-
     /// Returns a `KDTree` containing the results of mapping `transform`
     /// over `self`. 
     /// **IMPORTANT NOTE:** In general the resulting Tree won't be balanced at all. There are however specific cases 
@@ -299,23 +285,6 @@ extension KDTree { //SequenceType like
             let nextParents = [self] + parents
             left.investigateTree(nextParents, depth: depth+1, body: body)
             right.investigateTree(nextParents, depth: depth+1, body: body)
-        }
-    }
-    
-    /// Returns the result of repeatedly calling `combine` with an
-    /// accumulated value initialized to `initial` and each element of
-    /// `self`, in turn, i.e. return
-    /// `combine(combine(...combine(combine(initial, self[0]),
-    /// self[1]),...self[count-2]), self[count-1])`.
-    public func reduce<T>(_ initial: T, combine: (T, Element) throws -> T) rethrows -> T {
-        switch self {
-        case .leaf:
-            return initial
-        case let .node(left, value, _, right):
-            var result = try combine(initial, value)
-            result = try left.reduce(result, combine: combine)
-            result = try right.reduce(result, combine: combine)
-            return result
         }
     }
 }
