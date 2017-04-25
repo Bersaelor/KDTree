@@ -107,6 +107,14 @@ pod "KDTree"
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+---
+
+To add `KDTree` using Carthage add the following to your Cartfile:
+
+```
+github "Bersaelor/KDTree"
+```
+
 ## License
 
 KDTree is available under the MIT license. See the LICENSE file for more info.
