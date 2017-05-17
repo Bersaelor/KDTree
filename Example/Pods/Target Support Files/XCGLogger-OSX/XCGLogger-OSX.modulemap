@@ -1,0 +1,6 @@
+framework module XCGLogger {
+  umbrella header "XCGLogger-OSX-umbrella.h"
+
+  export *
+  module * { export * }
+}
