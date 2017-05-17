@@ -7,10 +7,10 @@ osx_image: xcode8
 # cache: cocoapods
 podfile: Example/Podfile
 before_install:
-- rm -rf Example/Pods
+#- rm -rf Example/Pods
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod repo update
-- pod install --project-directory=Example
+# - pod install --project-directory=Example
 script:
 - open -a "simulator" --args -CurrentDeviceUDID CEBBD79A-B6C1-4A02-BD33-56BBCBDED03E
 - set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO  -destination "OS=9.0,name=iPhone 6s" | xcpretty
