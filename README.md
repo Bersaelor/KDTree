@@ -98,6 +98,8 @@ One example is based on the [HYG Database](https://github.com/astronexus/HYG-Dat
 
 ## Installation
 
+#### Cocoapods
+
 KDTree is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -105,9 +107,22 @@ it, simply add the following line to your Podfile:
 pod "KDTree"
 ```
 
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+--- 
+
+#### Swift package manager
+
+Add the following to your `Package.swift` dependencies
+
+```
+.Package(url: "https://github.com/Bersaelor/KDTree", majorVersion: 0, minor: 5),
+```
+
 ---
+
+#### Carthage
 
 To add `KDTree` using Carthage add the following to your Cartfile:
 
