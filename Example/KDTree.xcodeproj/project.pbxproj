@@ -186,7 +186,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				607FACF51AFB993E008FA782 /* Metadata */,
 				607FACD21AFB9204008FA782 /* Example for KDTree */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				71C1B4611CD946BF005436C3 /* KDTree_OSX_Example */,
@@ -258,14 +258,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+		607FACF51AFB993E008FA782 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				8506A4C5702448A3C135B8E7 /* KDTree.podspec */,
 				7C2B43EA9C12FFEB9A9CD3C6 /* README.md */,
 				EBAD2F8B727A2480766EA435 /* LICENSE */,
 			);
-			name = "Podspec Metadata";
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		716B71FC1CAEF44A00A35BB6 /* UIView subclasses */ = {

@@ -1,13 +1,23 @@
-//
-//  RangeSearchTests.swift
-//  KDTree
-//
-//  Created by Konrad Feiler on 06/04/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
-//
-
 import XCTest
-import KDTree
+@testable import KDTree
+
+// test data
+
+extension CGPoint {
+    static func random() -> CGPoint {
+        return CGPoint(x: CGFloat.random(-1, end: 1), y: CGFloat.random(-1, end: 1))
+    }
+    
+    var norm: CGFloat {
+        return sqrt(self.x * self.x + self.y * self.y)
+    }
+}
+
+extension CGFloat {
+    static func random(_ start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
+        return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
+    }
+}
 
 // swiftlint:disable variable_name
 struct STPoint {
@@ -56,29 +66,50 @@ extension STPoint: KDTreePoint {
     }
 }
 
-class RangeSearchTests: XCTestCase {
+// MARK: Tests
+
+class KDTreeTests: XCTestCase {
     var points: [CGPoint] = []
     var largeTree: KDTree<CGPoint> = KDTree(values: [])
     let rangeIntervals: [(Double, Double)] = [(0.2, 0.3), (0.45, 0.75)]
-
+    
     var spaceTimePoints: [STPoint] = []
     var spaceTimeTree: KDTree<STPoint> = KDTree(values: [])
     let spaceTimeIntervals: [(Double, Double)] = [(0.2, 0.4), (0.45, 0.75), (0.15, 0.85), (0.1, 0.9)]
-
+    
     override func setUp() {
         super.setUp()
         
-        points = Array(0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        points = Array(0..<1000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
         largeTree = KDTree(values: self.points)
         
-        spaceTimePoints = Array(0..<300).map({_ in STPoint(x: CGFloat.random(), y: CGFloat.random(),
-            z: CGFloat.random(), t: CGFloat.random())})
+        spaceTimePoints = Array(0..<100).map({_ in STPoint(x: CGFloat.random(), y: CGFloat.random(),
+                                                           z: CGFloat.random(), t: CGFloat.random())})
         spaceTimeTree = KDTree(values: self.spaceTimePoints)
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func test00_tenPointTree() {
+        let tenPoints = Array(1...10).map { CGPoint(x: $0, y: $0) }
+        let tenTree = KDTree(values: tenPoints)
+        XCTAssertEqual((tenTree.filter({$0.x > 5}) as [CGPoint]).count, 5, "filter x > 5 contains 5")
+        
+        let sum = tenTree.reduce(0) { $0 + Int($1.x)}
+        XCTAssertEqual(sum, 55, "sum should be 55")
+        
+        let filteredTree: KDTree<CGPoint> = tenTree.filter({$0.x > 5})
+        let filterAndMap: [CGFloat] = filteredTree.map({ $0.x + $0.y })
+        let mapAndFilter = tenTree.map({ $0.x + $0.y }).filter({$0 > 10})
+        XCTAssertEqual(mapAndFilter, filterAndMap, "array map to equal tree map")
+        
+        var sum2 = 0.0
+        tenPoints.forEach { sum2 += sqrt(Double($0.x*$0.x + $0.y*$0.y)) }
+        let avg = sum2 / Double(tenPoints.count)
+        XCTAssertEqualWithAccuracy(avg, 7.78, accuracy: 0.01, "Average norm by forEach")
     }
     
     func test01_RangeSearchPerformance() {
@@ -149,5 +180,12 @@ class RangeSearchTests: XCTestCase {
             }
         }
     }
-    
+
+    static var allTests = [
+        ("test00_tenPointTree", test00_tenPointTree),
+        ("test01_RangeSearchPerformance", test01_RangeSearchPerformance),
+        ("test01b_RangeSearchArrayComparison", test01b_RangeSearchArrayComparison),
+        ("test02_STRangeSearchPerformance", test02_STRangeSearchPerformance),
+        ("test02b_STRangeSearchArrayComparison", test02b_STRangeSearchArrayComparison)
+    ]
 }

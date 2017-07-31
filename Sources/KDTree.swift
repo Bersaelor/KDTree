@@ -35,8 +35,8 @@ public enum KDTree<Element: KDTreePoint> {
             let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
             let rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
             
-            self = KDTree.node(left: leftTree, value: sortedValues[median],
-                               dimension: currentSplittingDimension, right: rightTree)
+            self = .node(left: leftTree, value: sortedValues[median],
+                         dimension: currentSplittingDimension, right: rightTree)
         }
     }
     

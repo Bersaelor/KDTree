@@ -1,0 +1,66 @@
+included:
+  - Sources
+  - Tests
+  - Example/KDTree
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - identifier_name
+
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+  - file_header
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - private_outlet
+  - nimble_operator
+  - attributes
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  - sorted_imports
+  - object_literal
+  - number_separator
+  - prohibited_super_call
+  - fatal_error_message
+  - vertical_parameter_alignment_on_call
+
+number_separator:
+  minimum_length: 5
+excluded: # paths to ignore during linting. overridden by `included`.
+  - Carthage
+  - Submodules
+
+line_length:
+  - 160
+  - 200
+  
+type_body_length:
+  - 300 # warning
+  - 400 # error
+
+function_body_length:
+  - 60
+  - 120
+
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  ViaSwiftUtils
+                    \/\/
+                    \/\/  Copyright \d{4} Viacom, Inc.
+                    \/\/
+                    \/\/  Licensed under the Apache License, Version 2\.0 \(the "License"\);
+                    \/\/  you may not use this file except in compliance with the License\.
+                    \/\/  You may obtain a copy of the License at
+                    \/\/
+                    \/\/  http:\/\/www.apache.org\/licenses\/LICENSE-2\.0
+                    \/\/
+                    \/\/  Unless required by applicable law or agreed to in writing, software
+                    \/\/  distributed under the License is distributed on an "AS IS" BASIS,
+                    \/\/  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.
+                    \/\/  See the License for the specific language governing permissions and
+                    \/\/  limitations under the License\.

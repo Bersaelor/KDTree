@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "KDTree"
-  s.version          = "0.4.0"
+  s.version          = "0.5.0"
   s.summary          = "Swift implementation of a k-dimensional binary space partitioning tree."
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,5 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.2'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.source_files = 'Sources/*'
 end
