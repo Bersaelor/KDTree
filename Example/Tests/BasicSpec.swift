@@ -81,7 +81,7 @@ class BasicSpec: QuickSpec {
         }
         
         describe("ten point KDTree") { 
-            let tenPoints = Array(1...10).map({x in CGPoint(x: x, y: x)})
+            let tenPoints = Array(1...10).map { CGPoint(x: $0, y: $0) }
             let tenTree = KDTree(values: tenPoints)
             it("filter x > 5 contains 5") {
                 expect(tenTree.filter({$0.x > 5}).count) == 5
@@ -118,9 +118,7 @@ class BasicSpec: QuickSpec {
 
             context("Average norm by forEach") {
                 var sum = 0.0
-                tenPoints.forEach({ p in
-                    sum += sqrt(Double(p.x*p.x + p.y*p.y))
-                })
+                tenPoints.forEach { sum += sqrt(Double($0.x*$0.x + $0.y*$0.y)) }
                 let avg = sum / Double(tenPoints.count)
                 it("should be") {
                     expect(avg).to(beCloseTo(7.78, within: 0.01))

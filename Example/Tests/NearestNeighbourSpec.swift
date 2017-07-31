@@ -9,7 +9,7 @@ class NearestNeighbourSpec: QuickSpec {
         
         describe("Nearest Neigbour") {
             context("for tenpoint") {
-                let tenPoints = Array(1...10).map({x in CGPoint(x: x, y: x)})
+                let tenPoints = Array(1...10).map { CGPoint(x: $0, y: $0) }
                 let tenTree = KDTree(values: tenPoints)
                 
                 it("of (4.3,4.5)") {

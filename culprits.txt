@@ -1,0 +1,16 @@
+79.08ms	/Users/konrad/KDTree/Pod/Classes/KDTree.swift:20:12	public init(values: [Element], depth: Int = default)
+73.52ms	/Users/konrad/KDTree/Pod/Classes/KDTree.swift:20:12	public init(values: [Element], depth: Int = default)
+47.95ms	/Users/konrad/KDTree/Pod/Classes/KDTree+RangeSearch.swift:12:22	fileprivate func fitsIn(_ intervals: [(Double, Double)]) -> Bool
+47.56ms	/Users/konrad/KDTree/Pod/Classes/KDTree+RangeSearch.swift:12:22	fileprivate func fitsIn(_ intervals: [(Double, Double)]) -> Bool
+39.46ms	/Users/konrad/KDTree/Pod/Classes/KDTree+RangeSearch.swift:14:73	(closure)
+38.96ms	/Users/konrad/KDTree/Pod/Classes/KDTree+RangeSearch.swift:14:73	(closure)
+35.51ms	/Users/konrad/KDTree/Pod/Classes/KDTree+CustomStringConvertible.swift:14:36	get {}
+35.28ms	/Users/konrad/KDTree/Pod/Classes/KDTree+CustomStringConvertible.swift:14:36	get {}
+17.04ms	/Users/konrad/KDTree/Pod/Classes/CGPoint+KDTreePoint.swift:14:17	public func kdDimension(_ dimension: Int) -> Double
+16.22ms	/Users/konrad/KDTree/Pod/Classes/CGPoint+KDTreePoint.swift:14:17	public func kdDimension(_ dimension: Int) -> Double
+15.09ms	/Users/konrad/KDTree/Pod/Classes/KDTree+Sequence.swift:13:17	public func makeIterator() -> AnyIterator<Element>
+14.23ms	/Users/konrad/KDTree/Pod/Classes/KDTree+Sequence.swift:21:32	(closure)
+14.23ms	/Users/konrad/KDTree/Pod/Classes/KDTree+Sequence.swift:13:17	public func makeIterator() -> AnyIterator<Element>
+13.82ms	/Users/konrad/KDTree/Pod/Classes/KDTree+NearestNeighbour.swift:25:22	fileprivate func nearest(toElement searchElement: Element, bestValue: Element?, bestDistance: Double) -> (bestValue: Element?, bestDistance: Double)
+13.61ms	/Users/konrad/KDTree/Pod/Classes/KDTree+NearestNeighbour.swift:25:22	fileprivate func nearest(toElement searchElement: Element, bestValue: Element?, bestDistance: Double) -> (bestValue: Element?, bestDistance: Double)
+13.35ms	/Users/konrad/KDTree/Pod/Classes/KDTree+Sequence.swift:21:32	(closure)

@@ -105,9 +105,9 @@ class RangeSearchTests: XCTestCase {
         let minY = self.rangeIntervals[1].0
         let maxY = self.rangeIntervals[1].1
         self.measure {
-            let _ = self.points.filter({ (point: CGPoint) -> Bool in
+            _ = self.points.filter { (point: CGPoint) -> Bool in
                 return minX <= Double(point.x) && maxX > Double(point.x) && minY <= Double(point.y) && maxY > Double(point.y)
-            })
+            }
         }
     }
     
@@ -143,10 +143,10 @@ class RangeSearchTests: XCTestCase {
         let minT = self.spaceTimeIntervals[3].0
         let maxT = self.spaceTimeIntervals[3].1
         self.measure {
-            let _ = self.spaceTimePoints.filter({ (point: STPoint) -> Bool in
+            _ = self.spaceTimePoints.filter { (point: STPoint) -> Bool in
                 return minX <= Double(point.x) && maxX >= Double(point.x) && minY <= Double(point.y) && maxY >= Double(point.y)
                     && minZ <= Double(point.z) && maxZ >= Double(point.z) && minT <= Double(point.t) && maxT >= Double(point.t)
-            })
+            }
         }
     }
     
