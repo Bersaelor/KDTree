@@ -96,6 +96,12 @@ One example is based on the [HYG Database](https://github.com/astronexus/HYG-Dat
 
 <img src="https://raw.githubusercontent.com/Bersaelor/KDTree/master/Screenshots/starMap.png" width="621" />
 
+## Examples of Implementation
+
+The example app in the `Example` folder shows some demo implementations on `iOS`.
+
+`KDTree` can also be used as a package in a server-side-swift app. [StarsOnKitura](https://github.com/Bersaelor/StarsOnKitura) is one example that returns stars from the [HYG database](http://www.astronexus.com/hyg) of 120'000 stars using `ascension`/`declination` parameters. Live available running on a 64MB instance on [IBM Bluemix](https://starsonkitura.eu-de.mybluemix.net).
+
 ## Installation
 
 #### Cocoapods
