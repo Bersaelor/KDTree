@@ -151,9 +151,10 @@ extension Star: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = String(describing: starData?.value.distance)
         let magString = String(describing: starData?.value.mag)
-        return "🌠: " + (starData?.value.properName ?? "N.A.") + ", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))"
-            + "Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):"
-            + "\(right_ascension), \(declination), \( distanceString ) mag: \(magString)"
+        return "🌠: ".appending(starData?.value.properName ?? "N.A.")
+            .appending(", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))")
+            .appending("Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):")
+            .appending("\(right_ascension), \(declination), \( distanceString ) mag: \(magString)")
     }
 }
 
