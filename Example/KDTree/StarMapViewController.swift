@@ -22,7 +22,7 @@ class StarMapViewController: UIViewController {
 
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            StarHelper.loadCSVData { stars in
+            StarHelper.loadCSVData(onlyVisible: true) { stars in
                 DispatchQueue.main.async {
                     xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                     self?.stars = stars
@@ -30,18 +30,8 @@ class StarMapViewController: UIViewController {
                     xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                     self?.loadingIndicator.stopAnimating()
                     
-//                    if let stars = stars {
-//                        var firstTen = [String]()
-//                        for star in stars {
-//                            guard firstTen.count < 10 else { break }
-//                            firstTen.append("\(star)\n")
-//                        }
-//                        xcLog.debug("10 stars: \(firstTen.reduce("", { $0 + $1 }))")
-//                    }
-                    
                     if let stars = stars, let starMapView = self?.starMapView {
-                        StarHelper.loadForwardStars(stars: stars,
-                                                    currentCenter: starMapView.centerPoint,
+                        StarHelper.loadForwardStars(starTree: stars, currentCenter: starMapView.centerPoint,
                                                     radii: starMapView.currentRadii()) { (starsVisible) in
                             starMapView.stars = starsVisible
                         }

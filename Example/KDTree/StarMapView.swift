@@ -17,7 +17,7 @@ class StarMapView: View {
     var tappedPoint: CGPoint?
 
     var centerPoint = CGPoint(x: 12.0, y: 10.0)
-    var radius: CGFloat = 0.085
+    var radius: CGFloat = 0.25
     
     var tappedStar: Star? = nil {
         didSet { xPlatformNeedsDisplay() }
@@ -45,22 +45,19 @@ class StarMapView: View {
     func commonInit() {
 
     }
-    
-    static let ascensionRange: CGFloat = 24.0
-    static let declinationRange: CGFloat = 180
-    
-    static let minSize: CGFloat = 1.0
-    static let maxSize: CGFloat = 16.0
+        
+    static let minSize: CGFloat = 0.5
+    static let maxSize: CGFloat = 20.0
     
     func currentRadii() -> CGSize {
         let aspectRatio = self.bounds.size.width / self.bounds.size.height
-        return CGSize(width: radius * StarMapView.ascensionRange, height: radius / aspectRatio * StarMapView.declinationRange)
+        return CGSize(width: radius * ascensionRange, height: radius / aspectRatio * declinationRange)
     }
     
     func starPosition(for point: CGPoint) -> CGPoint {
         let relativeToCenter = point - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        let radiusInPxH = 0.5 * self.bounds.width / (radius * StarMapView.ascensionRange)
-        let radiusInPxV = 0.5 * self.bounds.width / (radius * StarMapView.declinationRange)
+        let radiusInPxH = 0.5 * self.bounds.width / (radius * ascensionRange)
+        let radiusInPxV = 0.5 * self.bounds.width / (radius * declinationRange)
         return CGPoint(x: 1.0/radiusInPxH, y: 1.0/radiusInPxV) * relativeToCenter + centerPoint
     }
     
@@ -86,8 +83,8 @@ class StarMapView: View {
         //recenter in middle
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         context.translateBy(x: c.x, y: c.y)
-        let radiusInPxH = 0.5 * self.bounds.width / (radius * StarMapView.ascensionRange)
-        let radiusInPxV = 0.5 * self.bounds.width / (radius * StarMapView.declinationRange)
+        let radiusInPxH = 0.5 * self.bounds.width / (radius * ascensionRange)
+        let radiusInPxV = 0.5 * self.bounds.width / (radius * declinationRange)
         let pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
 
         let linearDotFactor = (StarMapView.minSize - StarMapView.maxSize)/32.5
@@ -134,8 +131,8 @@ class StarMapView: View {
         
         guard let starData = star.starData?.value else { return }
         let glieseName: String? = starData.gl_id
-        let hdName: String? = starData.hd_id.flatMap { (id: Int32) -> String in  return "HD\(id)" }
-        let hrName: String? = starData.hr_id.flatMap { (id: Int32) -> String in  return "HR\(id)" }
+        let hdName: String? = starData.hd_id.flatMap { return "HD\($0)" }
+        let hrName: String? = starData.hr_id.flatMap { return "HR\($0)" }
         let idName: String = "HYG\(star.dbID)"
         var textString: String = starData.properName
             ?? glieseName ?? starData.bayer_flamstedt ?? hdName ?? hrName ?? idName
@@ -225,6 +222,9 @@ class StarMapView: View {
             b = 0.63         - (0.6*t*t)
         default: break
         }
+        
+        // make brigther but keep color 
+
         
         #if os(OSX)
             return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)

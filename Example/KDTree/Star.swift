@@ -12,6 +12,8 @@ import KDTree
 // swiftlint:disable variable_name
 
 struct StarData {
+    let right_ascension: Float
+    let declination: Float
     let hip_id: Int32?
     let hd_id: Int32?
     let hr_id: Int32?
@@ -30,12 +32,14 @@ struct StarData {
 
 struct Star {
     let dbID: Int32
-    let right_ascension: Float
-    let declination: Float
+    let normalizedAscension: Float
+    let normalizedDeclination: Float
+    
     let starData: Box<StarData>?
     
     var starPoint: CGPoint {
-        return CGPoint(x: CGFloat(self.right_ascension), y: CGFloat(self.declination))
+        guard let data = starData?.value else { return CGPoint.zero }
+        return CGPoint(x: CGFloat(data.right_ascension), y: CGFloat(data.declination))
     }
     
     init? (row: String) {
@@ -60,9 +64,11 @@ struct Star {
         }
 
         self.dbID = dbID
-        self.right_ascension = right_ascension
-        self.declination = declination
-        let starData = StarData(hip_id: Int32(fields[1]),
+        self.normalizedAscension = Star.normalizedAscension(rightAscension: right_ascension)
+        self.normalizedDeclination = Star.normalizedDeclination(declination: declination)
+        let starData = StarData(right_ascension: right_ascension,
+                                declination: declination,
+                                hip_id: Int32(fields[1]),
                                 hd_id: Int32(fields[2]),
                                 hr_id: Int32(fields[3]),
                                 gl_id: fields[4],
@@ -75,8 +81,8 @@ struct Star {
     
     init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
         self.dbID = dbID
-        self.right_ascension = Float(ascension)
-        self.declination = Float(declination)
+        self.normalizedAscension = Star.normalizedAscension(rightAscension: ascension)
+        self.normalizedDeclination = Star.normalizedDeclination(declination: declination)
         self.starData = starData
     }
     
@@ -104,9 +110,11 @@ struct Star {
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
 
         self.dbID = dbID
-        self.right_ascension = right_ascension
-        self.declination = declination
-        let starData = StarData(hip_id: hip_id,
+        self.normalizedAscension = Star.normalizedAscension(rightAscension: right_ascension)
+        self.normalizedDeclination = Star.normalizedDeclination(declination: declination)
+        let starData = StarData(right_ascension: right_ascension,
+                                declination: declination,
+                                hip_id: hip_id,
                                 hd_id: hd_id,
                                 hr_id: hr_id,
                                 gl_id: gl_id,
@@ -118,9 +126,30 @@ struct Star {
     }
     
     func starMoved(ascension: Float, declination: Float) -> Star {
-        return Star(ascension: self.right_ascension + ascension,
-                    declination: self.declination + declination,
+        let normalizedAsc = self.normalizedAscension + Star.normalizedAscension(rightAscension: ascension)
+        let normalizedDec = self.normalizedDeclination + Star.normalizedDeclination(declination: declination)
+        return Star(ascension: Star.rightAscension(normalizedAscension: normalizedAsc),
+                    declination: Star.declination(normalizedDeclination: normalizedDec),
                     dbID: self.dbID, starData: self.starData)
+    }
+}
+
+let ascensionRange: CGFloat = 24.0
+let declinationRange: CGFloat = 180
+
+extension Star {
+    static func normalizedAscension(rightAscension: Float) -> Float {
+        return rightAscension/Float(ascensionRange)
+    }
+    static func normalizedDeclination(declination: Float) -> Float {
+        return (declination + 90)/Float(declinationRange)
+    }
+    
+    static func rightAscension(normalizedAscension: Float) -> Float {
+        return Float(ascensionRange) * normalizedAscension
+    }
+    static func declination(normalizedDeclination: Float) -> Float {
+        return normalizedDeclination * Float(declinationRange) - 90
     }
 }
 
@@ -136,12 +165,12 @@ extension Star: KDTreePoint {
     public static var dimensions = 2
     
     public func kdDimension(_ dimension: Int) -> Double {
-        return dimension == 0 ? Double(self.right_ascension) : Double(self.declination)
+        return dimension == 0 ? Double(self.normalizedAscension) : Double(self.normalizedDeclination)
     }
     
     public func squaredDistance(to otherPoint: Star) -> Double {
-        let x = self.right_ascension - otherPoint.right_ascension
-        let y = self.declination - otherPoint.declination
+        let x = self.normalizedAscension - otherPoint.normalizedAscension
+        let y = self.normalizedDeclination - otherPoint.normalizedDeclination
         return Double(x*x + y*y)
     }
 }
@@ -149,12 +178,13 @@ extension Star: KDTreePoint {
 extension Star: CustomDebugStringConvertible {
     
     public var debugDescription: String {
-        let distanceString = String(describing: starData?.value.distance)
-        let magString = String(describing: starData?.value.mag)
+        let distanceString = starData?.value.distance ?? Double.infinity
+        let magString = starData?.value.mag ?? Double.infinity
         return "🌠: ".appending(starData?.value.properName ?? "N.A.")
             .appending(", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))")
             .appending("Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):")
-            .appending("\(right_ascension), \(declination), \( distanceString ) mag: \(magString)")
+            .appending("\(starData?.value.right_ascension ?? 100), \(starData?.value.declination ?? 100),"
+            .appending(" \( distanceString ) mag: \(magString)"))
     }
 }
 
