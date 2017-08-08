@@ -37,15 +37,15 @@ extension KDTree {
             let closerSubtree = isLeftOfValue ? left : right
             var (bestNewElement, bestNewDistance) = closerSubtree.nearest(toElement: searchElement, bestValue: bestValue, bestDistance: bestDistance)
             
-            //check the nodes value
-            if searchElement != value {
-                let currentDistance = value.squaredDistance(to: searchElement)
-                if currentDistance < bestNewDistance { (bestNewElement, bestNewDistance) = (value, currentDistance) }
-            }
-            
             //if the bestDistance so far intersects the hyperplane at the other side of this value
             //there could be points in the other subtree
             if dimensionDifference*dimensionDifference < bestNewDistance {
+                //check the nodes value
+                if searchElement != value {
+                    let currentDistance = value.squaredDistance(to: searchElement)
+                    if currentDistance < bestNewDistance { (bestNewElement, bestNewDistance) = (value, currentDistance) }
+                }
+                
                 let otherSubtree = isLeftOfValue ? right : left
                 (bestNewElement, bestNewDistance) = otherSubtree.nearest(toElement: searchElement, bestValue: bestNewElement, bestDistance: bestNewDistance)
             }
