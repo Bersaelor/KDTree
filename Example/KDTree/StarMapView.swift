@@ -19,6 +19,8 @@ class StarMapView: View {
     var centerPoint = CGPoint(x: 12.0, y: 10.0)
     var radius: CGFloat = 0.25
     
+    var magnification = 1.0
+    
     var tappedStar: Star? = nil {
         didSet { xPlatformNeedsDisplay() }
     }
@@ -46,8 +48,7 @@ class StarMapView: View {
 
     }
         
-    static let minSize: CGFloat = 0.5
-    static let maxSize: CGFloat = 20.0
+    static let vegaSize: Double = 4.0
     
     func currentRadii() -> CGSize {
         let aspectRatio = self.bounds.size.width / self.bounds.size.height
@@ -77,6 +78,8 @@ class StarMapView: View {
 
         context.clear(rect)
 
+        let rootValue = 1.0/(2.4 * 1.085)
+        
         Color.black.setFill()
         context.fillEllipse(in: rect)
         
@@ -86,14 +89,11 @@ class StarMapView: View {
         let radiusInPxH = 0.5 * self.bounds.width / (radius * ascensionRange)
         let radiusInPxV = 0.5 * self.bounds.width / (radius * declinationRange)
         let pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
-
-        let linearDotFactor = (StarMapView.minSize - StarMapView.maxSize)/32.5
-        let absoluteAddition = 26.0/32.5 * StarMapView.minSize + 6.5/32.5 * StarMapView.maxSize
-//        xcLog.debug("linearDotFactor: \(linearDotFactor), absoluteAddition: \(absoluteAddition)")
         
         for star in self.stars ?? [] {
-            let mag = CGFloat(star.starData?.value.mag ?? 0.0)
-            let dotSize: CGFloat = max(linearDotFactor * mag + absoluteAddition, 0.25)
+            let mag = star.starData?.value.mag ?? 0.0
+            let dotSize = CGFloat(StarMapView.vegaSize * magnification / exp(mag * rootValue))
+//            xcLog.debug("F(\(mag) = \(dotSize))")
             let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: dotSize)
             let rect = CGRect(origin: relativePosition, size: CGSize(width: dotSize, height: dotSize))
             self.setStarColor(for: star)
@@ -225,7 +225,6 @@ class StarMapView: View {
         
         // make brigther but keep color 
 
-        
         #if os(OSX)
             return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
         #else
