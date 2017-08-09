@@ -16,10 +16,25 @@ class StarMapView: View {
 
     var tappedPoint: CGPoint?
 
-    var centerPoint = CGPoint(x: 12.0, y: 10.0)
-    var radius: CGFloat = 0.15 {
-        didSet { recalculatePixelRadii() }
+    var centerPoint = CGPoint(x: 12.0, y: 10.0) {
+        didSet {
+            if centerPoint.x > ascensionRange {
+                centerPoint = CGPoint(x: centerPoint.x - ascensionRange, y: centerPoint.y)
+            } else if centerPoint.x < 0 {
+                centerPoint = CGPoint(x: centerPoint.x + ascensionRange, y: centerPoint.y)
+            }
+            
+            xcLog.debug("Centerpoint: \(self.centerPoint)")
+        }
     }
+    var radius: CGFloat = 0.15 {
+        didSet {
+            radius = min(maxRadius, max(minRadius, radius))
+            recalculatePixelRadii()
+        }
+    }
+    private let minRadius: CGFloat = 0.03
+    private let maxRadius: CGFloat = 0.3
     
     var pixelRadii = CGPoint.zero
     
@@ -79,11 +94,12 @@ class StarMapView: View {
     
     func starPosition(for point: CGPoint) -> CGPoint {
         let relativeToCenter = point - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        return CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
+        let point = CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
+        return point.flippedY
     }
     
     private func pixelPosition(for positionInSky: CGPoint, radii: CGPoint, dotSize: CGFloat) -> CGPoint {
-        let starCenter = radii*(positionInSky - centerPoint)
+        let starCenter = radii*(positionInSky.flippedY - centerPoint)
         return starCenter - dotSize * CGPoint(x: 0.5, y: 0.5)
     }
     
@@ -110,24 +126,7 @@ class StarMapView: View {
         drawAxis(context: context)
         
         if let tappedStar = tappedStar {
-            let circleSize: CGFloat = 15
-            let relativePosition = pixelPosition(for: tappedStar.starPoint, radii: pixelRadii, dotSize: circleSize)
-            let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
-            Color.orange.setStroke()
-            context.setLineWidth(1.0)
-            context.strokeEllipse(in: rect)
-            
-            let mag = tappedStar.starData?.value.mag ?? 0.0
-            let rootValue = 1.0/(2.4 * 1.085)
-            let dotSize = CGFloat(StarMapView.vegaSize * magnification / exp(mag * rootValue))
-            xcLog.debug("F(\(mag) = \(dotSize))")
-            
-            if let colorIndex = tappedStar.starData?.value.colorIndex {
-                xcLog.debug("tappedStar: \(tappedStar), \n"
-                    + "color for colorIndex(\(colorIndex)): \(self.bv2ToRGB(for: CGFloat(colorIndex)))")
-            }
-            
-            drawStarText(for: tappedStar, position: relativePosition, circleSize: circleSize)
+            drawTapped(context: context, star: tappedStar)
         }
         
         xcLog.debug("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
@@ -185,6 +184,26 @@ class StarMapView: View {
         ("5°" as NSString).draw(in: CGRect(pointA: fiveDegreePoint - CGPoint(x: 2, y: -5),
                                             pointB: fiveDegreePoint - CGPoint(x: 20, y: 5)),
                                  withAttributes: attributesDeg)
+    }
+    
+    private func drawTapped(context: CGContext, star: Star) {
+        let circleSize: CGFloat = 15
+        let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: circleSize)
+        let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
+        Color.orange.setStroke()
+        context.setLineWidth(1.0)
+        context.strokeEllipse(in: rect)
+        
+//        let mag = star.starData?.value.mag ?? 0.0
+//        let rootValue = 1.0/(2.4 * 1.085)
+//        let dotSize = CGFloat(StarMapView.vegaSize * magnification / exp(mag * rootValue))
+//        xcLog.debug("F(\(mag) = \(dotSize))")
+//        if let colorIndex = star.starData?.value.colorIndex {
+//            xcLog.debug("tappedStar: \(star), \n"
+//                + "color for colorIndex(\(colorIndex)): \(self.bv2ToRGB(for: CGFloat(colorIndex)))")
+//        }
+        
+        drawStarText(for: star, position: relativePosition, circleSize: circleSize)
     }
     
     private func drawStarText(for star: Star, position: CGPoint, circleSize: CGFloat) {

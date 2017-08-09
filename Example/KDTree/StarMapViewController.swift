@@ -30,15 +30,17 @@ class StarMapViewController: UIViewController {
                     xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                     self?.loadingIndicator.stopAnimating()
                     
-                    if let stars = stars, let starMapView = self?.starMapView {
-                        StarHelper.loadForwardStars(starTree: stars, currentCenter: starMapView.centerPoint,
-                                                    radii: starMapView.currentRadii()) { (starsVisible) in
-                            starMapView.stars = starsVisible
-                        }
-                    }
+                    self?.reloadStars()
                 }
             }
         }
+        
+        let pinchGR = UIPinchGestureRecognizer(target: self,
+                                               action: #selector(StarMapViewController.handlePinch(gestureRecognizer:)))
+        let panGR = UIPanGestureRecognizer(target: self,
+                                           action: #selector(StarMapViewController.handlePan(gestureRecognizer:)))
+        starMapView.addGestureRecognizer(pinchGR)
+        starMapView.addGestureRecognizer(panGR)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,4 +67,53 @@ class StarMapViewController: UIViewController {
         })
     }
 
+    func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
+        xcLog.debug("scale: \(gestureRecognizer.scale), state: \(gestureRecognizer.state)")
+        
+        switch gestureRecognizer.state {
+        case .began:
+            startRadius = starMapView.radius
+        case .failed, .ended:
+            break
+        default:
+            if let startRadius = startRadius {
+                starMapView.radius = startRadius / gestureRecognizer.scale
+                reloadStars()
+            }
+        }
+    }
+    private var startRadius: CGFloat?
+    private var startCenter: CGPoint?
+
+    private var isLoadingMapStars = false
+    
+    private func reloadStars() {
+        guard let starTree = stars else { return }
+        guard !isLoadingMapStars else { return }
+        isLoadingMapStars = true
+        StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint.flippedY,
+                                    radii: starMapView.currentRadii()) { (starsVisible) in
+                                        DispatchQueue.main.async {
+                                            self.starMapView.stars = starsVisible
+                                            self.isLoadingMapStars = false
+                                        }
+        }
+    }
+    
+    func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
+        xcLog.debug("scale: \(gestureRecognizer.translation(in: self.starMapView))")
+     
+        switch gestureRecognizer.state {
+        case .began:
+            startCenter = starMapView.centerPoint
+        case .failed, .ended:
+            break
+        default:
+            if let startCenter = startCenter {
+                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width) * CGPoint(x: ascensionRange, y: declinationRange)
+                starMapView.centerPoint = startCenter - adjVec * gestureRecognizer.translation(in: starMapView)
+                reloadStars()
+            }
+        }
+    }
 }
