@@ -23,14 +23,12 @@ class StarMapView: View {
                 centerPoint = CGPoint(x: centerPoint.x + ascensionRange, y: centerPoint.y)
             }
             clipCenterDeclination()
-            xcLog.debug("Centerpoint: \(self.centerPoint)")
         }
     }
     private func clipCenterDeclination() {
         let minY = CGFloat(10)
         let minDec = CGFloat(-91)
         let maxDeclination = (minY - bounds.midY) / pixelRadii.y - minDec
-        xcLog.debug("maxDeclination: \(maxDeclination)")
 
         if centerPoint.y > maxDeclination {
             centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
@@ -86,7 +84,7 @@ class StarMapView: View {
     }
     
     func commonInit() {
-
+        backgroundColor = .black
     }
         
     static let vegaSize: Double = 4.0
@@ -130,8 +128,8 @@ class StarMapView: View {
 
         context.clear(rect)
         
-        Color.black.setFill()
-        context.fillEllipse(in: rect)
+//        Color.black.setFill()
+//        context.fillEllipse(in: rect)
         
         //recenter in middle
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
@@ -211,7 +209,6 @@ class StarMapView: View {
                              NSParagraphStyleAttributeName: paragraphStyleLbl]
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let tappedCoo = starPosition(for: origin + c)
-        xcLog.debug("tappedCoo: \(tappedCoo)")
         let lbl = String(format: "%.1fh,%.1f°", 0.1*round(10*tappedCoo.x), 0.1*round(10*tappedCoo.y))
         (lbl as NSString).draw(in: CGRect(pointA: origin - CGPoint(x: -25 + 1, y: -12),
                                             pointB: origin - CGPoint(x: 25 + 1, y: -2)),

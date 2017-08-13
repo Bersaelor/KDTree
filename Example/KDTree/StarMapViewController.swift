@@ -68,8 +68,6 @@ class StarMapViewController: UIViewController {
     }
 
     func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
-        xcLog.debug("scale: \(gestureRecognizer.scale), state: \(gestureRecognizer.state)")
-        
         switch gestureRecognizer.state {
         case .began:
             startRadius = starMapView.radius
@@ -100,9 +98,7 @@ class StarMapViewController: UIViewController {
         }
     }
     
-    func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
-        xcLog.debug("scale: \(gestureRecognizer.translation(in: self.starMapView))")
-     
+    func handlePan(gestureRecognizer: UIPanGestureRecognizer) {     
         switch gestureRecognizer.state {
         case .began:
             startCenter = starMapView.centerPoint
