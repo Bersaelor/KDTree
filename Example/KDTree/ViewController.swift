@@ -15,7 +15,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.title = "Applications"
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.performSegue(withIdentifier: "StarMapId", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

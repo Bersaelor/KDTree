@@ -50,7 +50,6 @@ class StarHelper: NSObject {
                       declination: Float, deltaAsc: Float, deltaDec: Float, maxMag: Double?) -> [Star]
     {
         let startRangeSearch = Date()
-        
         var starsVisible = stars.elementsIn([
             (Double(Star.normalizedAscension(rightAscension: ascension - deltaAsc)),
              Double(Star.normalizedAscension(rightAscension: ascension + deltaAsc))),

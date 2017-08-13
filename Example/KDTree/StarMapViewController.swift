@@ -47,14 +47,6 @@ class StarMapViewController: UIViewController {
         super.viewWillAppear(animated)
         
     }
-    
-    @IBAction
-    func userTappedMap(recognizer: UITapGestureRecognizer) {
-        if let stars = stars {
-            let point = recognizer.location(in: self.starMapView)
-            StarHelper.selectNearestStar(to: point, starMapView: self.starMapView, stars: stars)
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,6 +57,14 @@ class StarMapViewController: UIViewController {
         stars?.forEach({ (star: Star) in
             star.starData?.ref.release()
         })
+    }
+    
+    @IBAction
+    func userTappedMap(recognizer: UITapGestureRecognizer) {
+        if let stars = stars {
+            let point = recognizer.location(in: self.starMapView)
+            StarHelper.selectNearestStar(to: point, starMapView: self.starMapView, stars: stars)
+        }
     }
 
     func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
@@ -84,7 +84,7 @@ class StarMapViewController: UIViewController {
     }
     private var startRadius: CGFloat?
     private var startCenter: CGPoint?
-
+    
     private var isLoadingMapStars = false
     
     private func reloadStars() {

@@ -23,14 +23,27 @@ class StarMapView: View {
             } else if centerPoint.x < 0 {
                 centerPoint = CGPoint(x: centerPoint.x + ascensionRange, y: centerPoint.y)
             }
-            
+            clipCenterDeclination()
             xcLog.debug("Centerpoint: \(self.centerPoint)")
+        }
+    }
+    private func clipCenterDeclination() {
+        let minY = CGFloat(10)
+        let minDec = CGFloat(-91)
+        let maxDeclination = (minY - bounds.midY) / pixelRadii.y - minDec
+        xcLog.debug("maxDeclination: \(maxDeclination)")
+
+        if centerPoint.y > maxDeclination {
+            centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
+        } else if centerPoint.y < -maxDeclination {
+            centerPoint = CGPoint(x: centerPoint.x, y: -maxDeclination)
         }
     }
     var radius: CGFloat = 0.15 {
         didSet {
             radius = min(maxRadius, max(minRadius, radius))
             recalculatePixelRadii()
+            clipCenterDeclination()
         }
     }
     private let minRadius: CGFloat = 0.03
@@ -92,8 +105,8 @@ class StarMapView: View {
         return CGSize(width: radius * ascensionRange, height: radius / aspectRatio * declinationRange)
     }
     
-    func starPosition(for point: CGPoint) -> CGPoint {
-        let relativeToCenter = point - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+    func starPosition(for pointInViewCoordinates: CGPoint) -> CGPoint {
+        let relativeToCenter = pointInViewCoordinates - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let point = CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
         return point.flippedY
     }
@@ -156,26 +169,29 @@ class StarMapView: View {
     
     private func drawAxis(context: CGContext) {
         let color = Color.lightGray
-        
-        let border: CGFloat = 20
+        let border: CGFloat = 25
         let origin = CGPoint(x: -self.bounds.midX + border, y: self.bounds.midY - border)
         let fiveDegreePoint = origin - CGPoint(x: 0.0, y: 5.0 * pixelRadii.y)
         let oneHourPoint = origin + CGPoint(x: pixelRadii.x, y: 0.0)
 
-        context.move(to: fiveDegreePoint)
-        context.addLine(to: origin)
-        context.addLine(to:  oneHourPoint)
-        context.setLineWidth(1.0)
         color.setStroke()
+        context.move(to: fiveDegreePoint)
+        context.addLine(to: origin + CGPoint(x: 0, y: 2))
+        context.strokePath()
+        context.move(to: origin + CGPoint(x: -2, y: 0))
+        context.addLine(to: oneHourPoint)
+        context.setLineWidth(1.0)
         context.strokePath()
         
+        //1h Label
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
-        let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 10.0),
+        let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 8),
                           NSForegroundColorAttributeName: color,
                           NSParagraphStyleAttributeName: paragraphStyle]
-        ("1h" as NSString).draw(in: CGRect(pointA: oneHourPoint, pointB: oneHourPoint + CGPoint(x: 20, y: 10)),
+        ("1h" as NSString).draw(in: CGRect(pointA: oneHourPoint, pointB: oneHourPoint + CGPoint(x: 20, y: 8)),
                                 withAttributes: attributes)
+        // 5° label
         let paragraphStyleDeg = NSMutableParagraphStyle()
         paragraphStyleDeg.alignment = .right
         let attributesDeg = [NSFontAttributeName: Font.systemFont(ofSize: 10.0),
@@ -184,6 +200,19 @@ class StarMapView: View {
         ("5°" as NSString).draw(in: CGRect(pointA: fiveDegreePoint - CGPoint(x: 2, y: -5),
                                             pointB: fiveDegreePoint - CGPoint(x: 20, y: 5)),
                                  withAttributes: attributesDeg)
+        // position label
+        let paragraphStyleLbl = NSMutableParagraphStyle()
+        paragraphStyleLbl.alignment = .center
+        let attributesLbl = [NSFontAttributeName: Font.systemFont(ofSize: 8.0),
+                             NSForegroundColorAttributeName: color,
+                             NSParagraphStyleAttributeName: paragraphStyleLbl]
+        let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        let tappedCoo = starPosition(for: origin + c)
+        xcLog.debug("tappedCoo: \(tappedCoo)")
+        let lbl = String(format: "%.1fh,%.1f°", 0.1*round(10*tappedCoo.x), 0.1*round(10*tappedCoo.y))
+        (lbl as NSString).draw(in: CGRect(pointA: origin - CGPoint(x: -25 + 1, y: -12),
+                                            pointB: origin - CGPoint(x: 25 + 1, y: -2)),
+                                 withAttributes: attributesLbl)
     }
     
     private func drawTapped(context: CGContext, star: Star) {
