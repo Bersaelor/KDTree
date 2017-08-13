@@ -15,7 +15,6 @@
 class StarMapView: View {
 
     var tappedPoint: CGPoint?
-
     var centerPoint = CGPoint(x: 12.0, y: 10.0) {
         didSet {
             if centerPoint.x > ascensionRange {
@@ -57,7 +56,11 @@ class StarMapView: View {
         pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
     }
     
-    var magnification = 1.0
+    var magnification: CGFloat {
+        let delta = 1 - (radius - minRadius) / (maxRadius - minRadius)
+        // delta goes from 0 for highest magnification to 1 for lowest
+        return 0.8 + 2.5 * delta * delta
+    }
     
     var tappedStar: Star? = nil {
         didSet { xPlatformNeedsDisplay() }
@@ -158,7 +161,7 @@ class StarMapView: View {
 
         for star in self.stars ?? [] {
             let mag = star.starData?.value.mag ?? 0.0
-            let dotSize = CGFloat(StarMapView.vegaSize * magnification / exp(mag * rootValue))
+            let dotSize = CGFloat(StarMapView.vegaSize) * magnification / CGFloat(exp(mag * rootValue))
             //            xcLog.debug("F(\(mag) = \(dotSize))")
             let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: dotSize)
             let rect = CGRect(origin: relativePosition, size: CGSize(width: dotSize, height: dotSize))
