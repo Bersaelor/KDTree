@@ -41,6 +41,10 @@ class StarMapViewController: UIViewController {
                                            action: #selector(StarMapViewController.handlePan(gestureRecognizer:)))
         starMapView.addGestureRecognizer(pinchGR)
         starMapView.addGestureRecognizer(panGR)
+        
+        let infoButton = UIButton(type: UIButtonType.infoDark)
+        infoButton.addTarget(self, action: #selector(openInfo), for: UIControlEvents.touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: infoButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +93,7 @@ class StarMapViewController: UIViewController {
         guard let starTree = stars else { return }
         guard !isLoadingMapStars else { return }
         isLoadingMapStars = true
-        StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint.flippedY,
+        StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint,
                                     radii: starMapView.currentRadii()) { (starsVisible) in
                                         DispatchQueue.main.async {
                                             self.starMapView.stars = starsVisible
@@ -107,9 +111,21 @@ class StarMapViewController: UIViewController {
         default:
             if let startCenter = startCenter {
                 let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width) * CGPoint(x: ascensionRange, y: declinationRange)
-                starMapView.centerPoint = startCenter - adjVec * gestureRecognizer.translation(in: starMapView)
+                starMapView.centerPoint = startCenter + adjVec * gestureRecognizer.translation(in: starMapView)
                 reloadStars()
             }
         }
+    }
+    
+    func openInfo() {
+        let alert = UIAlertController(title: nil,
+                                      message: "Cylindrical projection of the starry sky for the year 2000,"
+                                        .appending(" measured by right ascension and declination coordinates."),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { _ in
+            xcLog.debug("Noting")
+        })
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

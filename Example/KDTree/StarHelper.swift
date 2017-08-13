@@ -37,49 +37,43 @@ class StarHelper: NSObject {
     static func loadForwardStars(starTree: KDTree<Star>, currentCenter: CGPoint, radii: CGSize, completion: @escaping ([Star]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let stars = StarHelper.stars(from: starTree, around: Float(currentCenter.x), declination: Float(currentCenter.y),
-                                         deltaAsc: Float(radii.width), deltaDec: Float(radii.height),
-                                         maxMag: nil)
-            
+                                         deltaAsc: Float(radii.width), deltaDec: Float(radii.height))
             DispatchQueue.main.async {
                 completion(stars)
             }
         }
     }
     
-    static func stars(from stars: KDTree<Star>, around ascension: Float,
-                      declination: Float, deltaAsc: Float, deltaDec: Float, maxMag: Double?) -> [Star]
-    {
+    static func stars(from stars: KDTree<Star>, around ascension: Float, declination: Float, deltaAsc: Float, deltaDec: Float) -> [Star] {
+        let verticalRange = (Double(Star.normalizedDeclination(declination: declination - deltaDec)),
+                             Double(Star.normalizedDeclination(declination: declination + deltaDec)))
         let startRangeSearch = Date()
         var starsVisible = stars.elementsIn([
             (Double(Star.normalizedAscension(rightAscension: ascension - deltaAsc)),
-             Double(Star.normalizedAscension(rightAscension: ascension + deltaAsc))),
-            (Double(Star.normalizedDeclination(declination: declination - deltaDec)),
-             Double(Star.normalizedDeclination(declination: declination + deltaDec)))])
+             Double(Star.normalizedAscension(rightAscension: ascension + deltaAsc))), verticalRange])
+
+        xcLog.debug("found \(starsVisible.count) stars in first search")
         
-        //add the points on the other side of the y-axis in case part of the screen is below
-        if ascension < deltaAsc {
-            let leftIntervals: [(Double, Double)] = [
-                (Double( 24.0 + ascension - deltaAsc), Double(24.0 + ascension + deltaAsc)),
-                (Double(declination - deltaDec), Double(declination + deltaDec))]
-            starsVisible += stars.elementsIn(leftIntervals).map({ (star: Star) -> Star in
-                return star.starMoved(ascension: -24.0, declination: 0.0)
-            })
+        //add the points on the other side of the x-axis in case part of the screen is below
+        let overlap = ascension - deltaAsc
+        if overlap < 0 {
+            starsVisible += stars.elementsIn([
+                (Double(Star.normalizedAscension(rightAscension: Float(ascensionRange) + overlap)),
+                 Double(Star.normalizedAscension(rightAscension: Float(ascensionRange)))), verticalRange])
+        } else if ascension + deltaAsc > Float(ascensionRange) {
+            let over24h = ascension + deltaAsc - Float(ascensionRange)
+            starsVisible += stars.elementsIn([
+                (Double(Star.normalizedAscension(rightAscension: 0)),
+                 Double(Star.normalizedAscension(rightAscension: over24h))), verticalRange])
         }
-        xcLog.verbose("Finished RangeSearch with \(starsVisible.count) stars,"
+        xcLog.debug("Finished RangeSearch with \(starsVisible.count) stars,"
             + " after \(Date().timeIntervalSince(startRangeSearch))s")
 
-        if let maxMag = maxMag {
-            starsVisible = starsVisible.filter { (star) -> Bool in
-                return star.starData?.value.mag ?? Double.infinity < maxMag
-            }
-            xcLog.verbose("Stars in Range with \(starsVisible.count) stars,"
-                + " after \(Date().timeIntervalSince(startRangeSearch))s")
-        }
         return starsVisible
     }
     
     static func selectNearestStar(to point: CGPoint, starMapView: StarMapView, stars: KDTree<Star>) {
-        let tappedPosition = starMapView.starPosition(for: point)
+        let tappedPosition = starMapView.skyPosition(for: point)
         let searchStar = Star(ascension: Float(tappedPosition.x), declination: Float(tappedPosition.y))
         
         xcLog.debug("tappedPosition: \(tappedPosition)")
