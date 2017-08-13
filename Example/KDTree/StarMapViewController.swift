@@ -11,7 +11,9 @@ import KDTree
 
 class StarMapViewController: UIViewController {
     
-    var stars: KDTree<Star>?
+    var visibleStars: KDTree<Star>?
+    var allStars: KDTree<Star>?
+    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var starMapView: StarMapView!
 
@@ -22,10 +24,11 @@ class StarMapViewController: UIViewController {
 
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            StarHelper.loadCSVData(onlyVisible: true) { stars in
+            StarHelper.loadCSVData { (visibleStars, stars) in
                 DispatchQueue.main.async {
                     xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
-                    self?.stars = stars
+                    self?.allStars = stars
+                    self?.visibleStars = visibleStars
                     
                     xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                     self?.loadingIndicator.stopAnimating()
@@ -58,17 +61,16 @@ class StarMapViewController: UIViewController {
     }
     
     deinit {
-        stars?.forEach({ (star: Star) in
+        allStars?.forEach({ (star: Star) in
             star.starData?.ref.release()
         })
     }
     
     @IBAction
     func userTappedMap(recognizer: UITapGestureRecognizer) {
-        if let stars = stars {
-            let point = recognizer.location(in: self.starMapView)
-            StarHelper.selectNearestStar(to: point, starMapView: self.starMapView, stars: stars)
-        }
+        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? allStars : visibleStars else { return }
+        let point = recognizer.location(in: self.starMapView)
+        StarHelper.selectNearestStar(to: point, starMapView: self.starMapView, stars: starTree)
     }
 
     func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
@@ -86,11 +88,11 @@ class StarMapViewController: UIViewController {
     }
     private var startRadius: CGFloat?
     private var startCenter: CGPoint?
-    
+    private var minMagnificationForAllStars: CGFloat = 2.2
     private var isLoadingMapStars = false
     
     private func reloadStars() {
-        guard let starTree = stars else { return }
+        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? allStars : visibleStars else { return }
         guard !isLoadingMapStars else { return }
         isLoadingMapStars = true
         StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint,

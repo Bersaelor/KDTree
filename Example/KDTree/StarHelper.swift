@@ -12,11 +12,11 @@ import KDTree
 class StarHelper: NSObject {
     static let maxVisibleMag = 6.5
 
-    static func loadCSVData(onlyVisible: Bool = false, completion: (KDTree<Star>?) -> Void) {
+    static func loadCSVData(completion: (KDTree<Star>?, KDTree<Star>?) -> Void) {
         var startLoading = Date()
         
         guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv"), let fileHandle = fopen(filePath, "r") else {
-            completion(nil)
+            completion(nil, nil)
             return }
         defer { fclose(fileHandle) }
         
@@ -24,14 +24,16 @@ class StarHelper: NSObject {
         let stars = lines.dropFirst().flatMap { linePtr -> Star? in
             defer { free(linePtr) }
             let star = Star(rowPtr :linePtr)
-            if onlyVisible && star?.starData?.value.mag ?? Double.infinity > maxVisibleMag { return nil }
             return star
         }
+        
+        let visibleStars = stars.filter { $0.starData?.value.mag ?? Double.infinity < StarHelper.maxVisibleMag }
         xcLog.debug("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
         startLoading = Date()
-        let starTree = KDTree(values: stars)
-        xcLog.debug("Time to create Tree: \(Date().timeIntervalSince(startLoading))s")
-        completion(starTree)
+        let visibleStarsTree = KDTree(values: visibleStars)
+        xcLog.debug("Time to create (visible) Tree: \(Date().timeIntervalSince(startLoading))s")
+        let starsTree = KDTree(values: stars)
+        completion(visibleStarsTree, starsTree)
     }
     
     static func loadForwardStars(starTree: KDTree<Star>, currentCenter: CGPoint, radii: CGSize, completion: @escaping ([Star]) -> Void) {

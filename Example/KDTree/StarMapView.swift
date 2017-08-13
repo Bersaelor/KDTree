@@ -44,7 +44,7 @@ class StarMapView: View {
             centerPoint = CGPoint(x: centerPoint.x, y: -maxDeclination)
         }
     }    
-    private let minRadius: CGFloat = 0.03
+    private let minRadius: CGFloat = 0.02
     private let maxRadius: CGFloat = 0.3
     
     var pixelRadii = CGPoint.zero

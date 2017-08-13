@@ -18,9 +18,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.performSegue(withIdentifier: "StarMapId", sender: nil)
+        super.viewDidAppear(animated)        
     }
     
     override func didReceiveMemoryWarning() {
