@@ -11,6 +11,14 @@ import KDTree
 
 class StarHelper: NSObject {
     static let maxVisibleMag = 6.5
+    
+    private static var yearsSinceEraStart: Int {
+        let dateComponents = DateComponents(year: 2000, month: 3, day: 21, hour: 1)
+        guard let springEquinox = Calendar.current.date(from: dateComponents) else { return 0 }
+        let components = Calendar.current.dateComponents([.year], from: springEquinox, to: Date())
+        
+        return components.hour ?? 0
+    }
 
     static func loadCSVData(completion: (KDTree<Star>?, KDTree<Star>?) -> Void) {
         var startLoading = Date()
@@ -20,10 +28,11 @@ class StarHelper: NSObject {
             return }
         defer { fclose(fileHandle) }
         
+        let yearsToAdvance = Float(yearsSinceEraStart)
         let lines = lineIteratorC(file: fileHandle)
         let stars = lines.dropFirst().flatMap { linePtr -> Star? in
             defer { free(linePtr) }
-            let star = Star(rowPtr :linePtr)
+            let star = Star(rowPtr :linePtr, advanceByYears: yearsToAdvance)
             return star
         }
         
