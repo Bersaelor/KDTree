@@ -49,7 +49,7 @@ class StarViewController: NSViewController {
     
     func reloadStars() {
         if let stars = stars, let starMapView = self.starMapView {
-            StarHelper.loadForwardStars(stars: stars,
+            StarHelper.loadForwardStars(starTree: stars,
                                         currentCenter: starMapView.centerPoint,
                                         radii: starMapView.currentRadii()) { (starsVisible) in
                                             starMapView.stars = starsVisible

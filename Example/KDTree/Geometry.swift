@@ -41,6 +41,10 @@ extension CGPoint {
     var maximumNorm: CGFloat {
         return max(abs(self.x), abs(self.y))
     }
+    
+    var flippedY: CGPoint {
+        return CGPoint(x: self.x, y: -self.y)
+    }
 }
 
 public func + (left: CGPoint, right: CGPoint) -> CGPoint {
