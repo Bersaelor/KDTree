@@ -26,10 +26,10 @@ extension KDTree {
         switch self {
         case .leaf: break
         case let .node(.leaf, value, _, .leaf):
-            guard searchElement != value else { return (value, 0.0) }
             let currentDistance = value.squaredDistance(to: searchElement)
             if currentDistance < bestDistance { return (value, currentDistance) }
         case let .node(left, value, dim, right):
+            guard searchElement != value else { return (value, 0.0) }
             let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)
             let isLeftOfValue = dimensionDifference > 0
             
@@ -37,8 +37,8 @@ extension KDTree {
             let closerSubtree = isLeftOfValue ? left : right
             var (bestNewElement, bestNewDistance) = closerSubtree.nearest(toElement: searchElement, bestValue: bestValue, bestDistance: bestDistance)
             
-            //if the bestDistance so far intersects the hyperplane at the other side of this value
-            //there could be points in the other subtree
+            // if the bestDistance so far intersects the hyperplane at the other side of this value
+            // there could be points in the other subtree
             if dimensionDifference*dimensionDifference < bestNewDistance {
                 //check the nodes value
                 if searchElement != value {

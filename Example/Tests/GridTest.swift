@@ -27,7 +27,7 @@ extension GridP: KDTreePoint {
     }
     
     func squaredDistance(to otherPoint: GridP) -> Double {
-        return self.point.squaredDistance(to: point)
+        return self.point.squaredDistance(to: otherPoint.point)
     }
 }
 
@@ -64,10 +64,12 @@ class GridTest: XCTestCase {
     
     func testSelfShouldBeNearest() {
         var notNearestCount = 0
+
         for point in points where point != tree.nearest(toElement: point) {
+            print("Point \(point) should be nearest to itself, is nearest to \( tree.nearest(toElement: point)! )")
             notNearestCount += 1
         }
-        
+
         XCTAssertEqual(0, notNearestCount, "All original points should be their own nearest points")
     }
 }
