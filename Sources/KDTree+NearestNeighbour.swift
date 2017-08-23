@@ -26,7 +26,7 @@ extension KDTree {
         switch self {
         case .leaf: break
         case let .node(.leaf, value, _, .leaf):
-            guard searchElement != value else { return (bestValue, bestDistance) }
+            guard searchElement != value else { return (value, 0.0) }
             let currentDistance = value.squaredDistance(to: searchElement)
             if currentDistance < bestDistance { return (value, currentDistance) }
         case let .node(left, value, dim, right):
