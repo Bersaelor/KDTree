@@ -161,4 +161,32 @@ class NearestNeighbourLoadTest: XCTestCase {
             XCTAssertEqual(nearestFromTree, pointsFromArray, "Nearest points via Array should equal nearest points via Tree")
         }
     }
+    
+    func test06_ContainsTest() {
+
+        let randomContainedPoints = (0...100).map { _ -> CGPoint in
+            return points[ Int(arc4random()) % points.count ]
+        }
+        
+        var containedPoints = 0
+        for point in randomContainedPoints where !largeTree.contains(point){
+            containedPoints += 1
+        }
+        
+        XCTAssertEqual(0, containedPoints, "All original points should be contained in the tree")
+    }
+    
+    func test07_SelfShouldBeNearestTest() {
+        
+        let randomContainedPoints = (0...100).map { _ -> CGPoint in
+            return points[ Int(arc4random()) % points.count ]
+        }
+        
+        var containedPoints = 0
+        for point in randomContainedPoints where point != largeTree.nearest(toElement: point) {
+            containedPoints += 1
+        }
+        
+        XCTAssertEqual(0, containedPoints, "All original points should be their own nearest points")
+    }
 }

@@ -1,0 +1,75 @@
+//
+//  ContainsTest.swift
+//  KDTree
+//
+//  Created by Konrad Feiler on 23.08.17.
+//  Copyright © 2017 CocoaPods. All rights reserved.
+//
+
+import XCTest
+import KDTree
+
+struct GridP {
+    let point: CGPoint
+}
+
+func == (lhs: GridP, rhs: GridP) -> Bool {
+    return lhs.point == rhs.point
+}
+
+extension GridP: Equatable {}
+
+extension GridP: KDTreePoint {
+    static var dimensions = 2
+    
+    func kdDimension(_ dimension: Int) -> Double {
+        return dimension == 0 ? Double(self.point.x) : Double(self.point.y)
+    }
+    
+    func squaredDistance(to otherPoint: GridP) -> Double {
+        return self.point.squaredDistance(to: otherPoint.point)
+    }
+}
+
+class GridTest: XCTestCase {
+    
+    var points: [GridP] = []
+    var tree: KDTree<GridP> = KDTree(values: [])
+
+    override func setUp() {
+        super.setUp()
+        
+        let size = 10
+        for x in 0...size {
+            for y in 0...size {
+                points.append(GridP(point: CGPoint(x: x, y: y)))
+            }
+        }
+
+        tree = KDTree(values: points)
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    func testPointsContained() {
+        var containedPoints = 0
+        for point in points where !tree.contains(point){
+            containedPoints += 1
+        }
+        
+        XCTAssertEqual(0, containedPoints, "All original points should be contained in the tree")
+    }
+    
+    func testSelfShouldBeNearest() {
+        var notNearestCount = 0
+
+        for point in points where point != tree.nearest(toElement: point) {
+            print("Point \(point) should be nearest to itself, is nearest to \( tree.nearest(toElement: point)! )")
+            notNearestCount += 1
+        }
+
+        XCTAssertEqual(0, notNearestCount, "All original points should be their own nearest points")
+    }
+}
