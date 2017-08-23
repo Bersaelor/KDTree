@@ -78,13 +78,16 @@ public enum KDTree<Element: KDTreePoint> {
         switch self {
         case .leaf:
             return false
-        case let .node(left, v, dim, right):
-            if value == v { return true }
+        case let .node(left, nodeValue, dim, right):
+            if value == nodeValue { return true }
             else {
-                if value.kdDimension(dim) < v.kdDimension(dim) {
+                let valueDist = value.kdDimension(dim)
+                let nodeDist = nodeValue.kdDimension(dim)
+                if valueDist < nodeDist {
                     return left.contains(value)
-                }
-                else {
+                } else if abs(valueDist - nodeDist) < Double.ulpOfOne {
+                    return left.contains(value) || right.contains(value)
+                } else {
                     return right.contains(value)
                 }
             }
