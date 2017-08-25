@@ -89,6 +89,7 @@ class StarMapView: View {
     func commonInit() {
         #if os(macOS)
             layer?.backgroundColor = Color.black.cgColor
+            recalculatePixelRadii()
         #else
             backgroundColor = .black
         #endif
@@ -139,9 +140,6 @@ class StarMapView: View {
         #endif
 
         context.clear(rect)
-        
-//        Color.black.setFill()
-//        context.fillEllipse(in: rect)
         
         //recenter in middle
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
@@ -234,8 +232,8 @@ class StarMapView: View {
         let tappedCoo = skyPosition(for: origin + c)
         let lbl = String(format: "%.1fh,%.1f°", 0.1*round(10*tappedCoo.x), 0.1*round(10*tappedCoo.y))
         (lbl as NSString).draw(in: CGRect(pointA: origin - CGPoint(x: -25 + 1, y: -12),
-                                            pointB: origin - CGPoint(x: 25 + 1, y: -2)),
-                                 withAttributes: attributesLbl)
+                                          pointB: origin - CGPoint(x: 25 + 1, y: -2)),
+                               withAttributes: attributesLbl)
     }
     
     private func drawTapped(context: CGContext, star: Star) {
@@ -285,23 +283,12 @@ class StarMapView: View {
     private func bv2ToRGB(for bv: CGFloat, spectralType: String? = nil) -> Color {
         if let spectralType = spectralType {
             if spectralType.hasPrefix("M6") {
-                var r: CGFloat = 1.0; var g: CGFloat = 0.765; var b: CGFloat = 0.44
-//                return Color(red: r, green: g, blue: b, alpha: 1.0)
-                #if os(macOS)
-                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-                #else
-                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-                #endif
+                let r: CGFloat = 1.0; let g: CGFloat = 0.765; let b: CGFloat = 0.44
+                return Color(red: r, green: g, blue: b, alpha: 1.0)
             }
             else if spectralType.hasPrefix("M8") {
-                var r: CGFloat = 1.0; var g: CGFloat = 0.776; var b: CGFloat = 0.43
-//                return Color(red: r, green: g, blue: b, alpha: 1.0)
-
-                #if os(macOS)
-                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-                #else
-                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-                #endif
+                let r: CGFloat = 1.0; let g: CGFloat = 0.776; let b: CGFloat = 0.43
+                return Color(red: r, green: g, blue: b, alpha: 1.0)
             }
         }
         
@@ -356,12 +343,6 @@ class StarMapView: View {
         default: break
         }
         
-        // make brigther but keep color 
-
-        #if os(macOS)
-            return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-        #else
-            return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-        #endif
+        return Color(red: r, green: g, blue: b, alpha: 1.0)
     }
 }

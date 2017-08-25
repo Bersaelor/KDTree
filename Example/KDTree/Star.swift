@@ -89,7 +89,9 @@ struct Star {
         self.starData = starData
     }
     
-    private static func precess(right_ascension: inout Float, declination: inout Float, pmra: Double, pmdec: Double, advanceByYears: Float?) {
+    private static func precess(right_ascension: inout Float, declination: inout Float,
+                                pmra: Double, pmdec: Double, advanceByYears: Float?)
+    {
         guard let advanceByYears = advanceByYears, advanceByYears > 0 else { return }
         declination = Float(Double(declination) + Double(advanceByYears) * pmdec / (3600 * 1000) )
         let underMinus90 = abs(declination + 90)
