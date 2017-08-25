@@ -67,13 +67,13 @@ var tree: KDTree<CGPoint> = KDTree(values: points)
 
 we can retrieve the nearest Neighbour to a test point like so
 ```swift
-let nearest: CGPoint? = tree.nearest(toElement: point)
+let nearest: CGPoint? = tree.nearest(to: point)
 ```
 
 or the get the 10 nearest neighbours
 
 ```swift
-let nearestPoints: [CGPoint] = tree.nearestK(10, toElement: point)
+let nearestPoints: [CGPoint] = tree.nearestK(10, to: point)
 ```
 
 Complexity is O(log N), while brute-force searching through an Array is of cource O(N).

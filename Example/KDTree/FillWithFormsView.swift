@@ -87,7 +87,7 @@ class FillWithFormsView: View {
             let color = Color(hue: CGFloat.random(0.05, end: 0.15),
                 saturation: CGFloat.random(0.4, end: 0.9), brightness: 0.9, alpha: 1.0)
             let maxRadius = min(1 - abs(point.x), 1 - abs(point.y))
-            if let nearest = randomTree.nearest(toElement: point, maxDistance: Double(2*maxDiscSize)) {
+            if let nearest = randomTree.nearest(to: point, maxDistance: Double(2*maxDiscSize)) {
                 let distance = chosenShape == .circle ? (nearest - point).norm : (nearest - point).maximumNorm
                 let radius = min(0.5*distance, maxRadius)
                 
@@ -113,7 +113,7 @@ class FillWithFormsView: View {
                 if weakShapeOp?.isCancelled == true { break }
                 let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: Color.clear)
                 let maxshapeRadius = min(maxDiscSize, min(1 - abs(testDisc.center.x), 1 - abs(testDisc.center.y)))
-                let nearest8Discs = treeCopy.nearestK(8, toElement: testDisc)
+                let nearest8Discs = treeCopy.nearestK(8, to: testDisc)
                 let closestDistance = nearest8Discs.reduce(CGFloat.infinity) { (currentMin, disc) -> CGFloat in
                     let distance = (strongself.chosenShape == .circle) ?
                         (testDisc.center - disc.center).norm - disc.radius : (testDisc.center - disc.center).maximumNorm - disc.radius
@@ -147,7 +147,7 @@ class FillWithFormsView: View {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let tappedPoint = 1.0/adjSize * (point - c)
         xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
-        closeDiscs = discTree.nearestK(16, toElement: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
+        closeDiscs = discTree.nearestK(16, to: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
         xPlatformNeedsDisplay()
     }
