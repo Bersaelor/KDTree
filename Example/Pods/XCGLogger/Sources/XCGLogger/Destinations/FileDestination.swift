@@ -7,9 +7,12 @@
 //  Some rights reserved: https://github.com/DaveWoodCom/XCGLogger/blob/master/LICENSE.txt
 //
 
+import Foundation
+import Dispatch
+
 // MARK: - FileDestination
 /// A standard destination that outputs log details to a file
-open class FileDestination: BaseDestination {
+open class FileDestination: BaseQueuedDestination {
     // MARK: - Properties
     /// Logger that owns the destination object
     open override var owner: XCGLogger? {
@@ -22,9 +25,6 @@ open class FileDestination: BaseDestination {
             }
         }
     }
-
-    /// The dispatch queue to process the log on
-    open var logQueue: DispatchQueue? = nil
 
     /// FileURL of the file to log to
     open var writeToFileURL: URL? = nil {
@@ -50,8 +50,8 @@ open class FileDestination: BaseDestination {
         if writeToFile is NSString {
             writeToFileURL = URL(fileURLWithPath: writeToFile as! String)
         }
-        else if writeToFile is URL {
-            writeToFileURL = writeToFile as? URL
+        else if let writeToFile = writeToFile as? URL, writeToFile.isFileURL {
+            writeToFileURL = writeToFile
         }
         else {
             writeToFileURL = nil
@@ -83,44 +83,43 @@ open class FileDestination: BaseDestination {
             closeFile()
         }
 
-        if let writeToFileURL = writeToFileURL {
+        guard let writeToFileURL = writeToFileURL else { return }
 
-            let fileManager: FileManager = FileManager.default
-            let fileExists: Bool = fileManager.fileExists(atPath: writeToFileURL.path)
-            if !shouldAppend || !fileExists {
-                fileManager.createFile(atPath: writeToFileURL.path, contents: nil, attributes: nil)
-            }
+        let fileManager: FileManager = FileManager.default
+        let fileExists: Bool = fileManager.fileExists(atPath: writeToFileURL.path)
+        if !shouldAppend || !fileExists {
+            fileManager.createFile(atPath: writeToFileURL.path, contents: nil, attributes: nil)
+        }
 
-            do {
-                logFileHandle = try FileHandle(forWritingTo: writeToFileURL)
-                if fileExists && shouldAppend {
-                    logFileHandle?.seekToEndOfFile()
+        do {
+            logFileHandle = try FileHandle(forWritingTo: writeToFileURL)
+            if fileExists && shouldAppend {
+                logFileHandle?.seekToEndOfFile()
 
-                    if let appendMarker = appendMarker,
-                        let encodedData = "\(appendMarker)\n".data(using: String.Encoding.utf8) {
+                if let appendMarker = appendMarker,
+                    let encodedData = "\(appendMarker)\n".data(using: String.Encoding.utf8) {
 
-                        _try({
-                            self.logFileHandle?.write(encodedData)
-                        },
-                        catch: { (exception: NSException) in
-                            owner._logln("Objective-C Exception occurred: \(exception)", level: .error)
-                        })
-                    }
+                    _try({
+                        self.logFileHandle?.write(encodedData)
+                    },
+                    catch: { (exception: NSException) in
+                        owner._logln("Objective-C Exception occurred: \(exception)", level: .error, source: self)
+                    })
                 }
             }
-            catch let error as NSError {
-                owner._logln("Attempt to open log file for \(fileExists && shouldAppend ? "appending" : "writing") failed: \(error.localizedDescription)", level: .error)
-                logFileHandle = nil
-                return
-            }
+        }
+        catch let error as NSError {
+            owner._logln("Attempt to open log file for \(fileExists && shouldAppend ? "appending" : "writing") failed: \(error.localizedDescription)", level: .error, source: self)
+            logFileHandle = nil
+            return
+        }
 
-            owner.logAppDetails(selectedDestination: self)
+        owner.logAppDetails(selectedDestination: self)
 
-            let logDetails = LogDetails(level: .info, date: Date(), message: "XCGLogger " + (fileExists && shouldAppend ? "appending" : "writing") + " log to: " + writeToFileURL.absoluteString, functionName: "", fileName: "", lineNumber: 0, userInfo: XCGLogger.Constants.internalUserInfo)
-            owner._logln(logDetails.message, level: logDetails.level)
-            if owner.destination(withIdentifier: identifier) == nil {
-                processInternal(logDetails: logDetails)
-            }
+        let logDetails = LogDetails(level: .info, date: Date(), message: "XCGLogger " + (fileExists && shouldAppend ? "appending" : "writing") + " log to: " + writeToFileURL.absoluteString, functionName: "", fileName: "", lineNumber: 0, userInfo: XCGLogger.Constants.internalUserInfo)
+        owner._logln(logDetails.message, level: logDetails.level, source: self)
+        if owner.destination(withIdentifier: identifier) == nil {
+            processInternal(logDetails: logDetails)
         }
     }
 
@@ -131,37 +130,60 @@ open class FileDestination: BaseDestination {
     /// - Returns:  Nothing
     ///
     private func closeFile() {
+        logFileHandle?.synchronizeFile()
         logFileHandle?.closeFile()
         logFileHandle = nil
+    }
+
+    /// Force any buffered data to be written to the file.
+    ///
+    /// - Parameters:
+    ///     - closure:  An optional closure to execute after the file has been rotated.
+    ///
+    /// - Returns:      Nothing.
+    ///
+    open func flush(closure: (() -> Void)? = nil) {
+        if let logQueue = logQueue {
+            logQueue.async {
+                self.logFileHandle?.synchronizeFile()
+                closure?()
+            }
+        }
+        else {
+            logFileHandle?.synchronizeFile()
+            closure?()
+        }
     }
 
     /// Rotate the log file, storing the existing log file in the specified location.
     ///
     /// - Parameters:
     ///     - archiveToFile:    FileURL or path (as String) to where the existing log file should be rotated to.
+    ///     - closure:          An optional closure to execute after the file has been rotated.
     ///
     /// - Returns:
     ///     - true:     Log file rotated successfully.
     ///     - false:    Error rotating the log file.
     ///
-    @discardableResult open func rotateFile(to archiveToFile: Any) -> Bool {
+    @discardableResult open func rotateFile(to archiveToFile: Any, closure: ((_ success: Bool) -> Void)? = nil) -> Bool {
         var archiveToFileURL: URL? = nil
 
         if archiveToFile is NSString {
             archiveToFileURL = URL(fileURLWithPath: archiveToFile as! String)
         }
-        else if archiveToFile is URL {
-            archiveToFileURL = archiveToFile as? URL
+        else if let archiveToFile = archiveToFile as? URL, archiveToFile.isFileURL {
+            archiveToFileURL = archiveToFile
         }
         else {
+            closure?(false)
             return false
         }
 
         if let archiveToFileURL = archiveToFileURL,
-            let writeToFileURL = writeToFileURL {
+          let writeToFileURL = writeToFileURL {
 
             let fileManager: FileManager = FileManager.default
-            guard !fileManager.fileExists(atPath: archiveToFileURL.path) else { return false }
+            guard !fileManager.fileExists(atPath: archiveToFileURL.path) else { closure?(false); return false }
 
             closeFile()
             haveLoggedAppDetails = false
@@ -171,15 +193,30 @@ open class FileDestination: BaseDestination {
             }
             catch let error as NSError {
                 openFile()
-                owner?._logln("Unable to rotate file \(writeToFileURL.path) to \(archiveToFileURL.path): \(error.localizedDescription)", level: .error)
+                owner?._logln("Unable to rotate file \(writeToFileURL.path) to \(archiveToFileURL.path): \(error.localizedDescription)", level: .error, source: self)
+                closure?(false)
                 return false
             }
 
-            owner?._logln("Rotated file \(writeToFileURL.path) to \(archiveToFileURL.path)", level: .info)
+            do {
+                if let identifierData: Data = identifier.data(using: .utf8) {
+                    try archiveToFileURL.setExtendedAttribute(data: identifierData, forName: XCGLogger.Constants.extendedAttributeArchivedLogIdentifierKey)
+                }
+                if let timestampData: Data = "\(Date().timeIntervalSince1970)".data(using: .utf8) {
+                    try archiveToFileURL.setExtendedAttribute(data: timestampData, forName: XCGLogger.Constants.extendedAttributeArchivedLogTimestampKey)
+                }
+            }
+            catch let error as NSError {
+                owner?._logln("Unable to set extended file attributes on file \(archiveToFileURL.path): \(error.localizedDescription)", level: .error, source: self)
+            }
+
+            owner?._logln("Rotated file \(writeToFileURL.path) to \(archiveToFileURL.path)", level: .info, source: self)
             openFile()
+            closure?(true)
             return true
         }
 
+        closure?(false)
         return false
     }
 
@@ -187,39 +224,18 @@ open class FileDestination: BaseDestination {
     /// Write the log to the log file.
     ///
     /// - Parameters:
-    ///     - logDetails:   The log details.
-    ///     - message:         Formatted/processed message ready for output.
+    ///     - message:   Formatted/processed message ready for output.
     ///
     /// - Returns:  Nothing
     ///
-    open override func output(logDetails: LogDetails, message: String) {
-
-        let outputClosure = {
-            var logDetails = logDetails
-            var message = message
-
-            // Apply filters, if any indicate we should drop the message, we abort before doing the actual logging
-            if self.shouldExclude(logDetails: &logDetails, message: &message) {
-                return
-            }
-
-            self.applyFormatters(logDetails: &logDetails, message: &message)
-
-            if let encodedData = "\(message)\n".data(using: String.Encoding.utf8) {
-                _try({
-                    self.logFileHandle?.write(encodedData)
-                },
-                catch: { (exception: NSException) in
-                    self.owner?._logln("Objective-C Exception occurred: \(exception)", level: .error)
-                })
-            }
-        }
-        
-        if let logQueue = logQueue {
-            logQueue.async(execute: outputClosure)
-        }
-        else {
-            outputClosure()
+    open override func write(message: String) {
+        if let encodedData = "\(message)\n".data(using: String.Encoding.utf8) {
+            _try({
+                self.logFileHandle?.write(encodedData)
+            },
+            catch: { (exception: NSException) in
+                self.owner?._logln("Objective-C Exception occurred: \(exception)", level: .error, source: self)
+            })
         }
     }
 }

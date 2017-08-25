@@ -37,7 +37,7 @@ class AlgorithmViewController: UIViewController {
         
     }
     
-    func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
+    @objc func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
         var currentStep = illustrationView.maxStep ?? 0
         currentStep += 1
         if let maxDepth = illustrationView.treeDepth, currentStep > 2*maxDepth + 2 {

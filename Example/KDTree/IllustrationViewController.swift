@@ -49,7 +49,7 @@ class IllustrationViewController: UIViewController {
         
     }
     
-    func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
+    @objc func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
         let point = recognizer.location(in: recognizer.view)
         illustrationView.pointTapped(point)
         
