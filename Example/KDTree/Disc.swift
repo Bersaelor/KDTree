@@ -6,7 +6,7 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-#if os(OSX)
+#if os(macOS)
     import Cocoa
     public typealias Color = NSColor
     public typealias Font = NSFont

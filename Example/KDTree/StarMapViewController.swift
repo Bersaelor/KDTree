@@ -73,7 +73,7 @@ class StarMapViewController: UIViewController {
         StarHelper.selectNearestStar(to: point, starMapView: self.starMapView, stars: starTree)
     }
 
-    func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
+    @objc func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
         switch gestureRecognizer.state {
         case .began:
             startRadius = starMapView.radius
@@ -104,7 +104,7 @@ class StarMapViewController: UIViewController {
         }
     }
     
-    func handlePan(gestureRecognizer: UIPanGestureRecognizer) {     
+    @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {     
         switch gestureRecognizer.state {
         case .began:
             startCenter = starMapView.centerPoint
@@ -119,7 +119,7 @@ class StarMapViewController: UIViewController {
         }
     }
     
-    func openInfo() {
+    @objc func openInfo() {
         let alert = UIAlertController(title: nil,
                                       message: "Cylindrical projection of the starry sky for the year 2000,"
                                         .appending(" measured by right ascension and declination coordinates."),
