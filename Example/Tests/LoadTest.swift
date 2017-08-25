@@ -103,7 +103,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         var nearestPointsFromTree = [CGPoint]()
         self.measure {
             nearestPointsFromTree = self.testPoints.map { (searchPoint: CGPoint) -> CGPoint in
-                return self.largeTree.nearest(toElement: searchPoint) ?? CGPoint.zero
+                return self.largeTree.nearest(to: searchPoint) ?? CGPoint.zero
             }
         }
 
@@ -152,7 +152,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         var nearest5PointsFromTree = [[CGPoint]]()
         self.measure {
             nearest5PointsFromTree = self.testPoints.map { (searchPoint: CGPoint) -> [CGPoint] in
-                return self.largeTree.nearestK(5, toElement: searchPoint)
+                return self.largeTree.nearestK(5, to: searchPoint)
             }
         }
         
@@ -183,7 +183,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         }
         
         var containedPoints = 0
-        for point in randomContainedPoints where point != largeTree.nearest(toElement: point) {
+        for point in randomContainedPoints where point != largeTree.nearest(to: point) {
             containedPoints += 1
         }
         

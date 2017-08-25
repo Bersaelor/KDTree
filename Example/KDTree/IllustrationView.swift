@@ -71,8 +71,8 @@ class IllustrationView: UIView {
         xcLog.debug("c: \(c), tappedPoint: \(String(describing: self.tappedPoint))")
         
         if let tappedPoint = tappedPoint {
-            if isKNearest { nearestPoints = tree?.nearestK(5, toElement: tappedPoint) ?? [] }
-            else { nearestPoints = tree?.nearest(toElement: tappedPoint).map({ [$0] }) ?? [] }
+            if isKNearest { nearestPoints = tree?.nearestK(5, to: tappedPoint) ?? [] }
+            else { nearestPoints = tree?.nearest(to: tappedPoint).map({ [$0] }) ?? [] }
             
             //check up if it's really the closest
             var bestDistance = Double.infinity

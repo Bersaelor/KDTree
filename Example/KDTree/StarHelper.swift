@@ -89,11 +89,11 @@ class StarHelper: NSObject {
         
         xcLog.debug("tappedPosition: \(tappedPosition)")
         let startNN = Date()
-        var nearestStar = stars.nearest(toElement: searchStar)
+        var nearestStar = stars.nearest(to: searchStar)
         let nearestDistanceSqd = nearestStar?.squaredDistance(to: searchStar) ?? 10.0
         if sqrt(nearestDistanceSqd) > Double(searchStar.normalizedAscension) { // tap close to or below ascension = 0
             let searchStarModulo = searchStar.starMoved(ascension: 24.0, declination: 0.0)
-            if let leftSideNearest = stars.nearest(toElement: searchStarModulo),
+            if let leftSideNearest = stars.nearest(to: searchStarModulo),
                 leftSideNearest.squaredDistance(to: searchStarModulo) < nearestDistanceSqd {
                 nearestStar = leftSideNearest.starMoved(ascension: -24.0, declination: 0.0)
             }

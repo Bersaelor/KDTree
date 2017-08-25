@@ -58,7 +58,7 @@ class PerformanceTests: XCTestCase {
             var nearestPoints = [CGPoint]()
             let searchPointTotalTime = measureAndReturn {
                 nearestPoints = testPoints.flatMap({ (point) -> CGPoint? in
-                    return tree?.nearest(toElement: point)
+                    return tree?.nearest(to: point)
                 })
             }
             XCTAssertEqual(nearestPoints.count, testPoints.count)
