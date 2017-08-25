@@ -31,13 +31,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Nimble:
-    :commit: 31f4c709191695fcd66a7c6f38c9a9eaa313b4a2
+    :commit: 09d7e67bbee84751cb5393238e1524a748326b7f
     :git: https://github.com/Quick/Nimble
   Quick:
     :commit: c70bb1e14de8c6686203f92b83e1b395bb6a7cb9
     :git: https://github.com/Quick/Quick
   XCGLogger:
-    :commit: 7269836cdfbcb9f4b894389e743170bc7ace39dd
+    :commit: 4012dbf709ef17d248414661df7cf74a6e691fc2
     :git: https://github.com/Bersaelor/XCGLogger
 
 SPEC CHECKSUMS:
