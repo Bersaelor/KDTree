@@ -158,7 +158,7 @@ class FillWithFormsView: View {
     
     override func draw(_ rect: CGRect) {
         #if os(macOS)
-            guard let context = NSGraphicsContext.current()?.cgContext else {
+            guard let context = NSGraphicsContext.current?.cgContext else {
                 xcLog.error("failed to get graphics context")
                 return
             }

@@ -87,7 +87,11 @@ class StarMapView: View {
     }
     
     func commonInit() {
-        backgroundColor = .black
+        #if os(macOS)
+            layer?.backgroundColor = Color.black.cgColor
+        #else
+            backgroundColor = .black
+        #endif
     }
         
     static let vegaSize: Double = 4.0
@@ -129,7 +133,7 @@ class StarMapView: View {
         let startDraw = Date()
 
         #if os(macOS)
-            guard let context = NSGraphicsContext.current()?.cgContext else { return }
+            guard let context = NSGraphicsContext.current?.cgContext else { return }
         #else
             guard let context = UIGraphicsGetCurrentContext() else { return }
         #endif
@@ -282,21 +286,22 @@ class StarMapView: View {
         if let spectralType = spectralType {
             if spectralType.hasPrefix("M6") {
                 var r: CGFloat = 1.0; var g: CGFloat = 0.765; var b: CGFloat = 0.44
-                return Color(red: r, green: g, blue: b, alpha: 1.0)
-//                #if os(macOS)
-//                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-//                #else
-//                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-//                #endif
+//                return Color(red: r, green: g, blue: b, alpha: 1.0)
+                #if os(macOS)
+                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
+                #else
+                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
+                #endif
             }
             else if spectralType.hasPrefix("M8") {
                 var r: CGFloat = 1.0; var g: CGFloat = 0.776; var b: CGFloat = 0.43
-                
-//                #if os(macOS)
-//                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-//                #else
-//                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-//                #endif
+//                return Color(red: r, green: g, blue: b, alpha: 1.0)
+
+                #if os(macOS)
+                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
+                #else
+                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
+                #endif
             }
         }
         
