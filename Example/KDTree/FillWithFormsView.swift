@@ -6,8 +6,8 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-#if os(OSX)
-    import Cocoa
+#if os(macOS)
+    import AppKit
     public typealias View = NSView
 #else
     import UIKit
@@ -16,7 +16,7 @@
 
 extension View {
     func xPlatformNeedsDisplay(rect: CGRect? = nil) {
-        #if os(OSX)
+        #if os(macOS)
             self.needsDisplay = true
         #else
             if let rect = rect {
@@ -157,7 +157,7 @@ class FillWithFormsView: View {
     }
     
     override func draw(_ rect: CGRect) {
-        #if os(OSX)
+        #if os(macOS)
             guard let context = NSGraphicsContext.current()?.cgContext else {
                 xcLog.error("failed to get graphics context")
                 return
