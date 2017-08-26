@@ -108,6 +108,8 @@
 		6F624EE473E68E2A703A5CBB1A26F233 /* LogFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956016D2562A8182079B28725A5CC9C9 /* LogFormatterProtocol.swift */; };
 		70AA35A61E7B65DE8FAE738544DC3E2C /* KDTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A63A02387033B2DF2ABF3FCB61AE72 /* KDTree+Equatable.swift */; };
 		716D10F4655980ABB795B27CED0DE733 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD8DDDEC27FCFB495F59D65DD5D641D /* XCGLogger.swift */; };
+		716D54091F5179920079A809 /* KDTree+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D54081F5179920079A809 /* KDTree+Codable.swift */; };
+		716D540A1F5179970079A809 /* KDTree+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D54081F5179920079A809 /* KDTree+Codable.swift */; };
 		73BC5AC2ECDB8722E085F14B53E0D24E /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04CF647F16F70B79B4C13D1F463610 /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7535BE3B35235B9FC0744C6A89435935 /* XcodeColorsLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90FBD62AFD1418D2486D99A18DA52F /* XcodeColorsLogFormatter.swift */; };
 		75538A8B20C7A20AF3D54BBF35D56FFE /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BA4486AFE33DFE1DF97DECCFAE3EEB /* BeLessThanOrEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -387,6 +389,7 @@
 		6838F669842120441FFCBD4DBD37B529 /* Pods-KDTree_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		6DD80C4334F7AF7313695CAD0F10A4EC /* XCGLogger-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCGLogger-iOS-umbrella.h"; sourceTree = "<group>"; };
 		6F5DB32A0CC14FD97A6EB43D9EB8046D /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
+		716D54081F5179920079A809 /* KDTree+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KDTree+Codable.swift"; sourceTree = "<group>"; };
 		71EC0E352E5151C98201F9D2544AAFAA /* XCGLogger-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCGLogger-macOS-dummy.m"; path = "../XCGLogger-macOS/XCGLogger-macOS-dummy.m"; sourceTree = "<group>"; };
 		726714689E376A11CD044613EB149726 /* QuickSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpec.m; path = Sources/QuickObjectiveC/QuickSpec.m; sourceTree = "<group>"; };
 		74CB710B76118518E56A03846CCF33B4 /* Pods-KDTree_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -888,6 +891,7 @@
 				09F5E49CC5051B6F3565A76705561AC8 /* KDTree+NearestNeighbour.swift */,
 				1837713EB327E0AF964983C4AED58B04 /* KDTree+RangeSearch.swift */,
 				F2ED3AE5EFF9940146C57A080D6DE29F /* KDTree+Sequence.swift */,
+				716D54081F5179920079A809 /* KDTree+Codable.swift */,
 				DF2FEAA96F9342E3ADD16629813B8912 /* KDTreePoint.swift */,
 				C7F4A9AB3AE74E9C7CDB5FB35D10727F /* Support Files */,
 			);
@@ -1630,6 +1634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34EEA1B20E629A0B9ADA49A397DE12DD /* CGPoint+KDTreePoint.swift in Sources */,
+				716D54091F5179920079A809 /* KDTree+Codable.swift in Sources */,
 				6CE21CC16222235920114776D937B271 /* KDTree+CustomStringConvertible.swift in Sources */,
 				0BFC6C99B13D968C162BEE3A8E5F539D /* KDTree+Equatable.swift in Sources */,
 				A11448DAE0FA5B32C932273C44B0511C /* KDTree+NearestNeighbour.swift in Sources */,
@@ -1646,6 +1651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B8387FB153622F75352D696732554D /* CGPoint+KDTreePoint.swift in Sources */,
+				716D540A1F5179970079A809 /* KDTree+Codable.swift in Sources */,
 				3310B6E11D14A6AED3BB5A0EA3721BFB /* KDTree+CustomStringConvertible.swift in Sources */,
 				70AA35A61E7B65DE8FAE738544DC3E2C /* KDTree+Equatable.swift in Sources */,
 				7F0A845EC9014196F8F8CE698826E3EB /* KDTree+NearestNeighbour.swift in Sources */,

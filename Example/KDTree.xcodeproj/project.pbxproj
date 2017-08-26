@@ -24,6 +24,7 @@
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
+		716D540D1F517E640079A809 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D540B1F517E5E0079A809 /* CodableTests.swift */; };
 		717EB8A11F4D8AE6006B964E /* GridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EB89F1F4D8A9C006B964E /* GridTest.swift */; };
 		7186FE811D99D6B500D8F292 /* NearestNeighbourSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */; };
 		7186FE831D99D99B00D8F292 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
@@ -92,6 +93,7 @@
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		716D540B1F517E5E0079A809 /* CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTests.swift; sourceTree = "<group>"; };
 		717EB89E1F4D8665006B964E /* KDTreePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KDTreePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		717EB89F1F4D8A9C006B964E /* GridTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTest.swift; sourceTree = "<group>"; };
 		719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				717EB89F1F4D8A9C006B964E /* GridTest.swift */,
 				712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */,
 				740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */,
+				716D540B1F517E5E0079A809 /* CodableTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -798,6 +801,7 @@
 			files = (
 				71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */,
 				713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */,
+				716D540D1F517E640079A809 /* CodableTests.swift in Sources */,
 				740150FC1E9AA34200F0F4DA /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

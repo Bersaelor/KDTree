@@ -36,26 +36,65 @@ print("\(points.count) added")
 let tree = KDTree(values: points)
 
 print("tree count: \(tree.count)")
-print("tree: \(tree)")
 
-tree.investigateTree { (node, _, _) in
-    switch node {
-    case .leaf:
-        return
-    case let .node(left, value, level, right):
-        print("Node[\(depth)]: \(value)")
+enum Color {
+    case blue
+    case red
+    case grey(value: Double)
+}
+
+extension Color: Codable {
+    enum MyCodingError: Error {
+        case decoding(String)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case blue
+        case red
+        case grey
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        if let value = try? values.decode(Double.self, forKey: .grey) {
+            self = .grey(value: value)
+            return
+        } else if let _ = try? values.decode(Int.self, forKey: .blue) {
+            self = .blue
+            return
+        } else if let _ = try? values.decode(Int.self, forKey: .red) {
+            self = .red
+            return
+        }
+        throw MyCodingError.decoding("Whoops! \(dump(values))")
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        switch self {
+        case .blue:
+            try container.encode(0, forKey: CodingKeys.blue)
+        case .red:
+            try container.encode(0, forKey: CodingKeys.red)
+        case .grey(let value):
+            try container.encode(value, forKey: CodingKeys.grey)
+        }
     }
 }
 
-var numErrors = 0
-for point in points {
-    if !tree.contains(point) {
-        print("Missing grid point: \(point), nearest was: \(tree.nearest(toElement: point))")
-        numErrors += 1
-    }
-}
+let encoder = JSONEncoder()
+//encoder.outputFormatting = .prettyPrinted
 
-print("Point \(points[0]) has nearest Point: \(tree.nearest(toElement: points[0]))")
-print("Point \(points[4]) has nearest Point: \(tree.nearest(toElement: points[0]))")
+let titleColor = Color.blue
+let bodyColor = Color.grey(value: 0.5)
+let colors = [titleColor, bodyColor]
+let data = try encoder.encode(colors)
+let json = String.init(data: data, encoding: .utf8)
+print(data)
+print(json ?? "?")
 
-print("numErrors : \(numErrors)")
+let decoder = JSONDecoder()
+let decodedArray = try decoder.decode([Color].self, from: data)
+print(decodedArray)
+
