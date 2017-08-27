@@ -65,8 +65,8 @@ class GridTest: XCTestCase {
     func testSelfShouldBeNearest() {
         var notNearestCount = 0
 
-        for point in points where point != tree.nearest(toElement: point) {
-            print("Point \(point) should be nearest to itself, is nearest to \( tree.nearest(toElement: point)! )")
+        for point in points where point != tree.nearest(to: point) {
+            print("Point \(point) should be nearest to itself, is nearest to \( tree.nearest(to: point) )")
             notNearestCount += 1
         }
 

@@ -7,6 +7,8 @@
 //  Some rights reserved: https://github.com/DaveWoodCom/XCGLogger/blob/master/LICENSE.txt
 //
 
+import Foundation
+
 // MARK: - FileNameFilter
 /// Filter log messages by fileName
 open class FileNameFilter: FilterProtocol {
@@ -68,7 +70,7 @@ open class FileNameFilter: FilterProtocol {
     ///
     /// - Returns:          Nothing
     ///
-    @discardableResult open func add<S: Sequence>(fileNames: S) where S.Iterator.Element == String {
+    open func add<S: Sequence>(fileNames: S) where S.Iterator.Element == String {
         for fileName in fileNames {
             add(fileName: fileName)
         }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func == <T: KDTreePoint> (lhs: KDTree<T>, rhs: KDTree<T>) -> Bool {
+public func == <T> (lhs: KDTree<T>, rhs: KDTree<T>) -> Bool {
     switch (lhs, rhs) {
     case (.leaf, .leaf):
         return true
@@ -19,7 +19,7 @@ public func == <T: KDTreePoint> (lhs: KDTree<T>, rhs: KDTree<T>) -> Bool {
     }
 }
 
-public func != <T: KDTreePoint> (lhs: KDTree<T>, rhs: KDTree<T>) -> Bool {
+public func != <T> (lhs: KDTree<T>, rhs: KDTree<T>) -> Bool {
     return !(lhs == rhs)
 }
     

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mathheartcode UG. All rights reserved.
 //
 
-#if os(OSX)
+#if os(macOS)
     import Cocoa
 #else
     import UIKit

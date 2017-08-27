@@ -6,7 +6,7 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-#if os(OSX)
+#if os(macOS)
     import Cocoa
 #else
     import UIKit
@@ -33,14 +33,12 @@ class StarViewController: NSViewController {
         
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            StarHelper.loadCSVData { stars in
+            StarHelper.loadCSVData { (_, stars) in
                 DispatchQueue.main.async {
                     xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                     self?.stars = stars
-                    
                     xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                     self?.loadingIndicator.stopAnimation(nil)
-                    
                     self?.reloadStars()
                 }
             }

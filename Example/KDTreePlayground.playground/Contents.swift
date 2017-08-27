@@ -38,7 +38,7 @@ let tree = KDTree(values: points)
 print("tree count: \(tree.count)")
 print("tree: \(tree)")
 
-tree.investigateTree { (node, parents, depth) in
+tree.investigateTree { (node, _, _) in
     switch node {
     case .leaf:
         return
@@ -50,12 +50,12 @@ tree.investigateTree { (node, parents, depth) in
 var numErrors = 0
 for point in points {
     if !tree.contains(point) {
-        print("Missing grid point: \(point), nearest was: \(tree.nearest(toElement: point)!)")
+        print("Missing grid point: \(point), nearest was: \(tree.nearest(toElement: point))")
         numErrors += 1
     }
 }
 
-print("Point \(points[0]) has nearest Point: \(tree.nearest(toElement: points[0])!)")
-print("Point \(points[4]) has nearest Point: \(tree.nearest(toElement: points[0])!)")
+print("Point \(points[0]) has nearest Point: \(tree.nearest(toElement: points[0]))")
+print("Point \(points[4]) has nearest Point: \(tree.nearest(toElement: points[0]))")
 
 print("numErrors : \(numErrors)")
