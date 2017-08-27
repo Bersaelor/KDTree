@@ -51,12 +51,11 @@ class PerformanceTests: XCTestCase {
             let data = try encoder.encode(tree)
             let json = String.init(data: data, encoding: .utf8)
             print(data)
-            print(json
-                ?? "?")
+            print(json ?? "?")
             
             let decodedTree = try decoder.decode(KDTree<CGPoint>.self, from: data)
             print(decodedTree)
-            XCTAssertEqual(decodedTree.isEmpty, true, "Decoded Tree should not be empty")
+            XCTAssertEqual(decodedTree.isEmpty, false, "Decoded Tree should not be empty")
             XCTAssertEqual(decodedTree.contains(CGPoint.zero), true, "Decoded Tree should contain (0,0)")
         } catch {
             XCTFail("Error while coding single value tree \( error )")

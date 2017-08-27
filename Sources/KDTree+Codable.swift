@@ -56,20 +56,69 @@ extension Decodable {
     fileprivate init<Key>(__from container: KeyedDecodingContainer<Key>, forKey key: Key) throws { self = try container.decode(Self.self, forKey: key) }
 }
 
-// FIXME: Uncomment when conditional conformance is available.
-extension KDTree : Encodable /* where Element : Encodable */ {
-    public func encode(to encoder: Encoder) throws {
+// FIXME: Cleanup NodeBox when conditional conformance is available.
+private struct NodeBox<Element: KDTreePoint> {
+    let left: KDTree<Element>
+    let value: Element
+    let dimension: Int
+    let right: KDTree<Element>
+    
+    enum CodingKeys: String, CodingKey {
+        case left       = "l"
+        case value      = "v"
+        case dimension  = "d"
+        case right      = "r"
+    }
+    
+    init(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>) {
+        self.left = left
+        self.value = value
+        self.dimension = dimension
+        self.right = right
+    }
+}
+
+extension NodeBox: Decodable {
+    init(from decoder: Decoder) throws {
+        assertTypeIsEncodable(Element.self, in: type(of: self))
+
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        left        = try container.decode(KDTree<Element>.self, forKey: .left)
+        let metaType = (Element.self as! Decodable.Type)
+        value = try metaType.init(__from: container, forKey: .value) as! Element
+        dimension   = try container.decode(Int.self, forKey: .dimension)
+        right       = try container.decode(KDTree<Element>.self, forKey: .right)
+    }
+}
+
+extension NodeBox: Encodable {
+    func encode(to encoder: Encoder) throws {
         assertTypeIsEncodable(Element.self, in: type(of: self))
         
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(left, forKey: .left)
+        try (value as! Encodable).__encode(to: &container, forKey: .value)
+        try container.encode(dimension, forKey: .dimension)
+        try container.encode(right, forKey: .right)
+    }
+}
+
+// FIXME: Uncomment when conditional conformance is available.
+extension KDTree: Encodable /* where Element : Encodable */ {
+    public func encode(to encoder: Encoder) throws {
+        assertTypeIsEncodable(Element.self, in: type(of: self))
+
         var container = encoder.singleValueContainer()
         switch self {
         case .leaf: try container.encodeNil()
         case let .node(left, value, dim, right):
-            try (value as! Encodable).__encode(to: &container)
+            let box = NodeBox(left: left, value: value, dimension: dim, right: right)
+            try container.encode(box)
         }
     }
 }
-extension KDTree : Decodable /* where Element : Decodable */ {
+
+extension KDTree: Decodable /* where Element : Decodable */ {
     public init(from decoder: Decoder) throws {
         // Initialize self here so we can get type(of: self).
         self = .leaf
@@ -77,10 +126,8 @@ extension KDTree : Decodable /* where Element : Decodable */ {
         let container = try decoder.singleValueContainer()
 
         if !container.decodeNil() {
-            let metaType = (Element.self as! Decodable.Type)
-            let element = try metaType.init(__from: container)
-            self = .node(left: .leaf, value: element as! Element, dimension: 0, right: .leaf)
+            let box = try container.decode(NodeBox<Element>.self)
+            self = .node(left: box.left, value: box.value, dimension: box.dimension, right: box.right)
         }
     }
 }
-
