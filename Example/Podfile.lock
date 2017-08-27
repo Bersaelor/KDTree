@@ -31,10 +31,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Nimble:
-    :commit: 09d7e67bbee84751cb5393238e1524a748326b7f
+    :commit: 2a8dd83955bc4ed03831dffc1d1e388a97458d07
     :git: https://github.com/Quick/Nimble
   Quick:
-    :commit: c70bb1e14de8c6686203f92b83e1b395bb6a7cb9
+    :commit: a672e7ae727341ce7e6825037f20f61150ea5c67
     :git: https://github.com/Quick/Quick
   XCGLogger:
     :commit: 4012dbf709ef17d248414661df7cf74a6e691fc2
