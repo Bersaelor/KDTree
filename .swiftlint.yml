@@ -33,7 +33,7 @@ excluded: # paths to ignore during linting. overridden by `included`.
   - Carthage
   - Submodules
   - Example/Pods
-  - KDTreePlayground.playground
+  - KDTreePlayground.playground/Contents.swift
 
 line_length:
   - 160
