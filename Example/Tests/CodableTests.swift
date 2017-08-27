@@ -40,7 +40,7 @@ class PerformanceTests: XCTestCase {
             print(decodedTree)
             XCTAssertEqual(decodedTree.isEmpty, true, "Decoded Tree should be empty")
         } catch {
-            XCTFail("Error while coding empty tree \( error )")
+            XCTAssertNotNil(error, "Expected Top-level (T.self) encoded as null JSON fragment: \(error)")
         }
     }
     
