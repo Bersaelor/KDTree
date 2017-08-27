@@ -14,18 +14,18 @@ class NearestNeighbourSpec: QuickSpec {
                 
                 it("of (4.3,4.5)") {
                     let testPoint = CGPoint(x: 4.3, y: 4.5)
-                    expect(tenTree.nearest(to: testPoint)) != nil
+                    expect(tenTree.nearest(to: testPoint)).toNot(beNil())
                     expect(tenTree.nearest(to: testPoint)) == CGPoint(x: 4.0, y: 4.0)
                 }
                 
                 it("of (5.2,5.5)") {
                     let testPoint = CGPoint(x: 5.2, y: 5.5)
-                    expect(tenTree.nearest(to: testPoint)) != nil
+                    expect(tenTree.nearest(to: testPoint)).toNot(beNil())
                     expect(tenTree.nearest(to: testPoint)) == CGPoint(x: 5.0, y: 5.0)
                 }
                 it("of (4.9,4.5)") {
                     let testPoint = CGPoint(x: 4.9, y: 4.5)
-                    expect(tenTree.nearest(to: testPoint)) != nil
+                    expect(tenTree.nearest(to: testPoint)).toNot(beNil())
                     expect(tenTree.nearest(to: testPoint)) == CGPoint(x: 5.0, y: 5.0)
                 }
             }
