@@ -32,6 +32,8 @@ number_separator:
 excluded: # paths to ignore during linting. overridden by `included`.
   - Carthage
   - Submodules
+  - Example/Pods
+  - KDTreePlayground.playground
 
 line_length:
   - 160

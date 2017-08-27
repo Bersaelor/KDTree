@@ -216,7 +216,7 @@ extension Star: CustomDebugStringConvertible {
 
 // MARK: CSV Helper Methods
 
-fileprivate func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointer<Int8>) -> Int {
+private func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointer<Int8>) -> Int {
     var newIndex = index
     while stringPtr[newIndex] != 0 && stringPtr[newIndex] != 44 { newIndex += 1 }
     if stringPtr[newIndex] != 0 { //if not at end of file, jump over comma
@@ -225,7 +225,7 @@ fileprivate func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointe
     return newIndex
 }
 
-fileprivate func readString(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> String? {
+private func readString(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> String? {
     let startIndex = index
     index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
     
@@ -239,7 +239,7 @@ fileprivate func readString(at index: inout Int, stringPtr: UnsafeMutablePointer
     return nil
 }
 
-fileprivate protocol HasCFormatterString {
+private protocol HasCFormatterString {
     static var cFormatString: [Int8] { get }
     static var initialValue: Self { get }
 }
@@ -259,7 +259,7 @@ extension Double: HasCFormatterString {
     static let initialValue: Double = 0.0
 }
 
-fileprivate func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8> ) -> T? {
+private func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8> ) -> T? {
     let startIndex = index
     index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
     

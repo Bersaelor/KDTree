@@ -16,6 +16,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		625C588CBC2FC139B0E93182 /* Pods_KDTree_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC603E910B33686BF88B277F /* Pods_KDTree_Example.framework */; };
+		7130CA7A1F52DE4200A46AD1 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D540B1F517E5E0079A809 /* CodableTests.swift */; };
 		713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
 		713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
 		713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
@@ -24,7 +25,6 @@
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
-		716D540D1F517E640079A809 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D540B1F517E5E0079A809 /* CodableTests.swift */; };
 		717EB8A11F4D8AE6006B964E /* GridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EB89F1F4D8A9C006B964E /* GridTest.swift */; };
 		7186FE811D99D6B500D8F292 /* NearestNeighbourSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */; };
 		7186FE831D99D99B00D8F292 /* BasicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicSpec.swift */; };
@@ -251,8 +251,8 @@
 				74887EFB1CABC258002AECF6 /* LoadTest.swift */,
 				717EB89F1F4D8A9C006B964E /* GridTest.swift */,
 				712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */,
-				740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */,
 				716D540B1F517E5E0079A809 /* CodableTests.swift */,
+				740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -768,6 +768,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7186FE831D99D99B00D8F292 /* BasicSpec.swift in Sources */,
+				7130CA7A1F52DE4200A46AD1 /* CodableTests.swift in Sources */,
 				7186FE851D99DBBF00D8F292 /* RangeSearchTests.swift in Sources */,
 				717EB8A11F4D8AE6006B964E /* GridTest.swift in Sources */,
 				7186FE861D99DF0A00D8F292 /* LoadTest.swift in Sources */,
@@ -801,7 +802,6 @@
 			files = (
 				71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */,
 				713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */,
-				716D540D1F517E640079A809 /* CodableTests.swift in Sources */,
 				740150FC1E9AA34200F0F4DA /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1007,7 +1007,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
 			};
@@ -1023,7 +1022,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
 			};

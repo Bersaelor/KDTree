@@ -97,4 +97,3 @@ print(json ?? "?")
 let decoder = JSONDecoder()
 let decodedArray = try decoder.decode([Color].self, from: data)
 print(decodedArray)
-
