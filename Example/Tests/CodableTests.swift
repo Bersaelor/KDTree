@@ -104,7 +104,7 @@ class PerformanceTests: XCTestCase {
     func test04_saveAndLoadFile() {
         do {
             guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-                let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.json") else {
+                let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.plist") else {
                     XCTFail(" Failed to create test.json file")
                     return
             }
