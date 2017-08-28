@@ -100,4 +100,31 @@ class PerformanceTests: XCTestCase {
             XCTFail("Error while coding empty tree \( error )")
         }
     }
+    
+    func test04_saveAndLoadFile() {
+        do {
+            guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
+                let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.json") else {
+                    XCTFail(" Failed to create test.json file")
+                    return
+            }
+            
+            do {
+                try largeTree.save(to: filePath)
+                let decodedTree: KDTree<CGPoint> = try KDTree(contentsOf: filePath)
+                XCTAssertEqual(largeTree.count, decodedTree.count, "Decoded Tree have equal amount of data as original tree")
+
+                let missingPoints = largeTree.reduce(0) { (res, point) -> Int in
+                    if let nearest = decodedTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne  {
+                        print("point \(point) is missing, distance: \( nearest.squaredDistance(to: point) )")
+                        return res + 1
+                    }
+                    return res
+                }
+                XCTAssertEqual(missingPoints, 0, "Decoded Tree should have all original points")
+            } catch {
+                XCTFail("Error while coding empty tree \( error )")
+            }
+        }
+    }
 }

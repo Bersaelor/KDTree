@@ -22,18 +22,33 @@ class StarMapViewController: UIViewController {
         
         self.title = "StarMap"
 
+        let loadFromFile = false
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            StarHelper.loadCSVData { (visibleStars, stars) in
-                DispatchQueue.main.async {
-                    xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
-                    self?.allStars = stars
-                    self?.visibleStars = visibleStars
-                    
-                    xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
-                    self?.loadingIndicator.stopAnimating()
-                    
-                    self?.reloadStars()
+            if !loadFromFile {
+                StarHelper.loadCSVData { (visibleStars, stars) in
+                    DispatchQueue.main.async {
+                        xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
+                        self?.allStars = stars
+                        self?.visibleStars = visibleStars
+                        
+                        xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                        self?.loadingIndicator.stopAnimating()
+                        
+                        self?.reloadStars()
+                    }
+                }
+            } else {
+                StarHelper.loadSavedStars { (stars) in
+                    DispatchQueue.main.async {
+                        xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
+                        self?.allStars = stars
+                        
+                        xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                        self?.loadingIndicator.stopAnimating()
+                        
+                        self?.reloadStars()
+                    }
                 }
             }
         }
@@ -47,17 +62,8 @@ class StarMapViewController: UIViewController {
         
         let infoButton = UIButton(type: UIButtonType.infoDark)
         infoButton.addTarget(self, action: #selector(openInfo), for: UIControlEvents.touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: infoButton)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveStars))
+        navigationItem.rightBarButtonItems = [saveButton, UIBarButtonItem(customView: infoButton)]
     }
     
     deinit {
@@ -129,5 +135,18 @@ class StarMapViewController: UIViewController {
         })
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func saveStars() {
+        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.json") else { return }
+        
+        do {
+            let startLoading = Date()
+            try allStars?.save(to: filePath)
+            xcLog.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
+        } catch {
+            xcLog.debug("Error trying to save stars: \( error )")
+        }
     }
 }
