@@ -22,7 +22,7 @@ class StarMapViewController: UIViewController {
         
         self.title = "StarMap"
 
-        let loadFromFile = false
+        let loadFromFile = true
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
             if !loadFromFile {
@@ -139,7 +139,7 @@ class StarMapViewController: UIViewController {
     
     @objc func saveStars() {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.json") else { return }
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.plist") else { return }
         
         do {
             let startLoading = Date()
