@@ -49,9 +49,8 @@ class PerformanceTests: XCTestCase {
         
         do {
             let data = try encoder.encode(tree)
-            let json = String.init(data: data, encoding: .utf8)
-            print(data)
-            print(json ?? "?")
+//            let json = String.init(data: data, encoding: .utf8)
+//            print(json ?? "?")
             
             let decodedTree = try decoder.decode(KDTree<CGPoint>.self, from: data)
             print(decodedTree)
@@ -65,22 +64,37 @@ class PerformanceTests: XCTestCase {
     func test03_BigTreeEncoding() {
         do {
             let data = try encoder.encode(largeTree)
-            let json = String.init(data: data, encoding: .utf8)
-            print(data)
-            print(json ?? "?")
+            print("encoded data has size \(data.count)")
             
             let decodedTree = try decoder.decode(KDTree<CGPoint>.self, from: data)
-            print(decodedTree)
             XCTAssertEqual(largeTree.count, decodedTree.count, "Decoded Tree have equal amount of data as original tree")
+
+            /* Encoded and decoded tree aren't exactly equal due to floating point encoding of NSNumber/JSONSerialization */
+            /* Uncomment the following lines to check that the error is ~ 10^-34 */
+//            let decodedValues = decodedTree.elements
+//            largeTree.elements.enumerated().forEach { (offset, element) in
+//                if element != decodedValues[offset] {
+//                    print("Original: \(element), decoded: \(decodedValues[offset]) not equal!")
+//                    print("Distance: \(element.squaredDistance(to: decodedValues[offset]))")
+//                }
+//            }
             
             let missingPoints = largeTree.reduce(0) { (res, point) -> Int in
-                return res + (decodedTree.contains(point) ? 0 : 1)
+                if let nearest = decodedTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne  {
+                    print("point \(point) is missing, distance: \( nearest.squaredDistance(to: point) )")
+                    return res + 1
+                }
+                return res
             }
             XCTAssertEqual(missingPoints, 0, "Decoded Tree should have all original points")
 
-            let unexpectedPoints = decodedTree.reduce(0, { (res, point) -> Int in
-                return res + (largeTree.contains(point) ? 0 : 1)
-            })
+            let unexpectedPoints = decodedTree.reduce(0) { (res, point) -> Int in
+                if let nearest = largeTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne  {
+                    print("point \(point) is missing, distance: \( nearest.squaredDistance(to: point) )")
+                    return res + 1
+                }
+                return res
+            }
             XCTAssertEqual(unexpectedPoints, 0, "Decoded Tree should not have any extra points")
         } catch {
             XCTFail("Error while coding empty tree \( error )")
