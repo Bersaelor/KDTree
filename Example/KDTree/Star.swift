@@ -11,7 +11,7 @@ import KDTree
 
 // swiftlint:disable variable_name
 
-struct StarData {
+struct StarData: Codable {
     let right_ascension: Float
     let declination: Float
     let hip_id: Int32?
@@ -28,6 +28,25 @@ struct StarData {
     let absmag: Double
     let spectralType: String?
     let colorIndex: Float?
+    
+    enum CodingKeys: String, CodingKey {
+        case right_ascension = "r"
+        case declination     = "d"
+        case hip_id          = "hi"
+        case hd_id           = "hd"
+        case hr_id           = "hr"
+        case gl_id           = "gl"
+        case bayer_flamstedt = "b"
+        case properName      = "p"
+        case distance        = "i"
+        case pmra            = "pr"
+        case pmdec           = "pd"
+        case rv              = "v"
+        case mag             = "m"
+        case absmag          = "a"
+        case spectralType    = "s"
+        case colorIndex      = "c"
+    }
 }
 
 struct Star {
@@ -35,7 +54,9 @@ struct Star {
     let normalizedAscension: Float
     let normalizedDeclination: Float
     let starData: Box<StarData>?
-    
+}
+
+extension Star {
     var starPoint: CGPoint {
         guard let data = starData?.value else { return CGPoint.zero }
         return CGPoint(x: CGFloat(data.right_ascension), y: CGFloat(data.declination))

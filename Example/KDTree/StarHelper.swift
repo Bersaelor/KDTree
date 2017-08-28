@@ -45,6 +45,24 @@ class StarHelper: NSObject {
         completion(visibleStarsTree, starsTree)
     }
     
+    static func loadSavedStars(completion: (KDTree<Star>?) -> Void) {
+        let startLoading = Date()
+        guard let filePath = Bundle.main.path(forResource: "storedTree", ofType:  "json") else {
+            xcLog.error("Failed loading file: storedTree")
+            completion(nil)
+            return
+        }
+        
+        do {
+            let visibleStar: KDTree<Star> = try KDTree(contentsOf: URL(fileURLWithPath: filePath))
+            xcLog.debug("Time to load Tree from file: \(Date().timeIntervalSince(startLoading))s")
+            completion(visibleStar)
+        } catch {
+            xcLog.error("Error loading file: \( error )")
+            completion(nil)
+        }
+    }
+    
     static func loadForwardStars(starTree: KDTree<Star>, currentCenter: CGPoint, radii: CGSize, completion: @escaping ([Star]) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let stars = StarHelper.stars(from: starTree, around: Float(currentCenter.x), declination: Float(currentCenter.y),
