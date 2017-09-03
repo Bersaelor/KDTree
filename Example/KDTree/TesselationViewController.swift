@@ -16,7 +16,7 @@ class TesselationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(IllustrationViewController.illustrationTapped(_:)))
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(TesselationViewController.illustrationTapped(_:)))
         fillFormView.addGestureRecognizer(tapGR)
         
         pointsLabel.text = "Shapes: \(fillFormView.points)"
@@ -30,7 +30,7 @@ class TesselationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
  
-    func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
+    @objc func illustrationTapped(_ recognizer: UITapGestureRecognizer) {
         let point = recognizer.location(in: recognizer.view)
         fillFormView.tapped(point)
     }

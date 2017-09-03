@@ -1,20 +1,14 @@
 PODS:
   - KDTree (0.5.1)
   - Nimble (7.0.1)
-  - ObjcExceptionBridging (1.0.1):
-    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
-  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - Quick (1.1.0)
-  - XCGLogger (5.0.1):
-    - XCGLogger/Core (= 5.0.1)
-  - XCGLogger/Core (5.0.1):
-    - ObjcExceptionBridging
+  - SwiftyBeaver (1.4.0)
 
 DEPENDENCIES:
   - KDTree (from `../`)
   - Nimble (from `https://github.com/Quick/Nimble`, branch `master`)
   - Quick (from `https://github.com/Quick/Quick`, branch `support-swift-4`)
-  - XCGLogger
+  - SwiftyBeaver
 
 EXTERNAL SOURCES:
   KDTree:
@@ -37,10 +31,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   KDTree: c1f5dd79a376bfb19c22da8416482e8cf1f250b9
   Nimble: 1b6670c36e5750169b9e4cc2e9cfa82a7603c69e
-  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: 4700beb8056662b579facd79eaca7f04fb3d48e6
-  XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
+  SwiftyBeaver: 78d9186ce7595b4400ce01e5fd750d263e72dd7b
 
-PODFILE CHECKSUM: 111ff31f92adb5b0a327d1d64770acf2ce2d09d5
+PODFILE CHECKSUM: 7466a290926fcc035dd5189d35362086ed3f62df
 
 COCOAPODS: 1.3.1

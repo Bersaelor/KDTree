@@ -27,7 +27,7 @@ extension Star: Codable {
     
     func encode(to encoder: Encoder) throws {
         guard let value = starData?.value else {
-            xcLog.error("Failed to decode starData's value for star \(dbID)")
+            log.error("Failed to decode starData's value for star \(dbID)")
             return
         }
         var container = encoder.container(keyedBy: CodingKeys.self)
