@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         let console = ConsoleDestination()  // log to Xcode Console
+        console.minLevel = .debug
         log.addDestination(console)
         
         return true

@@ -68,10 +68,7 @@ class StarMapView: View {
     }
     
     var stars: [Star]? {
-        didSet {
-            log.debug("Now showing \(self.stars?.count ?? 0)")
-            xPlatformNeedsDisplay()
-        }
+        didSet { xPlatformNeedsDisplay() }
     }
     
     override init(frame: CGRect) {
@@ -153,7 +150,7 @@ class StarMapView: View {
             drawTapped(context: context, star: tappedStar)
         }
         
-        log.debug("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
+        log.verbose("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
     }
     
     private func setStarColor(for star: Star) {
@@ -247,9 +244,9 @@ class StarMapView: View {
         let mag = star.starData?.value.mag ?? 0.0
         let rootValue = 1.0/(2.4 * 1.085)
         let dotSize = CGFloat(StarMapView.vegaSize) * magnification / CGFloat(exp(mag * rootValue))
-        log.debug("F(\(mag) = \(dotSize))")
+        log.verbose("F(\(mag) = \(dotSize))")
         if let colorIndex = star.starData?.value.colorIndex {
-            log.debug("tappedStar: \(star), \n"
+            log.verbose("tappedStar: \(star), \n"
                 + "color for colorIndex(\(colorIndex)): \(self.bv2ToRGB(for: CGFloat(colorIndex)))")
         }
         
