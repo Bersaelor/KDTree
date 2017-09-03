@@ -5,13 +5,13 @@ target 'KDTree_Example' do
     platform :ios, '8.0'
     
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger', :git => 'https://github.com/Bersaelor/XCGLogger', :branch => 'swift4'
+    pod 'XCGLogger'
 
     target 'KDTree_Tests' do
         inherit! :search_paths
         
         pod 'Quick', :git => 'https://github.com/Quick/Quick', :branch => 'support-swift-4'
-        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :branch => 'support-swift-4'
+        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :branch => 'master'
     end
     
 end
@@ -21,7 +21,7 @@ target 'KDTree_OSX_Example' do
     platform :osx, '10.10'
 
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger', :git => 'https://github.com/Bersaelor/XCGLogger', :branch => 'swift4'
+    pod 'XCGLogger'
 
     target 'KDTree_OSX_ExampleTests' do
         inherit! :search_paths
