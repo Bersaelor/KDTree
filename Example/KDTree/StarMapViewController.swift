@@ -28,7 +28,6 @@ class StarMapViewController: UIViewController {
             if loadEncodedTree {
                 StarHelper.loadSavedStars { (stars) in
                     DispatchQueue.main.async {
-                        log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                         self?.allStars = stars
                         
                         log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
@@ -40,7 +39,6 @@ class StarMapViewController: UIViewController {
             } else {
                 StarHelper.loadCSVData { (visibleStars, stars) in
                     DispatchQueue.main.async {
-                        log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                         self?.allStars = stars
                         self?.visibleStars = visibleStars
                         

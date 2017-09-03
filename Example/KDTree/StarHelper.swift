@@ -81,7 +81,7 @@ class StarHelper: NSObject {
             (Double(Star.normalizedAscension(rightAscension: ascension - deltaAsc)),
              Double(Star.normalizedAscension(rightAscension: ascension + deltaAsc))), verticalRange])
 
-        log.debug("found \(starsVisible.count) stars in first search")
+        log.verbose("found \(starsVisible.count) stars in first search")
         
         //add the points on the other side of the x-axis in case part of the screen is below
         let overlap = ascension - deltaAsc
