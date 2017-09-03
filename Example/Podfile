@@ -5,8 +5,8 @@ target 'KDTree_Example' do
     platform :ios, '8.0'
     
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger'
-
+    pod 'SwiftyBeaver'
+    
     target 'KDTree_Tests' do
         inherit! :search_paths
         
@@ -21,7 +21,7 @@ target 'KDTree_OSX_Example' do
     platform :osx, '10.10'
 
     pod 'KDTree', :path => '../'
-    pod 'XCGLogger'
+    pod 'SwiftyBeaver'
 
     target 'KDTree_OSX_ExampleTests' do
         inherit! :search_paths

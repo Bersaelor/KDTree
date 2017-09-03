@@ -69,7 +69,7 @@ class StarMapView: View {
     
     var stars: [Star]? {
         didSet {
-            xcLog.debug("Now showing \(self.stars?.count ?? 0)")
+            log.debug("Now showing \(self.stars?.count ?? 0)")
             xPlatformNeedsDisplay()
         }
     }
@@ -153,7 +153,7 @@ class StarMapView: View {
             drawTapped(context: context, star: tappedStar)
         }
         
-        xcLog.debug("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
+        log.debug("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
     }
     
     private func setStarColor(for star: Star) {
@@ -247,9 +247,9 @@ class StarMapView: View {
         let mag = star.starData?.value.mag ?? 0.0
         let rootValue = 1.0/(2.4 * 1.085)
         let dotSize = CGFloat(StarMapView.vegaSize) * magnification / CGFloat(exp(mag * rootValue))
-        xcLog.debug("F(\(mag) = \(dotSize))")
+        log.debug("F(\(mag) = \(dotSize))")
         if let colorIndex = star.starData?.value.colorIndex {
-            xcLog.debug("tappedStar: \(star), \n"
+            log.debug("tappedStar: \(star), \n"
                 + "color for colorIndex(\(colorIndex)): \(self.bv2ToRGB(for: CGFloat(colorIndex)))")
         }
         

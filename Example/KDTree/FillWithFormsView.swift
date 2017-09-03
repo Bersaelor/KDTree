@@ -99,7 +99,7 @@ class FillWithFormsView: View {
         
         addMoreShapesBlock()
         
-        xcLog.debug("operationCount: \(self.downloadQueue.operationCount)")
+        log.debug("operationCount: \(self.downloadQueue.operationCount)")
     }
     
     func addMoreShapesBlock() {
@@ -132,7 +132,7 @@ class FillWithFormsView: View {
             if weakShapeOp?.isCancelled == false {
                 DispatchQueue.main.async { [weak self] in
                     self?.discTree = treeCopy
-                    xcLog.debug("newPoints: \(newPoints)")
+                    log.debug("newPoints: \(newPoints)")
                     self?.points = newPoints + strongself.points
                     self?.update()
                     if newPoints > Int(0.1*Double(initialPoints)) { self?.addMoreShapesBlock() }
@@ -146,7 +146,7 @@ class FillWithFormsView: View {
     func tapped(_ point: CGPoint) {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let tappedPoint = 1.0/adjSize * (point - c)
-        xcLog.debug("c: \(c), tappedPoint: \(tappedPoint)")
+        log.debug("c: \(c), tappedPoint: \(tappedPoint)")
         closeDiscs = discTree.nearestK(16, to: Disc(center: tappedPoint, radius: 0.0, color: Color.clear))
         
         xPlatformNeedsDisplay()
@@ -159,12 +159,12 @@ class FillWithFormsView: View {
     override func draw(_ rect: CGRect) {
         #if os(macOS)
             guard let context = NSGraphicsContext.current?.cgContext else {
-                xcLog.error("failed to get graphics context")
+                log.error("failed to get graphics context")
                 return
             }
         #else
             guard let context = UIGraphicsGetCurrentContext() else {
-                xcLog.error("failed to get graphics context")
+                log.error("failed to get graphics context")
                 return
             }
         #endif

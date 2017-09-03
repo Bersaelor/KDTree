@@ -37,10 +37,10 @@ class StarHelper: NSObject {
         }
         
         let visibleStars = stars.filter { $0.starData?.value.mag ?? Double.infinity < StarHelper.maxVisibleMag }
-        xcLog.debug("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
+        log.debug("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
         startLoading = Date()
         let visibleStarsTree = KDTree(values: visibleStars)
-        xcLog.debug("Time to create (visible) Tree: \(Date().timeIntervalSince(startLoading))s")
+        log.debug("Time to create (visible) Tree: \(Date().timeIntervalSince(startLoading))s")
         let starsTree = KDTree(values: stars)
         completion(visibleStarsTree, starsTree)
     }
@@ -48,17 +48,17 @@ class StarHelper: NSObject {
     static func loadSavedStars(completion: (KDTree<Star>?) -> Void) {
         let startLoading = Date()
         guard let filePath = Bundle.main.path(forResource: "storedTree", ofType:  "plist") else {
-            xcLog.error("Failed loading file: storedTree")
+            log.error("Failed loading file: storedTree")
             completion(nil)
             return
         }
         
         do {
             let visibleStar: KDTree<Star> = try KDTree(contentsOf: URL(fileURLWithPath: filePath))
-            xcLog.debug("Time to load Tree from file: \(Date().timeIntervalSince(startLoading))s")
+            log.debug("Time to load Tree from file: \(Date().timeIntervalSince(startLoading))s")
             completion(visibleStar)
         } catch {
-            xcLog.error("Error loading file: \( error )")
+            log.error("Error loading file: \( error )")
             completion(nil)
         }
     }
@@ -81,7 +81,7 @@ class StarHelper: NSObject {
             (Double(Star.normalizedAscension(rightAscension: ascension - deltaAsc)),
              Double(Star.normalizedAscension(rightAscension: ascension + deltaAsc))), verticalRange])
 
-        xcLog.debug("found \(starsVisible.count) stars in first search")
+        log.debug("found \(starsVisible.count) stars in first search")
         
         //add the points on the other side of the x-axis in case part of the screen is below
         let overlap = ascension - deltaAsc
@@ -95,7 +95,7 @@ class StarHelper: NSObject {
                 (Double(Star.normalizedAscension(rightAscension: 0)),
                  Double(Star.normalizedAscension(rightAscension: over24h))), verticalRange])
         }
-        xcLog.debug("Finished RangeSearch with \(starsVisible.count) stars,"
+        log.debug("Finished RangeSearch with \(starsVisible.count) stars,"
             + " after \(Date().timeIntervalSince(startRangeSearch))s")
 
         return starsVisible
@@ -105,7 +105,7 @@ class StarHelper: NSObject {
         let tappedPosition = starMapView.skyPosition(for: point)
         let searchStar = Star(ascension: Float(tappedPosition.x), declination: Float(tappedPosition.y))
         
-        xcLog.debug("tappedPosition: \(tappedPosition)")
+        log.debug("tappedPosition: \(tappedPosition)")
         let startNN = Date()
         var nearestStar = stars.nearest(to: searchStar)
         let nearestDistanceSqd = nearestStar?.squaredDistance(to: searchStar) ?? 10.0
@@ -117,7 +117,7 @@ class StarHelper: NSObject {
             }
         }
         
-        xcLog.debug("Found nearest star \(nearestStar?.dbID ?? -1) in \(Date().timeIntervalSince(startNN))s")
+        log.debug("Found nearest star \(nearestStar?.dbID ?? -1) in \(Date().timeIntervalSince(startNN))s")
         starMapView.tappedStar = nearestStar
     }
 }

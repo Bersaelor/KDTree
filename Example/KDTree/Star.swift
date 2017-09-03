@@ -66,7 +66,7 @@ extension Star {
         let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
-            xcLog.error("Not enough rows in \(fields)")
+            log.error("Not enough rows in \(fields)")
             return nil
         }
         
@@ -79,13 +79,13 @@ extension Star {
             let mag = Double(fields[13]),
             let absmag = Double(fields[14])
             else {
-                xcLog.error("Invalid Row: \(row), \n fields: \(fields)")
+                log.error("Invalid Row: \(row), \n fields: \(fields)")
                 return nil
         }
 
-        xcLog.debug("(\(right_ascension), \(declination)), pm: (\(pmra), \(pmdec))")
+        log.debug("(\(right_ascension), \(declination)), pm: (\(pmra), \(pmdec))")
         Star.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
-        xcLog.debug("-> (\(right_ascension), \(declination))")
+        log.debug("-> (\(right_ascension), \(declination))")
 
         self.dbID = dbID
         self.normalizedAscension = Star.normalizedAscension(rightAscension: right_ascension)

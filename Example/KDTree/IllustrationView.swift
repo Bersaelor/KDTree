@@ -68,7 +68,7 @@ class IllustrationView: UIView {
     func pointTapped(_ point: CGPoint) {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         tappedPoint = 1.0/adjSize * (point - c)
-        xcLog.debug("c: \(c), tappedPoint: \(String(describing: self.tappedPoint))")
+        log.debug("c: \(c), tappedPoint: \(String(describing: self.tappedPoint))")
         
         if let tappedPoint = tappedPoint {
             if isKNearest { nearestPoints = tree?.nearestK(5, to: tappedPoint) ?? [] }
@@ -86,9 +86,9 @@ class IllustrationView: UIView {
             })
             
             if nearestFromArray != nearestPoints.first {
-                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(String(describing: self.nearestPoints.first))")
-                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
-                xcLog.debug("nearest: \(String(describing: self.nearestPoints.first?.squaredDistance(to: tappedPoint)))")
+                log.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(String(describing: self.nearestPoints.first))")
+                log.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
+                log.debug("nearest: \(String(describing: self.nearestPoints.first?.squaredDistance(to: tappedPoint)))")
             }
         }
         self.xPlatformNeedsDisplay()
@@ -96,7 +96,7 @@ class IllustrationView: UIView {
     
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
-            xcLog.error("failed to get graphics context")
+            log.error("failed to get graphics context")
             return
         }
         

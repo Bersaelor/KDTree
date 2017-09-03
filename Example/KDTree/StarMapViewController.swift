@@ -28,10 +28,10 @@ class StarMapViewController: UIViewController {
             if loadEncodedTree {
                 StarHelper.loadSavedStars { (stars) in
                     DispatchQueue.main.async {
-                        xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
+                        log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                         self?.allStars = stars
                         
-                        xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                        log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
                         
                         self?.reloadStars()
@@ -40,11 +40,11 @@ class StarMapViewController: UIViewController {
             } else {
                 StarHelper.loadCSVData { (visibleStars, stars) in
                     DispatchQueue.main.async {
-                        xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
+                        log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                         self?.allStars = stars
                         self?.visibleStars = visibleStars
                         
-                        xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                        log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
                         
                         self?.reloadStars()
@@ -131,7 +131,7 @@ class StarMapViewController: UIViewController {
                                         .appending(" measured by right ascension and declination coordinates."),
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { _ in
-            xcLog.debug("Noting")
+            log.debug("Noting")
         })
         
         self.present(alert, animated: true, completion: nil)
@@ -144,9 +144,9 @@ class StarMapViewController: UIViewController {
         do {
             let startLoading = Date()
             try allStars?.save(to: filePath)
-            xcLog.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
+            log.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
         } catch {
-            xcLog.debug("Error trying to save stars: \( error )")
+            log.debug("Error trying to save stars: \( error )")
         }
     }
 }
