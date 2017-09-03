@@ -16,12 +16,14 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		625C588CBC2FC139B0E93182 /* Pods_KDTree_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC603E910B33686BF88B277F /* Pods_KDTree_Example.framework */; };
+		712112B71F5CA0760068A19C /* Stars.pack in Resources */ = {isa = PBXBuildFile; fileRef = 714AE8871F5C9DB6006CBC35 /* Stars.pack */; };
 		7130CA7A1F52DE4200A46AD1 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D540B1F517E5E0079A809 /* CodableTests.swift */; };
 		713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
 		713204B61CD949EE001A1F44 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713204B41CD949EE001A1F44 /* TestHelpers.swift */; };
 		713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
 		713204B81CD94CEA001A1F44 /* Disc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8D1CB1468100CB19A6 /* Disc.swift */; };
 		713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
+		714AE8861F5C9171006CBC35 /* Star+MessagePack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE8851F5C9171006CBC35 /* Star+MessagePack.swift */; };
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
@@ -93,6 +95,8 @@
 		607FACEB1AFB9204008FA782 /* BasicSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSpec.swift; sourceTree = "<group>"; };
 		712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSearchTests.swift; sourceTree = "<group>"; };
 		713204B41CD949EE001A1F44 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		714AE8851F5C9171006CBC35 /* Star+MessagePack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Star+MessagePack.swift"; sourceTree = "<group>"; };
+		714AE8871F5C9DB6006CBC35 /* Stars.pack */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stars.pack; sourceTree = "<group>"; };
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -324,8 +328,10 @@
 				71DACAE01E86B3490055B8F2 /* LineGenerator.swift */,
 				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
 				71C4A7431F54D50A004823DA /* storedTree.plist */,
+				714AE8871F5C9DB6006CBC35 /* Stars.pack */,
 				719CEFAE1E81B8D900A09A3F /* Star.swift */,
 				71FD5A7F1F54BFE2009718BC /* Star+Codable.swift */,
+				714AE8851F5C9171006CBC35 /* Star+MessagePack.swift */,
 				71DACADC1E8668D40055B8F2 /* Box.swift */,
 			);
 			name = "Stars Example";
@@ -489,6 +495,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */,
+				712112B71F5CA0760068A19C /* Stars.pack in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,11 +536,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KDTree-iOS/KDTree.framework",
+				"${BUILT_PRODUCTS_DIR}/MessagePack.swift/MessagePack.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-iOS/SwiftyBeaver.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDTree.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessagePack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,6 +774,7 @@
 				71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */,
 				716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */,
 				7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */,
+				714AE8861F5C9171006CBC35 /* Star+MessagePack.swift in Sources */,
 				71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

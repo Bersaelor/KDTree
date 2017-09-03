@@ -8,12 +8,14 @@
 
 import UIKit
 import KDTree
+import MessagePack
 
 class StarMapViewController: UIViewController {
     
     var visibleStars: KDTree<Star>?
     var allStars: KDTree<Star>?
-    
+    private let isUsingMessagePack: Bool = true
+
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var starMapView: StarMapView!
 
@@ -37,7 +39,8 @@ class StarMapViewController: UIViewController {
                     }
                 }
             } else {
-                StarHelper.loadCSVData { (visibleStars, stars) in
+                let loader = (self?.isUsingMessagePack ?? false) ? StarHelper.loadPackedStars : StarHelper.loadCSVData
+                loader { (visibleStars, stars) in
                     DispatchQueue.main.async {
                         self?.allStars = stars
                         self?.visibleStars = visibleStars
@@ -136,12 +139,22 @@ class StarMapViewController: UIViewController {
     }
     
     @objc func saveStars() {
+        let starArray = allStars!.elements
+        let name = isUsingMessagePack ? "Stars.pack" : "test.plist"
+        
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.plist") else { return }
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(name) else { return }
         
         do {
             let startLoading = Date()
-            try allStars?.save(to: filePath)
+            if isUsingMessagePack {
+                let packedStars = starArray.map { $0.messagePackValue() }
+                let data = pack(.array(packedStars))
+                try data.write(to: filePath, options: Data.WritingOptions.atomic)
+                log.debug("Wrote \(data.count) byte using MessagePack as a star array")
+            } else {
+                try allStars?.save(to: filePath)
+            }
             log.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
         } catch {
             log.debug("Error trying to save stars: \( error )")

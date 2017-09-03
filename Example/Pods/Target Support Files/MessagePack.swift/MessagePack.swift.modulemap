@@ -1,0 +1,6 @@
+framework module MessagePack {
+  umbrella header "MessagePack.swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

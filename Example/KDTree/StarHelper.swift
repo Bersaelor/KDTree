@@ -8,6 +8,7 @@
 
 import Foundation
 import KDTree
+import MessagePack
 
 class StarHelper: NSObject {
     static let maxVisibleMag = 6.5
@@ -43,6 +44,32 @@ class StarHelper: NSObject {
         log.debug("Time to create (visible) Tree: \(Date().timeIntervalSince(startLoading))s")
         let starsTree = KDTree(values: stars)
         completion(visibleStarsTree, starsTree)
+    }
+    
+    static func loadPackedStars(completion: (KDTree<Star>?, KDTree<Star>?) -> Void) {
+        var startLoading = Date()
+        
+        guard let filePath = Bundle.main.path(forResource: "Stars", ofType:  "pack") else {
+            completion(nil, nil)
+            return
+        }
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+            log.debug("Packed data with size: \(data.count) byte")
+            
+            let unpacked = try unpack(data).value
+            let stars = unpacked.arrayValue!.map { Star(value: $0) }
+            
+            let visibleStars = Array(stars[0...1]) // stars.filter { $0.starData?.value.mag ?? Double.infinity < StarHelper.maxVisibleMag }
+            log.debug("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
+            startLoading = Date()
+            let visibleStarsTree = KDTree(values: visibleStars)
+            log.debug("Time to create (visible) Tree: \(Date().timeIntervalSince(startLoading))s")
+            let starsTree = KDTree(values: stars)
+            completion(visibleStarsTree, starsTree)
+        } catch {
+            fatalError("Failed with \(error)")
+        }
     }
     
     static func loadSavedStars(completion: (KDTree<Star>?) -> Void) {

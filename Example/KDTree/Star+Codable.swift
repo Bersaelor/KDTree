@@ -9,7 +9,7 @@
 import Foundation
 
 extension Star: Codable {
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case dbID                   = "d"
         case normalizedAscension    = "nA"
         case normalizedDeclination  = "nD"

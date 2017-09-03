@@ -6,7 +6,8 @@ target 'KDTree_Example' do
     
     pod 'KDTree', :path => '../'
     pod 'SwiftyBeaver'
-    
+    pod 'MessagePack.swift', '~> 2.1.0'
+
     target 'KDTree_Tests' do
         inherit! :search_paths
         
