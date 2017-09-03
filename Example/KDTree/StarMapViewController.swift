@@ -22,15 +22,14 @@ class StarMapViewController: UIViewController {
         
         self.title = "StarMap"
 
-        let loadFromFile = true
+        let loadEncodedTree = false
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            if !loadFromFile {
-                StarHelper.loadCSVData { (visibleStars, stars) in
+            if loadEncodedTree {
+                StarHelper.loadSavedStars { (stars) in
                     DispatchQueue.main.async {
                         xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                         self?.allStars = stars
-                        self?.visibleStars = visibleStars
                         
                         xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
@@ -39,10 +38,11 @@ class StarMapViewController: UIViewController {
                     }
                 }
             } else {
-                StarHelper.loadSavedStars { (stars) in
+                StarHelper.loadCSVData { (visibleStars, stars) in
                     DispatchQueue.main.async {
                         xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                         self?.allStars = stars
+                        self?.visibleStars = visibleStars
                         
                         xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
