@@ -61,7 +61,19 @@ class GridTest: XCTestCase {
         
         XCTAssertEqual(0, containedPoints, "All original points should be contained in the tree")
     }
+  
+  func testPointsDeleted() {
     
+    var pointsNotDeleted = 0
+    for point in points {
+      if tree.removing(point).count == tree.count {
+        pointsNotDeleted += 1
+      }
+    }
+    
+    XCTAssertEqual(0, pointsNotDeleted, "All original points should be be deleted in the tree")
+  }
+  
     func testSelfShouldBeNearest() {
         var notNearestCount = 0
 
