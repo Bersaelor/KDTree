@@ -31,7 +31,16 @@ public enum KDTree<Element: KDTreePoint> {
             let sortedValues = values.sorted { (a, b) -> Bool in
                 return a.kdDimension(currentSplittingDimension) < b.kdDimension(currentSplittingDimension)
             }
-            let median = sortedValues.count / 2
+          
+            var median = sortedValues.count / 2
+            let medianValue = sortedValues[median].kdDimension(currentSplittingDimension)
+          
+            //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
+            //Needed for 'contains' and 'removing' method.
+            while median >= 1 && abs(sortedValues[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
+              median -= 1
+            }
+          
             let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
             let rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
             
@@ -85,8 +94,6 @@ public enum KDTree<Element: KDTreePoint> {
                 let nodeDist = nodeValue.kdDimension(dim)
                 if valueDist < nodeDist {
                     return left.contains(value)
-                } else if abs(valueDist - nodeDist) < Double.ulpOfOne {
-                    return left.contains(value) || right.contains(value)
                 } else {
                     return right.contains(value)
                 }
