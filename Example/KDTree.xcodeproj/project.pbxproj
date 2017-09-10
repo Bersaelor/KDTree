@@ -59,6 +59,7 @@
 		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */; };
+		74AA2F001F65815300ADAD15 /* visibleStars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74AA2EFF1F65814F00ADAD15 /* visibleStars.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
 		7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
+		74AA2EFF1F65814F00ADAD15 /* visibleStars.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = visibleStars.plist; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
 		90C698D9647F2FA603B9E5A9 /* Pods-KDTree_OSX_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KDTree_OSX_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				71DACAE01E86B3490055B8F2 /* LineGenerator.swift */,
 				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
 				71C4A7431F54D50A004823DA /* storedTree.plist */,
+				74AA2EFF1F65814F00ADAD15 /* visibleStars.plist */,
 				719CEFAE1E81B8D900A09A3F /* Star.swift */,
 				71FD5A7F1F54BFE2009718BC /* Star+Codable.swift */,
 				71DACADC1E8668D40055B8F2 /* Box.swift */,
@@ -488,6 +491,7 @@
 				71C4A7441F54D50E004823DA /* storedTree.plist in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				74AA2F001F65815300ADAD15 /* visibleStars.plist in Resources */,
 				719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);

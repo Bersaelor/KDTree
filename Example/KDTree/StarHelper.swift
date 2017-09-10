@@ -47,7 +47,7 @@ class StarHelper: NSObject {
     
     static func loadSavedStars(completion: (KDTree<Star>?) -> Void) {
         let startLoading = Date()
-        guard let filePath = Bundle.main.path(forResource: "storedTree", ofType:  "plist") else {
+        guard let filePath = Bundle.main.path(forResource: "visibleStars", ofType:  "plist") else {
             log.error("Failed loading file: storedTree")
             completion(nil)
             return
