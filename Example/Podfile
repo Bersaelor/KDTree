@@ -2,9 +2,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'KDTree_Example' do
-    platform :ios, '8.0'
+    platform :ios, '9.3'
     
     pod 'KDTree', :path => '../'
+    pod 'SwiftyHYGDB', :path => '~/SwiftyHYGDB'
     pod 'SwiftyBeaver'
     
     target 'KDTree_Tests' do
