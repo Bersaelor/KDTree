@@ -76,6 +76,9 @@ class StarMapViewController: UIViewController {
         allStars?.forEach({ (star: Star) in
             star.starData?.ref.release()
         })
+        visibleStars?.forEach({ (star: Star) in
+            star.starData?.ref.release()
+        })
     }
     
     @IBAction
