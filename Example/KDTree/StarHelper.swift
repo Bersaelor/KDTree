@@ -13,22 +13,22 @@ import SwiftyHYGDB
 class StarHelper: NSObject {
     static let maxVisibleMag = 6.5
 
-    static func loadAllStarTree(completion: @escaping (KDTree<Star>?) -> Void) {
+    static func loadStarTree(named fileName: String, completion: @escaping (KDTree<Star>?) -> Void) {
         let startLoading = Date()
         
-        guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv") else {
+        guard let starsPath = Bundle.main.path(forResource: fileName, ofType:  "csv") else {
             log.error("Failed loading file: hygdata_v3")
             completion(nil)
             return
         }
         
         DispatchQueue.global(qos: .background).async {
-            SwiftyHYGDB.loadCSVData(from: filePath) { (stars) in
+            SwiftyHYGDB.loadCSVData(from: starsPath) { (stars) in
                 guard let stars = stars else {
                     completion(nil)
                     return
                 }
-                print("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
+                print("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s from \(fileName)")
                 let startTreeBuilding = Date()
                 let tree = KDTree(values: stars)
                 print("Time build tree: \(Date().timeIntervalSince(startTreeBuilding)),"

@@ -54,6 +54,8 @@
 		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */; };
+		747963811F67126000F31530 /* visibleStars.csv in Resources */ = {isa = PBXBuildFile; fileRef = 747963801F67124C00F31530 /* visibleStars.csv */; };
+		747963821F67126000F31530 /* visibleStars.csv in Resources */ = {isa = PBXBuildFile; fileRef = 747963801F67124C00F31530 /* visibleStars.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,7 @@
 		744691521E8A9B580040A093 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
 		7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
+		747963801F67124C00F31530 /* visibleStars.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = visibleStars.csv; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 				7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */,
 				71C74C871E884CEC0057B4F2 /* StarMapView.swift */,
 				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
+				747963801F67124C00F31530 /* visibleStars.csv */,
 				71C4A7431F54D50A004823DA /* storedTree.plist */,
 			);
 			name = "Stars Example";
@@ -479,6 +483,7 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				747963811F67126000F31530 /* visibleStars.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */,
+				747963821F67126000F31530 /* visibleStars.csv in Resources */,
 				71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */,
 				71C4A7451F54D50F004823DA /* storedTree.plist in Resources */,
 				744691501E8A87140040A093 /* hygdata_v3.csv in Resources */,
