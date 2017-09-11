@@ -31,7 +31,6 @@
 		7186FE851D99DBBF00D8F292 /* RangeSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */; };
 		7186FE861D99DF0A00D8F292 /* LoadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74887EFB1CABC258002AECF6 /* LoadTest.swift */; };
 		719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */; };
-		719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAE1E81B8D900A09A3F /* Star.swift */; };
 		719CEFB11E81BCF400A09A3F /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */; };
 		71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */; };
 		71BB4C8C1CB12DC800CB19A6 /* TesselationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */; };
@@ -45,16 +44,12 @@
 		71C4A7441F54D50E004823DA /* storedTree.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C4A7431F54D50A004823DA /* storedTree.plist */; };
 		71C4A7451F54D50F004823DA /* storedTree.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C4A7431F54D50A004823DA /* storedTree.plist */; };
 		71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
-		71DACADD1E8668D40055B8F2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
-		71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
-		71FD5A801F54BFE2009718BC /* Star+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD5A7F1F54BFE2009718BC /* Star+Codable.swift */; };
 		740150FC1E9AA34200F0F4DA /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */; };
+		7419AE4B1F66F4A9004E8248 /* Star+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */; };
+		7419AE4C1F66F4AA004E8248 /* Star+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */; };
 		7446914C1E8A86F60040A093 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7446914B1E8A86F60040A093 /* StarViewController.swift */; };
 		7446914D1E8A87020040A093 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
-		7446914E1E8A870F0040A093 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CEFAE1E81B8D900A09A3F /* Star.swift */; };
-		7446914F1E8A870F0040A093 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACADC1E8668D40055B8F2 /* Box.swift */; };
 		744691501E8A87140040A093 /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */; };
-		744691511E8A87170040A093 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DACAE01E86B3490055B8F2 /* LineGenerator.swift */; };
 		744691531E8A9B580040A093 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691521E8A9B580040A093 /* WindowController.swift */; };
 		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
@@ -100,7 +95,6 @@
 		717EB89E1F4D8665006B964E /* KDTreePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KDTreePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		717EB89F1F4D8A9C006B964E /* GridTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTest.swift; sourceTree = "<group>"; };
 		719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapViewController.swift; sourceTree = "<group>"; };
-		719CEFAE1E81B8D900A09A3F /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hygdata_v3.csv; sourceTree = "<group>"; };
 		71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillWithFormsView.swift; sourceTree = "<group>"; };
 		71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselationViewController.swift; sourceTree = "<group>"; };
@@ -118,10 +112,8 @@
 		71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestNeighbourSpec.swift; sourceTree = "<group>"; };
 		71C4A7431F54D50A004823DA /* storedTree.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = storedTree.plist; sourceTree = "<group>"; };
 		71C74C871E884CEC0057B4F2 /* StarMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapView.swift; sourceTree = "<group>"; };
-		71DACADC1E8668D40055B8F2 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		71DACAE01E86B3490055B8F2 /* LineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGenerator.swift; sourceTree = "<group>"; };
-		71FD5A7F1F54BFE2009718BC /* Star+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Star+Codable.swift"; sourceTree = "<group>"; };
 		740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Star+KDTreePoint.swift"; sourceTree = "<group>"; };
 		7446914B1E8A86F60040A093 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
 		744691521E8A9B580040A093 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
@@ -320,13 +312,10 @@
 			children = (
 				719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */,
 				744691551E8AA50D0040A093 /* StarHelper.swift */,
+				7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */,
 				71C74C871E884CEC0057B4F2 /* StarMapView.swift */,
-				71DACAE01E86B3490055B8F2 /* LineGenerator.swift */,
 				719CEFB01E81BCF400A09A3F /* hygdata_v3.csv */,
 				71C4A7431F54D50A004823DA /* storedTree.plist */,
-				719CEFAE1E81B8D900A09A3F /* Star.swift */,
-				71FD5A7F1F54BFE2009718BC /* Star+Codable.swift */,
-				71DACADC1E8668D40055B8F2 /* Box.swift */,
 			);
 			name = "Stars Example";
 			sourceTree = "<group>";
@@ -754,16 +743,13 @@
 				71BB4C8E1CB1468100CB19A6 /* Disc.swift in Sources */,
 				744691561E8AA50D0040A093 /* StarHelper.swift in Sources */,
 				716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */,
-				719CEFAF1E81B8D900A09A3F /* Star.swift in Sources */,
 				719CEFAD1E81B8AC00A09A3F /* StarMapViewController.swift in Sources */,
 				716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */,
+				7419AE4B1F66F4A9004E8248 /* Star+KDTreePoint.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				71DACAE11E86B3490055B8F2 /* LineGenerator.swift in Sources */,
 				71BB4C8A1CB12B9400CB19A6 /* FillWithFormsView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				71BB4C921CB18F9500CB19A6 /* Square.swift in Sources */,
-				71DACADD1E8668D40055B8F2 /* Box.swift in Sources */,
-				71FD5A801F54BFE2009718BC /* Star+Codable.swift in Sources */,
 				71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */,
 				716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */,
 				7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */,
@@ -789,7 +775,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7446914F1E8A870F0040A093 /* Box.swift in Sources */,
 				744691571E8AA50D0040A093 /* StarHelper.swift in Sources */,
 				713204B81CD94CEA001A1F44 /* Disc.swift in Sources */,
 				713204B71CD94BBC001A1F44 /* FillWithFormsView.swift in Sources */,
@@ -797,10 +782,9 @@
 				71C1B4631CD946BF005436C3 /* AppDelegate.swift in Sources */,
 				7446914D1E8A87020040A093 /* StarMapView.swift in Sources */,
 				7446914C1E8A86F60040A093 /* StarViewController.swift in Sources */,
+				7419AE4C1F66F4AA004E8248 /* Star+KDTreePoint.swift in Sources */,
 				744691531E8A9B580040A093 /* WindowController.swift in Sources */,
-				744691511E8A87170040A093 /* LineGenerator.swift in Sources */,
 				713204BE1CD94F11001A1F44 /* Geometry.swift in Sources */,
-				7446914E1E8A870F0040A093 /* Star.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,44 +8,37 @@
 
 import Foundation
 import KDTree
+import SwiftyHYGDB
 
 class StarHelper: NSObject {
     static let maxVisibleMag = 6.5
-    
-    private static var yearsSinceEraStart: Int {
-        let dateComponents = DateComponents(year: 2000, month: 3, day: 21, hour: 1)
-        guard let springEquinox = Calendar.current.date(from: dateComponents) else { return 0 }
-        let components = Calendar.current.dateComponents([.year], from: springEquinox, to: Date())
-        
-        return components.hour ?? 0
-    }
 
-    static func loadCSVData(completion: (KDTree<Star>?, KDTree<Star>?) -> Void) {
-        var startLoading = Date()
+    static func loadAllStarTree(completion: @escaping (KDTree<Star>?) -> Void) {
+        let startLoading = Date()
         
-        guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv"), let fileHandle = fopen(filePath, "r") else {
-            completion(nil, nil)
-            return }
-        defer { fclose(fileHandle) }
-        
-        let yearsToAdvance = Float(yearsSinceEraStart)
-        let lines = lineIteratorC(file: fileHandle)
-        let stars = lines.dropFirst().flatMap { linePtr -> Star? in
-            defer { free(linePtr) }
-            let star = Star(rowPtr :linePtr, advanceByYears: yearsToAdvance)
-            return star
+        guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv") else {
+            log.error("Failed loading file: hygdata_v3")
+            completion(nil)
+            return
         }
         
-        let visibleStars = stars.filter { $0.starData?.value.mag ?? Double.infinity < StarHelper.maxVisibleMag }
-        log.debug("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
-        startLoading = Date()
-        let visibleStarsTree = KDTree(values: visibleStars)
-        log.debug("Time to create (visible) Tree: \(Date().timeIntervalSince(startLoading))s")
-        let starsTree = KDTree(values: stars)
-        completion(visibleStarsTree, starsTree)
+        DispatchQueue.global(qos: .background).async {
+            SwiftyHYGDB.loadCSVData(from: filePath) { (stars) in
+                guard let stars = stars else {
+                    completion(nil)
+                    return
+                }
+                print("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s")
+                let startTreeBuilding = Date()
+                let tree = KDTree(values: stars)
+                print("Time build tree: \(Date().timeIntervalSince(startTreeBuilding)),"
+                    .appending(" complete time: \(Date().timeIntervalSince(startLoading))s"))
+                completion(tree)
+            }
+        }
     }
     
-    static func loadSavedStars(completion: (KDTree<Star>?) -> Void) {
+    static func loadStarsFromPList(completion: (KDTree<Star>?) -> Void) {
         let startLoading = Date()
         guard let filePath = Bundle.main.path(forResource: "storedTree", ofType:  "plist") else {
             log.error("Failed loading file: storedTree")
@@ -74,12 +67,12 @@ class StarHelper: NSObject {
     }
     
     static func stars(from stars: KDTree<Star>, around ascension: Float, declination: Float, deltaAsc: Float, deltaDec: Float) -> [Star] {
-        let verticalRange = (Double(Star.normalizedDeclination(declination: declination - deltaDec)),
-                             Double(Star.normalizedDeclination(declination: declination + deltaDec)))
+        let verticalRange = (Double(Star.normalize(declination: declination - deltaDec)),
+                             Double(Star.normalize(declination: declination + deltaDec)))
         let startRangeSearch = Date()
         var starsVisible = stars.elementsIn([
-            (Double(Star.normalizedAscension(rightAscension: ascension - deltaAsc)),
-             Double(Star.normalizedAscension(rightAscension: ascension + deltaAsc))), verticalRange])
+            (Double(Star.normalize(rightAscension: ascension - deltaAsc)),
+             Double(Star.normalize(rightAscension: ascension + deltaAsc))), verticalRange])
 
         log.verbose("found \(starsVisible.count) stars in first search")
         
@@ -87,13 +80,13 @@ class StarHelper: NSObject {
         let overlap = ascension - deltaAsc
         if overlap < 0 {
             starsVisible += stars.elementsIn([
-                (Double(Star.normalizedAscension(rightAscension: Float(ascensionRange) + overlap)),
-                 Double(Star.normalizedAscension(rightAscension: Float(ascensionRange)))), verticalRange])
-        } else if ascension + deltaAsc > Float(ascensionRange) {
-            let over24h = ascension + deltaAsc - Float(ascensionRange)
+                (Double(Star.normalize(rightAscension: Float(Star.ascensionRange) + overlap)),
+                 Double(Star.normalize(rightAscension: Float(Star.ascensionRange)))), verticalRange])
+        } else if ascension + deltaAsc > Float(Star.ascensionRange) {
+            let over24h = ascension + deltaAsc - Float(Star.ascensionRange)
             starsVisible += stars.elementsIn([
-                (Double(Star.normalizedAscension(rightAscension: 0)),
-                 Double(Star.normalizedAscension(rightAscension: over24h))), verticalRange])
+                (Double(Star.normalize(rightAscension: 0)),
+                 Double(Star.normalize(rightAscension: over24h))), verticalRange])
         }
         log.debug("Finished RangeSearch with \(starsVisible.count) stars,"
             + " after \(Date().timeIntervalSince(startRangeSearch))s")

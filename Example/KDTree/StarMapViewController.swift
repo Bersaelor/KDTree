@@ -8,6 +8,7 @@
 
 import UIKit
 import KDTree
+import SwiftyHYGDB
 
 class StarMapViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class StarMapViewController: UIViewController {
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
             if loadEncodedTree {
-                StarHelper.loadSavedStars { (stars) in
+                StarHelper.loadStarsFromPList { (stars) in
                     DispatchQueue.main.async {
                         self?.allStars = stars
                         
@@ -37,10 +38,9 @@ class StarMapViewController: UIViewController {
                     }
                 }
             } else {
-                StarHelper.loadCSVData { (visibleStars, stars) in
+                StarHelper.loadAllStarTree { (stars) in
                     DispatchQueue.main.async {
                         self?.allStars = stars
-                        self?.visibleStars = visibleStars
                         
                         log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
@@ -116,7 +116,8 @@ class StarMapViewController: UIViewController {
             break
         default:
             if let startCenter = startCenter {
-                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width) * CGPoint(x: ascensionRange, y: declinationRange)
+                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width)
+                    * CGPoint(x: Star.ascensionRange, y: Star.declinationRange)
                 starMapView.centerPoint = startCenter + adjVec * gestureRecognizer.translation(in: starMapView)
                 reloadStars()
             }
