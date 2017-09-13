@@ -23,18 +23,16 @@ class StarHelper: NSObject {
         }
         
         DispatchQueue.global(qos: .background).async {
-            SwiftyHYGDB.loadCSVData(from: starsPath) { (stars) in
-                guard let stars = stars else {
-                    completion(nil)
-                    return
-                }
-                print("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s from \(fileName)")
-                let startTreeBuilding = Date()
-                let tree = KDTree(values: stars)
-                print("Time build tree: \(Date().timeIntervalSince(startTreeBuilding)),"
-                    .appending(" complete time: \(Date().timeIntervalSince(startLoading))s"))
-                completion(tree)
+            guard let stars = SwiftyHYGDB.loadCSVData(from: starsPath) else {
+                completion(nil)
+                return
             }
+            print("Time to load \(stars.count) stars: \(Date().timeIntervalSince(startLoading))s from \(fileName)")
+            let startTreeBuilding = Date()
+            let tree = KDTree(values: stars)
+            print("Time build tree: \(Date().timeIntervalSince(startTreeBuilding)),"
+                .appending(" complete time: \(Date().timeIntervalSince(startLoading))s"))
+            completion(tree)
         }
     }
     

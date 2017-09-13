@@ -64,7 +64,7 @@ class StarMapViewController: UIViewController {
     }
     
     private func loadAllStars() {
-        StarHelper.loadStarTree(named: "hygdata_v3") { [weak self] (stars) in
+        StarHelper.loadStarTree(named: "allStars") { [weak self] (stars) in
             DispatchQueue.main.async {
                 self?.allStars = stars
                 self?.reloadStars()
@@ -107,7 +107,7 @@ class StarMapViewController: UIViewController {
     private var isLoadingMapStars = false
     
     private func reloadStars() {
-        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? allStars : visibleStars else { return }
+        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? (allStars ?? visibleStars) : visibleStars else { return }
         guard !isLoadingMapStars else { return }
         isLoadingMapStars = true
         StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint,
