@@ -3,7 +3,7 @@ PODS:
   - Nimble (7.0.1)
   - Quick (1.1.0)
   - SwiftyBeaver (1.4.0)
-  - SwiftyHYGDB (0.1.0)
+  - SwiftyHYGDB (0.2.0)
 
 DEPENDENCIES:
   - KDTree (from `../`)
@@ -37,7 +37,7 @@ SPEC CHECKSUMS:
   Nimble: 1b6670c36e5750169b9e4cc2e9cfa82a7603c69e
   Quick: 4700beb8056662b579facd79eaca7f04fb3d48e6
   SwiftyBeaver: 78d9186ce7595b4400ce01e5fd750d263e72dd7b
-  SwiftyHYGDB: 3f0e1091e70452e0b32a54734a5e371185e4338d
+  SwiftyHYGDB: 536affd743ba07cafc4d25ec4efee538caf97749
 
 PODFILE CHECKSUM: ccde981b6ade840cf4a088ebc9115f5f73a600b8
 
