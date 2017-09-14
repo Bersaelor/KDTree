@@ -21,8 +21,6 @@ class StarMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "StarMap"
-
         let loadEncodedTree = false
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
@@ -61,6 +59,27 @@ class StarMapViewController: UIViewController {
         infoButton.addTarget(self, action: #selector(openInfo), for: UIControlEvents.touchUpInside)
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveStars))
         navigationItem.rightBarButtonItems = [saveButton, UIBarButtonItem(customView: infoButton)]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .white
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.tintColor = .blue
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     private func loadAllStars() {
@@ -107,7 +126,8 @@ class StarMapViewController: UIViewController {
     private var isLoadingMapStars = false
     
     private func reloadStars() {
-        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? (allStars ?? visibleStars) : visibleStars else { return }
+        guard let starTree = starMapView.magnification > minMagnificationForAllStars
+            ? (allStars ?? visibleStars) : visibleStars else { return }
         guard !isLoadingMapStars else { return }
         isLoadingMapStars = true
         StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint,
