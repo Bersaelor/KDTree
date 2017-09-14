@@ -525,7 +525,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KDTree-iOS/KDTree.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-iOS/SwiftyBeaver.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyHYGDB/SwiftyHYGDB.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyHYGDB-iOS/SwiftyHYGDB.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -657,11 +657,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KDTree-macOS/KDTree.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-macOS/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyHYGDB-macOS/SwiftyHYGDB.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDTree.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyHYGDB.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
