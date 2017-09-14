@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5l-OV-rT5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5l-OV-rT5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onI-iA-mN9">
-                                <rect key="frame" x="71" y="72" width="233" height="44"/>
+                                <rect key="frame" x="71.5" y="72" width="232" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="r6R-ii-Uw2"/>
                                 </constraints>
@@ -96,7 +96,7 @@
             <objects>
                 <navigationController id="B5l-OV-rT5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TDl-3g-j0J">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -191,7 +191,7 @@
                     <navigationItem key="navigationItem" id="Fer-eL-h6A">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dNh-fB-U2R">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <rect key="frame" x="180" y="-193" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Nearest"/>
@@ -257,7 +257,7 @@
                     <navigationItem key="navigationItem" id="KBK-ey-brI">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="bar" selectedSegmentIndex="0" id="tRy-E9-qXW">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <rect key="frame" x="180" y="-233" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="" image="Circle"/>
@@ -292,7 +292,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmH-xy-hnV" customClass="StarMapView" customModule="KDTree_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -300,7 +300,7 @@
                                 </connections>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="r77-lH-SZg">
-                                <rect key="frame" x="290.5" y="390.5" width="20" height="20"/>
+                                <rect key="frame" x="290.5" y="390" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Mw4-AF-VMp"/>
                                     <constraint firstAttribute="height" constant="20" id="yY5-gM-5az"/>
@@ -309,9 +309,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wmH-xy-hnV" firstAttribute="top" secondItem="0G4-0e-vkK" secondAttribute="bottom" id="CJK-9q-Sky"/>
+                            <constraint firstItem="wmH-xy-hnV" firstAttribute="top" secondItem="gHa-Ww-7Xj" secondAttribute="top" id="CJK-9q-Sky"/>
                             <constraint firstAttribute="trailing" secondItem="wmH-xy-hnV" secondAttribute="trailing" id="feC-qz-U24"/>
-                            <constraint firstItem="fuc-01-b2r" firstAttribute="top" secondItem="wmH-xy-hnV" secondAttribute="bottom" id="fvW-Kg-tN9"/>
+                            <constraint firstAttribute="bottom" secondItem="wmH-xy-hnV" secondAttribute="bottom" id="fvW-Kg-tN9"/>
                             <constraint firstItem="wmH-xy-hnV" firstAttribute="leading" secondItem="gHa-Ww-7Xj" secondAttribute="leading" id="wCN-7m-qaR"/>
                             <constraint firstItem="r77-lH-SZg" firstAttribute="centerY" secondItem="gHa-Ww-7Xj" secondAttribute="centerY" id="yG9-2R-SlP"/>
                             <constraint firstItem="r77-lH-SZg" firstAttribute="centerX" secondItem="gHa-Ww-7Xj" secondAttribute="centerX" id="yqF-Bu-k7n"/>
