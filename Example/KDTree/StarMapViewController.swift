@@ -25,14 +25,13 @@ class StarMapViewController: UIViewController {
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
             if loadEncodedTree {
-                StarHelper.loadStarsFromPList { (stars) in
+                StarHelper.loadStarsFromPList(named: "visibleStars") { (stars) in
                     DispatchQueue.main.async {
-                        self?.allStars = stars
-                        
+                        self?.visibleStars = stars
                         log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
-                        
                         self?.reloadStars()
+                        self?.loadAllStars()
                     }
                 }
             } else {
@@ -169,11 +168,11 @@ class StarMapViewController: UIViewController {
     
     @objc func saveStars() {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.plist") else { return }
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("visibleStars.plist") else { return }
         
         do {
             let startLoading = Date()
-            try allStars?.save(to: filePath)
+            try visibleStars?.save(to: filePath)
             log.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
         } catch {
             log.debug("Error trying to save stars: \( error )")
