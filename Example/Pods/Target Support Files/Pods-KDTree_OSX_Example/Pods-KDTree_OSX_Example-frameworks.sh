@@ -104,10 +104,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/KDTree-macOS/KDTree.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyBeaver-macOS/SwiftyBeaver.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyHYGDB-macOS/SwiftyHYGDB.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/KDTree-macOS/KDTree.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyBeaver-macOS/SwiftyBeaver.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyHYGDB-macOS/SwiftyHYGDB.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
