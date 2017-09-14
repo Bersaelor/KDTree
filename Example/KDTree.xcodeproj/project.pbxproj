@@ -40,8 +40,6 @@
 		71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4661CD946BF005436C3 /* Assets.xcassets */; };
 		71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C1B4681CD946BF005436C3 /* Main.storyboard */; };
 		71C1B4751CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */; };
-		71C4A7441F54D50E004823DA /* storedTree.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C4A7431F54D50A004823DA /* storedTree.plist */; };
-		71C4A7451F54D50F004823DA /* storedTree.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C4A7431F54D50A004823DA /* storedTree.plist */; };
 		71C74C881E884CEC0057B4F2 /* StarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C74C871E884CEC0057B4F2 /* StarMapView.swift */; };
 		740150FC1E9AA34200F0F4DA /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */; };
 		7419AE4B1F66F4A9004E8248 /* Star+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */; };
@@ -52,6 +50,8 @@
 		744691561E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		744691571E8AA50D0040A093 /* StarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744691551E8AA50D0040A093 /* StarHelper.swift */; };
 		7475A3151E9AD2C4000CA993 /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */; };
+		747E3C3E1F6B0E9F007DF4CC /* visibleStars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 747E3C3D1F6B0E9A007DF4CC /* visibleStars.plist */; };
+		747E3C3F1F6B0EA0007DF4CC /* visibleStars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 747E3C3D1F6B0E9A007DF4CC /* visibleStars.plist */; };
 		74B9DA141F69CF4700C9DCE0 /* visibleStars.csv in Resources */ = {isa = PBXBuildFile; fileRef = 74B9DA121F69CF3A00C9DCE0 /* visibleStars.csv */; };
 		74B9DA151F69CF4800C9DCE0 /* visibleStars.csv in Resources */ = {isa = PBXBuildFile; fileRef = 74B9DA121F69CF3A00C9DCE0 /* visibleStars.csv */; };
 		74B9DA161F69CF4B00C9DCE0 /* allStars.csv in Resources */ = {isa = PBXBuildFile; fileRef = 74B9DA131F69CF4500C9DCE0 /* allStars.csv */; };
@@ -111,7 +111,6 @@
 		71C1B4741CD946BF005436C3 /* KDTree_OSX_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDTree_OSX_ExampleTests.swift; sourceTree = "<group>"; };
 		71C1B4761CD946BF005436C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71C2077A1CA9C9C2009C9551 /* NearestNeighbourSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestNeighbourSpec.swift; sourceTree = "<group>"; };
-		71C4A7431F54D50A004823DA /* storedTree.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = storedTree.plist; sourceTree = "<group>"; };
 		71C74C871E884CEC0057B4F2 /* StarMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapView.swift; sourceTree = "<group>"; };
 		740150FA1E9A92C600F0F4DA /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Star+KDTreePoint.swift"; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		744691521E8A9B580040A093 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		744691551E8AA50D0040A093 /* StarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarHelper.swift; sourceTree = "<group>"; };
 		7475A3141E9AD2C4000CA993 /* AlgorithmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
+		747E3C3D1F6B0E9A007DF4CC /* visibleStars.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = visibleStars.plist; sourceTree = "<group>"; };
 		74887EFB1CABC258002AECF6 /* LoadTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTest.swift; sourceTree = "<group>"; };
 		74B9DA121F69CF3A00C9DCE0 /* visibleStars.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = visibleStars.csv; sourceTree = "<group>"; };
 		74B9DA131F69CF4500C9DCE0 /* allStars.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = allStars.csv; sourceTree = "<group>"; };
@@ -318,8 +318,8 @@
 				7419AE4A1F66F49B004E8248 /* Star+KDTreePoint.swift */,
 				71C74C871E884CEC0057B4F2 /* StarMapView.swift */,
 				74B9DA121F69CF3A00C9DCE0 /* visibleStars.csv */,
+				747E3C3D1F6B0E9A007DF4CC /* visibleStars.plist */,
 				74B9DA131F69CF4500C9DCE0 /* allStars.csv */,
-				71C4A7431F54D50A004823DA /* storedTree.plist */,
 			);
 			name = "Stars Example";
 			sourceTree = "<group>";
@@ -478,7 +478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C4A7441F54D50E004823DA /* storedTree.plist in Resources */,
+				747E3C3E1F6B0E9F007DF4CC /* visibleStars.plist in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				74B9DA161F69CF4B00C9DCE0 /* allStars.csv in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
@@ -501,8 +501,8 @@
 				71C1B4671CD946BF005436C3 /* Assets.xcassets in Resources */,
 				74B9DA151F69CF4800C9DCE0 /* visibleStars.csv in Resources */,
 				74B9DA171F69CF4B00C9DCE0 /* allStars.csv in Resources */,
+				747E3C3F1F6B0EA0007DF4CC /* visibleStars.plist in Resources */,
 				71C1B46A1CD946BF005436C3 /* Main.storyboard in Resources */,
-				71C4A7451F54D50F004823DA /* storedTree.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
