@@ -8,6 +8,7 @@
 
 import UIKit
 import KDTree
+import SwiftyHYGDB
 
 class StarMapViewController: UIViewController {
     
@@ -20,32 +21,27 @@ class StarMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "StarMap"
-
         let loadEncodedTree = false
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
             if loadEncodedTree {
-                StarHelper.loadSavedStars { (stars) in
+                StarHelper.loadStarsFromPList(named: "visibleStars") { (stars) in
                     DispatchQueue.main.async {
-                        self?.allStars = stars
-                        
+                        self?.visibleStars = stars
                         log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
-                        
                         self?.reloadStars()
+                        self?.loadAllStars()
                     }
                 }
             } else {
-                StarHelper.loadCSVData { (visibleStars, stars) in
+                StarHelper.loadStarTree(named: "visibleStars") { (stars) in
                     DispatchQueue.main.async {
-                        self?.allStars = stars
-                        self?.visibleStars = visibleStars
-                        
+                        self?.visibleStars = stars
                         log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
                         self?.loadingIndicator.stopAnimating()
-                        
                         self?.reloadStars()
+                        self?.loadAllStars()
                     }
                 }
             }
@@ -64,8 +60,41 @@ class StarMapViewController: UIViewController {
         navigationItem.rightBarButtonItems = [saveButton, UIBarButtonItem(customView: infoButton)]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .white
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.tintColor = .blue
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    private func loadAllStars() {
+        StarHelper.loadStarTree(named: "allStars") { [weak self] (stars) in
+            DispatchQueue.main.async {
+                self?.allStars = stars
+                self?.reloadStars()
+            }
+        }
+    }
+    
     deinit {
         allStars?.forEach({ (star: Star) in
+            star.starData?.ref.release()
+        })
+        visibleStars?.forEach({ (star: Star) in
             star.starData?.ref.release()
         })
     }
@@ -96,7 +125,8 @@ class StarMapViewController: UIViewController {
     private var isLoadingMapStars = false
     
     private func reloadStars() {
-        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? allStars : visibleStars else { return }
+        guard let starTree = starMapView.magnification > minMagnificationForAllStars
+            ? (allStars ?? visibleStars) : visibleStars else { return }
         guard !isLoadingMapStars else { return }
         isLoadingMapStars = true
         StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint,
@@ -116,7 +146,8 @@ class StarMapViewController: UIViewController {
             break
         default:
             if let startCenter = startCenter {
-                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width) * CGPoint(x: ascensionRange, y: declinationRange)
+                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width)
+                    * CGPoint(x: Star.ascensionRange, y: Star.declinationRange)
                 starMapView.centerPoint = startCenter + adjVec * gestureRecognizer.translation(in: starMapView)
                 reloadStars()
             }
@@ -137,11 +168,11 @@ class StarMapViewController: UIViewController {
     
     @objc func saveStars() {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("test.plist") else { return }
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("visibleStars.plist") else { return }
         
         do {
             let startLoading = Date()
-            try allStars?.save(to: filePath)
+            try visibleStars?.save(to: filePath)
             log.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
         } catch {
             log.debug("Error trying to save stars: \( error )")

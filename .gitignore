@@ -13,7 +13,6 @@ Carthage/*
 # Build
 
 *.log
-*.csv
 *.dat
 *.out
 *.pid

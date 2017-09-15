@@ -11,16 +11,17 @@
 #else
     import UIKit
 #endif
+import SwiftyHYGDB
 
 class StarMapView: View {
 
     var tappedPoint: CGPoint?
     var centerPoint = CGPoint(x: 12.0, y: 0.0) {
         didSet {
-            if centerPoint.x > ascensionRange {
-                centerPoint = CGPoint(x: centerPoint.x - ascensionRange, y: centerPoint.y)
+            if centerPoint.x > Star.ascensionRange {
+                centerPoint = CGPoint(x: centerPoint.x - Star.ascensionRange, y: centerPoint.y)
             } else if centerPoint.x < 0 {
-                centerPoint = CGPoint(x: centerPoint.x + ascensionRange, y: centerPoint.y)
+                centerPoint = CGPoint(x: centerPoint.x + Star.ascensionRange, y: centerPoint.y)
             }
             clipCenterDeclination()
         }
@@ -51,8 +52,8 @@ class StarMapView: View {
     var verticalScreenRadius: CGFloat = 0.0
     
     private func recalculatePixelRadii() {
-        let radiusInPxH = 0.5 * self.bounds.width / (radius * ascensionRange)
-        let radiusInPxV = 0.5 * self.bounds.width / (radius * declinationRange)
+        let radiusInPxH = 0.5 * self.bounds.width / (radius * Star.ascensionRange)
+        let radiusInPxV = 0.5 * self.bounds.width / (radius * Star.declinationRange)
         pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
         verticalScreenRadius = self.bounds.midX / pixelRadii.x
     }
@@ -108,21 +109,21 @@ class StarMapView: View {
 
     func currentRadii() -> CGSize {
         let aspectRatio = self.bounds.size.width / self.bounds.size.height
-        return CGSize(width: radius * ascensionRange, height: radius / aspectRatio * declinationRange)
+        return CGSize(width: radius * Star.ascensionRange, height: radius / aspectRatio * Star.declinationRange)
     }
     
     func skyPosition(for pointInViewCoordinates: CGPoint) -> CGPoint {
         let relativeToCenter = pointInViewCoordinates - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         var point = -1.0 * CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
-        if point.x < 0.0 { point = CGPoint(x: point.x + ascensionRange, y: point.y) }
-        if point.x > ascensionRange { point = CGPoint(x: point.x - ascensionRange, y: point.y) }
+        if point.x < 0.0 { point = CGPoint(x: point.x + Star.ascensionRange, y: point.y) }
+        if point.x > Star.ascensionRange { point = CGPoint(x: point.x - Star.ascensionRange, y: point.y) }
         return point
     }
     
     private func pixelPosition(for positionInSky: CGPoint, radii: CGPoint, dotSize: CGFloat) -> CGPoint {
-        let below0h = positionInSky.x + verticalScreenRadius > ascensionRange && centerPoint.x < verticalScreenRadius
-        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > ascensionRange
-        let adjVec = CGPoint(x: below0h ? ascensionRange : over24h ? -ascensionRange : 0, y: 0)
+        let below0h = positionInSky.x + verticalScreenRadius > Star.ascensionRange && centerPoint.x < verticalScreenRadius
+        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > Star.ascensionRange
+        let adjVec = CGPoint(x: below0h ? Star.ascensionRange : over24h ? -Star.ascensionRange : 0, y: 0)
         let starCenter = radii*(centerPoint - (positionInSky - adjVec))
         return starCenter - dotSize * CGPoint(x: 0.5, y: 0.5)
     }
