@@ -96,6 +96,7 @@
 		716D540B1F517E5E0079A809 /* CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTests.swift; sourceTree = "<group>"; };
 		717EB89E1F4D8665006B964E /* KDTreePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KDTreePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		717EB89F1F4D8A9C006B964E /* GridTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTest.swift; sourceTree = "<group>"; };
+		7189757F1F6F310300264E02 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapViewController.swift; sourceTree = "<group>"; };
 		71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillWithFormsView.swift; sourceTree = "<group>"; };
 		71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselationViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +270,7 @@
 		607FACF51AFB993E008FA782 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				7189757F1F6F310300264E02 /* .travis.yml */,
 				8506A4C5702448A3C135B8E7 /* KDTree.podspec */,
 				7C2B43EA9C12FFEB9A9CD3C6 /* README.md */,
 				EBAD2F8B727A2480766EA435 /* LICENSE */,
