@@ -13,7 +13,7 @@ import SwiftyHYGDB
 class StarHelper: NSObject {
     static let maxVisibleMag = 6.5
 
-    static func loadStarTree(named fileName: String, completion: @escaping (KDTree<Star>?) -> Void) {
+    static func loadStarTree(named fileName: String, completion: @escaping (KDTree<RadialStar>?) -> Void) {
         let startLoading = Date()
         
         guard let starsPath = Bundle.main.path(forResource: fileName, ofType:  "csv") else {
@@ -23,7 +23,7 @@ class StarHelper: NSObject {
         }
         
         DispatchQueue.global(qos: .background).async {
-            guard let stars = SwiftyHYGDB.loadCSVData(from: starsPath) else {
+            guard let stars: [RadialStar] = SwiftyHYGDB.loadCSVData(from: starsPath) else {
                 completion(nil)
                 return
             }
@@ -36,7 +36,7 @@ class StarHelper: NSObject {
         }
     }
     
-    static func loadStarsFromPList(named fileName: String, completion: (KDTree<Star>?) -> Void) {
+    static func loadStarsFromPList(named fileName: String, completion: (KDTree<RadialStar>?) -> Void) {
         let startLoading = Date()
         guard let filePath = Bundle.main.path(forResource: fileName, ofType:  "plist") else {
             log.error("Failed loading file: storedTree")
@@ -45,7 +45,7 @@ class StarHelper: NSObject {
         }
         
         do {
-            let visibleStar: KDTree<Star> = try KDTree(contentsOf: URL(fileURLWithPath: filePath))
+            let visibleStar: KDTree<RadialStar> = try KDTree(contentsOf: URL(fileURLWithPath: filePath))
             log.debug("Time to load Tree from file: \(Date().timeIntervalSince(startLoading))s")
             completion(visibleStar)
         } catch {
@@ -54,7 +54,9 @@ class StarHelper: NSObject {
         }
     }
     
-    static func loadForwardStars(starTree: KDTree<Star>, currentCenter: CGPoint, radii: CGSize, completion: @escaping ([Star]) -> Void) {
+    static func loadForwardStars(starTree: KDTree<RadialStar>, currentCenter: CGPoint,
+                                 radii: CGSize, completion: @escaping ([RadialStar]) -> Void)
+    {
         DispatchQueue.global(qos: .background).async {
             let stars = StarHelper.stars(from: starTree, around: Float(currentCenter.x), declination: Float(currentCenter.y),
                                          deltaAsc: Float(radii.width), deltaDec: Float(radii.height))
@@ -64,13 +66,15 @@ class StarHelper: NSObject {
         }
     }
     
-    static func stars(from stars: KDTree<Star>, around ascension: Float, declination: Float, deltaAsc: Float, deltaDec: Float) -> [Star] {
-        let verticalRange = (Double(Star.normalize(declination: declination - deltaDec)),
-                             Double(Star.normalize(declination: declination + deltaDec)))
+    static func stars(from stars: KDTree<RadialStar>, around ascension: Float,
+                      declination: Float, deltaAsc: Float, deltaDec: Float) -> [RadialStar]
+    {
+        let verticalRange = (Double(RadialStar.normalize(declination: declination - deltaDec)),
+                             Double(RadialStar.normalize(declination: declination + deltaDec)))
         let startRangeSearch = Date()
         var starsVisible = stars.elementsIn([
-            (Double(Star.normalize(rightAscension: ascension - deltaAsc)),
-             Double(Star.normalize(rightAscension: ascension + deltaAsc))), verticalRange])
+            (Double(RadialStar.normalize(rightAscension: ascension - deltaAsc)),
+             Double(RadialStar.normalize(rightAscension: ascension + deltaAsc))), verticalRange])
 
         log.verbose("found \(starsVisible.count) stars in first search")
         
@@ -78,13 +82,13 @@ class StarHelper: NSObject {
         let overlap = ascension - deltaAsc
         if overlap < 0 {
             starsVisible += stars.elementsIn([
-                (Double(Star.normalize(rightAscension: Float(Star.ascensionRange) + overlap)),
-                 Double(Star.normalize(rightAscension: Float(Star.ascensionRange)))), verticalRange])
-        } else if ascension + deltaAsc > Float(Star.ascensionRange) {
-            let over24h = ascension + deltaAsc - Float(Star.ascensionRange)
+                (Double(RadialStar.normalize(rightAscension: Float(RadialStar.ascensionRange) + overlap)),
+                 Double(RadialStar.normalize(rightAscension: Float(RadialStar.ascensionRange)))), verticalRange])
+        } else if ascension + deltaAsc > Float(RadialStar.ascensionRange) {
+            let over24h = ascension + deltaAsc - Float(RadialStar.ascensionRange)
             starsVisible += stars.elementsIn([
-                (Double(Star.normalize(rightAscension: 0)),
-                 Double(Star.normalize(rightAscension: over24h))), verticalRange])
+                (Double(RadialStar.normalize(rightAscension: 0)),
+                 Double(RadialStar.normalize(rightAscension: over24h))), verticalRange])
         }
         log.debug("Finished RangeSearch with \(starsVisible.count) stars,"
             + " after \(Date().timeIntervalSince(startRangeSearch))s")
@@ -92,9 +96,9 @@ class StarHelper: NSObject {
         return starsVisible
     }
     
-    static func selectNearestStar(to point: CGPoint, starMapView: StarMapView, stars: KDTree<Star>) {
+    static func selectNearestStar(to point: CGPoint, starMapView: StarMapView, stars: KDTree<RadialStar>) {
         let tappedPosition = starMapView.skyPosition(for: point)
-        let searchStar = Star(ascension: Float(tappedPosition.x), declination: Float(tappedPosition.y))
+        let searchStar = RadialStar(ascension: Float(tappedPosition.x), declination: Float(tappedPosition.y))
         
         log.debug("tappedPosition: \(tappedPosition)")
         let startNN = Date()
