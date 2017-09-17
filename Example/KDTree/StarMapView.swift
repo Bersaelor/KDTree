@@ -18,12 +18,16 @@ class StarMapView: View {
     var tappedPoint: CGPoint?
     var centerPoint = CGPoint(x: 12.0, y: 0.0) {
         didSet {
-            if centerPoint.x > Star.ascensionRange {
-                centerPoint = CGPoint(x: centerPoint.x - Star.ascensionRange, y: centerPoint.y)
+            if centerPoint.x > RadialStar.ascensionRange {
+                centerPoint = CGPoint(x: centerPoint.x - RadialStar.ascensionRange, y: centerPoint.y)
             } else if centerPoint.x < 0 {
-                centerPoint = CGPoint(x: centerPoint.x + Star.ascensionRange, y: centerPoint.y)
+                centerPoint = CGPoint(x: centerPoint.x + RadialStar.ascensionRange, y: centerPoint.y)
             }
-            clipCenterDeclination()
+            if centerPoint.y > maxDeclination {
+                centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
+            } else if centerPoint.y < -maxDeclination {
+                centerPoint = CGPoint(x: centerPoint.x, y: -maxDeclination)
+            }
         }
     }
     
@@ -34,11 +38,14 @@ class StarMapView: View {
             clipCenterDeclination()
         }
     }
-    private func clipCenterDeclination() {
+    
+    private var maxDeclination: CGFloat {
         let minY = CGFloat(10)
         let minDec = CGFloat(-91)
-        let maxDeclination = (minY - bounds.midY) / pixelRadii.y - minDec
-        
+        return (minY - bounds.midY) / pixelRadii.y - minDec
+    }
+    
+    private func clipCenterDeclination() {
         if centerPoint.y > maxDeclination {
             centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
         } else if centerPoint.y < -maxDeclination {
@@ -52,8 +59,8 @@ class StarMapView: View {
     var verticalScreenRadius: CGFloat = 0.0
     
     private func recalculatePixelRadii() {
-        let radiusInPxH = 0.5 * self.bounds.width / (radius * Star.ascensionRange)
-        let radiusInPxV = 0.5 * self.bounds.width / (radius * Star.declinationRange)
+        let radiusInPxH = 0.5 * self.bounds.width / (radius * RadialStar.ascensionRange)
+        let radiusInPxV = 0.5 * self.bounds.width / (radius * RadialStar.declinationRange)
         pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
         verticalScreenRadius = self.bounds.midX / pixelRadii.x
     }
@@ -64,11 +71,11 @@ class StarMapView: View {
         return 0.8 + 2.5 * delta * delta
     }
     
-    var tappedStar: Star? = nil {
+    var tappedStar: RadialStar? = nil {
         didSet { xPlatformNeedsDisplay() }
     }
     
-    var stars: [Star]? {
+    var stars: [RadialStar]? {
         didSet { xPlatformNeedsDisplay() }
     }
     
@@ -109,21 +116,21 @@ class StarMapView: View {
 
     func currentRadii() -> CGSize {
         let aspectRatio = self.bounds.size.width / self.bounds.size.height
-        return CGSize(width: radius * Star.ascensionRange, height: radius / aspectRatio * Star.declinationRange)
+        return CGSize(width: radius * RadialStar.ascensionRange, height: radius / aspectRatio * RadialStar.declinationRange)
     }
     
     func skyPosition(for pointInViewCoordinates: CGPoint) -> CGPoint {
         let relativeToCenter = pointInViewCoordinates - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         var point = -1.0 * CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
-        if point.x < 0.0 { point = CGPoint(x: point.x + Star.ascensionRange, y: point.y) }
-        if point.x > Star.ascensionRange { point = CGPoint(x: point.x - Star.ascensionRange, y: point.y) }
+        if point.x < 0.0 { point = CGPoint(x: point.x + RadialStar.ascensionRange, y: point.y) }
+        if point.x > RadialStar.ascensionRange { point = CGPoint(x: point.x - RadialStar.ascensionRange, y: point.y) }
         return point
     }
     
     private func pixelPosition(for positionInSky: CGPoint, radii: CGPoint, dotSize: CGFloat) -> CGPoint {
-        let below0h = positionInSky.x + verticalScreenRadius > Star.ascensionRange && centerPoint.x < verticalScreenRadius
-        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > Star.ascensionRange
-        let adjVec = CGPoint(x: below0h ? Star.ascensionRange : over24h ? -Star.ascensionRange : 0, y: 0)
+        let below0h = positionInSky.x + verticalScreenRadius > RadialStar.ascensionRange && centerPoint.x < verticalScreenRadius
+        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > RadialStar.ascensionRange
+        let adjVec = CGPoint(x: below0h ? RadialStar.ascensionRange : over24h ? -RadialStar.ascensionRange : 0, y: 0)
         let starCenter = radii*(centerPoint - (positionInSky - adjVec))
         return starCenter - dotSize * CGPoint(x: 0.5, y: 0.5)
     }
@@ -154,7 +161,7 @@ class StarMapView: View {
         log.verbose("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
     }
     
-    private func setStarColor(for star: Star) {
+    private func setStarColor(for star: RadialStar) {
         if let colorIndex = star.starData?.value.colorIndex {
             bv2ToRGB(for: CGFloat(colorIndex), spectralType: star.starData?.value.spectralType).setFill()
         } else {
@@ -234,7 +241,7 @@ class StarMapView: View {
                                withAttributes: attributesLbl)
     }
     
-    private func drawTapped(context: CGContext, star: Star) {
+    private func drawTapped(context: CGContext, star: RadialStar) {
         let circleSize: CGFloat = 15
         let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: circleSize)
         let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
@@ -254,7 +261,7 @@ class StarMapView: View {
         drawStarText(for: star, position: relativePosition, circleSize: circleSize)
     }
     
-    private func drawStarText(for star: Star, position: CGPoint, circleSize: CGFloat) {
+    private func drawStarText(for star: RadialStar, position: CGPoint, circleSize: CGFloat) {
         let verticalAdjustment = 1.0
         
         guard let starData = star.starData?.value else { return }
@@ -264,7 +271,7 @@ class StarMapView: View {
         let idName: String = "HYG\(star.dbID)"
         var textString: String = starData.properName
             ?? starData.bayer_flamstedt ?? glieseName ?? hdName ?? hrName ?? idName
-        textString += String(format: " (%.1fly)", 3.262*starData.distance)
+        textString += String(format: " (%.1fpc)", 3.262*starData.distance)
         let isLeftOfCenter = position.x < 0.0
         let textInnerCorner = position + circleSize * CGPoint(x: isLeftOfCenter ? 0.9 : 0.05, y: verticalAdjustment * 1.05)
         let textOuterCorner = textInnerCorner + CGPoint(x: isLeftOfCenter ? 200 : -200, y: verticalAdjustment * 14.0)

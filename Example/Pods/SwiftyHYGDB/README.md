@@ -24,8 +24,9 @@ pod 'SwiftyHYGDB'
 ```
 ### Swift Package Manager
 
+Add the following to your `Package.swift`:
 ```
-
+       .Package(url: "https://github.com/Bersaelor/KDTree", majorVersion: 0, minor: 5),
 ```
 
 ## License

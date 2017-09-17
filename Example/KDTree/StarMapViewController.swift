@@ -12,8 +12,8 @@ import SwiftyHYGDB
 
 class StarMapViewController: UIViewController {
     
-    var visibleStars: KDTree<Star>?
-    var allStars: KDTree<Star>?
+    var visibleStars: KDTree<RadialStar>?
+    var allStars: KDTree<RadialStar>?
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var starMapView: StarMapView!
@@ -56,8 +56,7 @@ class StarMapViewController: UIViewController {
         
         let infoButton = UIButton(type: UIButtonType.infoDark)
         infoButton.addTarget(self, action: #selector(openInfo), for: UIControlEvents.touchUpInside)
-        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(saveStars))
-        navigationItem.rightBarButtonItems = [saveButton, UIBarButtonItem(customView: infoButton)]
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: infoButton)]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,10 +90,10 @@ class StarMapViewController: UIViewController {
     }
     
     deinit {
-        allStars?.forEach({ (star: Star) in
+        allStars?.forEach({ (star: RadialStar) in
             star.starData?.ref.release()
         })
-        visibleStars?.forEach({ (star: Star) in
+        visibleStars?.forEach({ (star: RadialStar) in
             star.starData?.ref.release()
         })
     }
@@ -147,7 +146,7 @@ class StarMapViewController: UIViewController {
         default:
             if let startCenter = startCenter {
                 let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width)
-                    * CGPoint(x: Star.ascensionRange, y: Star.declinationRange)
+                    * CGPoint(x: RadialStar.ascensionRange, y: RadialStar.declinationRange)
                 starMapView.centerPoint = startCenter + adjVec * gestureRecognizer.translation(in: starMapView)
                 reloadStars()
             }
@@ -164,18 +163,5 @@ class StarMapViewController: UIViewController {
         })
         
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    @objc func saveStars() {
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent("visibleStars.plist") else { return }
-        
-        do {
-            let startLoading = Date()
-            try visibleStars?.save(to: filePath)
-            log.debug("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
-        } catch {
-            log.debug("Error trying to save stars: \( error )")
-        }
     }
 }
