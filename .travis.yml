@@ -13,4 +13,4 @@ env:
     - TEST_DESTINATION="OS=9.3,name=iPhone 6S"
 script:
 - open -a "simulator" --args -CurrentDeviceUDID CEBBD79A-B6C1-4A02-BD33-56BBCBDED03E
-- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO  -destination "$TEST_DESTINATION" | xcpretty
+- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO  -destination "$TEST_DESTINATION" | xcpretty
