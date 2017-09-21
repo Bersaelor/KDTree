@@ -8,11 +8,12 @@
 
 import UIKit
 import KDTree
+import SwiftyHYGDB
 
 class StarMapViewController: UIViewController {
     
-    var visibleStars: KDTree<Star>?
-    var allStars: KDTree<Star>?
+    var visibleStars: KDTree<RadialStar>?
+    var allStars: KDTree<RadialStar>?
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var starMapView: StarMapView!
@@ -20,20 +21,28 @@ class StarMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "StarMap"
-
+        let loadEncodedTree = false
         let startLoading = Date()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            StarHelper.loadCSVData { (visibleStars, stars) in
-                DispatchQueue.main.async {
-                    xcLog.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
-                    self?.allStars = stars
-                    self?.visibleStars = visibleStars
-                    
-                    xcLog.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
-                    self?.loadingIndicator.stopAnimating()
-                    
-                    self?.reloadStars()
+            if loadEncodedTree {
+                StarHelper.loadStarsFromPList(named: "visibleStars") { (stars) in
+                    DispatchQueue.main.async {
+                        self?.visibleStars = stars
+                        log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                        self?.loadingIndicator.stopAnimating()
+                        self?.reloadStars()
+                        self?.loadAllStars()
+                    }
+                }
+            } else {
+                StarHelper.loadStarTree(named: "visibleStars") { (stars) in
+                    DispatchQueue.main.async {
+                        self?.visibleStars = stars
+                        log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                        self?.loadingIndicator.stopAnimating()
+                        self?.reloadStars()
+                        self?.loadAllStars()
+                    }
                 }
             }
         }
@@ -47,21 +56,44 @@ class StarMapViewController: UIViewController {
         
         let infoButton = UIButton(type: UIButtonType.infoDark)
         infoButton.addTarget(self, action: #selector(openInfo), for: UIControlEvents.touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: infoButton)
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: infoButton)]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .white
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.tintColor = .blue
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    private func loadAllStars() {
+        StarHelper.loadStarTree(named: "allStars") { [weak self] (stars) in
+            DispatchQueue.main.async {
+                self?.allStars = stars
+                self?.reloadStars()
+            }
+        }
     }
     
     deinit {
-        allStars?.forEach({ (star: Star) in
+        allStars?.forEach({ (star: RadialStar) in
+            star.starData?.ref.release()
+        })
+        visibleStars?.forEach({ (star: RadialStar) in
             star.starData?.ref.release()
         })
     }
@@ -73,7 +105,7 @@ class StarMapViewController: UIViewController {
         StarHelper.selectNearestStar(to: point, starMapView: self.starMapView, stars: starTree)
     }
 
-    func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
+    @objc func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
         switch gestureRecognizer.state {
         case .began:
             startRadius = starMapView.radius
@@ -92,7 +124,8 @@ class StarMapViewController: UIViewController {
     private var isLoadingMapStars = false
     
     private func reloadStars() {
-        guard let starTree = starMapView.magnification > minMagnificationForAllStars ? allStars : visibleStars else { return }
+        guard let starTree = starMapView.magnification > minMagnificationForAllStars
+            ? (allStars ?? visibleStars) : visibleStars else { return }
         guard !isLoadingMapStars else { return }
         isLoadingMapStars = true
         StarHelper.loadForwardStars(starTree: starTree, currentCenter: starMapView.centerPoint,
@@ -104,7 +137,7 @@ class StarMapViewController: UIViewController {
         }
     }
     
-    func handlePan(gestureRecognizer: UIPanGestureRecognizer) {     
+    @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {     
         switch gestureRecognizer.state {
         case .began:
             startCenter = starMapView.centerPoint
@@ -112,20 +145,21 @@ class StarMapViewController: UIViewController {
             break
         default:
             if let startCenter = startCenter {
-                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width) * CGPoint(x: ascensionRange, y: declinationRange)
+                let adjVec = starMapView.radius / (0.5 * starMapView.bounds.width)
+                    * CGPoint(x: RadialStar.ascensionRange, y: RadialStar.declinationRange)
                 starMapView.centerPoint = startCenter + adjVec * gestureRecognizer.translation(in: starMapView)
                 reloadStars()
             }
         }
     }
     
-    func openInfo() {
+    @objc func openInfo() {
         let alert = UIAlertController(title: nil,
                                       message: "Cylindrical projection of the starry sky for the year 2000,"
                                         .appending(" measured by right ascension and declination coordinates."),
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { _ in
-            xcLog.debug("Noting")
+            log.debug("Noting")
         })
         
         self.present(alert, animated: true, completion: nil)

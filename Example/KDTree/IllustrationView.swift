@@ -68,11 +68,11 @@ class IllustrationView: UIView {
     func pointTapped(_ point: CGPoint) {
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         tappedPoint = 1.0/adjSize * (point - c)
-        xcLog.debug("c: \(c), tappedPoint: \(String(describing: self.tappedPoint))")
+        log.debug("c: \(c), tappedPoint: \(String(describing: self.tappedPoint))")
         
         if let tappedPoint = tappedPoint {
-            if isKNearest { nearestPoints = tree?.nearestK(5, toElement: tappedPoint) ?? [] }
-            else { nearestPoints = tree?.nearest(toElement: tappedPoint).map({ [$0] }) ?? [] }
+            if isKNearest { nearestPoints = tree?.nearestK(5, to: tappedPoint) ?? [] }
+            else { nearestPoints = tree?.nearest(to: tappedPoint).map({ [$0] }) ?? [] }
             
             //check up if it's really the closest
             var bestDistance = Double.infinity
@@ -86,9 +86,9 @@ class IllustrationView: UIView {
             })
             
             if nearestFromArray != nearestPoints.first {
-                xcLog.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(String(describing: self.nearestPoints.first))")
-                xcLog.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
-                xcLog.debug("nearest: \(String(describing: self.nearestPoints.first?.squaredDistance(to: tappedPoint)))")
+                log.debug("WARNING: nearestFromArray: \(nearestFromArray) != \(String(describing: self.nearestPoints.first))")
+                log.debug("nearestFromArray.distance: \(nearestFromArray.squaredDistance(to: tappedPoint))")
+                log.debug("nearest: \(String(describing: self.nearestPoints.first?.squaredDistance(to: tappedPoint)))")
             }
         }
         self.xPlatformNeedsDisplay()
@@ -96,7 +96,7 @@ class IllustrationView: UIView {
     
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
-            xcLog.error("failed to get graphics context")
+            log.error("failed to get graphics context")
             return
         }
         
@@ -197,7 +197,7 @@ class IllustrationView: UIView {
                 
                 let textP = CGPoint(x: value.x * self.adjSize + 5, y: value.y * self.adjSize + 1)
                 (String(depth) as NSString).draw(at: textP,
-                                                 withAttributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8)])
+                                                 withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8)])
             }
         }
     }

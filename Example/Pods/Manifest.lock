@@ -1,27 +1,42 @@
 PODS:
-  - KDTree (0.5.0)
-  - Nimble (6.1.0)
+  - KDTree (0.5.1)
+  - Nimble (7.0.1)
   - Quick (1.1.0)
-  - XCGLogger (4.0.0):
-    - XCGLogger/Core (= 4.0.0)
-  - XCGLogger/Core (4.0.0)
+  - SwiftyBeaver (1.4.0)
+  - SwiftyHYGDB (0.5.0)
 
 DEPENDENCIES:
   - KDTree (from `../`)
-  - Nimble (~> 6.1.0)
-  - Quick (~> 1.1.0)
-  - XCGLogger (~> 4.0.0)
+  - Nimble (from `https://github.com/Quick/Nimble`, branch `master`)
+  - Quick (from `https://github.com/Quick/Quick`, branch `support-swift-4`)
+  - SwiftyBeaver
+  - SwiftyHYGDB (= 0.5.0)
 
 EXTERNAL SOURCES:
   KDTree:
-    :path: "../"
+    :path: ../
+  Nimble:
+    :branch: master
+    :git: https://github.com/Quick/Nimble
+  Quick:
+    :branch: support-swift-4
+    :git: https://github.com/Quick/Quick
+
+CHECKOUT OPTIONS:
+  Nimble:
+    :commit: a5438fa5d6cfac67dc88c90423ea6c3b75995555
+    :git: https://github.com/Quick/Nimble
+  Quick:
+    :commit: a672e7ae727341ce7e6825037f20f61150ea5c67
+    :git: https://github.com/Quick/Quick
 
 SPEC CHECKSUMS:
-  KDTree: 14beb0785da54af0de3e0447df7763952de4e0d5
-  Nimble: c53e6903fee94041b90ded74f135820437d8bf59
-  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
+  KDTree: c1f5dd79a376bfb19c22da8416482e8cf1f250b9
+  Nimble: 1b6670c36e5750169b9e4cc2e9cfa82a7603c69e
+  Quick: 4700beb8056662b579facd79eaca7f04fb3d48e6
+  SwiftyBeaver: 78d9186ce7595b4400ce01e5fd750d263e72dd7b
+  SwiftyHYGDB: 8e08e8427ce5ec1515ad9f1d21562416be40c777
 
-PODFILE CHECKSUM: c5a0360f17341ac37e239a5a60843df7d245921c
+PODFILE CHECKSUM: c6ffebbc872be7a063a8b613135380ce91947a30
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

@@ -11,18 +11,18 @@ import Foundation
 // MARK: Nearest Neighbour
 extension KDTree {
     
-    /// Returns a the nearest `KDTreePoint` to the search point `toElement`,
-    /// If `toElement` is a member of the tree, the algorithm will return the closest other value
+    /// Returns a the nearest `KDTreePoint` to the search point,
+    /// If `element` is a member of the tree, the algorithm will return the closest other value
     /// Optional parameter 'maxDistance' if you are not interested in neighbours beyond a specified distance
     ///
     /// - Complexity: O(N log N).
-    public func nearest(toElement element: Element, maxDistance: Double = Double.infinity) -> Element? {
+    public func nearest(to element: Element, maxDistance: Double = Double.infinity) -> Element? {
         guard !self.isEmpty else { return nil }
         
-        return nearest(toElement: element, bestValue: nil, bestDistance: maxDistance).bestValue
+        return nearest(to: element, bestValue: nil, bestDistance: maxDistance).bestValue
     }
     
-    fileprivate func nearest(toElement searchElement: Element, bestValue: Element?, bestDistance: Double) -> (bestValue: Element?, bestDistance: Double) {
+    fileprivate func nearest(to searchElement: Element, bestValue: Element?, bestDistance: Double) -> (bestValue: Element?, bestDistance: Double) {
         switch self {
         case .leaf: break
         case let .node(.leaf, value, _, .leaf):
@@ -35,7 +35,7 @@ extension KDTree {
             
             //check the best estimate side
             let closerSubtree = isLeftOfValue ? left : right
-            var (bestNewElement, bestNewDistance) = closerSubtree.nearest(toElement: searchElement, bestValue: bestValue, bestDistance: bestDistance)
+            var (bestNewElement, bestNewDistance) = closerSubtree.nearest(to: searchElement, bestValue: bestValue, bestDistance: bestDistance)
             
             // if the bestDistance so far intersects the hyperplane at the other side of this value
             // there could be points in the other subtree
@@ -47,7 +47,7 @@ extension KDTree {
                 }
                 
                 let otherSubtree = isLeftOfValue ? right : left
-                (bestNewElement, bestNewDistance) = otherSubtree.nearest(toElement: searchElement, bestValue: bestNewElement, bestDistance: bestNewDistance)
+                (bestNewElement, bestNewDistance) = otherSubtree.nearest(to: searchElement, bestValue: bestNewElement, bestDistance: bestNewDistance)
             }
             
             return (bestNewElement, bestNewDistance)
@@ -99,16 +99,16 @@ private struct Neighbours {
 // MARK: k Nearest Neighbour
 extension KDTree {
     
-    /// Returns the k nearest `KDTreePoint`s to the search point `toElement`,
+    /// Returns the k nearest `KDTreePoint`s to the search point,
     ///
     /// - Complexity: O(log N).
-    public func nearestK(_ number: Int, toElement searchElement: Element) -> [Element] {
+    public func nearestK(_ number: Int, to searchElement: Element) -> [Element] {
         var neighbours: Neighbours = Neighbours(goalNumber: number)
-        self.nearestK(toElement: searchElement, bestValues: &neighbours)
+        self.nearestK(to: searchElement, bestValues: &neighbours)
         return neighbours.nearestValues.map { $0.point as! Element }
     }
     
-    fileprivate func nearestK(toElement searchElement: Element, bestValues: inout Neighbours) {
+    fileprivate func nearestK(to searchElement: Element, bestValues: inout Neighbours) {
         switch self {
         case let .node(left, value, dim, right):
             let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)
@@ -116,7 +116,7 @@ extension KDTree {
             
             //check the best estimate side
             let closerSubtree = isLeftOfValue ? left : right
-            closerSubtree.nearestK(toElement: searchElement, bestValues: &bestValues)
+            closerSubtree.nearestK(to: searchElement, bestValues: &bestValues)
 
             //check the nodes value
             let currentDistance = value.squaredDistance(to: searchElement)
@@ -126,7 +126,7 @@ extension KDTree {
             //there could be points in the other subtree
             if dimensionDifference*dimensionDifference < bestValues.biggestDistance || !bestValues.full {
                 let otherSubtree = isLeftOfValue ? right : left
-                otherSubtree.nearestK(toElement: searchElement, bestValues: &bestValues)
+                otherSubtree.nearestK(to: searchElement, bestValues: &bestValues)
             }
         case .leaf: break
         }

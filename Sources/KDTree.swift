@@ -16,7 +16,9 @@ private enum ReplacementDirection {
 public enum KDTree<Element: KDTreePoint> {
     case leaf
     indirect case node(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>)
+}
 
+extension KDTree {
     public init(values: [Element], depth: Int = 0) {
         guard !values.isEmpty else {
             self = .leaf

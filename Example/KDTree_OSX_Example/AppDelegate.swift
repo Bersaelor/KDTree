@@ -7,9 +7,9 @@
 //
 
 import Cocoa
-import XCGLogger
+import SwiftyBeaver
 
-let xcLog = XCGLogger.default
+let log = SwiftyBeaver.self
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

@@ -6,23 +6,28 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-#if os(OSX)
-    import Cocoa
+#if os(macOS)
+    import AppKit
 #else
     import UIKit
 #endif
+import SwiftyHYGDB
 
 class StarMapView: View {
 
     var tappedPoint: CGPoint?
     var centerPoint = CGPoint(x: 12.0, y: 0.0) {
         didSet {
-            if centerPoint.x > ascensionRange {
-                centerPoint = CGPoint(x: centerPoint.x - ascensionRange, y: centerPoint.y)
+            if centerPoint.x > RadialStar.ascensionRange {
+                centerPoint = CGPoint(x: centerPoint.x - RadialStar.ascensionRange, y: centerPoint.y)
             } else if centerPoint.x < 0 {
-                centerPoint = CGPoint(x: centerPoint.x + ascensionRange, y: centerPoint.y)
+                centerPoint = CGPoint(x: centerPoint.x + RadialStar.ascensionRange, y: centerPoint.y)
             }
-            clipCenterDeclination()
+            if centerPoint.y > maxDeclination {
+                centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
+            } else if centerPoint.y < -maxDeclination {
+                centerPoint = CGPoint(x: centerPoint.x, y: -maxDeclination)
+            }
         }
     }
     
@@ -33,11 +38,14 @@ class StarMapView: View {
             clipCenterDeclination()
         }
     }
-    private func clipCenterDeclination() {
+    
+    private var maxDeclination: CGFloat {
         let minY = CGFloat(10)
         let minDec = CGFloat(-91)
-        let maxDeclination = (minY - bounds.midY) / pixelRadii.y - minDec
-        
+        return (minY - bounds.midY) / pixelRadii.y - minDec
+    }
+    
+    private func clipCenterDeclination() {
         if centerPoint.y > maxDeclination {
             centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
         } else if centerPoint.y < -maxDeclination {
@@ -51,8 +59,8 @@ class StarMapView: View {
     var verticalScreenRadius: CGFloat = 0.0
     
     private func recalculatePixelRadii() {
-        let radiusInPxH = 0.5 * self.bounds.width / (radius * ascensionRange)
-        let radiusInPxV = 0.5 * self.bounds.width / (radius * declinationRange)
+        let radiusInPxH = 0.5 * self.bounds.width / (radius * RadialStar.ascensionRange)
+        let radiusInPxV = 0.5 * self.bounds.width / (radius * RadialStar.declinationRange)
         pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
         verticalScreenRadius = self.bounds.midX / pixelRadii.x
     }
@@ -63,15 +71,12 @@ class StarMapView: View {
         return 0.8 + 2.5 * delta * delta
     }
     
-    var tappedStar: Star? = nil {
+    var tappedStar: RadialStar? = nil {
         didSet { xPlatformNeedsDisplay() }
     }
     
-    var stars: [Star]? {
-        didSet {
-            xcLog.debug("Now showing \(self.stars?.count ?? 0)")
-            xPlatformNeedsDisplay()
-        }
+    var stars: [RadialStar]? {
+        didSet { xPlatformNeedsDisplay() }
     }
     
     override init(frame: CGRect) {
@@ -87,12 +92,17 @@ class StarMapView: View {
     }
     
     func commonInit() {
-        backgroundColor = .black
+        #if os(macOS)
+            layer?.backgroundColor = Color.black.cgColor
+            recalculatePixelRadii()
+        #else
+            backgroundColor = .black
+        #endif
     }
         
     static let vegaSize: Double = 4.0
     
-    #if os(OSX)
+    #if os(macOS)
     override func resizeSubviews(withOldSize: NSSize) {
         super.resizeSubviews(withOldSize: withOldSize)
         recalculatePixelRadii()
@@ -106,21 +116,21 @@ class StarMapView: View {
 
     func currentRadii() -> CGSize {
         let aspectRatio = self.bounds.size.width / self.bounds.size.height
-        return CGSize(width: radius * ascensionRange, height: radius / aspectRatio * declinationRange)
+        return CGSize(width: radius * RadialStar.ascensionRange, height: radius / aspectRatio * RadialStar.declinationRange)
     }
     
     func skyPosition(for pointInViewCoordinates: CGPoint) -> CGPoint {
         let relativeToCenter = pointInViewCoordinates - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         var point = -1.0 * CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
-        if point.x < 0.0 { point = CGPoint(x: point.x + ascensionRange, y: point.y) }
-        if point.x > ascensionRange { point = CGPoint(x: point.x - ascensionRange, y: point.y) }
+        if point.x < 0.0 { point = CGPoint(x: point.x + RadialStar.ascensionRange, y: point.y) }
+        if point.x > RadialStar.ascensionRange { point = CGPoint(x: point.x - RadialStar.ascensionRange, y: point.y) }
         return point
     }
     
     private func pixelPosition(for positionInSky: CGPoint, radii: CGPoint, dotSize: CGFloat) -> CGPoint {
-        let below0h = positionInSky.x + verticalScreenRadius > ascensionRange && centerPoint.x < verticalScreenRadius
-        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > ascensionRange
-        let adjVec = CGPoint(x: below0h ? ascensionRange : over24h ? -ascensionRange : 0, y: 0)
+        let below0h = positionInSky.x + verticalScreenRadius > RadialStar.ascensionRange && centerPoint.x < verticalScreenRadius
+        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > RadialStar.ascensionRange
+        let adjVec = CGPoint(x: below0h ? RadialStar.ascensionRange : over24h ? -RadialStar.ascensionRange : 0, y: 0)
         let starCenter = radii*(centerPoint - (positionInSky - adjVec))
         return starCenter - dotSize * CGPoint(x: 0.5, y: 0.5)
     }
@@ -128,16 +138,13 @@ class StarMapView: View {
     override func draw(_ rect: CGRect) {
         let startDraw = Date()
 
-        #if os(OSX)
-            guard let context = NSGraphicsContext.current()?.cgContext else { return }
+        #if os(macOS)
+            guard let context = NSGraphicsContext.current?.cgContext else { return }
         #else
             guard let context = UIGraphicsGetCurrentContext() else { return }
         #endif
 
         context.clear(rect)
-        
-//        Color.black.setFill()
-//        context.fillEllipse(in: rect)
         
         //recenter in middle
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
@@ -151,10 +158,10 @@ class StarMapView: View {
             drawTapped(context: context, star: tappedStar)
         }
         
-        xcLog.debug("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
+        log.verbose("Finished Drawing in \(Date().timeIntervalSince(startDraw))s")
     }
     
-    private func setStarColor(for star: Star) {
+    private func setStarColor(for star: RadialStar) {
         if let colorIndex = star.starData?.value.colorIndex {
             bv2ToRGB(for: CGFloat(colorIndex), spectralType: star.starData?.value.spectralType).setFill()
         } else {
@@ -170,8 +177,8 @@ class StarMapView: View {
                 let paragraphStyleLbl = NSMutableParagraphStyle()
                 paragraphStyleLbl.alignment = .center
                 let size = 12.0 * sqrt(magnification)
-                let attributesLbl = [NSFontAttributeName: Font.systemFont(ofSize: CGFloat(size)),
-                                     NSParagraphStyleAttributeName: paragraphStyleLbl]
+                let attributesLbl = [NSAttributedStringKey.font: Font.systemFont(ofSize: CGFloat(size)),
+                                     NSAttributedStringKey.paragraphStyle: paragraphStyleLbl]
                 let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: 0.0)
                 ("☀️" as NSString).draw(in: CGRect(pointA: relativePosition + CGPoint(x: size, y: size),
                                                        pointB: relativePosition - CGPoint(x: size, y: size)),
@@ -206,35 +213,35 @@ class StarMapView: View {
         //1h Label
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
-        let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 8),
-                          NSForegroundColorAttributeName: color,
-                          NSParagraphStyleAttributeName: paragraphStyle]
+        let attributes = [NSAttributedStringKey.font: Font.systemFont(ofSize: 8),
+                          NSAttributedStringKey.foregroundColor: color,
+                          NSAttributedStringKey.paragraphStyle: paragraphStyle]
         ("1h" as NSString).draw(in: CGRect(pointA: oneHourPoint, pointB: oneHourPoint + CGPoint(x: -20, y: 8)),
                                 withAttributes: attributes)
         // 5° label
         let paragraphStyleDeg = NSMutableParagraphStyle()
         paragraphStyleDeg.alignment = .left
-        let attributesDeg = [NSFontAttributeName: Font.systemFont(ofSize: 8),
-                             NSForegroundColorAttributeName: color,
-                             NSParagraphStyleAttributeName: paragraphStyleDeg]
+        let attributesDeg = [NSAttributedStringKey.font: Font.systemFont(ofSize: 8),
+                             NSAttributedStringKey.foregroundColor: color,
+                             NSAttributedStringKey.paragraphStyle: paragraphStyleDeg]
         ("5°" as NSString).draw(in: CGRect(pointA: fiveDegreePoint - CGPoint(x: -2, y: -5),
                                             pointB: fiveDegreePoint - CGPoint(x: -20, y: 5)),
                                  withAttributes: attributesDeg)
         // position label
         let paragraphStyleLbl = NSMutableParagraphStyle()
         paragraphStyleLbl.alignment = .center
-        let attributesLbl = [NSFontAttributeName: Font.systemFont(ofSize: 8.0),
-                             NSForegroundColorAttributeName: color,
-                             NSParagraphStyleAttributeName: paragraphStyleLbl]
+        let attributesLbl = [NSAttributedStringKey.font: Font.systemFont(ofSize: 8.0),
+                             NSAttributedStringKey.foregroundColor: color,
+                             NSAttributedStringKey.paragraphStyle: paragraphStyleLbl]
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let tappedCoo = skyPosition(for: origin + c)
         let lbl = String(format: "%.1fh,%.1f°", 0.1*round(10*tappedCoo.x), 0.1*round(10*tappedCoo.y))
         (lbl as NSString).draw(in: CGRect(pointA: origin - CGPoint(x: -25 + 1, y: -12),
-                                            pointB: origin - CGPoint(x: 25 + 1, y: -2)),
-                                 withAttributes: attributesLbl)
+                                          pointB: origin - CGPoint(x: 25 + 1, y: -2)),
+                               withAttributes: attributesLbl)
     }
     
-    private func drawTapped(context: CGContext, star: Star) {
+    private func drawTapped(context: CGContext, star: RadialStar) {
         let circleSize: CGFloat = 15
         let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: circleSize)
         let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
@@ -245,16 +252,16 @@ class StarMapView: View {
         let mag = star.starData?.value.mag ?? 0.0
         let rootValue = 1.0/(2.4 * 1.085)
         let dotSize = CGFloat(StarMapView.vegaSize) * magnification / CGFloat(exp(mag * rootValue))
-        xcLog.debug("F(\(mag) = \(dotSize))")
+        log.verbose("F(\(mag) = \(dotSize))")
         if let colorIndex = star.starData?.value.colorIndex {
-            xcLog.debug("tappedStar: \(star), \n"
+            log.verbose("tappedStar: \(star), \n"
                 + "color for colorIndex(\(colorIndex)): \(self.bv2ToRGB(for: CGFloat(colorIndex)))")
         }
         
         drawStarText(for: star, position: relativePosition, circleSize: circleSize)
     }
     
-    private func drawStarText(for star: Star, position: CGPoint, circleSize: CGFloat) {
+    private func drawStarText(for star: RadialStar, position: CGPoint, circleSize: CGFloat) {
         let verticalAdjustment = 1.0
         
         guard let starData = star.starData?.value else { return }
@@ -264,39 +271,29 @@ class StarMapView: View {
         let idName: String = "HYG\(star.dbID)"
         var textString: String = starData.properName
             ?? starData.bayer_flamstedt ?? glieseName ?? hdName ?? hrName ?? idName
-        textString += String(format: " (%.1fly)", 3.262*starData.distance)
+        textString += String(format: " (%.1fpc)", 3.262*starData.distance)
         let isLeftOfCenter = position.x < 0.0
         let textInnerCorner = position + circleSize * CGPoint(x: isLeftOfCenter ? 0.9 : 0.05, y: verticalAdjustment * 1.05)
         let textOuterCorner = textInnerCorner + CGPoint(x: isLeftOfCenter ? 200 : -200, y: verticalAdjustment * 14.0)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = isLeftOfCenter ? .left : .right
-        let attributes = [NSFontAttributeName: Font.systemFont(ofSize: 12.0),
-                          NSForegroundColorAttributeName: Color.orange,
-                          NSParagraphStyleAttributeName: paragraphStyle]
+        let attributes = [NSAttributedStringKey.font: Font.systemFont(ofSize: 12.0),
+                          NSAttributedStringKey.foregroundColor: Color.orange,
+                          NSAttributedStringKey.paragraphStyle: paragraphStyle]
         (textString as NSString).draw(in: CGRect(pointA: textInnerCorner, pointB: textOuterCorner), withAttributes: attributes)
     }
 
     // swiftlint:disable variable_name
     /// RGB <0,1> <- BV <-0.4,+2.0> [-]
-    private func bv2ToRGB(for bv: CGFloat, spectralType: String? = nil, logging: Bool = false) -> Color {
+    private func bv2ToRGB(for bv: CGFloat, spectralType: String? = nil) -> Color {
         if let spectralType = spectralType {
             if spectralType.hasPrefix("M6") {
-                var r: CGFloat = 1.0; var g: CGFloat = 0.765; var b: CGFloat = 0.44
-                
-                #if os(OSX)
-                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-                #else
-                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-                #endif
+                let r: CGFloat = 1.0; let g: CGFloat = 0.765; let b: CGFloat = 0.44
+                return Color(red: r, green: g, blue: b, alpha: 1.0)
             }
             else if spectralType.hasPrefix("M8") {
-                var r: CGFloat = 1.0; var g: CGFloat = 0.776; var b: CGFloat = 0.43
-                
-                #if os(OSX)
-                    return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-                #else
-                    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-                #endif
+                let r: CGFloat = 1.0; let g: CGFloat = 0.776; let b: CGFloat = 0.43
+                return Color(red: r, green: g, blue: b, alpha: 1.0)
             }
         }
         
@@ -351,12 +348,6 @@ class StarMapView: View {
         default: break
         }
         
-        // make brigther but keep color 
-
-        #if os(OSX)
-            return NSColor(calibratedRed: r, green: g, blue: b, alpha: 1.0)
-        #else
-            return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-        #endif
+        return Color(red: r, green: g, blue: b, alpha: 1.0)
     }
 }
