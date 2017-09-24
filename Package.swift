@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "KDTree",
     products: [
-        .executable(
+        .library(
             name: "KDTree",
             targets: ["KDTree"]
         )
