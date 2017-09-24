@@ -98,6 +98,7 @@
 		717EB89F1F4D8A9C006B964E /* GridTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTest.swift; sourceTree = "<group>"; };
 		7189757F1F6F310300264E02 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		719CEFAC1E81B8AC00A09A3F /* StarMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMapViewController.swift; sourceTree = "<group>"; };
+		71A6F2C11F77B0E2001FE74C /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		71BB4C891CB12B9400CB19A6 /* FillWithFormsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillWithFormsView.swift; sourceTree = "<group>"; };
 		71BB4C8B1CB12DC800CB19A6 /* TesselationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesselationViewController.swift; sourceTree = "<group>"; };
 		71BB4C8D1CB1468100CB19A6 /* Disc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disc.swift; sourceTree = "<group>"; };
@@ -270,6 +271,7 @@
 		607FACF51AFB993E008FA782 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				71A6F2C11F77B0E2001FE74C /* Package.swift */,
 				7189757F1F6F310300264E02 /* .travis.yml */,
 				8506A4C5702448A3C135B8E7 /* KDTree.podspec */,
 				7C2B43EA9C12FFEB9A9CD3C6 /* README.md */,
