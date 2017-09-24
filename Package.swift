@@ -1,7 +1,19 @@
-// swift-tools-version:3.1
+// swift-tools-version:4.0
 
 import PackageDescription
 
 let package = Package(
-    name: "KDTree"
+    name: "KDTree",
+    products: [
+        .executable(
+            name: "KDTree",
+            targets: ["KDTree"]
+        )
+    ],
+    targets: [
+        .target(
+            name: "KDTree",
+            path: "Sources"
+        )
+    ]
 )
