@@ -163,17 +163,17 @@ class StarMapView: View {
     
     private func setStarColor(for star: RadialStar) {
         if let colorIndex = star.starData?.value.colorIndex {
-            bv2ToRGB(for: CGFloat(colorIndex), spectralType: star.starData?.value.spectralType).setFill()
+            bv2ToRGB(for: CGFloat(colorIndex), spectralType: star.starData?.value.getSpectralType()).setFill()
         } else {
             Color.white.setFill()
         }
     }
     
     private func drawStars(context: CGContext) {
-        let rootValue = 1.0/(2.4 * 1.085)
+        let rootValue: Float = 1.0/(2.4 * 1.085)
 
         for star in self.stars ?? [] {
-            if star.dbID == 0 {
+            if star.starData?.value.db_id == 0 {
                 let paragraphStyleLbl = NSMutableParagraphStyle()
                 paragraphStyleLbl.alignment = .center
                 let size = 12.0 * sqrt(magnification)
@@ -250,7 +250,7 @@ class StarMapView: View {
         context.strokeEllipse(in: rect)
         
         let mag = star.starData?.value.mag ?? 0.0
-        let rootValue = 1.0/(2.4 * 1.085)
+        let rootValue: Float = 1.0/(2.4 * 1.085)
         let dotSize = CGFloat(StarMapView.vegaSize) * magnification / CGFloat(exp(mag * rootValue))
         log.verbose("F(\(mag) = \(dotSize))")
         if let colorIndex = star.starData?.value.colorIndex {
@@ -265,12 +265,12 @@ class StarMapView: View {
         let verticalAdjustment = 1.0
         
         guard let starData = star.starData?.value else { return }
-        let glieseName: String? = starData.gl_id
-        let hdName: String? = starData.hd_id.flatMap { return "HD\($0)" }
-        let hrName: String? = starData.hr_id.flatMap { return "HR\($0)" }
-        let idName: String = "HYG\(star.dbID)"
-        var textString: String = starData.properName
-            ?? starData.bayer_flamstedt ?? glieseName ?? hdName ?? hrName ?? idName
+        let glieseName: String? = starData.getGlId()
+        let hdName: String? = starData.hd_id != -1 ? "HD\(starData.hd_id)" : nil
+        let hrName: String? = starData.hr_id != -1 ? "HD\(starData.hr_id)" : nil
+        let idName: String = "HYG\(starData.db_id)"
+        var textString: String = starData.getProperName()
+            ?? starData.getBayerFlamstedt() ?? glieseName ?? hdName ?? hrName ?? idName
         textString += String(format: " (%.1fpc)", 3.262*starData.distance)
         let isLeftOfCenter = position.x < 0.0
         let textInnerCorner = position + circleSize * CGPoint(x: isLeftOfCenter ? 0.9 : 0.05, y: verticalAdjustment * 1.05)

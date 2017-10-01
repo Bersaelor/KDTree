@@ -1,5 +1,6 @@
 # SwiftyHYGDB
 
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](https://swift.org/)
 [![CI Status](http://img.shields.io/travis/Bersaelor/SwiftyHYGDB.svg?style=flat)](https://travis-ci.org/Bersaelor/SwiftyHYGDB)
 [![Version](https://img.shields.io/cocoapods/v/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
 [![License](https://img.shields.io/cocoapods/l/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
