@@ -11,7 +11,6 @@ public struct RadialStar {
     public static let ascensionRange: CGFloat = 24.0
     public static let declinationRange: CGFloat = 180
     
-    public let dbID: Int32
     public let normalizedAscension: Float
     public let normalizedDeclination: Float
     public let starData: Box<StarData>?
@@ -19,7 +18,7 @@ public struct RadialStar {
 
 extension RadialStar {
     
-    public init? (row: String, advanceByYears: Float? = nil) {
+    init? (row: String, advanceByYears: Float? = nil, indexers: inout SwiftyDBValueIndexers) {
         let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
@@ -31,8 +30,8 @@ extension RadialStar {
             var right_ascension = Float(fields[7]),
             var declination = Float(fields[8]),
             let dist = Double(fields[9]),
-            let mag = Double(fields[13]),
-            let absmag = Double(fields[14])
+            let mag = Float(fields[13]),
+            let absmag = Float(fields[14])
             else {
                 print("Invalid Row: \(row), \n fields: \(fields)")
                 return nil
@@ -41,20 +40,22 @@ extension RadialStar {
         if let advanceByYears = advanceByYears, let pmra = Double(fields[10]), let pmdec = Double(fields[11]) {
             RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         }
-
-        self.dbID = dbID
+        
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
+                                db_id: dbID,
                                 hip_id: Int32(fields[1]),
                                 hd_id: Int32(fields[2]),
                                 hr_id: Int32(fields[3]),
-                                gl_id: fields[4],
-                                bayer_flamstedt: fields[5],
-                                properName: fields[6],
-                                distance: dist, rv: Double(fields[12]),
-                                mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: Float(fields[15]))
+                                gl_id: indexers.glIds.index(for: fields[4]),
+                                bayer_flamstedt: indexers.glIds.index(for: fields[5]),
+                                properName: indexers.glIds.index(for: fields[6]),
+                                distance: dist, rv: Float(fields[12]),
+                                mag: mag, absmag: absmag,
+                                spectralType: indexers.glIds.index(for: fields[14]),
+                                colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }
     
@@ -67,7 +68,6 @@ extension RadialStar {
     ///   - dbID: dbID in the HYG database, optional
     ///   - starData: full star data, optional
     public init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
-        self.dbID = dbID
         self.normalizedAscension = RadialStar.normalize(rightAscension: ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
         self.starData = starData
@@ -99,7 +99,7 @@ extension RadialStar {
         let normalizedDec = self.normalizedDeclination + RadialStar.normalize(declination: declination)
         return RadialStar(ascension: RadialStar.rightAscension(normalizedAscension: normalizedAsc),
                     declination: RadialStar.declination(normalizedDeclination: normalizedDec),
-                    dbID: self.dbID, starData: self.starData)
+                    starData: self.starData)
     }
     
     public var starPoint: CGPoint {
@@ -127,7 +127,7 @@ extension RadialStar {
 // swiftlint:enable variable_name
 
 public func == (lhs: RadialStar, rhs: RadialStar) -> Bool {
-    return lhs.dbID == rhs.dbID
+    return lhs.normalizedAscension == rhs.normalizedAscension && lhs.normalizedDeclination == rhs.normalizedDeclination
 }
 
 extension RadialStar: Equatable {}
@@ -135,10 +135,10 @@ extension RadialStar: Equatable {}
 extension RadialStar: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = starData?.value.distance ?? Double.infinity
-        let magString = starData?.value.mag ?? Double.infinity
-        return "🌠: ".appending(starData?.value.properName ?? "N.A.")
+        let magString = starData?.value.mag ?? Float.infinity
+        return "🌠: ".appending(starData?.value.getProperName() ?? "N.A.")
             .appending(", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))")
-            .appending("Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):")
+            .appending("Gliese(\(starData?.value.getGlId() ?? "")), BF(\(starData?.value.getBayerFlamstedt() ?? "")):")
             .appending("\(starData?.value.right_ascension ?? 100), \(starData?.value.declination ?? 100),"
             .appending(" \( distanceString ) mag: \(magString)"))
     }

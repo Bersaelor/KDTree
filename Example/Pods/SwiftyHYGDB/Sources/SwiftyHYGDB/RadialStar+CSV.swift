@@ -12,15 +12,13 @@ extension RadialStar: CSVWritable {
 
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
-        var result = "\(dbID),"
-        result.append(starData.csvLine)
-        return result
+        return starData.csvLine
     }
 }
 
 /// High performance initializer
 extension RadialStar {
-    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil) {
+    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil, indexers: inout SwiftyDBValueIndexers) {
         var index = 0
         
         guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
@@ -36,9 +34,9 @@ extension RadialStar {
             let dist: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let pmra: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
         let pmdec: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
-        let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
-        guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let rv: Float? = readNumber(at: &index, stringPtr: rowPtr)
+        guard let mag: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let absmag: Float = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
         
@@ -46,19 +44,22 @@ extension RadialStar {
             RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         }
         
-        self.dbID = dbID
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
+
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
+                                db_id: dbID,
                                 hip_id: hip_id,
                                 hd_id: hd_id,
                                 hr_id: hr_id,
-                                gl_id: gl_id,
-                                bayer_flamstedt: bayerFlamstedt,
-                                properName: properName,
+                                gl_id: indexers.glIds.index(for: gl_id),
+                                bayer_flamstedt: indexers.bayerFlamstedts.index(for: bayerFlamstedt),
+                                properName: indexers.properNames.index(for: properName),
                                 distance: dist, rv: rv,
-                                mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
+                                mag: mag, absmag: absmag,
+                                spectralType: indexers.spectralTypes.index(for: spectralType),
+                                colorIndex: colorIndex)
         self.starData = Box(starData)
     }
 }
@@ -118,7 +119,9 @@ func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMu
         var scanned: Int32 = -1
         withUnsafeMutablePointer(to: &value, { valuePtr in
             let args: [CVarArg] = [valuePtr]
-            scanned = vsscanf(newCPtr, T.cFormatString, getVaList(args))
+            scanned = withVaList(args, { (vaListPtr) -> Int32 in
+                return vsscanf(newCPtr, T.cFormatString, vaListPtr)
+            })
         })
         return scanned > 0 ? value : nil
     }

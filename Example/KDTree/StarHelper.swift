@@ -112,7 +112,7 @@ class StarHelper: NSObject {
             }
         }
         
-        log.debug("Found nearest star \(nearestStar?.dbID ?? -1) in \(Date().timeIntervalSince(startNN))s")
+        log.debug("Found nearest star \(nearestStar?.starData?.value.db_id ?? -1) in \(Date().timeIntervalSince(startNN))s")
         starMapView.tappedStar = nearestStar
     }
 }

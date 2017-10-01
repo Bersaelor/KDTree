@@ -12,8 +12,7 @@ extension Star3D: CSVWritable {
 
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
-        var result = "\(dbID),"
-        result.append(starData.csvLine)
+        var result = starData.csvLine
         result.append((x.compressedString).appending(","))
         result.append((y.compressedString).appending(","))
         result.append((z.compressedString).appending(","))
@@ -23,7 +22,7 @@ extension Star3D: CSVWritable {
 
 /// High performance initializer
 extension Star3D {
-    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Double? = nil) {
+    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Double? = nil, indexers: inout SwiftyDBValueIndexers) {
         var index = 0
         
         guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
@@ -39,9 +38,9 @@ extension Star3D {
             let dist: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let pmra: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
         let pmdec: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
-        let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
-        guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let rv: Float? = readNumber(at: &index, stringPtr: rowPtr)
+        guard let mag: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let absmag: Float = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
         guard var x: Float = readNumber(at: &index, stringPtr: rowPtr),
@@ -64,16 +63,20 @@ extension Star3D {
         self.x = x
         self.y = y
         self.z = z
+        
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
+                                db_id: dbID,
                                 hip_id: hip_id,
                                 hd_id: hd_id,
                                 hr_id: hr_id,
-                                gl_id: gl_id,
-                                bayer_flamstedt: bayerFlamstedt,
-                                properName: properName,
+                                gl_id: indexers.glIds.index(for: gl_id),
+                                bayer_flamstedt: indexers.bayerFlamstedts.index(for: bayerFlamstedt),
+                                properName: indexers.properNames.index(for: properName),
                                 distance: dist, rv: rv,
-                                mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
+                                mag: mag, absmag: absmag,
+                                spectralType: indexers.spectralTypes.index(for: spectralType),
+                                colorIndex: colorIndex)
         self.starData = Box(starData)
     }
 }

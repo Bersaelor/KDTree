@@ -8,11 +8,11 @@
 import Foundation
 
 public struct Point3D {
-    var x,y,z: Float
+    public var x,y,z: Float
 }
 
 extension Point3D {
-    static var zero: Point3D {
+    public static var zero: Point3D {
         return Point3D(x: 0, y: 0, z: 0)
     }
 }

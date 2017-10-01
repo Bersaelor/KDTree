@@ -17,7 +17,7 @@ public struct Star3D {
 
 extension Star3D {
     
-    public init? (row: String, advanceByYears: Double? = nil) {
+    init? (row: String, advanceByYears: Double? = nil, indexers: inout SwiftyDBValueIndexers) {
         let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
@@ -29,8 +29,8 @@ extension Star3D {
             var right_ascension = Float(fields[7]),
             var declination = Float(fields[8]),
             let dist = Double(fields[9]),
-            let mag = Double(fields[13]),
-            let absmag = Double(fields[14]),
+            let mag = Float(fields[13]),
+            let absmag = Float(fields[14]),
             var x = Float(fields[16]),
             var y = Float(fields[17]),
             var z = Float(fields[18])
@@ -55,14 +55,17 @@ extension Star3D {
         
         let starData = StarData(right_ascension: right_ascension,
                                       declination: declination,
+                                      db_id: dbID,
                                       hip_id: Int32(fields[1]),
                                       hd_id: Int32(fields[2]),
                                       hr_id: Int32(fields[3]),
-                                      gl_id: fields[4],
-                                      bayer_flamstedt: fields[5],
-                                      properName: fields[6],
-                                      distance: dist, rv: Double(fields[12]),
-                                      mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: Float(fields[15]))
+                                      gl_id: indexers.glIds.index(for: fields[4]),
+                                      bayer_flamstedt: indexers.glIds.index(for: fields[5]),
+                                      properName: indexers.glIds.index(for: fields[6]),
+                                      distance: dist, rv: Float(fields[12]),
+                                      mag: mag, absmag: absmag,
+                                      spectralType: indexers.glIds.index(for: fields[14]),
+                                      colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }
     
@@ -103,10 +106,10 @@ extension Star3D: Equatable {}
 extension Star3D: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = starData?.value.distance ?? Double.infinity
-        let magString = starData?.value.mag ?? Double.infinity
-        return "🌠: ".appending(starData?.value.properName ?? "N.A.")
+        let magString = starData?.value.mag ?? Float.infinity
+        return "🌠: ".appending(starData?.value.getProperName() ?? "N.A.")
             .appending(", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))")
-            .appending("Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):")
+            .appending("Gliese(\(starData?.value.getGlId() ?? "")), BF(\(starData?.value.getBayerFlamstedt() ?? "")):")
             .appending("\(starData?.value.right_ascension ?? 100), \(starData?.value.declination ?? 100),"
                 .appending(" \( distanceString ) mag: \(magString)"))
     }
