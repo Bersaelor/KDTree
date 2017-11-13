@@ -11,7 +11,7 @@ matrix:
         - git clone https://github.com/IBM-Swift/Package-Builder.git
       script: ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
     - os: osx
-      osx_image: xcode9
+      osx_image: xcode9.1
       sudo: required
       language: objective-c
       podfile: Example/Podfile
@@ -19,7 +19,7 @@ matrix:
       script:
         - set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
     - os: osx
-      osx_image: xcode9
+      osx_image: xcode9.1
       sudo: required
       language: objective-c
       podfile: Example/Podfile
