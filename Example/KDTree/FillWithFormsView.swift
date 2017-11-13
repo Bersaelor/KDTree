@@ -111,7 +111,7 @@ class FillWithFormsView: View {
             var newPoints = 0
             for _ in 0...5*initialPoints {
                 if weakShapeOp?.isCancelled == true { break }
-                let testDisc = Disc(center:  CGPoint.random(), radius: 0.0, color: Color.clear)
+                let testDisc = Disc(center: CGPoint.random(), radius: 0.0, color: Color.clear)
                 let maxshapeRadius = min(maxDiscSize, min(1 - abs(testDisc.center.x), 1 - abs(testDisc.center.y)))
                 let nearest8Discs = treeCopy.nearestK(8, to: testDisc)
                 let closestDistance = nearest8Discs.reduce(CGFloat.infinity) { (currentMin, disc) -> CGFloat in

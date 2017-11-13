@@ -14,6 +14,11 @@ class NearestNeighbourLoadTest: XCTestCase {
     var testPoints: [CGPoint] = []
     var largeTree: KDTree<CGPoint> = KDTree(values: [])
     var nearestPointsFromArray: [CGPoint] = []
+    #if CGFLOAT_IS_DOUBLE
+        let accuracy = 5 * CGFloat.ulpOfOne
+    #else
+        let accuracy = 10 * CGFloat.ulpOfOne
+    #endif
     
     override func setUp() {
         super.setUp()
@@ -77,17 +82,19 @@ class NearestNeighbourLoadTest: XCTestCase {
     }
 
     func test04_ReducePerformance() {
-        var sum = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
-        let avgPoint = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
-        
+        let avgPoint = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x/CGFloat(self.points.count),
+                                                                  y: $0.y + $1.y/CGFloat(self.points.count))}
+        var avgPointTree = CGPoint.zero
         self.measure {
-            sum = self.largeTree.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)}
+            avgPointTree = self.largeTree.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x/CGFloat(self.points.count),
+                                                                         y: $0.y + $1.y/CGFloat(self.points.count))}
         }
-        let avgPointTree = CGPoint(x: sum.x/CGFloat(self.points.count), y: sum.y/CGFloat(self.points.count))
         print("avgPoint: \(avgPointTree)")
         
         XCTAssertLessThan(avgPointTree.squaredDistance(to: CGPoint(x: 0.5, y: 0.5)), 0.1, "Average point should be around (0.5, 0,5)")
-        XCTAssertEqual(avgPointTree, avgPoint, "Average point from tree equals average from points")
+        
+        XCTAssertEqual(avgPointTree.x, avgPoint.x, accuracy: accuracy, "Average point from tree equals average from points")
+        XCTAssertEqual(avgPointTree.y, avgPoint.y, accuracy: accuracy, "Average point from tree equals average from points")
     }
     
 //    func test04b_ComparisonArrayReduce() {
@@ -165,7 +172,8 @@ class NearestNeighbourLoadTest: XCTestCase {
     func test06_ContainsTest() {
 
         let randomContainedPoints = (0...100).map { _ -> CGPoint in
-            return points[ Int(arc4random()) % points.count ]
+            // swiftlint:disable:next force_unwrapping
+            return points.randomElement()!
         }
         
         var containedPoints = 0
@@ -179,7 +187,8 @@ class NearestNeighbourLoadTest: XCTestCase {
     func test07_SelfShouldBeNearestTest() {
         
         let randomContainedPoints = (0...100).map { _ -> CGPoint in
-            return points[ Int(arc4random()) % points.count ]
+            // swiftlint:disable:next force_unwrapping
+            return points.randomElement()!
         }
         
         var containedPoints = 0

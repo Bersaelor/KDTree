@@ -115,7 +115,7 @@ class IllustrationView: UIView {
         if let tappedPoint = tappedPoint {
             UIColor.black.setStroke()
             context.move(to: CGPoint(x: adjSize*tappedPoint.x - 5.0, y: adjSize*tappedPoint.y - 5.0))
-            context.addLine(to :CGPoint(x: adjSize*tappedPoint.x + 5, y: adjSize*tappedPoint.y + 5))
+            context.addLine(to: CGPoint(x: adjSize*tappedPoint.x + 5, y: adjSize*tappedPoint.y + 5))
             context.strokePath()
             context.move(to: CGPoint(x: adjSize*tappedPoint.x - 5, y: adjSize*tappedPoint.y + 5))
             context.addLine(to: CGPoint(x: adjSize*tappedPoint.x + 5, y: adjSize*tappedPoint.y - 5))

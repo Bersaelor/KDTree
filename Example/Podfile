@@ -10,11 +10,7 @@ target 'KDTree_Example' do
     
     target 'KDTree_Tests' do
         inherit! :search_paths
-        
-        pod 'Quick', :git => 'https://github.com/Quick/Quick', :branch => 'support-swift-4'
-        pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :branch => 'master'
-    end
-    
+    end    
 end
 
 
