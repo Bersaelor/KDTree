@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 #if os(iOS)
     import CoreGraphics
 #elseif os(macOS)
