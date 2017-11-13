@@ -14,6 +14,11 @@ let package = Package(
         .target(
             name: "KDTree",
             path: "Sources"
+        ),
+        .testTarget(
+            name: "Tests",
+            dependencies: ["KDTree"],
+            path: "Tests"
         )
     ]
 )
