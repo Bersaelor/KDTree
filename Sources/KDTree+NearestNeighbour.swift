@@ -16,7 +16,7 @@ extension KDTree {
     /// Optional parameter 'maxDistance' if you are not interested in neighbours beyond a specified distance
     ///
     /// - Complexity: O(N log N).
-    public func nearest(to element: Element, maxDistance: Double = Double.infinity, condition: (Element) -> Bool = { _ in true }) -> Element? {
+    public func nearest(to element: Element, maxDistance: Double = Double.infinity, where condition: (Element) -> Bool = { _ in true }) -> Element? {
         guard !self.isEmpty else { return nil }
         
         return nearest(to: element, bestValue: nil, bestDistance: maxDistance, condition: condition).bestValue

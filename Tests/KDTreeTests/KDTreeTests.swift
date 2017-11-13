@@ -110,12 +110,15 @@ class KDTreeTests: XCTestCase {
         tenPoints.forEach { sum2 += sqrt(Double($0.x*$0.x + $0.y*$0.y)) }
         let avg = sum2 / Double(tenPoints.count)
         XCTAssertEqualWithAccuracy(avg, 7.78, accuracy: 0.01, "Average norm by forEach")
-
+        
         let closeTo5 = tenTree.nearest(to: CGPoint(x: 4.9, y: 4.9))
         XCTAssertEqual(closeTo5, CGPoint(x: 5.0, y: 5.0))
-
-        let four = tenTree.nearest(to: CGPoint(x: 4.9, y: 4.9), condition: { $0.x != 5.0 })
+        
+        let four = tenTree.nearest(to: CGPoint(x: 4.9, y: 4.9), where: { $0.x != 5.0 })
         XCTAssertEqual(four, CGPoint(x: 4.0, y: 4.0))
+        
+        let two = tenTree.nearestK(2, to: CGPoint(x: 4.9, y: 4.9), where: { $0.x != 5.0 })
+        XCTAssertEqual(two, [CGPoint(x: 4.0, y: 4.0), CGPoint(x: 6.0, y: 6.0)])
     }
     
     func test01_RangeSearchPerformance() {
