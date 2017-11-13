@@ -16,8 +16,6 @@ matrix:
       language: objective-c
       podfile: Example/Podfile
       env: TEST_DESTINATION="OS=11.1,name=iPhone 7"
-      install:
-        - ./install_swiftlint.sh
       script:
         - set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
     - os: osx
