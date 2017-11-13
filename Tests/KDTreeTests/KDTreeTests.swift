@@ -1,7 +1,18 @@
 import XCTest
 @testable import KDTree
 
+// This is the test file used when running `swift test` from the root repo
+// Eventually I will merge as much as possible of the `Tests/KDTreeTests` folder with `Example/Tests`
+// as they really should work both on linux and macos
+
 // test data
+
+#if os(Linux) || CYGWIN
+public func arc4random() -> UInt32 {
+    return UInt32(random())
+}
+#endif
+
 
 extension CGPoint {
     static func random() -> CGPoint {
@@ -109,7 +120,7 @@ class KDTreeTests: XCTestCase {
         var sum2 = 0.0
         tenPoints.forEach { sum2 += sqrt(Double($0.x*$0.x + $0.y*$0.y)) }
         let avg = sum2 / Double(tenPoints.count)
-        XCTAssertEqualWithAccuracy(avg, 7.78, accuracy: 0.01, "Average norm by forEach")
+        XCTAssertEqual(avg, 7.78, accuracy: 0.01, "Average norm by forEach")
         
         let closeTo5 = tenTree.nearest(to: CGPoint(x: 4.9, y: 4.9))
         XCTAssertEqual(closeTo5, CGPoint(x: 5.0, y: 5.0))

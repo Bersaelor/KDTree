@@ -90,6 +90,8 @@
 		607FACEB1AFB9204008FA782 /* BasicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTests.swift; sourceTree = "<group>"; };
 		712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSearchTests.swift; sourceTree = "<group>"; };
 		713204B41CD949EE001A1F44 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		715C05591FB9CD8D00103836 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = ../../Tests/LinuxMain.swift; sourceTree = "<group>"; };
+		715C055A1FB9CE8000103836 /* KDTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KDTreeTests.swift; path = ../../Tests/KDTreeTests/KDTreeTests.swift; sourceTree = "<group>"; };
 		716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationView.swift; sourceTree = "<group>"; };
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -247,6 +249,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				715C05591FB9CD8D00103836 /* LinuxMain.swift */,
+				715C055A1FB9CE8000103836 /* KDTreeTests.swift */,
 				713204B41CD949EE001A1F44 /* TestHelpers.swift */,
 				607FACEB1AFB9204008FA782 /* BasicTests.swift */,
 				71C2077A1CA9C9C2009C9551 /* NearestNeighbourTests.swift */,
