@@ -39,7 +39,7 @@ class NearestNeighbourSpec: QuickSpec {
                 
                 let tree = KDTree(values: points)
                 it("should bubble over after finding firstBest") {
-                    expect(tree.nearest(to: CGPoint(x: -0.1, y:0.5))) == points[3]
+                    expect(tree.nearest(to: CGPoint(x: -0.1, y: 0.5))) == points[3]
                 }
             }
             

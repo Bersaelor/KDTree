@@ -16,7 +16,7 @@ class StarHelper: NSObject {
     static func loadStarTree(named fileName: String, completion: @escaping (KDTree<RadialStar>?) -> Void) {
         let startLoading = Date()
         
-        guard let starsPath = Bundle.main.path(forResource: fileName, ofType:  "csv") else {
+        guard let starsPath = Bundle.main.path(forResource: fileName, ofType: "csv") else {
             log.error("Failed loading file: hygdata_v3")
             completion(nil)
             return
@@ -38,7 +38,7 @@ class StarHelper: NSObject {
     
     static func loadStarsFromPList(named fileName: String, completion: (KDTree<RadialStar>?) -> Void) {
         let startLoading = Date()
-        guard let filePath = Bundle.main.path(forResource: fileName, ofType:  "plist") else {
+        guard let filePath = Bundle.main.path(forResource: fileName, ofType: "plist") else {
             log.error("Failed loading file: storedTree")
             completion(nil)
             return

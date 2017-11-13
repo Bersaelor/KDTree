@@ -14,19 +14,19 @@ matrix:
       osx_image: xcode9
       sudo: required
       language: objective-c
-			podfile: Example/Podfile
+      podfile: Example/Podfile
       env: TEST_DESTINATION="OS=11.1,name=iPhone 7"
       install:
         - ./install_swiftlint.sh
       script:
-				- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
+        - set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
     - os: osx
       osx_image: xcode9
       sudo: required
       language: objective-c
-			podfile: Example/Podfile
+      podfile: Example/Podfile
       env: TEST_DESTINATION="OS=9.3,name=iPhone 5"
       install:
         - ./install_swiftlint.sh
       script:
-				- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
+        - set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
