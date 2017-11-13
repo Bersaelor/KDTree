@@ -7,7 +7,13 @@
 //
 
 import Foundation
+#if os(iOS)
+    import CoreGraphics
+#elseif os(macOS)
+    import CoreGraphics
+#endif
 
+#if os(iOS) || os(macOS)
 extension CGPoint: KDTreePoint {
     public static var dimensions = 2
     
@@ -21,3 +27,4 @@ extension CGPoint: KDTreePoint {
         return Double(x*x + y*y)
     }
 }
+#endif
