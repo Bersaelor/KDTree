@@ -6,12 +6,10 @@
 //
 //
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-    import CoreGraphics
-#elseif os(macOS)
+import Foundation
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     import CoreGraphics
 #endif
-import Foundation
 
 extension CGPoint: KDTreePoint {
     public static var dimensions = 2
