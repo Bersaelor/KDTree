@@ -9,6 +9,12 @@
 import Foundation
 import KDTree
 
+#if os(Linux) || CYGWIN
+    public func arc4random() -> UInt32 {
+        return UInt32(random())
+    }
+#endif
+
 extension CGFloat {
     static func random(_ start: CGFloat = 0.0, end: CGFloat = 1.0) -> CGFloat {
         return (end-start)*CGFloat(Float(arc4random()) / Float(UINT32_MAX)) + start
@@ -37,7 +43,7 @@ extension CGRect: KDTreePoint {
 
 extension Array {
     func randomElement() -> Element? {
-        guard !self.isEmpty else { return nil }
-        return self[Int(arc4random())%self.count]
+        guard !self.isEmpty else { return nil }        
+        return self[Int(arc4random_uniform(UInt32(self.count)))]
     }
 }

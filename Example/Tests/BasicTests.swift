@@ -52,7 +52,7 @@ class BasicTests: XCTestCase {
         var smallerPoints = points
         var smallerTree = kdTree
         for _ in 0..<50 {
-            let n = Int(arc4random() % UInt32(smallerPoints.count))
+            let n = Int(arc4random_uniform(UInt32(smallerPoints.count)))
             let pointToBeRemoved = smallerPoints[n]
             smallerPoints.remove(at: n)
             smallerTree = smallerTree.removing(pointToBeRemoved)
