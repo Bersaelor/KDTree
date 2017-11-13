@@ -9,7 +9,7 @@
 import XCTest
 import KDTree
 
-class PerformanceTests: XCTestCase {
+class CodableTests: XCTestCase {
     var points: [CGPoint] = []
     var testPoints: [CGPoint] = []
     var largeTree: KDTree<CGPoint> = KDTree(values: [])
@@ -80,7 +80,7 @@ class PerformanceTests: XCTestCase {
 //            }
             
             let missingPoints = largeTree.reduce(0) { (res, point) -> Int in
-                if let nearest = decodedTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne  {
+                if let nearest = decodedTree.nearest(to: point), nearest.squaredDistance(to: point) > Double(CGFloat.ulpOfOne) {
                     print("point \(point) is missing, distance: \( nearest.squaredDistance(to: point) )")
                     return res + 1
                 }
@@ -89,7 +89,7 @@ class PerformanceTests: XCTestCase {
             XCTAssertEqual(missingPoints, 0, "Decoded Tree should have all original points")
 
             let unexpectedPoints = decodedTree.reduce(0) { (res, point) -> Int in
-                if let nearest = largeTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne  {
+                if let nearest = largeTree.nearest(to: point), nearest.squaredDistance(to: point) > Double(CGFloat.ulpOfOne) {
                     print("point \(point) is missing, distance: \( nearest.squaredDistance(to: point) )")
                     return res + 1
                 }
