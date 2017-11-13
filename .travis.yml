@@ -2,15 +2,31 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-language: objective-c
-osx_image: xcode9
-# cache: cocoapods
-podfile: Example/Podfile
-
-env:
-  matrix:
-    - TEST_DESTINATION="OS=11.0,name=iPhone 7"
-    - TEST_DESTINATION="OS=9.3,name=iPhone 6S"
-script:
-- open -a "simulator" --args -CurrentDeviceUDID CEBBD79A-B6C1-4A02-BD33-56BBCBDED03E
-- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO  -destination "$TEST_DESTINATION" | xcpretty
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      before_install:
+        - git clone https://github.com/IBM-Swift/Package-Builder.git
+      script: ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
+    - os: osx
+      osx_image: xcode9
+      sudo: required
+      language: objective-c
+			podfile: Example/Podfile
+      env: TEST_DESTINATION="OS=11.1,name=iPhone 7"
+      install:
+        - ./install_swiftlint.sh
+      script:
+				- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
+    - os: osx
+      osx_image: xcode9
+      sudo: required
+      language: objective-c
+			podfile: Example/Podfile
+      env: TEST_DESTINATION="OS=9.3,name=iPhone 5"
+      install:
+        - ./install_swiftlint.sh
+      script:
+				- set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example ONLY_ACTIVE_ARCH=NO -destination "$TEST_DESTINATION" | xcpretty
