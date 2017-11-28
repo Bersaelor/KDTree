@@ -25,6 +25,7 @@
 		716B71FE1CAEFC3500A35BB6 /* IllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FD1CAEFC3500A35BB6 /* IllustrationView.swift */; };
 		716B72001CAF1E5C00A35BB6 /* IllustrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */; };
 		716B72021CAF25B100A35BB6 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B72011CAF25B100A35BB6 /* Geometry.swift */; };
+		717A226D1FCDCFAA0087CC2B /* AllPointsinRadiusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A226B1FCDCEF20087CC2B /* AllPointsinRadiusTests.swift */; };
 		717EB8A11F4D8AE6006B964E /* GridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EB89F1F4D8A9C006B964E /* GridTest.swift */; };
 		7186FE811D99D6B500D8F292 /* NearestNeighbourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2077A1CA9C9C2009C9551 /* NearestNeighbourTests.swift */; };
 		7186FE831D99D99B00D8F292 /* BasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BasicTests.swift */; };
@@ -96,6 +97,7 @@
 		716B71FF1CAF1E5C00A35BB6 /* IllustrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IllustrationViewController.swift; sourceTree = "<group>"; };
 		716B72011CAF25B100A35BB6 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		716D540B1F517E5E0079A809 /* CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTests.swift; sourceTree = "<group>"; };
+		717A226B1FCDCEF20087CC2B /* AllPointsinRadiusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPointsinRadiusTests.swift; sourceTree = "<group>"; };
 		717EB89E1F4D8665006B964E /* KDTreePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = KDTreePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		717EB89F1F4D8A9C006B964E /* GridTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTest.swift; sourceTree = "<group>"; };
 		7189757F1F6F310300264E02 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				713204B41CD949EE001A1F44 /* TestHelpers.swift */,
 				607FACEB1AFB9204008FA782 /* BasicTests.swift */,
 				71C2077A1CA9C9C2009C9551 /* NearestNeighbourTests.swift */,
+				717A226B1FCDCEF20087CC2B /* AllPointsinRadiusTests.swift */,
 				74887EFB1CABC258002AECF6 /* LoadTest.swift */,
 				717EB89F1F4D8A9C006B964E /* GridTest.swift */,
 				712EDA7A1CB5A4DE001F32F3 /* RangeSearchTests.swift */,
@@ -784,6 +787,7 @@
 				7186FE861D99DF0A00D8F292 /* LoadTest.swift in Sources */,
 				713204B51CD949EE001A1F44 /* TestHelpers.swift in Sources */,
 				7186FE811D99D6B500D8F292 /* NearestNeighbourTests.swift in Sources */,
+				717A226D1FCDCFAA0087CC2B /* AllPointsinRadiusTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
