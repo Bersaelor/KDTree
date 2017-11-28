@@ -14,11 +14,7 @@ class NearestNeighbourLoadTest: XCTestCase {
     var testPoints: [CGPoint] = []
     var largeTree: KDTree<CGPoint> = KDTree(values: [])
     var nearestPointsFromArray: [CGPoint] = []
-    #if CGFLOAT_IS_DOUBLE
-        let accuracy = 5 * CGFloat.ulpOfOne
-    #else
-        let accuracy = 10 * CGFloat.ulpOfOne
-    #endif
+    let accuracy = 10 * CGFloat.ulpOfOne
     
     override func setUp() {
         super.setUp()
