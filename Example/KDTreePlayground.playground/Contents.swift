@@ -26,13 +26,16 @@ extension GridP: KDTreePoint {
 }
 
 var points = [GridP]()
-for x in 0...2 {
-    for y in 0...2 {
+for x in 0...10 {
+    for y in 0...10 {
         points.append(GridP(point: CGPoint(x: x, y: y)))
     }
 }
 print("\(points.count) added")
-
+let criteria: (GridP) -> Bool = { $0.point.x > 2 }
 let tree = KDTree(values: points)
-
-print("tree count: \(tree.count)")
+var somePoints = [GridP]()
+for point in tree {
+    guard somePoints.count < 10 else { break }
+    if criteria(point) { somePoints.append(point) }
+}

@@ -92,7 +92,6 @@ private struct Neighbours {
             full = currentSize >= goalNumber
             biggestDistance = distance
         }
-
     }
 }
 
@@ -130,6 +129,44 @@ extension KDTree {
             if dimensionDifference*dimensionDifference < bestValues.biggestDistance || !bestValues.full {
                 let otherSubtree = isLeftOfValue ? right : left
                 otherSubtree.nearestK(to: searchElement, bestValues: &bestValues, where: condition)
+            }
+        case .leaf: break
+        }
+    }
+    
+    /// Returns all points within a certain radius of the search point,
+    ///
+    ///   - radius: The euclidian radius of the sphere around the search point
+    ///   - searchElement: the center of the search
+    ///
+    /// - Complexity: O(log N).
+    public func allPoints(within radius: Double, of searchElement: Element) -> [Element] {
+        var neighbours = [Element]()
+        self.allPoints(within: radius, of: searchElement, points: &neighbours)
+        return neighbours
+    }
+    
+    fileprivate func allPoints(within radius: Double, of searchElement: Element, points: inout [Element]) {
+        switch self {
+        case let .node(left, value, dim, right):
+            let dimensionDifference = value.kdDimension(dim) - searchElement.kdDimension(dim)
+            let isLeftOfValue = dimensionDifference > 0
+            
+            //check the best estimate side
+            let closerSubtree = isLeftOfValue ? left : right
+            closerSubtree.allPoints(within: radius, of: searchElement, points: &points)
+            
+            //check the nodes value
+            let currentDistance = value.squaredDistance(to: searchElement)
+            if currentDistance <= radius * radius {
+                points.append(value)
+            }
+            
+            //if the radius so far intersects the hyperplane at the other side of this value
+            //there could be points in the other subtree
+            if dimensionDifference < radius {
+                let otherSubtree = isLeftOfValue ? right : left
+                otherSubtree.allPoints(within: radius, of: searchElement, points: &points)
             }
         case .leaf: break
         }
