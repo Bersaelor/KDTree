@@ -13,10 +13,11 @@
 #endif
 
 import KDTree
+import SwiftyHYGDB
 
 class StarViewController: NSViewController {
 
-    var stars: KDTree<Star>?
+    var stars: KDTree<RadialStar>?
     @IBOutlet weak var loadingIndicator: NSProgressIndicator!
     @IBOutlet weak var starMapView: StarMapView!
     
@@ -32,16 +33,15 @@ class StarViewController: NSViewController {
         }
         
         let startLoading = Date()
+
         DispatchQueue.global(qos: .background).async { [weak self] in
-            StarHelper.loadCSVData { (_, stars) in
-                DispatchQueue.main.async {
-                    log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
-                    self?.stars = stars
-                    log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
-                    self?.loadingIndicator.stopAnimation(nil)
-                    self?.reloadStars()
-                }
-            }
+            StarHelper.loadStarTree(named: "allStars", completion: { (stars) in
+                log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
+                self?.stars = stars
+                log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
+                self?.loadingIndicator.stopAnimation(nil)
+                self?.reloadStars()
+            })
         }
     }
     
@@ -63,7 +63,7 @@ class StarViewController: NSViewController {
     }
 
     deinit {
-        stars?.forEach({ (star: Star) in
+        stars?.forEach({ (star: RadialStar) in
             star.starData?.ref.release()
         })
     }
