@@ -43,8 +43,40 @@ extension KDTree {
               median -= 1
             }
           
-            let leftTree = KDTree(values: Array(sortedValues[0..<median]), depth: depth+1)
-            let rightTree = KDTree(values: Array(sortedValues[median+1..<sortedValues.count]), depth: depth+1)
+            let leftTree = KDTree(values: sortedValues[0..<median], depth: depth+1)
+            let rightTree = KDTree(values: sortedValues[median+1..<sortedValues.count], depth: depth+1)
+            
+            self = .node(left: leftTree, value: sortedValues[median],
+                         dimension: currentSplittingDimension, right: rightTree)
+        }
+    }
+    
+    public init(values: ArraySlice<Element>, depth: Int = 0) {
+        guard !values.isEmpty else {
+            self = .leaf
+            return
+        }
+        
+        let currentSplittingDimension = depth % Element.dimensions
+        if values.count == 1, let firstValue = values.first {
+            self = .node(left: .leaf, value: firstValue, dimension: currentSplittingDimension, right: .leaf)
+        }
+        else {
+            let sortedValues = values.sorted { (a, b) -> Bool in
+                return a.kdDimension(currentSplittingDimension) < b.kdDimension(currentSplittingDimension)
+            }
+            
+            var median = sortedValues.count / 2
+            let medianValue = sortedValues[median].kdDimension(currentSplittingDimension)
+            
+            //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
+            //Needed for 'contains' and 'removing' method.
+            while median >= 1 && abs(sortedValues[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
+                median -= 1
+            }
+            
+            let leftTree = KDTree(values: sortedValues[0..<median], depth: depth+1)
+            let rightTree = KDTree(values: sortedValues[median+1..<sortedValues.count], depth: depth+1)
             
             self = .node(left: leftTree, value: sortedValues[median],
                          dimension: currentSplittingDimension, right: rightTree)
