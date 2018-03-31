@@ -10,19 +10,13 @@ import XCTest
 import KDTree
 
 // swiftlint:disable variable_name
-struct STPoint {
+struct STPoint: Equatable {
     let x: CGFloat
     let y: CGFloat
     let z: CGFloat
     let t: CGFloat
 }
 // swiftlint:enable variable_name
-
-func == (lhs: STPoint, rhs: STPoint) -> Bool {
-    return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.t == rhs.t
-}
-
-extension STPoint: Equatable {}
 
 extension STPoint: KDTreePoint {
     internal static var dimensions = 4

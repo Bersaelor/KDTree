@@ -9,15 +9,9 @@
 import XCTest
 import KDTree
 
-struct GridP {
+struct GridP: Equatable {
     let point: CGPoint
 }
-
-func == (lhs: GridP, rhs: GridP) -> Bool {
-    return lhs.point == rhs.point
-}
-
-extension GridP: Equatable {}
 
 extension GridP: KDTreePoint {
     static var dimensions = 2
