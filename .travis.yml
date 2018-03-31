@@ -11,7 +11,7 @@ matrix:
         - git clone https://github.com/IBM-Swift/Package-Builder.git
       script: ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.3beta
       sudo: required
       language: objective-c
       podfile: Example/Podfile
