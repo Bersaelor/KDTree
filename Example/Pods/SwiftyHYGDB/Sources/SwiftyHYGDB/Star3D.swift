@@ -95,8 +95,6 @@ extension Star3D {
     }
 }
 
-// swiftlint:enable variable_name
-
 public func == (lhs: Star3D, rhs: Star3D) -> Bool {
     return lhs.dbID == rhs.dbID
 }

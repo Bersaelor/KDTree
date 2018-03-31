@@ -30,14 +30,12 @@ extension CGFloat {
     }
 }
 
-// swiftlint:disable variable_name
 struct STPoint: Equatable {
     let x: CGFloat
     let y: CGFloat
     let z: CGFloat
     let t: CGFloat
 }
-// swiftlint:enable variable_name
 
 extension STPoint: KDTreePoint {
     internal static var dimensions = 4

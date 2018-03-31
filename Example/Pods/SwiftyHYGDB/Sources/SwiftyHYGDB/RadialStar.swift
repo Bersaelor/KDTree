@@ -124,8 +124,6 @@ extension RadialStar {
     }
 }
 
-// swiftlint:enable variable_name
-
 public func == (lhs: RadialStar, rhs: RadialStar) -> Bool {
     return lhs.normalizedAscension == rhs.normalizedAscension && lhs.normalizedDeclination == rhs.normalizedDeclination
 }

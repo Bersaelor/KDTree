@@ -18,10 +18,8 @@ extension RadialStar: KDTreePoint {
     }
     
     public func squaredDistance(to otherPoint: RadialStar) -> Double {
-        // swiftlint:disable variable_name_min_length
         let x = self.normalizedAscension - otherPoint.normalizedAscension
         let y = self.normalizedDeclination - otherPoint.normalizedDeclination
-        // swiftlint:enable variable_name_min_length
         return Double(x*x + y*y)
     }
 }

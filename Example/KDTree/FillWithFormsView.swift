@@ -54,9 +54,7 @@ class FillWithFormsView: View {
         }
     }
     
-    // swiftlint:disable variable_name_min_length
     fileprivate var adjSize: CGFloat { return 0.5 * min(self.bounds.height, self.bounds.width) }
-    // swiftlint:enable variable_name_min_length
     fileprivate var closeDiscs: [Disc] = []
     fileprivate var discTree: KDTree<Disc> = KDTree<Disc>(values: [])
     fileprivate lazy var downloadQueue: OperationQueue = {

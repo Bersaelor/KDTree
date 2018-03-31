@@ -7,8 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable variable_name
-
 public struct StarData: Codable {
     public let right_ascension: Float
     public let declination: Float
