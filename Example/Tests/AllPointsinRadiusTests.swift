@@ -21,8 +21,8 @@ class AllPointsinRadiusTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        points = (0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
-        testPoints = (0..<100).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        points = (0..<10000).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
+        testPoints = (0..<100).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
         largeTree = KDTree(values: self.points)
         radii = testPoints.map { _ in CGFloat.random(0.01, end: 0.2) }
         nearestPointsFromArray = testPoints.map { (searchPoint: CGPoint) -> CGPoint in

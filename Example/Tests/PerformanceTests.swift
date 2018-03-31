@@ -11,8 +11,8 @@ import KDTree
 
 class PerformanceTests: XCTestCase {
     
-    let testSteps: [Int] = Array(1...5).map({ num in  1000 * num}) as [Int]
-        + Array(2...5).map({ num in    5000 * num}) as [Int]
+    let testSteps: [Int] = Array(1...5).map { num in  1000 * num } as [Int]
+        + Array(2...5).map { num in    5000 * num } as [Int]
 //        + Array(2...8).map({ num in   25000 * num}) as [Int]
 //        + Array(3...10).map({ num in 100000 * num}) as [Int]
 //        + Array(3...10).map({ num in 500000 * num}) as [Int]
@@ -45,8 +45,8 @@ class PerformanceTests: XCTestCase {
         for testSize in testSteps {
             print("Running test for \(testSize)")
             
-            let points = (0..<testSize).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
-            let testPoints = (0..<testRepeats).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+            let points = (0..<testSize).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
+            let testPoints = (0..<testRepeats).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
             var tree: KDTree<CGPoint>?
             
             XCTAssertEqual(points.count, testSize)

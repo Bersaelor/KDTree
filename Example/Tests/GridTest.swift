@@ -49,7 +49,7 @@ class GridTest: XCTestCase {
     
     func testPointsContained() {
         var containedPoints = 0
-        for point in points where !tree.contains(point){
+        for point in points where !tree.contains(point) {
             containedPoints += 1
         }
         

@@ -19,8 +19,8 @@ class NearestNeighbourLoadTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        points = (0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
-        testPoints = (0..<500).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        points = (0..<10000).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
+        testPoints = (0..<500).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
         largeTree = KDTree(values: self.points)
         
         nearestPointsFromArray = testPoints.map { (searchPoint: CGPoint) -> CGPoint in
@@ -79,11 +79,13 @@ class NearestNeighbourLoadTest: XCTestCase {
 
     func test04_ReducePerformance() {
         let avgPoint = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x/CGFloat(self.points.count),
-                                                                  y: $0.y + $1.y/CGFloat(self.points.count))}
+                                                                  y: $0.y + $1.y/CGFloat(self.points.count))
+        }
         var avgPointTree = CGPoint.zero
         self.measure {
             avgPointTree = self.largeTree.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x/CGFloat(self.points.count),
-                                                                         y: $0.y + $1.y/CGFloat(self.points.count))}
+                                                                         y: $0.y + $1.y/CGFloat(self.points.count))
+            }
         }
         print("avgPoint: \(avgPointTree)")
         
@@ -141,7 +143,7 @@ class NearestNeighbourLoadTest: XCTestCase {
                 }
                 
                 let testDistance = searchPoint.squaredDistance(to: testPoint)
-                if let index = bestPoints.index(where: {testDistance < searchPoint.squaredDistance(to: $0) }) {
+                if let index = bestPoints.index(where: { testDistance < searchPoint.squaredDistance(to: $0) }) {
                     var newBestPoints = bestPoints
                     newBestPoints.removeLast()
                     newBestPoints.insert(testPoint, at: index)
@@ -173,7 +175,7 @@ class NearestNeighbourLoadTest: XCTestCase {
         }
         
         var containedPoints = 0
-        for point in randomContainedPoints where !largeTree.contains(point){
+        for point in randomContainedPoints where !largeTree.contains(point) {
             containedPoints += 1
         }
         
