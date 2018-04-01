@@ -27,4 +27,4 @@ matrix:
       install:
         - ./install_swiftlint.sh
       script:
-        - set -o pipefail && xcodebuild test -workspace Example/KDTree.xcworkspace -scheme KDTree_Example -destination "$TEST_DESTINATION" | xcpretty
+        - set -o pipefail && xcodebuild clean build build-for-testing -workspace Example/KDTree.xcworkspace -scheme KDTree_Example -destination "$TEST_DESTINATION" && xcodebuild test-without-building -workspace Example/KDTree.xcworkspace -scheme KDTree_Example -destination "$TEST_DESTINATION" | xcpretty
