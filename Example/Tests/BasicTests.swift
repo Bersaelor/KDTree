@@ -4,7 +4,7 @@ import XCTest
 @testable import KDTree
 
 class BasicTests: XCTestCase {
-    let points: [CGPoint] = (0..<1000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+    let points: [CGPoint] = (0..<1000).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
     let testPoint = CGPoint(x: 2, y: 2)
     let testPoint2 = CGPoint(x: 5, y: 5)
     var kdTree: KDTree<CGPoint> = KDTree(values: [])
@@ -65,19 +65,19 @@ class BasicTests: XCTestCase {
     }
     
     func test03_Filter() {
-        XCTAssertEqual(tenTree.filter({$0.x > 5}).count, 5, "filter x > 5 contains 5")
+        XCTAssertEqual(tenTree.filter({ $0.x > 5 }).count, 5, "filter x > 5 contains 5")
     }
     
     func test04_Reduce() {
-        let sum = tenTree.reduce(0) { $0 + Int($1.x)}
+        let sum = tenTree.reduce(0) { $0 + Int($1.x) }
         
         XCTAssertEqual(sum, 55, "filter x > 5 contains 5")
     }
     
     func test05_ArrayMap() {
-        let filteredTree: KDTree<CGPoint> = tenTree.filter({$0.x > 5})
-        let filterAndMap: [CGFloat] = filteredTree.map({ $0.x + $0.y })
-        let mapAndFilter = tenTree.map({ $0.x + $0.y }).filter({$0 > 10})
+        let filteredTree: KDTree<CGPoint> = tenTree.filter { $0.x > 5 }
+        let filterAndMap: [CGFloat] = filteredTree.map { $0.x + $0.y }
+        let mapAndFilter = tenTree.map({ $0.x + $0.y }).filter({ $0 > 10 })
 
         XCTAssertEqual(mapAndFilter, filterAndMap, "array map to equal tree map")
     }

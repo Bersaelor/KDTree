@@ -46,7 +46,7 @@ public class SwiftyHYGDB: NSObject {
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
-        let stars = lines.dropFirst().flatMap { linePtr -> RadialStar? in
+        let stars = lines.dropFirst().compactMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
             return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)
         }
@@ -75,18 +75,19 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
-        var indexers = SwiftyDBValueIndexers()
-        
+        var indexers = SwiftyDBValueIndexers(glValues: glIds, spectralValues: spectralTypes,
+                                             bfValues: bayerFlamstedts, pNValues: properNames)
+
         let yearsToAdvance = precess ? Double(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
-        let stars = lines.dropFirst().flatMap { linePtr -> Star3D? in
+        let stars = lines.dropFirst().compactMap { linePtr -> Star3D? in
             defer { free(linePtr) }
             return Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)
         }
         
         self.glIds = indexers.glIds.indexedValues()
-        self.properNames = indexers.spectralTypes.indexedValues()
+        self.properNames = indexers.properNames.indexedValues()
         self.bayerFlamstedts = indexers.bayerFlamstedts.indexedValues()
         self.spectralTypes = indexers.spectralTypes.indexedValues()
         
@@ -94,7 +95,7 @@ public class SwiftyHYGDB: NSObject {
     }
     
     public static func save<T: CSVWritable>(stars: [T], to path: String) throws {
-        let lines = [T.headerLine] + stars.flatMap({ $0.csvLine })
+        let lines = [T.headerLine] + stars.compactMap { $0.csvLine }
         let fileString = lines.joined(separator: "\n")
         try fileString.write(to: URL(fileURLWithPath: path), atomically: true, encoding: .utf8)
     }

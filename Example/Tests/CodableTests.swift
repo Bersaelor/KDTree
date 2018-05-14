@@ -19,7 +19,7 @@ class CodableTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        points = (0..<1000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        points = (0..<1000).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
         largeTree = KDTree(values: self.points)
     }
     
@@ -32,7 +32,7 @@ class CodableTests: XCTestCase {
 
         do {
             let data = try encoder.encode(emptyTree)
-            let json = String.init(data: data, encoding: .utf8)
+            let json = String(data: data, encoding: .utf8)
             print(data)
             print(json ?? "?")
             
@@ -115,7 +115,7 @@ class CodableTests: XCTestCase {
                 XCTAssertEqual(largeTree.count, decodedTree.count, "Decoded Tree have equal amount of data as original tree")
 
                 let missingPoints = largeTree.reduce(0) { (res, point) -> Int in
-                    if let nearest = decodedTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne  {
+                    if let nearest = decodedTree.nearest(to: point), nearest.squaredDistance(to: point) > Double.ulpOfOne {
                         print("point \(point) is missing, distance: \( nearest.squaredDistance(to: point) )")
                         return res + 1
                     }

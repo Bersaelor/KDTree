@@ -9,20 +9,12 @@
 import XCTest
 import KDTree
 
-// swiftlint:disable variable_name
-struct STPoint {
+struct STPoint: Equatable {
     let x: CGFloat
     let y: CGFloat
     let z: CGFloat
     let t: CGFloat
 }
-// swiftlint:enable variable_name
-
-func == (lhs: STPoint, rhs: STPoint) -> Bool {
-    return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.t == rhs.t
-}
-
-extension STPoint: Equatable {}
 
 extension STPoint: KDTreePoint {
     internal static var dimensions = 4
@@ -41,10 +33,7 @@ extension STPoint: KDTreePoint {
     }
     
     static var kdDimensionFunctions: [(STPoint) -> Double] {
-        return [{ Double($0.x) },
-                { Double($0.y) },
-                { Double($0.z) },
-                { Double($0.z) }]
+        return [ { Double($0.x) }, { Double($0.y) }, { Double($0.z) }, { Double($0.t) }]
     }
     
     func squaredDistance(to otherPoint: STPoint) -> Double {
@@ -60,19 +49,21 @@ class RangeSearchTests: XCTestCase {
     var points: [CGPoint] = []
     var largeTree: KDTree<CGPoint> = KDTree(values: [])
     let rangeIntervals: [(Double, Double)] = [(0.2, 0.3), (0.45, 0.75)]
-
+    
     var spaceTimePoints: [STPoint] = []
     var spaceTimeTree: KDTree<STPoint> = KDTree(values: [])
     let spaceTimeIntervals: [(Double, Double)] = [(0.2, 0.4), (0.45, 0.75), (0.15, 0.85), (0.1, 0.9)]
-
+    
     override func setUp() {
         super.setUp()
         
-        points = Array(0..<10000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        points = Array(0..<10000).map { _ in CGPoint(x: CGFloat.random(), y: CGFloat.random()) }
         largeTree = KDTree(values: self.points)
         
-        spaceTimePoints = Array(0..<300).map({_ in STPoint(x: CGFloat.random(), y: CGFloat.random(),
-            z: CGFloat.random(), t: CGFloat.random())})
+        spaceTimePoints = Array(0..<300).map({ _ in STPoint(x: CGFloat.random(),
+                                                            y: CGFloat.random(),
+                                                            z: CGFloat.random(),
+                                                            t: CGFloat.random())})
         spaceTimeTree = KDTree(values: self.spaceTimePoints)
     }
     

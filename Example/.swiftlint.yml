@@ -1,31 +1,46 @@
+included:
+  - Sources
+  - Tests
+  - Example/KDTree
 disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace
-  - opening_brace
-#  - variable_name
-#  - function_body_length
-  - statement_position
-#  - type_name
-#  - force_try
-#  - comma
-#  - trailing_semicolon
-#  - control_statement
+  - identifier_name
 
-opt_in_rules: 
-   - empty_count
-   - force_unwrapping
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - private_outlet
+  - nimble_operator
+  - attributes
+  - closure_end_indentation
+  - first_where
+  - object_literal
+  - number_separator
+  - prohibited_super_call
+  - fatal_error_message
+  - vertical_parameter_alignment_on_call
 
-included: # paths to include during linting. `--path` is ignored if present. takes precendence over `excluded`.
-  -  
+number_separator:
+  minimum_length: 8
+
 excluded: # paths to ignore during linting. overridden by `included`.
   - Carthage
-  - Pods
   - Submodules
+  - Example/Pods
+  - KDTreePlayground.playground/Contents.swift
+
 line_length:
-  - 140
+  - 160
   - 200
+  
 type_body_length:
   - 300 # warning
   - 400 # error
+
 function_body_length:
   - 60
   - 120

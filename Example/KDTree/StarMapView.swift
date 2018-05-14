@@ -283,7 +283,6 @@ class StarMapView: View {
         (textString as NSString).draw(in: CGRect(pointA: textInnerCorner, pointB: textOuterCorner), withAttributes: attributes)
     }
 
-    // swiftlint:disable variable_name
     /// RGB <0,1> <- BV <-0.4,+2.0> [-]
     private func bv2ToRGB(for bv: CGFloat, spectralType: String? = nil) -> Color {
         if let spectralType = spectralType {
