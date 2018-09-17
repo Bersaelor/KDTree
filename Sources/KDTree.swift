@@ -248,10 +248,10 @@ extension KDTree {
         let pivot = a.last!
         
         // This loop partitions the array into four (possibly empty) regions:
-        //   [low  ...      i] contains all values <= pivot,
-        //   [i+1  ...    j-1] contains all values > pivot,
-        //   [j    ... high-1] are values we haven't looked at yet,
-        //   [high           ] is the pivot value.
+        //   [a.startIndex  ...   i] contains all values <= pivot,
+        //   [i+1  ...          j-1] contains all values > pivot,
+        //   [j    ..< a.endIndex-1] are values we haven't looked at yet,
+        //   [a.endIndex           ] is the pivot value.
         var i = a.startIndex
         
         for j in a.startIndex..<a.endIndex-1 {
@@ -262,13 +262,13 @@ extension KDTree {
         }
         
         // Swap the pivot element with the first element that is greater than
-        // the pivot. Now the pivot sits between the <= and > regions and the
+        // the pivot. Now the pivot sits between the < and >= regions and the
         // array is properly partitioned.
         (a[i], a[a.endIndex-1]) = (a[a.endIndex-1], a[i])
         return i
     }
     
-    func quickSelect(n: Int, arr: inout [Element], kdDimension: Int) -> Element {
+    private func quickSelect(n: Int, arr: inout [Element], kdDimension: Int) -> Element {
         if arr.count == 1 {
             return arr.first!
         }
@@ -287,7 +287,7 @@ extension KDTree {
         }
     }
     
-    func quickSelect(n: Int, arr: inout ArraySlice<Element>, kdDimension: Int) -> Element {
+    private func quickSelect(n: Int, arr: inout ArraySlice<Element>, kdDimension: Int) -> Element {
         if arr.count == 1 {
             return arr.first!
         }
