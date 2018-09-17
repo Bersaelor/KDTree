@@ -20,8 +20,8 @@ public enum KDTree<Element: KDTreePoint> {
 
 extension KDTree {
     public init(values: [Element], depth: Int = 0) {
-        self = .leaf
         guard !values.isEmpty else {
+            self = .leaf
             return
         }
         
@@ -33,7 +33,7 @@ extension KDTree {
             var median = values.count / 2
             var vals = values
             
-            let medianElement = quickSelect(n: median, arr: &vals, kdDimension: currentSplittingDimension)
+            let medianElement = KDTree.quickSelect(n: median, arr: &vals, kdDimension: currentSplittingDimension)
             let medianValue = medianElement.kdDimension(currentSplittingDimension)
           
             //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
@@ -51,8 +51,8 @@ extension KDTree {
     }
     
     public init(values: inout ArraySlice<Element>, depth: Int = 0) {
-        self = .leaf
         guard !values.isEmpty else {
+            self = .leaf
             return
         }
         
@@ -63,7 +63,7 @@ extension KDTree {
         else {
             var median = values.startIndex + (values.endIndex - values.startIndex) / 2
             
-            let medianElement = quickSelect(n: median, arr: &values, kdDimension: currentSplittingDimension)
+            let medianElement = KDTree.quickSelect(n: median, arr: &values, kdDimension: currentSplittingDimension)
             let medianValue = medianElement.kdDimension(currentSplittingDimension)
             
             //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
@@ -243,13 +243,13 @@ extension KDTree {
         }
     }
     
-    private func partitionLomuto(_ a: inout ArraySlice<Element>, kdDimension: Int) -> Int {
+    private static func partitionLomuto(_ a: inout ArraySlice<Element>, kdDimension: Int) -> Int {
         // We always use the highest item as the pivot.
         let pivot = a.last!
         
         // This loop partitions the array into four (possibly empty) regions:
-        //   [a.startIndex  ...   i] contains all values <= pivot,
-        //   [i+1  ...          j-1] contains all values > pivot,
+        //   [a.startIndex  ...   i] contains all values < pivot,
+        //   [i+1  ...          j-1] contains all values >= pivot,
         //   [j    ..< a.endIndex-1] are values we haven't looked at yet,
         //   [a.endIndex           ] is the pivot value.
         var i = a.startIndex
@@ -268,7 +268,7 @@ extension KDTree {
         return i
     }
     
-    private func quickSelect(n: Int, arr: inout [Element], kdDimension: Int) -> Element {
+    private static func quickSelect(n: Int, arr: inout [Element], kdDimension: Int) -> Element {
         if arr.count == 1 {
             return arr.first!
         }
@@ -287,7 +287,7 @@ extension KDTree {
         }
     }
     
-    private func quickSelect(n: Int, arr: inout ArraySlice<Element>, kdDimension: Int) -> Element {
+    private static func quickSelect(n: Int, arr: inout ArraySlice<Element>, kdDimension: Int) -> Element {
         if arr.count == 1 {
             return arr.first!
         }
