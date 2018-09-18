@@ -39,8 +39,10 @@ class StarViewController: NSViewController {
                 log.debug("Completed loading stars: \(Date().timeIntervalSince(startLoading))s")
                 self?.stars = stars
                 log.debug("Finished loading \(stars?.count ?? -1) stars, after \(Date().timeIntervalSince(startLoading))s")
-                self?.loadingIndicator.stopAnimation(nil)
-                self?.reloadStars()
+                DispatchQueue.main.async {
+                    self?.loadingIndicator.stopAnimation(nil)
+                    self?.reloadStars()
+                }
             })
         }
     }
