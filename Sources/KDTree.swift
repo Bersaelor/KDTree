@@ -32,7 +32,7 @@ extension KDTree {
         else {
             var median = values.count / 2
             
-            let selected = KDTree.quickSelect(n: median, arr: values, kdDimension: currentSplittingDimension)
+            let selected = KDTree.quickSelect(targetIndex: median, array: values[0..<values.count], kdDimension: currentSplittingDimension)
             let medianElement = selected[median]
             let medianValue = medianElement.kdDimension(currentSplittingDimension)
           
@@ -61,23 +61,42 @@ extension KDTree {
             self = .node(left: .leaf, value: firstValue, dimension: currentSplittingDimension, right: .leaf)
         }
         else {
-            var median = values.startIndex + (values.endIndex - values.startIndex) / 2
+            let sliceStartIndex = values.startIndex
+            let sliceEndIndex = values.endIndex
+            var median = sliceStartIndex + (sliceEndIndex - sliceStartIndex) / 2
             
-            let selected = KDTree.quickSelect(n: median, arr: values, kdDimension: currentSplittingDimension)
+            let selected = KDTree.quickSelect(targetIndex: median, array: values, kdDimension: currentSplittingDimension)
             let medianElement = selected[median]
             let medianValue = medianElement.kdDimension(currentSplittingDimension)
             
             //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
             //Needed for 'contains' and 'removing' method.
-            while median >= 1 && median > selected.startIndex && abs(selected[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
+            while median >= 1 && median > sliceStartIndex && abs(selected[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
                 median -= 1
             }
             
-            let leftTree = KDTree(values: selected[selected.startIndex..<median], depth: depth+1)
-            let rightTree = KDTree(values: selected[median+1..<selected.endIndex], depth: depth+1)
+            let leftTree = KDTree(values: selected[sliceStartIndex..<median], depth: depth+1)
+            let rightTree = KDTree(values: selected[median+1..<sliceEndIndex], depth: depth+1)
             
             self = .node(left: leftTree, value: selected[median],
                          dimension: currentSplittingDimension, right: rightTree)
+        }
+    }
+    
+    private static func quickSelect(targetIndex: Int, array: ArraySlice<Element>, kdDimension: Int) -> ArraySlice<Element> {
+        guard array.count > 1 else { return array }
+        
+        var varray = array
+        let partitionIndex = KDTree.partitionLomuto(&varray, kdDimension: kdDimension)
+        
+        if partitionIndex == targetIndex {
+            return varray
+        } else if partitionIndex < targetIndex {
+            let s = partitionIndex+1
+            return varray[...partitionIndex] + quickSelect(targetIndex: targetIndex, array: varray[s...], kdDimension: kdDimension)
+        } else {
+            // partitionIndex is greater than the targetIndex, quickSelect moves to indexes smaller than partitionIndex
+            return quickSelect(targetIndex: targetIndex, array: varray[..<partitionIndex], kdDimension: kdDimension) + varray[partitionIndex...]
         }
     }
     
@@ -91,20 +110,28 @@ extension KDTree {
      if the pivot value occurs more than once, its duplicates will be found in the
      right partition.
      */
-    private static func partitionLomuto(_ a: inout ArraySlice<Element>, kdDimension: Int) -> Int {
-        // We always use the highest item as the pivot.
-        let pivot = a.last!
+    private static func partitionLomuto(_ array: inout ArraySlice<Element>, kdDimension: Int) -> Int {
+        let lo = array.startIndex
+        let hi = array.endIndex-1
+        guard lo < hi else { return 0 }
+        let mid = (lo + hi) / 2
+        if array[mid].kdDimension(kdDimension) < array[lo].kdDimension(kdDimension) { array.swapAt(lo, mid) }
+        if array[hi].kdDimension(kdDimension) < array[lo].kdDimension(kdDimension) { array.swapAt(lo, hi) }
+        if array[mid].kdDimension(kdDimension) < array[hi].kdDimension(kdDimension) { array.swapAt(mid, hi) }
+        let pivot = array[hi]
+        
+        
         
         // This loop partitions the array into four (possibly empty) regions:
         //   [a.startIndex  ...   i] contains all values < pivot,
         //   [i+1  ...          j-1] contains all values >= pivot,
         //   [j    ..< a.endIndex-1] are values we haven't looked at yet,
         //   [a.endIndex           ] is the pivot value.
-        var i = a.startIndex
+        var i = array.startIndex
         
-        for j in a.startIndex..<a.endIndex-1 {
-            if a[j].kdDimension(kdDimension) < pivot.kdDimension(kdDimension) {
-                (a[i], a[j]) = (a[j], a[i])
+        for j in array.startIndex..<hi {
+            if array[j].kdDimension(kdDimension) < pivot.kdDimension(kdDimension) {
+                array.swapAt(i, j)
                 i += 1
             }
         }
@@ -112,51 +139,8 @@ extension KDTree {
         // Swap the pivot element with the first element that is greater than
         // the pivot. Now the pivot sits between the < and >= regions and the
         // array is properly partitioned.
-        (a[i], a[a.endIndex-1]) = (a[a.endIndex-1], a[i])
+        array.swapAt(i, hi)
         return i
-    }
-    
-    /*
-     takes an array and an index n and returns an array with the nth value being the nth largest
-     */
-    private static func quickSelect(n: Int, arr: [Element], kdDimension: Int) -> [Element] {
-        if arr.count == 1 {
-            return [arr.first!]
-        }
-        
-        var varr = arr
-        let selector = partitionLomuto(&varr[0...arr.endIndex-1], kdDimension: kdDimension)
-        
-        if selector == n {
-            return varr
-        }
-        else if n > selector {
-            let s = selector+1
-            return  Array(varr[...selector] + quickSelect(n: n, arr: varr[s...], kdDimension: kdDimension))
-        }
-        else {
-            return  Array(quickSelect(n: n, arr: varr[..<selector], kdDimension: kdDimension) + varr[selector...])
-        }
-    }
-    
-    private static func quickSelect(n: Int, arr: ArraySlice<Element>, kdDimension: Int) -> ArraySlice<Element> {
-        if arr.count == 1 {
-            return [arr.first!]
-        }
-        
-        var varr = arr
-        let selector = partitionLomuto(&varr, kdDimension: kdDimension)
-        
-        if selector == n {
-            return varr
-        }
-        else if n > selector {
-            let s = selector+1
-            return varr[..<s] + quickSelect(n: n, arr: varr[s...], kdDimension: kdDimension)
-        }
-        else {
-            return quickSelect(n: n, arr: varr[..<selector], kdDimension: kdDimension) + varr[selector...]
-        }
     }
     
     /// Returns `true` iff `self` is empty.
