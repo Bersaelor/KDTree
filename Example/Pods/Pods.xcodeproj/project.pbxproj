@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00D14A2118980B275DF47FBAC5C0F773 /* CGPoint+KDTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B0B87A8247C3A25183D09041251E14 /* CGPoint+KDTreePoint.swift */; };
-		038F54272B26AE65AAACD7CA394322F7 /* KDTree-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F1D7F81CE075A64E61079E9E5E41A6 /* KDTree-macOS-dummy.m */; };
+		038F54272B26AE65AAACD7CA394322F7 /* KDTree-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA66FF262B0E902B5BB90DB2C8B4E63D /* KDTree-macOS-dummy.m */; };
 		03D413B3268DB39241F62A3126B0D2EC /* Star3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF77725C83D99CE1F2227253C334C17 /* Star3D.swift */; };
 		0A622A91C83ABBC847BA520AD972F9AE /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8248873AC69234BDC11DE8B02AC8E79 /* AES256CBC.swift */; };
 		0CD4EC7A0BDF1AA5ECF89A0402A5295D /* GoogleCloudDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE4F6B7CEFEEBC5E903E1CE8A67BF4 /* GoogleCloudDestination.swift */; };
 		0F061AF1FED1197E865E979703D25556 /* Star3D+CVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283548EED7AD20809F55AE6EE3CED8F0 /* Star3D+CVS.swift */; };
 		1E51B2D367E2E0324D5D07BBB6CA1F1A /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBDFF82AFD2BB05BA006A8731F30DE /* SwiftyBeaver.swift */; };
 		244C997C11283CF83C1B35E01F15E2E2 /* Star3D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E09EBA31427BB777A2FD99709CEAB /* Star3D+Codable.swift */; };
-		28369C06531450608933D70D824AD45D /* SwiftyHYGDB-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AE22FABF8E2433744FDA078638D10E /* SwiftyHYGDB-iOS-dummy.m */; };
+		28369C06531450608933D70D824AD45D /* SwiftyHYGDB-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FE1C3F76ACD5D235E9EC96B4E8620A /* SwiftyHYGDB-iOS-dummy.m */; };
 		28AC6FCE6B93EA2723A5F80833222B75 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DB7D1B43350E2E684B5358C919159D /* LineGenerator.swift */; };
 		29844B2B2EFE5D99F15CDBDB6193734D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8875AC5E764C64E51EA56E7E0C2CFF /* Extensions.swift */; };
 		2C44500D44D57BAD61B2F23CF4D2D3D6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDAA23DDA8E082FC77E38FA01601C8F /* Cocoa.framework */; };
 		2C93B8A0F6FDDCD24BF03F33EF8AFDBF /* KDTree+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AC006B674F6ECF998249EDDDA5F347 /* KDTree+CustomStringConvertible.swift */; };
-		2E7BDD0EA515FCD0D5966AA1854B6C39 /* SwiftyBeaver-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F66CCE7F915CBA5CF19ABBAC0B26CC12 /* SwiftyBeaver-iOS-dummy.m */; };
+		2E7BDD0EA515FCD0D5966AA1854B6C39 /* SwiftyBeaver-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 97840145BEB586B35B94DFC562782918 /* SwiftyBeaver-iOS-dummy.m */; };
 		2F8CAB2F200B1736D2028D71455E37EF /* Pods-KDTree_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BB9C028326C17AC66BD7A7BAD20B3 /* Pods-KDTree_Tests-dummy.m */; };
 		304470BAECE4C70EA64D8D64A83337F2 /* KDTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC9ADF8892FA7A78AD1F539E6CA977 /* KDTree.swift */; };
 		339AEE85108B020DDEBC68846916883B /* SwiftyHYGDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022397CA6C7C56FAD7AB5F23A1A44215 /* SwiftyHYGDB.swift */; };
@@ -45,7 +45,7 @@
 		6A90BC2621ECBEBE0626CF96D252B705 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504037F0E9B6B2948A21501051D0FAD3 /* Filter.swift */; };
 		6C38D3F7C60C54FD013D61C4B7E796BD /* Pods-KDTree_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 83ED5B39A1ABA13F69D875ECEB298938 /* Pods-KDTree_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71F0B0CD008E5CD8944F9F74F6D5CC09 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBDFF82AFD2BB05BA006A8731F30DE /* SwiftyBeaver.swift */; };
-		729A739BAEC14F28B695FFDBB54CC934 /* SwiftyBeaver-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD02DA2E1BB80E3B144377DE2A2A9819 /* SwiftyBeaver-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		729A739BAEC14F28B695FFDBB54CC934 /* SwiftyBeaver-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C583A4A5A1C727144F15AAB6032BB8 /* SwiftyBeaver-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77C13D145151DA160C73D427AAFE2EBA /* KDTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA393D42D380E694484878364235B /* KDTree+Equatable.swift */; };
 		78C9F1AC5F853D56317C78887DC6A14D /* Pods-KDTree_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5552500A7775CC87F99502DC3A2A0BE /* Pods-KDTree_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A48A7A4450D62FF7AF29D6F572C65BE /* KDTree+NearestNeighbour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D14E7131203950ADBF451F4466B9AE /* KDTree+NearestNeighbour.swift */; };
@@ -63,18 +63,18 @@
 		98C347437BF4974E12FC5B393048993E /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045B44FA3BBC8D7829F311BED370378 /* BaseDestination.swift */; };
 		991D14C4E0AA9DB259B73DF4345731A3 /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD461090B396A1CF7A3CBE49910172F /* Point3D.swift */; };
 		9928E8ACBBB88479BB84C9AC0CBF705C /* Star3D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E09EBA31427BB777A2FD99709CEAB /* Star3D+Codable.swift */; };
-		A0FB5AFF4AC75C529A8CAE3A9528C988 /* SwiftyBeaver-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2BDFEF5CCB8207F60D16442D53754 /* SwiftyBeaver-macOS-dummy.m */; };
-		A5111C3C48A968A966E1B74BF8226990 /* KDTree-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 870C4523F3DE80C672D2266BF5846966 /* KDTree-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0FB5AFF4AC75C529A8CAE3A9528C988 /* SwiftyBeaver-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A600C07408460524554CBF1B4532327 /* SwiftyBeaver-macOS-dummy.m */; };
+		A5111C3C48A968A966E1B74BF8226990 /* KDTree-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09EA9D05D97156BB4F65F9122BCDB0C1 /* KDTree-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8999206A1A43CCBAE25C09CF921A2AC /* RadialStar+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542A94EA9A4440049263714913A1666 /* RadialStar+CSV.swift */; };
 		AA76C017F7A531B847964B3A3E8DABE6 /* KDTree+NearestNeighbour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D14E7131203950ADBF451F4466B9AE /* KDTree+NearestNeighbour.swift */; };
 		AAB962CE46BD709D576E97C331D460BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8E2D632CADFEBE217900FD1D4F3ABF /* Foundation.framework */; };
 		B04E8395B8F6CE50224F168594179EF0 /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD461090B396A1CF7A3CBE49910172F /* Point3D.swift */; };
-		B1DE0ACB577BF0921030A74A6953E6F7 /* KDTree-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE275AF4BD42D0CA23518E28B2D52048 /* KDTree-iOS-dummy.m */; };
+		B1DE0ACB577BF0921030A74A6953E6F7 /* KDTree-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CA2390D8576D95F93AC55E92664D1 /* KDTree-iOS-dummy.m */; };
 		B50D05D2957C881DE05E3596A260D2A6 /* Pods-KDTree_OSX_ExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E70A1AB09B5B951203CF22D9BB0F5AFF /* Pods-KDTree_OSX_ExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5B9619F2724199013354F7BA8147CE5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8875AC5E764C64E51EA56E7E0C2CFF /* Extensions.swift */; };
 		B85FFBA50DF03688B0D2567CB2D50BA3 /* KDTree+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AC006B674F6ECF998249EDDDA5F347 /* KDTree+CustomStringConvertible.swift */; };
-		BC829E2B76568BBA5D163E2A60FCF7AD /* KDTree-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 580827F25EF72F05B747B0B3364A0FF7 /* KDTree-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDEFD89D47927C1470B25465E2C0AB88 /* SwiftyBeaver-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A5AC0CD544BDB14AFADB481F9424B08 /* SwiftyBeaver-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC829E2B76568BBA5D163E2A60FCF7AD /* KDTree-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D081CA9AB53E6430419A9C84F4BE413 /* KDTree-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDEFD89D47927C1470B25465E2C0AB88 /* SwiftyBeaver-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9204CF2DA4407E32B4BAFC982CFE3C7F /* SwiftyBeaver-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8624A4F1CD7F72CC264CFE942119EE /* FloatingPoint+CompressedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C0C0885078A78B802A6A825C2417F /* FloatingPoint+CompressedString.swift */; };
 		C3E4ECC6E63C9977EF3B2DD7A2551B45 /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64415F41DE83BCAE152D77F368097E /* SBPlatformDestination.swift */; };
 		C4D1C1A5C41591EF89357369AB770E23 /* Pods-KDTree_OSX_ExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2304301E60E7A3EB5AA8ADB53D340C54 /* Pods-KDTree_OSX_ExampleTests-dummy.m */; };
@@ -83,7 +83,7 @@
 		CA61E2BB5BB90BBB942FB95C19D08DF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8E2D632CADFEBE217900FD1D4F3ABF /* Foundation.framework */; };
 		CC8C62D9A02CB4A7372D1F576CDAF91A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDAA23DDA8E082FC77E38FA01601C8F /* Cocoa.framework */; };
 		D000C463676AF53E49CC870E7763C9B0 /* Pods-KDTree_OSX_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FAEEB4BA6A5AF7BDD062E531C230BEA /* Pods-KDTree_OSX_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D07533DB26F8073CEBD8F08910A1FD6E /* SwiftyHYGDB-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 760FA4576219BD66DE1502A94C36522B /* SwiftyHYGDB-macOS-dummy.m */; };
+		D07533DB26F8073CEBD8F08910A1FD6E /* SwiftyHYGDB-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 972CC4CE0BD157408B614C70B45E31EF /* SwiftyHYGDB-macOS-dummy.m */; };
 		D2F9B427B18CB7A2AD311188788D5E7C /* RadialStar+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD29A60B7F2836D8F5C8F57016475BA1 /* RadialStar+Codable.swift */; };
 		D52D2109BA5B97B9612CC1BB2B8BDE12 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D867CC23636C91877629E8EB91C49 /* ConsoleDestination.swift */; };
 		D6069A8826090FF8962968618ECE7D82 /* KDTree+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D99C8B33E793213253E6F605ED3EF /* KDTree+Sequence.swift */; };
@@ -94,12 +94,12 @@
 		DF4E3A7C795D8826C487D5AA92ABA361 /* KDTree+RangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78746FFDAFD694E5AAFB1E4D0931C5A7 /* KDTree+RangeSearch.swift */; };
 		DF6B8FAEC6A3F982C392B63AA2D56EDD /* Indexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD57FEA2F4FEF68D4623201D31BA440E /* Indexer.swift */; };
 		E55029C7042E076EA9BA7AC6A0D179AC /* FloatingPoint+CompressedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C0C0885078A78B802A6A825C2417F /* FloatingPoint+CompressedString.swift */; };
-		E6EC752E3A3AFBB4682BEB8DD589F642 /* SwiftyHYGDB-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 047F869AD8A14481671818D65718DF2D /* SwiftyHYGDB-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6EC752E3A3AFBB4682BEB8DD589F642 /* SwiftyHYGDB-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1937CB9E4721CEB947213F03A721079C /* SwiftyHYGDB-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5465B5C07A64DF4B73F7B1A9C09A4B3 /* KDTree+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D99C8B33E793213253E6F605ED3EF /* KDTree+Sequence.swift */; };
 		F64F66769BE4DE14FA06A874CC4CB02E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8E2D632CADFEBE217900FD1D4F3ABF /* Foundation.framework */; };
 		F80A70E74C83D1115E38BD5D14495D50 /* Star3D+CVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283548EED7AD20809F55AE6EE3CED8F0 /* Star3D+CVS.swift */; };
 		F82AB0DC4F8C93A8D5A3744782818280 /* KDTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA393D42D380E694484878364235B /* KDTree+Equatable.swift */; };
-		FABCFADA1F8512BBBA05252A670530E5 /* SwiftyHYGDB-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E7EE38CC809F25916444FAF8BDA73A /* SwiftyHYGDB-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FABCFADA1F8512BBBA05252A670530E5 /* SwiftyHYGDB-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B5579DE55C3B9CBA8B71507789009E /* SwiftyHYGDB-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB9FBF6C85B282E05F84F6B1AF0950B8 /* Pods-KDTree_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B055C0136BCBC3E4162A3DA6563D29E /* Pods-KDTree_Example-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -150,126 +150,126 @@
 
 /* Begin PBXFileReference section */
 		022397CA6C7C56FAD7AB5F23A1A44215 /* SwiftyHYGDB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyHYGDB.swift; path = Sources/SwiftyHYGDB/SwiftyHYGDB.swift; sourceTree = "<group>"; };
-		03C62F175B46E8961A9A33FF80017992 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SwiftyBeaver-macOS/Info.plist"; sourceTree = "<group>"; };
-		0425B1B3557A50409EF9839AD2078861 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		047F869AD8A14481671818D65718DF2D /* SwiftyHYGDB-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-iOS-umbrella.h"; sourceTree = "<group>"; };
 		0542A94EA9A4440049263714913A1666 /* RadialStar+CSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+CSV.swift"; path = "Sources/SwiftyHYGDB/RadialStar+CSV.swift"; sourceTree = "<group>"; };
 		0611C568E6B8D3F53D633EEABE65B0A2 /* Pods-KDTree_OSX_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		06E9AB65042AF126E371FBE30E13DF3C /* Pods_KDTree_OSX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_OSX_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07E79564EF8B11CB3695FC8EC720D32F /* SwiftyHYGDB-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "SwiftyHYGDB-macOS.modulemap"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS.modulemap"; sourceTree = "<group>"; };
+		09EA9D05D97156BB4F65F9122BCDB0C1 /* KDTree-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KDTree-iOS-umbrella.h"; sourceTree = "<group>"; };
 		0C9C0C0885078A78B802A6A825C2417F /* FloatingPoint+CompressedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FloatingPoint+CompressedString.swift"; path = "Sources/SwiftyHYGDB/FloatingPoint+CompressedString.swift"; sourceTree = "<group>"; };
 		0D527436819ABBFB1D768F71DE4B7A92 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/SwiftyHYGDB/Box.swift; sourceTree = "<group>"; };
+		0DBAE980D349E75965556ABD3BEBC201 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver.framework; path = "SwiftyBeaver-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E29CB414BDCDE8F3C744BC6625CAA36 /* Pods-KDTree_OSX_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0E369A0579717DA2E6E5D301C738C106 /* Pods-KDTree_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		0E6BB9C028326C17AC66BD7A7BAD20B3 /* Pods-KDTree_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_Tests-dummy.m"; sourceTree = "<group>"; };
-		13E6BA474D99FA6FDD9BC921CC82CCA7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SwiftyHYGDB-macOS/Info.plist"; sourceTree = "<group>"; };
+		182E70C80EBED98F25EA2D5FCF8423DA /* KDTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KDTree.framework; path = "KDTree-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1937CB9E4721CEB947213F03A721079C /* SwiftyHYGDB-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-iOS-umbrella.h"; sourceTree = "<group>"; };
 		19CBDFF82AFD2BB05BA006A8731F30DE /* SwiftyBeaver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Sources/SwiftyBeaver.swift; sourceTree = "<group>"; };
-		1BE1F3C72CA8B7AA8F98CDC201D54F49 /* SwiftyHYGDB-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftyHYGDB-iOS.xcconfig"; sourceTree = "<group>"; };
+		1C1416F7DDBDF4A2A9DEE79915D91603 /* SwiftyHYGDB-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyHYGDB-macOS-prefix.pch"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-prefix.pch"; sourceTree = "<group>"; };
+		1D081CA9AB53E6430419A9C84F4BE413 /* KDTree-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KDTree-macOS-umbrella.h"; path = "../KDTree-macOS/KDTree-macOS-umbrella.h"; sourceTree = "<group>"; };
 		1DBDBAB657D70709BFBD29152764C4A0 /* Pods-KDTree_OSX_ExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_OSX_ExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1EBABD84C7B633E4613C04A45ABE7C10 /* Pods-KDTree_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2045B08CAFD7A4112B0D7D402FD27E42 /* KDTree-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "KDTree-iOS.modulemap"; sourceTree = "<group>"; };
 		2045B44FA3BBC8D7829F311BED370378 /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/BaseDestination.swift; sourceTree = "<group>"; };
+		21A74A8D201ABE616909678098271BCC /* SwiftyHYGDB-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SwiftyHYGDB-macOS.xcconfig"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS.xcconfig"; sourceTree = "<group>"; };
 		2304301E60E7A3EB5AA8ADB53D340C54 /* Pods-KDTree_OSX_ExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_OSX_ExampleTests-dummy.m"; sourceTree = "<group>"; };
-		235453357DBA93284268B5026995278D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		239FE4968A34D97EC16720E1C56F0A20 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../KDTree-macOS/Info.plist"; sourceTree = "<group>"; };
+		273A31AE78D2717C91C016C01674331D /* SwiftyHYGDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyHYGDB.framework; path = "SwiftyHYGDB-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A5AFCB2923663BA791C4C97E8A1D9B /* Pods-KDTree_OSX_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		283548EED7AD20809F55AE6EE3CED8F0 /* Star3D+CVS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+CVS.swift"; path = "Sources/SwiftyHYGDB/Star3D+CVS.swift"; sourceTree = "<group>"; };
 		28B70E9008551ABDF55799CF55D271F6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2CF46E4CA6141BFD01DE711BCD9E9D9A /* SwiftyHYGDB-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-iOS-prefix.pch"; sourceTree = "<group>"; };
-		2D228502970257C2BCA52C42CAD5087F /* Pods-KDTree_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_Example.modulemap"; sourceTree = "<group>"; };
+		2922B978F19F9F8DFE8AA57CDBAFAAC9 /* SwiftyBeaver-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-iOS-prefix.pch"; sourceTree = "<group>"; };
+		29F726DE4D51840AA915F06B55FE89C8 /* SwiftyBeaver-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "SwiftyBeaver-iOS.modulemap"; sourceTree = "<group>"; };
+		2D228502970257C2BCA52C42CAD5087F /* Pods-KDTree_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KDTree_Example.modulemap"; sourceTree = "<group>"; };
+		2D96DEB311F15748E28A0BD7BCF97A7A /* KDTree-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KDTree-macOS-prefix.pch"; path = "../KDTree-macOS/KDTree-macOS-prefix.pch"; sourceTree = "<group>"; };
 		2F5360BD7ECF8BB46D202C5A6AA62919 /* Pods-KDTree_OSX_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_OSX_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		33F4360A30177B6391AC590980779E37 /* SwiftyBeaver-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SwiftyBeaver-macOS.xcconfig"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS.xcconfig"; sourceTree = "<group>"; };
+		31399D9213A5873210464489E772C0D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SwiftyHYGDB-macOS/Info.plist"; sourceTree = "<group>"; };
+		3221E9209059454D8868985D2C2E7E03 /* SwiftyBeaver-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SwiftyBeaver-macOS.xcconfig"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS.xcconfig"; sourceTree = "<group>"; };
 		34CD83397E7DEA7BB8C3D67288C61F65 /* Pods-KDTree_OSX_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_Example-frameworks.sh"; sourceTree = "<group>"; };
-		34FD05F34DF14909D7223A266B1D70CD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../KDTree-macOS/Info.plist"; sourceTree = "<group>"; };
-		37E7EE38CC809F25916444FAF8BDA73A /* SwiftyHYGDB-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyHYGDB-macOS-umbrella.h"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-umbrella.h"; sourceTree = "<group>"; };
 		393B4C21BCBBCA087185FDB3147D0AE0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39ECAE7638F7E3E5FC3D4C6D87E5BAF4 /* SwiftyHYGDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyHYGDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F9F731ADFD10118C8EF1228B73291E3 /* KDTree-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "KDTree-iOS.xcconfig"; sourceTree = "<group>"; };
+		39C583A4A5A1C727144F15AAB6032BB8 /* SwiftyBeaver-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-iOS-umbrella.h"; sourceTree = "<group>"; };
 		418EA393D42D380E694484878364235B /* KDTree+Equatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KDTree+Equatable.swift"; path = "Sources/KDTree+Equatable.swift"; sourceTree = "<group>"; };
-		425AFB8DA9F188F9B5BD3164D06E6A23 /* SwiftyHYGDB-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "SwiftyHYGDB-macOS.modulemap"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS.modulemap"; sourceTree = "<group>"; };
 		447CD463875BB83B84EADCECD7D10347 /* Pods-KDTree_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Example.release.xcconfig"; sourceTree = "<group>"; };
-		44BAA44100DC12EB58239CEA29D539B3 /* SwiftyBeaver-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-iOS-prefix.pch"; sourceTree = "<group>"; };
-		49789D1A0385489A7810065D1EC12AD4 /* SwiftyBeaver-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyBeaver-macOS-prefix.pch"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS-prefix.pch"; sourceTree = "<group>"; };
-		4D383FBE4F77489F2A619E73ECE273B8 /* KDTree-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "KDTree-macOS.modulemap"; path = "../KDTree-macOS/KDTree-macOS.modulemap"; sourceTree = "<group>"; };
+		4C55A6D7FE228AD63AEE472DFE762F09 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SwiftyBeaver-macOS/Info.plist"; sourceTree = "<group>"; };
+		4E917725A2B0457609A00A6D0038FC3B /* SwiftyBeaver-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftyBeaver-iOS.xcconfig"; sourceTree = "<group>"; };
 		504037F0E9B6B2948A21501051D0FAD3 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
 		51B0B87A8247C3A25183D09041251E14 /* CGPoint+KDTreePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGPoint+KDTreePoint.swift"; path = "Sources/CGPoint+KDTreePoint.swift"; sourceTree = "<group>"; };
 		529D867CC23636C91877629E8EB91C49 /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/ConsoleDestination.swift; sourceTree = "<group>"; };
-		52B6BDA22083C1DC16E28399E2CD90B1 /* SwiftyHYGDB-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "SwiftyHYGDB-iOS.modulemap"; sourceTree = "<group>"; };
 		52C5D5E3FC93C819E8A2696CBD514963 /* Pods-KDTree_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Example-resources.sh"; sourceTree = "<group>"; };
-		580827F25EF72F05B747B0B3364A0FF7 /* KDTree-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KDTree-macOS-umbrella.h"; path = "../KDTree-macOS/KDTree-macOS-umbrella.h"; sourceTree = "<group>"; };
+		559FCF428B658BBFD4EA27E8313D6CA1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		597ADC354B160C9768057DA15E5C7D9F /* Pods_KDTree_OSX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KDTree_OSX_Example.framework; path = "Pods-KDTree_OSX_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FDB3FB274724CA7D75CD72ABE1AD48 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A0C19BF0B04A429B24BEF10EBD83E92 /* SwiftyBeaver-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "SwiftyBeaver-iOS.modulemap"; sourceTree = "<group>"; };
 		5B055C0136BCBC3E4162A3DA6563D29E /* Pods-KDTree_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_Example-dummy.m"; sourceTree = "<group>"; };
-		5CB2BDFEF5CCB8207F60D16442D53754 /* SwiftyBeaver-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftyBeaver-macOS-dummy.m"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS-dummy.m"; sourceTree = "<group>"; };
+		5D1CA2390D8576D95F93AC55E92664D1 /* KDTree-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KDTree-iOS-dummy.m"; sourceTree = "<group>"; };
 		5E0649AD8B48B2FEF5DC028023F13157 /* Pods-KDTree_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Tests-resources.sh"; sourceTree = "<group>"; };
 		635D99C8B33E793213253E6F605ED3EF /* KDTree+Sequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KDTree+Sequence.swift"; path = "Sources/KDTree+Sequence.swift"; sourceTree = "<group>"; };
-		661606656E67DE2D3647D359AE2EE5D5 /* Pods_KDTree_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6838F669842120441FFCBD4DBD37B529 /* Pods-KDTree_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		6AC7317753545EB06FA8B731364704AA /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A600C07408460524554CBF1B4532327 /* SwiftyBeaver-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftyBeaver-macOS-dummy.m"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS-dummy.m"; sourceTree = "<group>"; };
 		6E0991946BB40931AC317DA4F12FFA2D /* Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base64.swift; path = Sources/Base64.swift; sourceTree = "<group>"; };
 		711783C0E2A4A4D73B7BE3125AB26C71 /* KDTreePoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KDTreePoint.swift; path = Sources/KDTreePoint.swift; sourceTree = "<group>"; };
+		7288D07E84F80A123BDEE465C58D9D0B /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver.framework; path = "SwiftyBeaver-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CB710B76118518E56A03846CCF33B4 /* Pods-KDTree_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		75D7665D86B522DFDCAAA1DC9C1064B5 /* RadialStar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadialStar.swift; path = Sources/SwiftyHYGDB/RadialStar.swift; sourceTree = "<group>"; };
-		760FA4576219BD66DE1502A94C36522B /* SwiftyHYGDB-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftyHYGDB-macOS-dummy.m"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-dummy.m"; sourceTree = "<group>"; };
+		7663A55B4D4CFB2C92BC43E07D1F084A /* SwiftyHYGDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyHYGDB.framework; path = "SwiftyHYGDB-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7680656C5A54F1CFC0EF0883EA12C0D7 /* Pods-KDTree_OSX_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_Example-resources.sh"; sourceTree = "<group>"; };
 		783E09EBA31427BB777A2FD99709CEAB /* Star3D+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+Codable.swift"; path = "Sources/SwiftyHYGDB/Star3D+Codable.swift"; sourceTree = "<group>"; };
 		78746FFDAFD694E5AAFB1E4D0931C5A7 /* KDTree+RangeSearch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KDTree+RangeSearch.swift"; path = "Sources/KDTree+RangeSearch.swift"; sourceTree = "<group>"; };
 		78D14E7131203950ADBF451F4466B9AE /* KDTree+NearestNeighbour.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KDTree+NearestNeighbour.swift"; path = "Sources/KDTree+NearestNeighbour.swift"; sourceTree = "<group>"; };
 		791E34102567E4D29BEFFDEEDC7377EF /* Pods-KDTree_OSX_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_OSX_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		7A5AC0CD544BDB14AFADB481F9424B08 /* SwiftyBeaver-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyBeaver-macOS-umbrella.h"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS-umbrella.h"; sourceTree = "<group>"; };
-		7F42D9FCF808D8339A169C9667DCDFE6 /* KDTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KDTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E004C8FD01CA14EB6D848854CA8FFA9 /* Pods_KDTree_OSX_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KDTree_OSX_ExampleTests.framework; path = "Pods-KDTree_OSX_ExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EFC42E8A9D0EF0405496A612B586573 /* SwiftyBeaver-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyBeaver-macOS-prefix.pch"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS-prefix.pch"; sourceTree = "<group>"; };
+		81AC460DE333BA90E25283B5F8B99402 /* KDTree-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "KDTree-iOS.modulemap"; sourceTree = "<group>"; };
 		83ED5B39A1ABA13F69D875ECEB298938 /* Pods-KDTree_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_Example-umbrella.h"; sourceTree = "<group>"; };
-		870C4523F3DE80C672D2266BF5846966 /* KDTree-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KDTree-iOS-umbrella.h"; sourceTree = "<group>"; };
-		8AD045CFABAC55229D222AF0F45E2544 /* Pods_KDTree_OSX_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_OSX_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		884BD46690F6EC69EE2BE26CD689ECB2 /* KDTree-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "KDTree-iOS.xcconfig"; sourceTree = "<group>"; };
 		8B3756E5AAF8E08FA82294E7FCBA7E28 /* Pods-KDTree_OSX_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KDTree_OSX_Example-dummy.m"; sourceTree = "<group>"; };
 		8BBF929385B398FCC2DF50F849856357 /* Pods-KDTree_OSX_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_OSX_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		8FAEEB4BA6A5AF7BDD062E531C230BEA /* Pods-KDTree_OSX_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_OSX_Example-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0A145668D85E8539DC99C4039E6AF37 /* Pods-KDTree_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_Tests.modulemap"; sourceTree = "<group>"; };
+		90A6B10D25EB8DE97D5AA86058FEA033 /* SwiftyHYGDB-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftyHYGDB-iOS.xcconfig"; sourceTree = "<group>"; };
+		9204CF2DA4407E32B4BAFC982CFE3C7F /* SwiftyBeaver-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyBeaver-macOS-umbrella.h"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		972CC4CE0BD157408B614C70B45E31EF /* SwiftyHYGDB-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftyHYGDB-macOS-dummy.m"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-dummy.m"; sourceTree = "<group>"; };
+		97840145BEB586B35B94DFC562782918 /* SwiftyBeaver-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-iOS-dummy.m"; sourceTree = "<group>"; };
+		9898A1A8E026204F724328AD3CFF1087 /* SwiftyBeaver-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "SwiftyBeaver-macOS.modulemap"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS.modulemap"; sourceTree = "<group>"; };
+		994C17EDCC0E77E41DBDD047B08079DD /* KDTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KDTree.framework; path = "KDTree-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A145668D85E8539DC99C4039E6AF37 /* Pods-KDTree_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KDTree_Tests.modulemap"; sourceTree = "<group>"; };
+		A1FE1C3F76ACD5D235E9EC96B4E8620A /* SwiftyHYGDB-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyHYGDB-iOS-dummy.m"; sourceTree = "<group>"; };
 		A387478163109652B03F6F2F95DC2196 /* Pods-KDTree_OSX_ExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_ExampleTests-frameworks.sh"; sourceTree = "<group>"; };
 		A5552500A7775CC87F99502DC3A2A0BE /* Pods-KDTree_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_Tests-umbrella.h"; sourceTree = "<group>"; };
 		A5C9008F23A186A0E53B01182D2AE785 /* KDTree+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KDTree+Codable.swift"; path = "Sources/KDTree+Codable.swift"; sourceTree = "<group>"; };
-		A7F1D7F81CE075A64E61079E9E5E41A6 /* KDTree-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KDTree-macOS-dummy.m"; path = "../KDTree-macOS/KDTree-macOS-dummy.m"; sourceTree = "<group>"; };
-		A89977C800836C395DB674785986B1E9 /* KDTree-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "KDTree-macOS.xcconfig"; path = "../KDTree-macOS/KDTree-macOS.xcconfig"; sourceTree = "<group>"; };
+		A6B5579DE55C3B9CBA8B71507789009E /* SwiftyHYGDB-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyHYGDB-macOS-umbrella.h"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-umbrella.h"; sourceTree = "<group>"; };
+		AA66FF262B0E902B5BB90DB2C8B4E63D /* KDTree-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "KDTree-macOS-dummy.m"; path = "../KDTree-macOS/KDTree-macOS-dummy.m"; sourceTree = "<group>"; };
 		AADC85F9CB2F9A708434D4DE373780C4 /* Pods-KDTree_OSX_ExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_OSX_ExampleTests-resources.sh"; sourceTree = "<group>"; };
-		ACE66F15582DCEEC58725E1982043E28 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD02DA2E1BB80E3B144377DE2A2A9819 /* SwiftyBeaver-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-iOS-umbrella.h"; sourceTree = "<group>"; };
 		AD29A60B7F2836D8F5C8F57016475BA1 /* RadialStar+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+Codable.swift"; path = "Sources/SwiftyHYGDB/RadialStar+Codable.swift"; sourceTree = "<group>"; };
 		AD7B5501071BCEBADBB34B5842BB6567 /* Pods-KDTree_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KDTree_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B3E5B4878641F7397F36576E598B1146 /* SwiftyHYGDB-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SwiftyHYGDB-macOS.xcconfig"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS.xcconfig"; sourceTree = "<group>"; };
-		B562B0C501B97F2DA5EBC08959794C48 /* KDTree-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KDTree-iOS-prefix.pch"; sourceTree = "<group>"; };
-		B7AE22FABF8E2433744FDA078638D10E /* SwiftyHYGDB-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyHYGDB-iOS-dummy.m"; sourceTree = "<group>"; };
+		B2A02A3AFAFCAC6DB5BE7BAD7AB1DFB0 /* KDTree-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "KDTree-macOS.xcconfig"; path = "../KDTree-macOS/KDTree-macOS.xcconfig"; sourceTree = "<group>"; };
 		B88214660F16503656864817BAC6E35F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE275AF4BD42D0CA23518E28B2D52048 /* KDTree-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KDTree-iOS-dummy.m"; sourceTree = "<group>"; };
+		B9266FA0255ED53CC17D86861D2CA7E6 /* SwiftyHYGDB-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-iOS-prefix.pch"; sourceTree = "<group>"; };
+		B937DC70782588CC8E4E220F36D32663 /* Pods_KDTree_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KDTree_Tests.framework; path = "Pods-KDTree_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8875AC5E764C64E51EA56E7E0C2CFF /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Sources/Extensions.swift; sourceTree = "<group>"; };
-		BEE979BE467D3CACE70FAB32D530ABE1 /* KDTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KDTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C04AE1CDF3F65778BCB72AC0B8DF867C /* Pods-KDTree_OSX_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_OSX_ExampleTests.modulemap"; sourceTree = "<group>"; };
+		C04AE1CDF3F65778BCB72AC0B8DF867C /* Pods-KDTree_OSX_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KDTree_OSX_ExampleTests.modulemap"; sourceTree = "<group>"; };
 		C0EE4F6B7CEFEEBC5E903E1CE8A67BF4 /* GoogleCloudDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GoogleCloudDestination.swift; path = Sources/GoogleCloudDestination.swift; sourceTree = "<group>"; };
+		C515B1B2F78CEF8DDDE09D4F018351C7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C614E772A0B14A3E26F90637D8B38E12 /* Pods-KDTree_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CACC9ADF8892FA7A78AD1F539E6CA977 /* KDTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KDTree.swift; path = Sources/KDTree.swift; sourceTree = "<group>"; };
 		CBF77725C83D99CE1F2227253C334C17 /* Star3D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Star3D.swift; path = Sources/SwiftyHYGDB/Star3D.swift; sourceTree = "<group>"; };
 		CDDAA23DDA8E082FC77E38FA01601C8F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		D02AE6E2ED840634D08C7A3BE84AA2AF /* KDTree-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KDTree-iOS-prefix.pch"; sourceTree = "<group>"; };
 		D04643F3B10D43F498EC4C3FC852AA64 /* Pods-KDTree_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D2DB7D1B43350E2E684B5358C919159D /* LineGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineGenerator.swift; path = Sources/SwiftyHYGDB/LineGenerator.swift; sourceTree = "<group>"; };
+		D524782A9DADF77DDDC430E4D831A02D /* Pods_KDTree_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KDTree_Example.framework; path = "Pods-KDTree_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63007B0311E31FE2509C3E740B5D5CF /* Pods-KDTree_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KDTree_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		DB8E2D632CADFEBE217900FD1D4F3ABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DD57FEA2F4FEF68D4623201D31BA440E /* Indexer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indexer.swift; path = Sources/SwiftyHYGDB/Indexer.swift; sourceTree = "<group>"; };
+		DF590921C6F8DF2548B810B281D1FE23 /* KDTree-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "KDTree-macOS.modulemap"; path = "../KDTree-macOS/KDTree-macOS.modulemap"; sourceTree = "<group>"; };
 		DF64415F41DE83BCAE152D77F368097E /* SBPlatformDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SBPlatformDestination.swift; path = Sources/SBPlatformDestination.swift; sourceTree = "<group>"; };
 		E0537875B8FB7BE10D487119CD1964D5 /* Pods-KDTree_OSX_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KDTree_OSX_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0AC006B674F6ECF998249EDDDA5F347 /* KDTree+CustomStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KDTree+CustomStringConvertible.swift"; path = "Sources/KDTree+CustomStringConvertible.swift"; sourceTree = "<group>"; };
-		E26C17CBD56F2B338070B0611B383E4D /* Pods-KDTree_OSX_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KDTree_OSX_Example.modulemap"; sourceTree = "<group>"; };
+		E26C17CBD56F2B338070B0611B383E4D /* Pods-KDTree_OSX_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KDTree_OSX_Example.modulemap"; sourceTree = "<group>"; };
 		E70A1AB09B5B951203CF22D9BB0F5AFF /* Pods-KDTree_OSX_ExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KDTree_OSX_ExampleTests-umbrella.h"; sourceTree = "<group>"; };
 		E8248873AC69234BDC11DE8B02AC8E79 /* AES256CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES256CBC.swift; path = Sources/AES256CBC.swift; sourceTree = "<group>"; };
-		E9D8F746AD56FECF713FB3DDD640B849 /* SwiftyHYGDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyHYGDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F18EB7DE82FB9E7483BFB10C6951DF5D /* KDTree-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KDTree-macOS-prefix.pch"; path = "../KDTree-macOS/KDTree-macOS-prefix.pch"; sourceTree = "<group>"; };
-		F421243D0F2029CDF319B26AF2CE3A6F /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F66CCE7F915CBA5CF19ABBAC0B26CC12 /* SwiftyBeaver-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-iOS-dummy.m"; sourceTree = "<group>"; };
-		F77AA707C62882A5456BD9E77F21C274 /* Pods_KDTree_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KDTree_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA8920C9D5531063037A61318717E80A /* SwiftyBeaver-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "SwiftyBeaver-macOS.modulemap"; path = "../SwiftyBeaver-macOS/SwiftyBeaver-macOS.modulemap"; sourceTree = "<group>"; };
+		F304DDAE595D40B98C87AE1FC92C2527 /* SwiftyHYGDB-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "SwiftyHYGDB-iOS.modulemap"; sourceTree = "<group>"; };
 		FAD461090B396A1CF7A3CBE49910172F /* Point3D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point3D.swift; path = Sources/SwiftyHYGDB/Point3D.swift; sourceTree = "<group>"; };
-		FADB143031A80116677AFBE75D012F51 /* SwiftyBeaver-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftyBeaver-iOS.xcconfig"; sourceTree = "<group>"; };
+		FB254E0B1B37E24DE49A2D120682B0B8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB4239620393278B66012498DC7CB5C1 /* StarData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarData.swift; path = Sources/SwiftyHYGDB/StarData.swift; sourceTree = "<group>"; };
 		FB462663046183510F5D40856BD7B743 /* Pods-KDTree_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KDTree_Example-frameworks.sh"; sourceTree = "<group>"; };
 		FDAD13A3AC9DE6FDDF664BC65432B971 /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/FileDestination.swift; sourceTree = "<group>"; };
-		FEE908EC6421F99B0B3261C98F65519C /* SwiftyHYGDB-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyHYGDB-macOS-prefix.pch"; path = "../SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,26 +374,6 @@
 			path = "Target Support Files/Pods-KDTree_OSX_ExampleTests";
 			sourceTree = "<group>";
 		};
-		0B5DE49724D70F56FED437585080AC11 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				34FD05F34DF14909D7223A266B1D70CD /* Info.plist */,
-				235453357DBA93284268B5026995278D /* Info.plist */,
-				2045B08CAFD7A4112B0D7D402FD27E42 /* KDTree-iOS.modulemap */,
-				3F9F731ADFD10118C8EF1228B73291E3 /* KDTree-iOS.xcconfig */,
-				BE275AF4BD42D0CA23518E28B2D52048 /* KDTree-iOS-dummy.m */,
-				B562B0C501B97F2DA5EBC08959794C48 /* KDTree-iOS-prefix.pch */,
-				870C4523F3DE80C672D2266BF5846966 /* KDTree-iOS-umbrella.h */,
-				4D383FBE4F77489F2A619E73ECE273B8 /* KDTree-macOS.modulemap */,
-				A89977C800836C395DB674785986B1E9 /* KDTree-macOS.xcconfig */,
-				A7F1D7F81CE075A64E61079E9E5E41A6 /* KDTree-macOS-dummy.m */,
-				F18EB7DE82FB9E7483BFB10C6951DF5D /* KDTree-macOS-prefix.pch */,
-				580827F25EF72F05B747B0B3364A0FF7 /* KDTree-macOS-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/KDTree-iOS";
-			sourceTree = "<group>";
-		};
 		2EDFAB15A7E74F864EB353FCB5A57006 /* OS X */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,24 +391,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5C60E866F9B399736DFD9E2B60C75466 /* Support Files */ = {
+		3E34EFF96CC26EFFAED483B4892CA60A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				13E6BA474D99FA6FDD9BC921CC82CCA7 /* Info.plist */,
-				0425B1B3557A50409EF9839AD2078861 /* Info.plist */,
-				52B6BDA22083C1DC16E28399E2CD90B1 /* SwiftyHYGDB-iOS.modulemap */,
-				1BE1F3C72CA8B7AA8F98CDC201D54F49 /* SwiftyHYGDB-iOS.xcconfig */,
-				B7AE22FABF8E2433744FDA078638D10E /* SwiftyHYGDB-iOS-dummy.m */,
-				2CF46E4CA6141BFD01DE711BCD9E9D9A /* SwiftyHYGDB-iOS-prefix.pch */,
-				047F869AD8A14481671818D65718DF2D /* SwiftyHYGDB-iOS-umbrella.h */,
-				425AFB8DA9F188F9B5BD3164D06E6A23 /* SwiftyHYGDB-macOS.modulemap */,
-				B3E5B4878641F7397F36576E598B1146 /* SwiftyHYGDB-macOS.xcconfig */,
-				760FA4576219BD66DE1502A94C36522B /* SwiftyHYGDB-macOS-dummy.m */,
-				FEE908EC6421F99B0B3261C98F65519C /* SwiftyHYGDB-macOS-prefix.pch */,
-				37E7EE38CC809F25916444FAF8BDA73A /* SwiftyHYGDB-macOS-umbrella.h */,
+				559FCF428B658BBFD4EA27E8313D6CA1 /* Info.plist */,
+				4C55A6D7FE228AD63AEE472DFE762F09 /* Info.plist */,
+				29F726DE4D51840AA915F06B55FE89C8 /* SwiftyBeaver-iOS.modulemap */,
+				4E917725A2B0457609A00A6D0038FC3B /* SwiftyBeaver-iOS.xcconfig */,
+				97840145BEB586B35B94DFC562782918 /* SwiftyBeaver-iOS-dummy.m */,
+				2922B978F19F9F8DFE8AA57CDBAFAAC9 /* SwiftyBeaver-iOS-prefix.pch */,
+				39C583A4A5A1C727144F15AAB6032BB8 /* SwiftyBeaver-iOS-umbrella.h */,
+				9898A1A8E026204F724328AD3CFF1087 /* SwiftyBeaver-macOS.modulemap */,
+				3221E9209059454D8868985D2C2E7E03 /* SwiftyBeaver-macOS.xcconfig */,
+				6A600C07408460524554CBF1B4532327 /* SwiftyBeaver-macOS-dummy.m */,
+				7EFC42E8A9D0EF0405496A612B586573 /* SwiftyBeaver-macOS-prefix.pch */,
+				9204CF2DA4407E32B4BAFC982CFE3C7F /* SwiftyBeaver-macOS-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyHYGDB-iOS";
+			path = "../Target Support Files/SwiftyBeaver-iOS";
 			sourceTree = "<group>";
 		};
 		63236810859A7C2986C69DB00F4D1CD6 /* Development Pods */ = {
@@ -450,26 +430,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		73DA4F1EC4CF58CDCE5594A900A262FC /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				03C62F175B46E8961A9A33FF80017992 /* Info.plist */,
-				ACE66F15582DCEEC58725E1982043E28 /* Info.plist */,
-				5A0C19BF0B04A429B24BEF10EBD83E92 /* SwiftyBeaver-iOS.modulemap */,
-				FADB143031A80116677AFBE75D012F51 /* SwiftyBeaver-iOS.xcconfig */,
-				F66CCE7F915CBA5CF19ABBAC0B26CC12 /* SwiftyBeaver-iOS-dummy.m */,
-				44BAA44100DC12EB58239CEA29D539B3 /* SwiftyBeaver-iOS-prefix.pch */,
-				AD02DA2E1BB80E3B144377DE2A2A9819 /* SwiftyBeaver-iOS-umbrella.h */,
-				FA8920C9D5531063037A61318717E80A /* SwiftyBeaver-macOS.modulemap */,
-				33F4360A30177B6391AC590980779E37 /* SwiftyBeaver-macOS.xcconfig */,
-				5CB2BDFEF5CCB8207F60D16442D53754 /* SwiftyBeaver-macOS-dummy.m */,
-				49789D1A0385489A7810065D1EC12AD4 /* SwiftyBeaver-macOS-prefix.pch */,
-				7A5AC0CD544BDB14AFADB481F9424B08 /* SwiftyBeaver-macOS-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyBeaver-iOS";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -477,7 +437,7 @@
 				63236810859A7C2986C69DB00F4D1CD6 /* Development Pods */,
 				3AEF7D761E8EA8419BB4A7000AB770CB /* Frameworks */,
 				7EC63591C6737B3E1E05A717C4F255A2 /* Pods */,
-				D55832D11C61D37EF6DFF8F1E5A7D07A /* Products */,
+				B8107DBB3F7DAA753498266998551FC7 /* Products */,
 				6365EA4ED39EC0F0C427AFDBB3742A18 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -489,6 +449,26 @@
 				9E328850DDDEF375F7FEE03775E0434D /* SwiftyHYGDB */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7F8346ED9FE7DC8128BC19CFFCC43582 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB254E0B1B37E24DE49A2D120682B0B8 /* Info.plist */,
+				31399D9213A5873210464489E772C0D8 /* Info.plist */,
+				F304DDAE595D40B98C87AE1FC92C2527 /* SwiftyHYGDB-iOS.modulemap */,
+				90A6B10D25EB8DE97D5AA86058FEA033 /* SwiftyHYGDB-iOS.xcconfig */,
+				A1FE1C3F76ACD5D235E9EC96B4E8620A /* SwiftyHYGDB-iOS-dummy.m */,
+				B9266FA0255ED53CC17D86861D2CA7E6 /* SwiftyHYGDB-iOS-prefix.pch */,
+				1937CB9E4721CEB947213F03A721079C /* SwiftyHYGDB-iOS-umbrella.h */,
+				07E79564EF8B11CB3695FC8EC720D32F /* SwiftyHYGDB-macOS.modulemap */,
+				21A74A8D201ABE616909678098271BCC /* SwiftyHYGDB-macOS.xcconfig */,
+				972CC4CE0BD157408B614C70B45E31EF /* SwiftyHYGDB-macOS-dummy.m */,
+				1C1416F7DDBDF4A2A9DEE79915D91603 /* SwiftyHYGDB-macOS-prefix.pch */,
+				A6B5579DE55C3B9CBA8B71507789009E /* SwiftyHYGDB-macOS-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyHYGDB-iOS";
 			sourceTree = "<group>";
 		};
 		8C918DD0468B798DBE7EEDD4C9D4170B /* iOS */ = {
@@ -530,8 +510,9 @@
 				C0EE4F6B7CEFEEBC5E903E1CE8A67BF4 /* GoogleCloudDestination.swift */,
 				DF64415F41DE83BCAE152D77F368097E /* SBPlatformDestination.swift */,
 				19CBDFF82AFD2BB05BA006A8731F30DE /* SwiftyBeaver.swift */,
-				73DA4F1EC4CF58CDCE5594A900A262FC /* Support Files */,
+				3E34EFF96CC26EFFAED483B4892CA60A /* Support Files */,
 			);
+			name = SwiftyBeaver;
 			path = SwiftyBeaver;
 			sourceTree = "<group>";
 		};
@@ -551,9 +532,27 @@
 				283548EED7AD20809F55AE6EE3CED8F0 /* Star3D+CVS.swift */,
 				FB4239620393278B66012498DC7CB5C1 /* StarData.swift */,
 				022397CA6C7C56FAD7AB5F23A1A44215 /* SwiftyHYGDB.swift */,
-				5C60E866F9B399736DFD9E2B60C75466 /* Support Files */,
+				7F8346ED9FE7DC8128BC19CFFCC43582 /* Support Files */,
 			);
+			name = SwiftyHYGDB;
 			path = SwiftyHYGDB;
+			sourceTree = "<group>";
+		};
+		B8107DBB3F7DAA753498266998551FC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				994C17EDCC0E77E41DBDD047B08079DD /* KDTree.framework */,
+				182E70C80EBED98F25EA2D5FCF8423DA /* KDTree.framework */,
+				D524782A9DADF77DDDC430E4D831A02D /* Pods_KDTree_Example.framework */,
+				597ADC354B160C9768057DA15E5C7D9F /* Pods_KDTree_OSX_Example.framework */,
+				7E004C8FD01CA14EB6D848854CA8FFA9 /* Pods_KDTree_OSX_ExampleTests.framework */,
+				B937DC70782588CC8E4E220F36D32663 /* Pods_KDTree_Tests.framework */,
+				0DBAE980D349E75965556ABD3BEBC201 /* SwiftyBeaver.framework */,
+				7288D07E84F80A123BDEE465C58D9D0B /* SwiftyBeaver.framework */,
+				273A31AE78D2717C91C016C01674331D /* SwiftyHYGDB.framework */,
+				7663A55B4D4CFB2C92BC43E07D1F084A /* SwiftyHYGDB.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		BCD10F260000452AA0B7929C05656F0D /* Pods-KDTree_OSX_Example */ = {
@@ -586,7 +585,7 @@
 				78746FFDAFD694E5AAFB1E4D0931C5A7 /* KDTree+RangeSearch.swift */,
 				635D99C8B33E793213253E6F605ED3EF /* KDTree+Sequence.swift */,
 				711783C0E2A4A4D73B7BE3125AB26C71 /* KDTreePoint.swift */,
-				0B5DE49724D70F56FED437585080AC11 /* Support Files */,
+				FFE1E34178C061BB9C17913400A02157 /* Support Files */,
 			);
 			name = KDTree;
 			path = ../..;
@@ -610,21 +609,24 @@
 			path = "Target Support Files/Pods-KDTree_Example";
 			sourceTree = "<group>";
 		};
-		D55832D11C61D37EF6DFF8F1E5A7D07A /* Products */ = {
+		FFE1E34178C061BB9C17913400A02157 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BEE979BE467D3CACE70FAB32D530ABE1 /* KDTree.framework */,
-				7F42D9FCF808D8339A169C9667DCDFE6 /* KDTree.framework */,
-				661606656E67DE2D3647D359AE2EE5D5 /* Pods_KDTree_Example.framework */,
-				06E9AB65042AF126E371FBE30E13DF3C /* Pods_KDTree_OSX_Example.framework */,
-				8AD045CFABAC55229D222AF0F45E2544 /* Pods_KDTree_OSX_ExampleTests.framework */,
-				F77AA707C62882A5456BD9E77F21C274 /* Pods_KDTree_Tests.framework */,
-				F421243D0F2029CDF319B26AF2CE3A6F /* SwiftyBeaver.framework */,
-				6AC7317753545EB06FA8B731364704AA /* SwiftyBeaver.framework */,
-				39ECAE7638F7E3E5FC3D4C6D87E5BAF4 /* SwiftyHYGDB.framework */,
-				E9D8F746AD56FECF713FB3DDD640B849 /* SwiftyHYGDB.framework */,
+				C515B1B2F78CEF8DDDE09D4F018351C7 /* Info.plist */,
+				239FE4968A34D97EC16720E1C56F0A20 /* Info.plist */,
+				81AC460DE333BA90E25283B5F8B99402 /* KDTree-iOS.modulemap */,
+				884BD46690F6EC69EE2BE26CD689ECB2 /* KDTree-iOS.xcconfig */,
+				5D1CA2390D8576D95F93AC55E92664D1 /* KDTree-iOS-dummy.m */,
+				D02AE6E2ED840634D08C7A3BE84AA2AF /* KDTree-iOS-prefix.pch */,
+				09EA9D05D97156BB4F65F9122BCDB0C1 /* KDTree-iOS-umbrella.h */,
+				DF590921C6F8DF2548B810B281D1FE23 /* KDTree-macOS.modulemap */,
+				B2A02A3AFAFCAC6DB5BE7BAD7AB1DFB0 /* KDTree-macOS.xcconfig */,
+				AA66FF262B0E902B5BB90DB2C8B4E63D /* KDTree-macOS-dummy.m */,
+				2D96DEB311F15748E28A0BD7BCF97A7A /* KDTree-macOS-prefix.pch */,
+				1D081CA9AB53E6430419A9C84F4BE413 /* KDTree-macOS-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/KDTree-iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -727,7 +729,7 @@
 			);
 			name = "SwiftyBeaver-macOS";
 			productName = "SwiftyBeaver-macOS";
-			productReference = 6AC7317753545EB06FA8B731364704AA /* SwiftyBeaver.framework */;
+			productReference = 0DBAE980D349E75965556ABD3BEBC201 /* SwiftyBeaver.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		1943091019911548CEACB6A30BCF9CFB /* SwiftyHYGDB-macOS */ = {
@@ -744,7 +746,7 @@
 			);
 			name = "SwiftyHYGDB-macOS";
 			productName = "SwiftyHYGDB-macOS";
-			productReference = E9D8F746AD56FECF713FB3DDD640B849 /* SwiftyHYGDB.framework */;
+			productReference = 273A31AE78D2717C91C016C01674331D /* SwiftyHYGDB.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		611D70E1B698A093C8F5FF7983D3ED84 /* KDTree-iOS */ = {
@@ -761,7 +763,7 @@
 			);
 			name = "KDTree-iOS";
 			productName = "KDTree-iOS";
-			productReference = BEE979BE467D3CACE70FAB32D530ABE1 /* KDTree.framework */;
+			productReference = 182E70C80EBED98F25EA2D5FCF8423DA /* KDTree.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		61F681C2530A245F77EA5436BED3A7DC /* SwiftyHYGDB-iOS */ = {
@@ -778,7 +780,7 @@
 			);
 			name = "SwiftyHYGDB-iOS";
 			productName = "SwiftyHYGDB-iOS";
-			productReference = 39ECAE7638F7E3E5FC3D4C6D87E5BAF4 /* SwiftyHYGDB.framework */;
+			productReference = 7663A55B4D4CFB2C92BC43E07D1F084A /* SwiftyHYGDB.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7B4121F08843E85249C62C8432A47DCC /* Pods-KDTree_Example */ = {
@@ -798,7 +800,7 @@
 			);
 			name = "Pods-KDTree_Example";
 			productName = "Pods-KDTree_Example";
-			productReference = 661606656E67DE2D3647D359AE2EE5D5 /* Pods_KDTree_Example.framework */;
+			productReference = D524782A9DADF77DDDC430E4D831A02D /* Pods_KDTree_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		89E76B8D43D46A00A8FCB9F76F562E6E /* KDTree-macOS */ = {
@@ -815,7 +817,7 @@
 			);
 			name = "KDTree-macOS";
 			productName = "KDTree-macOS";
-			productReference = 7F42D9FCF808D8339A169C9667DCDFE6 /* KDTree.framework */;
+			productReference = 994C17EDCC0E77E41DBDD047B08079DD /* KDTree.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B3593BCE8690F7874B04DF44940772AC /* Pods-KDTree_OSX_Example */ = {
@@ -835,7 +837,7 @@
 			);
 			name = "Pods-KDTree_OSX_Example";
 			productName = "Pods-KDTree_OSX_Example";
-			productReference = 06E9AB65042AF126E371FBE30E13DF3C /* Pods_KDTree_OSX_Example.framework */;
+			productReference = 597ADC354B160C9768057DA15E5C7D9F /* Pods_KDTree_OSX_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B76F8DE3DDE75D831B82BBD04A6F2304 /* Pods-KDTree_Tests */ = {
@@ -852,7 +854,7 @@
 			);
 			name = "Pods-KDTree_Tests";
 			productName = "Pods-KDTree_Tests";
-			productReference = F77AA707C62882A5456BD9E77F21C274 /* Pods_KDTree_Tests.framework */;
+			productReference = B937DC70782588CC8E4E220F36D32663 /* Pods_KDTree_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BA4F88699616450E9CF1A05B2F597483 /* SwiftyBeaver-iOS */ = {
@@ -869,7 +871,7 @@
 			);
 			name = "SwiftyBeaver-iOS";
 			productName = "SwiftyBeaver-iOS";
-			productReference = F421243D0F2029CDF319B26AF2CE3A6F /* SwiftyBeaver.framework */;
+			productReference = 7288D07E84F80A123BDEE465C58D9D0B /* SwiftyBeaver.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BDB9DD2D04049FB8AEAF29F8AF0CC7F5 /* Pods-KDTree_OSX_ExampleTests */ = {
@@ -886,7 +888,7 @@
 			);
 			name = "Pods-KDTree_OSX_ExampleTests";
 			productName = "Pods-KDTree_OSX_ExampleTests";
-			productReference = 8AD045CFABAC55229D222AF0F45E2544 /* Pods_KDTree_OSX_ExampleTests.framework */;
+			productReference = 7E004C8FD01CA14EB6D848854CA8FFA9 /* Pods_KDTree_OSX_ExampleTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -896,21 +898,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
-				TargetAttributes = {
-					611D70E1B698A093C8F5FF7983D3ED84 = {
-						LastSwiftMigration = 1000;
-					};
-					61F681C2530A245F77EA5436BED3A7DC = {
-						LastSwiftMigration = 1000;
-					};
-					89E76B8D43D46A00A8FCB9F76F562E6E = {
-						LastSwiftMigration = 1000;
-					};
-					BA4F88699616450E9CF1A05B2F597483 = {
-						LastSwiftMigration = 1000;
-					};
-				};
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -920,7 +908,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = D55832D11C61D37EF6DFF8F1E5A7D07A /* Products */;
+			productRefGroup = B8107DBB3F7DAA753498266998551FC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1125,41 +1113,40 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		011BA962DBDFCF572A10E49409955FC0 /* Debug */ = {
+		0DD1E086F100D48958C2E2063666DB46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A89977C800836C395DB674785986B1E9 /* KDTree-macOS.xcconfig */;
+			baseConfigurationReference = 884BD46690F6EC69EE2BE26CD689ECB2 /* KDTree-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-macOS/KDTree-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-macOS/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-iOS/KDTree-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/KDTree-macOS/KDTree-macOS.modulemap";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KDTree-iOS/KDTree-iOS.modulemap";
 				PRODUCT_NAME = KDTree;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		03B56FF93A87571C4E73B0139AFDB478 /* Release */ = {
+		16FF3192262FF119A6753B2850A1E1BA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F9F731ADFD10118C8EF1228B73291E3 /* KDTree-iOS.xcconfig */;
+			baseConfigurationReference = 884BD46690F6EC69EE2BE26CD689ECB2 /* KDTree-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1189,63 +1176,33 @@
 			};
 			name = Release;
 		};
-		12AF3140420DB3DF30E022948ACACCE4 /* Debug */ = {
+		1B8F9D1D38959C1541D1FA6719E352CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F9F731ADFD10118C8EF1228B73291E3 /* KDTree-iOS.xcconfig */;
+			baseConfigurationReference = 3221E9209059454D8868985D2C2E7E03 /* SwiftyBeaver-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-iOS/KDTree-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-iOS/Info.plist";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyBeaver-macOS/SwiftyBeaver-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyBeaver-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/KDTree-iOS/KDTree-iOS.modulemap";
-				PRODUCT_NAME = KDTree;
-				SDKROOT = iphoneos;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/SwiftyBeaver-macOS/SwiftyBeaver-macOS.modulemap";
+				PRODUCT_NAME = SwiftyBeaver;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		13F535D2187D1708A11A75B23567E4DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BE1F3C72CA8B7AA8F98CDC201D54F49 /* SwiftyHYGDB-iOS.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyHYGDB-iOS/SwiftyHYGDB-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyHYGDB-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyHYGDB-iOS/SwiftyHYGDB-iOS.modulemap";
-				PRODUCT_NAME = SwiftyHYGDB;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1265,7 +1222,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1273,7 +1229,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1305,46 +1260,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		34F126BCCA67F52A955E2CE2A0DDE3E9 /* Release */ = {
+		2BF9667C0CD58A8B67159B5EBABA2BFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A89977C800836C395DB674785986B1E9 /* KDTree-macOS.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/KDTree-macOS/KDTree-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KDTree-macOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/KDTree-macOS/KDTree-macOS.modulemap";
-				PRODUCT_NAME = KDTree;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		381CFEB7BA4C52354C42FCF6EBF87F91 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FADB143031A80116677AFBE75D012F51 /* SwiftyBeaver-iOS.xcconfig */;
+			baseConfigurationReference = 4E917725A2B0457609A00A6D0038FC3B /* SwiftyBeaver-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1365,13 +1287,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		3B48653DBE15EF15B0EF49AB4C3D383C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1401,6 +1324,37 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		451A26CDFDF5DF7C33ADE29E30B08F02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E917725A2B0457609A00A6D0038FC3B /* SwiftyBeaver-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyBeaver-iOS/SwiftyBeaver-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyBeaver-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyBeaver-iOS/SwiftyBeaver-iOS.modulemap";
+				PRODUCT_NAME = SwiftyBeaver;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1440,9 +1394,41 @@
 			};
 			name = Release;
 		};
-		4B02E09A3544DDD7610D26869E0C7534 /* Debug */ = {
+		4A9E071F2992CDC23E3ACCF6EC5ED1BB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3E5B4878641F7397F36576E598B1146 /* SwiftyHYGDB-macOS.xcconfig */;
+			baseConfigurationReference = B2A02A3AFAFCAC6DB5BE7BAD7AB1DFB0 /* KDTree-macOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-macOS/KDTree-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/KDTree-macOS/KDTree-macOS.modulemap";
+				PRODUCT_NAME = KDTree;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		514FA395D553E99257E0F2FAE2DFFDB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21A74A8D201ABE616909678098271BCC /* SwiftyHYGDB-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1466,39 +1452,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4FCB8CB6075E17BC0F369C9FA45CEFE1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33F4360A30177B6391AC590980779E37 /* SwiftyBeaver-macOS.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyBeaver-macOS/SwiftyBeaver-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyBeaver-macOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/SwiftyBeaver-macOS/SwiftyBeaver-macOS.modulemap";
-				PRODUCT_NAME = SwiftyBeaver;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1537,6 +1491,101 @@
 			};
 			name = Release;
 		};
+		5C5FE0F43BC20B28A5DD00039BA1D9F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21A74A8D201ABE616909678098271BCC /* SwiftyHYGDB-macOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyHYGDB-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/SwiftyHYGDB-macOS/SwiftyHYGDB-macOS.modulemap";
+				PRODUCT_NAME = SwiftyHYGDB;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		655550D54E49CB64620325C672A8BDE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2A02A3AFAFCAC6DB5BE7BAD7AB1DFB0 /* KDTree-macOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/KDTree-macOS/KDTree-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KDTree-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/KDTree-macOS/KDTree-macOS.modulemap";
+				PRODUCT_NAME = KDTree;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		65D25EE199E8646AD6E44BC4CF629EA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90A6B10D25EB8DE97D5AA86058FEA033 /* SwiftyHYGDB-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyHYGDB-iOS/SwiftyHYGDB-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyHYGDB-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyHYGDB-iOS/SwiftyHYGDB-iOS.modulemap";
+				PRODUCT_NAME = SwiftyHYGDB;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		7A8EA8A51AEB6DC028E3EBF60D994617 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 447CD463875BB83B84EADCECD7D10347 /* Pods-KDTree_Example.release.xcconfig */;
@@ -1571,9 +1620,9 @@
 			};
 			name = Release;
 		};
-		83E4F5769BC91B09759AF8F1135736CA /* Release */ = {
+		88C177317990125F9AE728281F057A67 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33F4360A30177B6391AC590980779E37 /* SwiftyBeaver-macOS.xcconfig */;
+			baseConfigurationReference = 3221E9209059454D8868985D2C2E7E03 /* SwiftyBeaver-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1597,7 +1646,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1668,38 +1717,6 @@
 			};
 			name = Debug;
 		};
-		C52A48D2D01640E69D1FD243C00EF009 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3E5B4878641F7397F36576E598B1146 /* SwiftyHYGDB-macOS.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyHYGDB-macOS/SwiftyHYGDB-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyHYGDB-macOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/SwiftyHYGDB-macOS/SwiftyHYGDB-macOS.modulemap";
-				PRODUCT_NAME = SwiftyHYGDB;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		CB59B9248017653696D8265324F6833A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E29CB414BDCDE8F3C744BC6625CAA36 /* Pods-KDTree_OSX_Example.release.xcconfig */;
@@ -1729,38 +1746,6 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D8E37F41BEBA29AF2A4337DCDA7F474A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FADB143031A80116677AFBE75D012F51 /* SwiftyBeaver-iOS.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyBeaver-iOS/SwiftyBeaver-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyBeaver-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyBeaver-iOS/SwiftyBeaver-iOS.modulemap";
-				PRODUCT_NAME = SwiftyBeaver;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1801,9 +1786,9 @@
 			};
 			name = Debug;
 		};
-		F23E75669524AB2FEF210B3314A5C168 /* Release */ = {
+		FECFB41449C91AC70984FFF54178AC52 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BE1F3C72CA8B7AA8F98CDC201D54F49 /* SwiftyHYGDB-iOS.xcconfig */;
+			baseConfigurationReference = 90A6B10D25EB8DE97D5AA86058FEA033 /* SwiftyHYGDB-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1847,7 +1832,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1855,7 +1839,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1902,8 +1885,8 @@
 		01EEBFF01C0ACFCBFF0C824A0EC51670 /* Build configuration list for PBXNativeTarget "SwiftyBeaver-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				381CFEB7BA4C52354C42FCF6EBF87F91 /* Debug */,
-				D8E37F41BEBA29AF2A4337DCDA7F474A /* Release */,
+				451A26CDFDF5DF7C33ADE29E30B08F02 /* Debug */,
+				2BF9667C0CD58A8B67159B5EBABA2BFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1920,8 +1903,8 @@
 		309A11589EF2C580CF1E59D973D7BB34 /* Build configuration list for PBXNativeTarget "SwiftyHYGDB-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13F535D2187D1708A11A75B23567E4DF /* Debug */,
-				F23E75669524AB2FEF210B3314A5C168 /* Release */,
+				65D25EE199E8646AD6E44BC4CF629EA5 /* Debug */,
+				FECFB41449C91AC70984FFF54178AC52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1929,8 +1912,8 @@
 		402E42FFF813977087F9E5F0ACAE5E61 /* Build configuration list for PBXNativeTarget "SwiftyBeaver-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4FCB8CB6075E17BC0F369C9FA45CEFE1 /* Debug */,
-				83E4F5769BC91B09759AF8F1135736CA /* Release */,
+				1B8F9D1D38959C1541D1FA6719E352CD /* Debug */,
+				88C177317990125F9AE728281F057A67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1938,8 +1921,8 @@
 		5D83D44DBBDBA62D7EA3B13749D363DD /* Build configuration list for PBXNativeTarget "SwiftyHYGDB-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4B02E09A3544DDD7610D26869E0C7534 /* Debug */,
-				C52A48D2D01640E69D1FD243C00EF009 /* Release */,
+				514FA395D553E99257E0F2FAE2DFFDB4 /* Debug */,
+				5C5FE0F43BC20B28A5DD00039BA1D9F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1947,8 +1930,8 @@
 		624FAA452F0FB4418FAE5B705F81768D /* Build configuration list for PBXNativeTarget "KDTree-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				12AF3140420DB3DF30E022948ACACCE4 /* Debug */,
-				03B56FF93A87571C4E73B0139AFDB478 /* Release */,
+				0DD1E086F100D48958C2E2063666DB46 /* Debug */,
+				16FF3192262FF119A6753B2850A1E1BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1974,8 +1957,8 @@
 		A454E5B7658A9D1B9928C56EB2DEAF8F /* Build configuration list for PBXNativeTarget "KDTree-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				011BA962DBDFCF572A10E49409955FC0 /* Debug */,
-				34F126BCCA67F52A955E2CE2A0DDE3E9 /* Release */,
+				4A9E071F2992CDC23E3ACCF6EC5ED1BB /* Debug */,
+				655550D54E49CB64620325C672A8BDE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

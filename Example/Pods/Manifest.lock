@@ -1,22 +1,22 @@
 PODS:
-  - KDTree (1.0.5)
-  - SwiftyBeaver (1.5.1)
-  - SwiftyHYGDB (0.6.3)
+  - KDTree (1.1.0)
+  - SwiftyBeaver (1.6.1)
+  - SwiftyHYGDB (0.6.5)
 
 DEPENDENCIES:
   - KDTree (from `../`)
   - SwiftyBeaver
-  - SwiftyHYGDB (= 0.6.3)
+  - SwiftyHYGDB (= 0.6.5)
 
 EXTERNAL SOURCES:
   KDTree:
     :path: ../
 
 SPEC CHECKSUMS:
-  KDTree: 264be272ac971da97d65be323c35dfffc39e7a4b
-  SwiftyBeaver: 4f74563624b2c1e821c522c54142b5dd5ebb0f30
-  SwiftyHYGDB: 5af2e3e9ca12c7c98515d122ea7ba7eec750170d
+  KDTree: 890de401d5f10918bb0776e8ec076481311779f8
+  SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
+  SwiftyHYGDB: 7bbfd7dfd35d83c171807ef894ab2b0e6658d48d
 
-PODFILE CHECKSUM: b8fedfad0d08365de3422aa6285ae7614da15951
+PODFILE CHECKSUM: 71d5783c003c44140279c009ff1f06f6406d5f8a
 
 COCOAPODS: 1.3.1
