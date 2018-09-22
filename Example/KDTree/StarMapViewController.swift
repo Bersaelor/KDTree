@@ -54,8 +54,8 @@ class StarMapViewController: UIViewController {
         starMapView.addGestureRecognizer(pinchGR)
         starMapView.addGestureRecognizer(panGR)
         
-        let infoButton = UIButton(type: UIButtonType.infoDark)
-        infoButton.addTarget(self, action: #selector(openInfo), for: UIControlEvents.touchUpInside)
+        let infoButton = UIButton(type: UIButton.ButtonType.infoDark)
+        infoButton.addTarget(self, action: #selector(openInfo), for: UIControl.Event.touchUpInside)
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: infoButton)]
     }
     
@@ -158,7 +158,7 @@ class StarMapViewController: UIViewController {
                                       message: "Cylindrical projection of the starry sky for the year 2000,"
                                         .appending(" measured by right ascension and declination coordinates."),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { _ in
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { _ in
             log.debug("Noting")
         })
         

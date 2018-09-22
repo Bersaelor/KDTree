@@ -177,8 +177,8 @@ class StarMapView: View {
                 let paragraphStyleLbl = NSMutableParagraphStyle()
                 paragraphStyleLbl.alignment = .center
                 let size = 12.0 * sqrt(magnification)
-                let attributesLbl = [NSAttributedStringKey.font: Font.systemFont(ofSize: CGFloat(size)),
-                                     NSAttributedStringKey.paragraphStyle: paragraphStyleLbl]
+                let attributesLbl = [NSAttributedString.Key.font: Font.systemFont(ofSize: CGFloat(size)),
+                                     NSAttributedString.Key.paragraphStyle: paragraphStyleLbl]
                 let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: 0.0)
                 ("☀️" as NSString).draw(in: CGRect(pointA: relativePosition + CGPoint(x: size, y: size),
                                                        pointB: relativePosition - CGPoint(x: size, y: size)),
@@ -213,26 +213,26 @@ class StarMapView: View {
         //1h Label
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
-        let attributes = [NSAttributedStringKey.font: Font.systemFont(ofSize: 8),
-                          NSAttributedStringKey.foregroundColor: color,
-                          NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        let attributes = [NSAttributedString.Key.font: Font.systemFont(ofSize: 8),
+                          NSAttributedString.Key.foregroundColor: color,
+                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         ("1h" as NSString).draw(in: CGRect(pointA: oneHourPoint, pointB: oneHourPoint + CGPoint(x: -20, y: 8)),
                                 withAttributes: attributes)
         // 5° label
         let paragraphStyleDeg = NSMutableParagraphStyle()
         paragraphStyleDeg.alignment = .left
-        let attributesDeg = [NSAttributedStringKey.font: Font.systemFont(ofSize: 8),
-                             NSAttributedStringKey.foregroundColor: color,
-                             NSAttributedStringKey.paragraphStyle: paragraphStyleDeg]
+        let attributesDeg = [NSAttributedString.Key.font: Font.systemFont(ofSize: 8),
+                             NSAttributedString.Key.foregroundColor: color,
+                             NSAttributedString.Key.paragraphStyle: paragraphStyleDeg]
         ("5°" as NSString).draw(in: CGRect(pointA: fiveDegreePoint - CGPoint(x: -2, y: -5),
                                             pointB: fiveDegreePoint - CGPoint(x: -20, y: 5)),
                                  withAttributes: attributesDeg)
         // position label
         let paragraphStyleLbl = NSMutableParagraphStyle()
         paragraphStyleLbl.alignment = .center
-        let attributesLbl = [NSAttributedStringKey.font: Font.systemFont(ofSize: 8.0),
-                             NSAttributedStringKey.foregroundColor: color,
-                             NSAttributedStringKey.paragraphStyle: paragraphStyleLbl]
+        let attributesLbl = [NSAttributedString.Key.font: Font.systemFont(ofSize: 8.0),
+                             NSAttributedString.Key.foregroundColor: color,
+                             NSAttributedString.Key.paragraphStyle: paragraphStyleLbl]
         let c = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let tappedCoo = skyPosition(for: origin + c)
         let lbl = String(format: "%.1fh,%.1f°", 0.1*round(10*tappedCoo.x), 0.1*round(10*tappedCoo.y))
@@ -277,9 +277,9 @@ class StarMapView: View {
         let textOuterCorner = textInnerCorner + CGPoint(x: isLeftOfCenter ? 200 : -200, y: verticalAdjustment * 14.0)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = isLeftOfCenter ? .left : .right
-        let attributes = [NSAttributedStringKey.font: Font.systemFont(ofSize: 12.0),
-                          NSAttributedStringKey.foregroundColor: Color.orange,
-                          NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        let attributes = [NSAttributedString.Key.font: Font.systemFont(ofSize: 12.0),
+                          NSAttributedString.Key.foregroundColor: Color.orange,
+                          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         (textString as NSString).draw(in: CGRect(pointA: textInnerCorner, pointB: textOuterCorner), withAttributes: attributes)
     }
 
