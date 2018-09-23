@@ -197,7 +197,7 @@ class IllustrationView: UIView {
                 
                 let textP = CGPoint(x: value.x * self.adjSize + 5, y: value.y * self.adjSize + 1)
                 (String(depth) as NSString).draw(at: textP,
-                                                 withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8)])
+                                                 withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)])
             }
         }
     }
