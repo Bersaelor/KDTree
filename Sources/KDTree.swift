@@ -32,7 +32,7 @@ extension KDTree {
         else {
             var median = values.count / 2
             
-            let selected = KDTree.quickSelect(targetIndex: median, array: values[0..<values.count], kdDimension: currentSplittingDimension)
+            let selected = KDTree.quickSelect(targetIndex: median, array: values[0..<values.endIndex], kdDimension: currentSplittingDimension)
             let medianElement = selected[median]
             let medianValue = medianElement.kdDimension(currentSplittingDimension)
           
@@ -113,20 +113,17 @@ extension KDTree {
     private static func partitionLomuto(_ array: inout ArraySlice<Element>, kdDimension: Int) -> Int {
         let lo = array.startIndex
         let hi = array.endIndex-1
-        guard lo < hi else { return 0 }
-        let mid = (lo + hi) / 2
-        if array[mid].kdDimension(kdDimension) < array[lo].kdDimension(kdDimension) { array.swapAt(lo, mid) }
-        if array[hi].kdDimension(kdDimension) < array[lo].kdDimension(kdDimension) { array.swapAt(lo, hi) }
-        if array[mid].kdDimension(kdDimension) < array[hi].kdDimension(kdDimension) { array.swapAt(mid, hi) }
+        guard lo < hi else { return lo }
+        
+        let randomIndex = Int.random(in: lo...hi)
+        array.swapAt(hi, randomIndex)
         let pivot = array[hi]
         
-        
-        
         // This loop partitions the array into four (possibly empty) regions:
-        //   [a.startIndex  ...   i] contains all values < pivot,
-        //   [i+1  ...          j-1] contains all values >= pivot,
-        //   [j    ..< a.endIndex-1] are values we haven't looked at yet,
-        //   [a.endIndex           ] is the pivot value.
+        //   [lo   ...    i] contains all values < pivot,
+        //   [i+1  ...  j-1] contains all values >= pivot,
+        //   [j    ..< hi-1] are values we haven't looked at yet,
+        //   [hi           ] is the pivot value.
         var i = array.startIndex
         
         for j in array.startIndex..<hi {
