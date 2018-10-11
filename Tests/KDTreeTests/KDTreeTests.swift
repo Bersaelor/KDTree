@@ -192,12 +192,18 @@ class KDTreeTests: XCTestCase {
             }
         }
     }
+    
+    func test03_Build() {
+        let points = Array(0..<100000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        let _ = KDTree(values: points)
+    }
 
     static var allTests = [
         ("test00_tenPointTree", test00_tenPointTree),
         ("test01_RangeSearchPerformance", test01_RangeSearchPerformance),
         ("test01b_RangeSearchArrayComparison", test01b_RangeSearchArrayComparison),
         ("test02_STRangeSearchPerformance", test02_STRangeSearchPerformance),
-        ("test02b_STRangeSearchArrayComparison", test02b_STRangeSearchArrayComparison)
+        ("test02b_STRangeSearchArrayComparison", test02b_STRangeSearchArrayComparison),
+        ("test03_Build", test03_Build)
     ]
 }
