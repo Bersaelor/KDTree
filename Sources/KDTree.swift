@@ -83,6 +83,8 @@ extension KDTree {
         }
     }
     
+    /** Quickselect function is based on https://github.com/mourner/kdbush
+     */
     private static func quickSelect(targetIndex: Int, array: ArraySlice<Element>, kdDimension: Int) -> ArraySlice<Element> {
         guard array.count > 1 else { return array }
         
@@ -100,16 +102,20 @@ extension KDTree {
         }
     }
     
-    /*
-     Lomuto's partitioning algorithm.
-     This is conceptually simpler than Hoare's original scheme but less efficient.
-     The return value is the index of the pivot element in the new array. The left
-     partition is [low...p-1]; the right partition is [p+1...high], where p is the
-     return value.
-     The left partition includes all values smaller than the pivot, so
-     if the pivot value occurs more than once, its duplicates will be found in the
-     right partition.
-     */
+    /// # Lomuto's partitioning algorithm.
+    /// This is conceptually simpler than Hoare's original scheme but less efficient.
+    /// The return value is the index of the pivot element in the new array. The left
+    /// partition is [low...p-1]; the right partition is [p+1...high], where p is the
+    /// return value.
+    /// - - -
+    /// The left partition includes all values smaller than the pivot, so
+    /// if the pivot value occurs more than once, its duplicates will be found in the
+    /// right partition.
+    ///
+    /// - Parameters:
+    ///   - array: the inout array slice
+    ///   - kdDimension: the dimension sorted over
+    /// - Returns: the index of the pivot element in the new array
     private static func partitionLomuto(_ array: inout ArraySlice<Element>, kdDimension: Int) -> Int {
         let lo = array.startIndex
         let hi = array.endIndex-1
