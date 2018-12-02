@@ -36,8 +36,8 @@ Make sure your data values conforom to
 ```swift
 public protocol KDTreePoint: Equatable {
   static var dimensions: Int { get }
-  func kdDimension(dimension: Int) -> Double
-  func squaredDistance(otherPoint: Self) -> Double
+  func kdDimension(_ dimension: Int) -> Double
+  func squaredDistance(to otherPoint: Self) -> Double
 }
 ```
 (CGPoint conforms to KDTreePoint as part of the package)
