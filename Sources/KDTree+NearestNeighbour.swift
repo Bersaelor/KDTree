@@ -156,7 +156,7 @@ extension KDTree {
             let closerSubtree = isLeftOfValue ? left : right
             closerSubtree.allPoints(within: radius, of: searchElement, points: &points)
             
-            //if the radius so far intersects the hyperplane at the other side of this value
+            //if the search radius intersects the hyperplane of this tree node
             //there could be points in the other subtree
             if abs(dimensionDifference) < radius {
                 //check the nodes value
