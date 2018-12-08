@@ -94,7 +94,7 @@ It's also possible to use the KDTree to search for a range of values using:
 let pointsInRange: [CGPoint] = tree.elementsInRange([(0.2, 0.4), (0.45, 0.75)])
 ```
 
-One example is based on the [HYG Database](https://github.com/astronexus/HYG-Database/blob/master/README.md) of 120 thousend stars. Here we see a piece of the sky around 10h right ascension and 35° declination where the KDTree algorithm can be used to both get the stars in the area the iPhone screen is pointing at and also find the closest Star to a position the user is tapping via NN:
+One example is based on the [HYG Database](https://github.com/astronexus/HYG-Database/blob/master/README.md) of 120 thousand stars. Here we see a piece of the sky around 10h right ascension and 35° declination where the KDTree algorithm can be used to both get the stars in the area the iPhone screen is pointing at and also find the closest Star to a position the user is tapping via NN:
 
 <img src="https://raw.githubusercontent.com/Bersaelor/KDTree/master/Screenshots/starMap.png" width="621" />
 
