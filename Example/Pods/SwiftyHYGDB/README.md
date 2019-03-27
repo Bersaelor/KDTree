@@ -1,6 +1,6 @@
 # SwiftyHYGDB
 
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://swift.org/)
+[![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org/)
 [![CI Status](http://img.shields.io/travis/Bersaelor/SwiftyHYGDB.svg?style=flat)](https://travis-ci.org/Bersaelor/SwiftyHYGDB)
 [![Version](https://img.shields.io/cocoapods/v/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
 [![License](https://img.shields.io/cocoapods/l/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
@@ -27,7 +27,7 @@ pod 'SwiftyHYGDB'
 
 Add the following to your `Package.swift`:
 ```
-       .Package(url: "https://github.com/Bersaelor/SwiftyHYGDB", majorVersion: 0, minor: 6),
+       .Package(url: "https://github.com/Bersaelor/SwiftyHYGDB", majorVersion: 0, minor: 7),
 ```
 
 ## License

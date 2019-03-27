@@ -21,7 +21,7 @@ extension CGRect {
     ///   - pointB: Another corner point
     public init(pointA: CGPoint, pointB: CGPoint) {
         let origin = CGPoint(x: min(pointA.x, pointB.x), y: min(pointA.y, pointB.y))
-        let size = CGSize(width: fabs(pointA.x - pointB.x), height: fabs(pointA.y - pointB.y))
+        let size = CGSize(width: abs(pointA.x - pointB.x), height: abs(pointA.y - pointB.y))
         self.init(origin: origin, size: size)
     }
 }
