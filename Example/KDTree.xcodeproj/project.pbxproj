@@ -361,7 +361,6 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				719D20A51CB92A250007926E /* Swiftlint */,
 				079E7210BBC1CC2E02683C1F /* [CP] Embed Pods Frameworks */,
-				9893EDFD3F054152C55D1C98 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,8 +379,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				915242EBCFA33A7BCBCFE33E /* [CP] Embed Pods Frameworks */,
-				1C323A3E80386235DE0399B6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -402,7 +399,6 @@
 				71C1B45D1CD946BF005436C3 /* Frameworks */,
 				71C1B45E1CD946BF005436C3 /* Resources */,
 				8A10B8F4608EB35179DBC534 /* [CP] Embed Pods Frameworks */,
-				4D54754E3E75EEF685F2AE8E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -421,8 +417,6 @@
 				71C1B46C1CD946BF005436C3 /* Sources */,
 				71C1B46D1CD946BF005436C3 /* Frameworks */,
 				71C1B46E1CD946BF005436C3 /* Resources */,
-				16712B59C995DCEA608DE323 /* [CP] Embed Pods Frameworks */,
-				0F8691971EDAC53496FA0961 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -441,17 +435,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = H43Z4288RY;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					71C1B45F1CD946BF005436C3 = {
@@ -470,6 +464,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -535,7 +530,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KDTree-iOS/KDTree.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-iOS/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyHYGDB-iOS/SwiftyHYGDB.framework",
@@ -548,7 +543,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0A512C5273BA04F84E528C83 /* [CP] Check Pods Manifest.lock */ = {
@@ -569,51 +564,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0F8691971EDAC53496FA0961 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_ExampleTests/Pods-KDTree_OSX_ExampleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		16712B59C995DCEA608DE323 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_ExampleTests/Pods-KDTree_OSX_ExampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1C323A3E80386235DE0399B6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4C2CB8F0863E310A377145D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -630,21 +580,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4D54754E3E75EEF685F2AE8E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		719D20A51CB92A250007926E /* Swiftlint */ = {
@@ -667,7 +602,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KDTree-macOS/KDTree.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver-macOS/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyHYGDB-macOS/SwiftyHYGDB.framework",
@@ -680,42 +615,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		915242EBCFA33A7BCBCFE33E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Tests/Pods-KDTree_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9893EDFD3F054152C55D1C98 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KDTree_Example/Pods-KDTree_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KDTree_OSX_Example/Pods-KDTree_OSX_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF2E57DAEC65D17C75323324 /* [CP] Check Pods Manifest.lock */ = {
@@ -867,6 +767,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -922,6 +823,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -985,7 +887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1009,7 +911,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1027,7 +929,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
 			};
 			name = Debug;
@@ -1042,7 +944,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KDTree_Example.app/KDTree_Example";
 			};
 			name = Release;

@@ -74,7 +74,7 @@ private struct Neighbours {
     mutating func append(_ value: Any, distance: Double) {
         guard !full || distance < biggestDistance else { return }
 
-        if let index = nearestValues.index(where: { return distance < $0.distance }) {
+        if let index = nearestValues.firstIndex(where: { return distance < $0.distance }) {
             nearestValues.insert(ElementPair(distance: distance, point: value), at: index)
             if full {
                 nearestValues.removeLast()

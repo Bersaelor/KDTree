@@ -46,7 +46,7 @@ class NearestNeighbourLoadTest: XCTestCase {
             _ = KDTree(values: self.points)
         }
     }
-
+    
     func test02_InsertPerformance() {
         let insertPoints = testPoints[0..<100]
         var movingTree = largeTree
@@ -63,28 +63,30 @@ class NearestNeighbourLoadTest: XCTestCase {
         for _ in 0..<1000 {
             if let randomPoint = pointsLeft.randomElement() {
                 pointsRemoved.append(randomPoint)
-                if let index = pointsLeft.index(of: randomPoint) {
+                if let index = pointsLeft.firstIndex(of: randomPoint) {
                     pointsLeft.remove(at: index)
                 }
             }
         }
         var movingTree = largeTree
-
+        
         self.measure {
             for point in pointsRemoved { movingTree = movingTree.removing(point) }
         }
         
         XCTAssertEqual(movingTree.count, points.count - pointsRemoved.count, "After Removing points = start - removed")
     }
-
+    
     func test04_ReducePerformance() {
-        let avgPoint = self.points.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x/CGFloat(self.points.count),
-                                                                  y: $0.y + $1.y/CGFloat(self.points.count))
+        let avgPoint = self.points.reduce(CGPoint.zero) { (result, point) -> CGPoint in
+            return CGPoint(x: result.x + point.x/CGFloat(self.points.count),
+                           y: result.y + point.y/CGFloat(self.points.count))
         }
         var avgPointTree = CGPoint.zero
         self.measure {
-            avgPointTree = self.largeTree.reduce(CGPoint.zero) { CGPoint(x: $0.x + $1.x/CGFloat(self.points.count),
-                                                                         y: $0.y + $1.y/CGFloat(self.points.count))
+            avgPointTree = self.largeTree.reduce(CGPoint.zero) { (result, point) -> CGPoint in
+                return CGPoint(x: result.x + point.x/CGFloat(self.points.count),
+                               y: result.y + point.y/CGFloat(self.points.count))
             }
         }
         print("avgPoint: \(avgPointTree)")
@@ -143,7 +145,7 @@ class NearestNeighbourLoadTest: XCTestCase {
                 }
                 
                 let testDistance = searchPoint.squaredDistance(to: testPoint)
-                if let index = bestPoints.index(where: { testDistance < searchPoint.squaredDistance(to: $0) }) {
+                if let index = bestPoints.firstIndex(where: { testDistance < searchPoint.squaredDistance(to: $0) }) {
                     var newBestPoints = bestPoints
                     newBestPoints.removeLast()
                     newBestPoints.insert(testPoint, at: index)
