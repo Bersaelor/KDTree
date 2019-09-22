@@ -89,7 +89,7 @@ extension KDTree {
         guard array.count > 1 else { return array }
         
         var varray = array
-        let partitionIndex = KDTree.partitionLomuto(&varray, kdDimension: kdDimension)
+        let partitionIndex = KDTree.partitionHoare(&varray, kdDimension: kdDimension)
         
         if partitionIndex == targetIndex {
             return varray
@@ -102,8 +102,8 @@ extension KDTree {
         }
     }
     
-    /// # Lomuto's partitioning algorithm.
-    /// This is conceptually simpler than Hoare's original scheme but less efficient.
+    /// # Hoare's partitioning algorithm.
+    /// This is more efficient that Lomuto's algorithm.
     /// The return value is the index of the pivot element in the new array. The left
     /// partition is [low...p-1]; the right partition is [p+1...high], where p is the
     /// return value.
@@ -116,7 +116,7 @@ extension KDTree {
     ///   - array: the inout array slice
     ///   - kdDimension: the dimension sorted over
     /// - Returns: the index of the pivot element in the new array
-    private static func partitionLomuto(_ array: inout ArraySlice<Element>, kdDimension: Int) -> Int {
+    private static func partitionHoare(_ array: inout ArraySlice<Element>, kdDimension: Int) -> Int {
         let lo = array.startIndex
         let hi = array.endIndex-1
         guard lo < hi else { return lo }
@@ -127,19 +127,26 @@ extension KDTree {
         
         // This loop partitions the array into four (possibly empty) regions:
         //   [lo   ...    i] contains all values < pivot,
-        //   [i+1  ...  j-1] contains all values >= pivot,
-        //   [j    ..< hi-1] are values we haven't looked at yet,
+        //   [i+1  ...  j-1] are values we haven't looked at yet,
+        //   [j    ..< hi-1] contains all values >= pivot,
         //   [hi           ] is the pivot value.
-        var i = array.startIndex
+        var i = lo
+        var j = hi - 1
         
-        for j in array.startIndex..<hi {
-            if array[j].kdDimension(kdDimension) < pivot.kdDimension(kdDimension) {
-                array.swapAt(i, j)
+        while true {
+            while array[i].kdDimension(kdDimension) < pivot.kdDimension(kdDimension) {
                 i += 1
             }
+            while lo < j && array[j].kdDimension(kdDimension) >= pivot.kdDimension(kdDimension) {
+                j -= 1
+            }
+            guard i < j else {
+                break
+            }
+            array.swapAt(i, j)
         }
         
-        // Swap the pivot element with the first element that is greater than
+        // Swap the pivot element with the first element that is >= 
         // the pivot. Now the pivot sits between the < and >= regions and the
         // array is properly partitioned.
         array.swapAt(i, hi)
