@@ -18,6 +18,15 @@ public enum KDTree<Element: KDTreePoint> {
     indirect case node(left: KDTree<Element>, value: Element, dimension: Int, right: KDTree<Element>)
 }
 
+fileprivate extension UnsafeMutablePointer {
+    @_transparent
+    func swapAt(_ i: Int, _ j: Int) {
+        let temp = self[i]
+        self[i] = self[j]
+        self[j] = temp
+    }
+}
+
 extension KDTree {
     public init(values: [Element], depth: Int = 0) {
         guard !values.isEmpty else {
@@ -25,86 +34,105 @@ extension KDTree {
             return
         }
         
-        let currentSplittingDimension = depth % Element.dimensions
-        if values.count == 1, let firstValue = values.first {
-            self = .node(left: .leaf, value: firstValue, dimension: currentSplittingDimension, right: .leaf)
-        }
-        else {
-            var median = values.count / 2
-            
-            let selected = KDTree.quickSelect(targetIndex: median, array: values[0..<values.endIndex], kdDimension: currentSplittingDimension)
-            let medianElement = selected[median]
-            let medianValue = medianElement.kdDimension(currentSplittingDimension)
-          
-            //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
-            //Needed for 'contains' and 'removing' method.
-            while median >= 1 && abs(selected[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
-              median -= 1
-            }
-          
-            let leftTree = KDTree(values: selected[0..<median], depth: depth+1)
-            let rightTree = KDTree(values: selected[median+1..<selected.count], depth: depth+1)
-            
-            self = .node(left: leftTree, value: selected[median],
-                         dimension: currentSplittingDimension, right: rightTree)
-        }
+        let count = values.count
+        
+        let pointer = UnsafeMutablePointer<Element>.allocate(capacity: count)
+        
+        // copy values from the array
+        pointer.initialize(from: values, count: count)
+        
+        self = KDTree(values: pointer, startIndex: 0, endIndex: count)
+        
+        // deallocate the pointer
+        pointer.deallocate()
     }
     
     public init(values: ArraySlice<Element>, depth: Int = 0) {
-        guard !values.isEmpty else {
+
+        let count = values.count
+        
+        self = values.withUnsafeBufferPointer { bufferPointer in
+            guard let start = bufferPointer.baseAddress, count > 0 else {
+                return .leaf
+            }
+            
+            let pointer = UnsafeMutablePointer<Element>.allocate(capacity: count)
+            
+            defer {
+                // deallocate the pointer later
+                pointer.deallocate()
+            }
+            
+            // copy values from the array
+            pointer.initialize(from: start, count: count)
+            
+            return KDTree(values: pointer, startIndex: 0, endIndex: count)
+        }
+        
+    }
+    
+    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0) {
+        guard endIndex > startIndex else {
             self = .leaf
             return
         }
         
+        let count = endIndex - startIndex
+        
         let currentSplittingDimension = depth % Element.dimensions
-        if values.count == 1, let firstValue = values.first {
-            self = .node(left: .leaf, value: firstValue, dimension: currentSplittingDimension, right: .leaf)
+        if count == 1 {
+            self = .node(left: .leaf, value: values[startIndex], dimension: currentSplittingDimension, right: .leaf)
         }
         else {
-            let sliceStartIndex = values.startIndex
-            let sliceEndIndex = values.endIndex
-            var median = sliceStartIndex + (sliceEndIndex - sliceStartIndex) / 2
+            var median = startIndex + count / 2
             
-            let selected = KDTree.quickSelect(targetIndex: median, array: values, kdDimension: currentSplittingDimension)
-            let medianElement = selected[median]
+            KDTree.quickSelect(targetIndex: median, values: values, startIndex: startIndex, endIndex: endIndex, kdDimension: currentSplittingDimension)
+            let medianElement = values[median]
             let medianValue = medianElement.kdDimension(currentSplittingDimension)
             
             //Ensure left subtree contains currentSplittingDimension-coordinate strictly less than its parent node
             //Needed for 'contains' and 'removing' method.
-            while median >= 1 && median > sliceStartIndex && abs(selected[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
+            while median >= 1 && median > startIndex && abs(values[median-1].kdDimension(currentSplittingDimension) - medianValue) < Double.ulpOfOne {
                 median -= 1
             }
             
-            let leftTree = KDTree(values: selected[sliceStartIndex..<median], depth: depth+1)
-            let rightTree = KDTree(values: selected[median+1..<sliceEndIndex], depth: depth+1)
+            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1)
+            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1)
             
-            self = .node(left: leftTree, value: selected[median],
+            self = .node(left: leftTree, value: values[median],
                          dimension: currentSplittingDimension, right: rightTree)
         }
     }
     
-    /** Quickselect function is based on https://github.com/mourner/kdbush
-     */
-    private static func quickSelect(targetIndex: Int, array: ArraySlice<Element>, kdDimension: Int) -> ArraySlice<Element> {
-        guard array.count > 1 else { return array }
+    /// Quickselect function
+    ///
+    /// Based on https://github.com/mourner/kdbush
+    ///
+    /// - Parameter targetIndex: target pivot index
+    /// - Parameter values: pointer to the values to be evaluated
+    /// - Parameter startIndex: start index of the region of interest
+    /// - Parameter endIndex: end index of the region of interest
+    /// - Parameter kdDimension: dimension to evaluate
+    private static func quickSelect(targetIndex: Int, values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, kdDimension: Int) {
         
-        var varray = array
-        let partitionIndex = KDTree.partitionHoare(&varray, kdDimension: kdDimension)
+        guard endIndex - startIndex > 1 else { return }
+        
+        let partitionIndex = KDTree.partitionHoare(values, startIndex: startIndex, endIndex: endIndex, kdDimension: kdDimension)
         
         if partitionIndex == targetIndex {
-            return varray
+            return
         } else if partitionIndex < targetIndex {
             let s = partitionIndex+1
-            return varray[...partitionIndex] + quickSelect(targetIndex: targetIndex, array: varray[s...], kdDimension: kdDimension)
+            quickSelect(targetIndex: targetIndex, values: values, startIndex: s, endIndex: endIndex, kdDimension: kdDimension)
         } else {
             // partitionIndex is greater than the targetIndex, quickSelect moves to indexes smaller than partitionIndex
-            return quickSelect(targetIndex: targetIndex, array: varray[..<partitionIndex], kdDimension: kdDimension) + varray[partitionIndex...]
+            quickSelect(targetIndex: targetIndex, values: values, startIndex: startIndex, endIndex: partitionIndex, kdDimension: kdDimension)
         }
     }
     
     /// # Hoare's partitioning algorithm.
     /// This is more efficient that Lomuto's algorithm.
-    /// The return value is the index of the pivot element in the new array. The left
+    /// The return value is the index of the pivot element in the pointer. The left
     /// partition is [low...p-1]; the right partition is [p+1...high], where p is the
     /// return value.
     /// - - -
@@ -113,17 +141,17 @@ extension KDTree {
     /// right partition.
     ///
     /// - Parameters:
-    ///   - array: the inout array slice
+    ///   - values: the pointer to the values
     ///   - kdDimension: the dimension sorted over
-    /// - Returns: the index of the pivot element in the new array
-    private static func partitionHoare(_ array: inout ArraySlice<Element>, kdDimension: Int) -> Int {
-        let lo = array.startIndex
-        let hi = array.endIndex-1
+    /// - Returns: the index of the pivot element in the pointer
+    private static func partitionHoare(_ values: UnsafeMutablePointer<Element>, startIndex lo: Int, endIndex: Int, kdDimension: Int) -> Int {
+        let hi = endIndex - 1
         guard lo < hi else { return lo }
         
         let randomIndex = Int.random(in: lo...hi)
-        array.swapAt(hi, randomIndex)
-        let pivot = array[hi]
+        values.swapAt(hi, randomIndex)
+        
+        let kdDimensionOfPivot = values[hi].kdDimension(kdDimension)
         
         // This loop partitions the array into four (possibly empty) regions:
         //   [lo   ...    i] contains all values < pivot,
@@ -134,22 +162,22 @@ extension KDTree {
         var j = hi - 1
         
         while true {
-            while array[i].kdDimension(kdDimension) < pivot.kdDimension(kdDimension) {
+            while values[i].kdDimension(kdDimension) < kdDimensionOfPivot {
                 i += 1
             }
-            while lo < j && array[j].kdDimension(kdDimension) >= pivot.kdDimension(kdDimension) {
+            while lo < j && values[j].kdDimension(kdDimension) >= kdDimensionOfPivot {
                 j -= 1
             }
             guard i < j else {
                 break
             }
-            array.swapAt(i, j)
+            values.swapAt(i, j)
         }
         
-        // Swap the pivot element with the first element that is >= 
+        // Swap the pivot element with the first element that is >=
         // the pivot. Now the pivot sits between the < and >= regions and the
         // array is properly partitioned.
-        array.swapAt(i, hi)
+        values.swapAt(i, hi)
         return i
     }
     
