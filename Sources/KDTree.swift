@@ -47,30 +47,6 @@ extension KDTree {
         pointer.deallocate()
     }
     
-    public init(values: ArraySlice<Element>, depth: Int = 0) {
-
-        let count = values.count
-        
-        self = values.withUnsafeBufferPointer { bufferPointer in
-            guard let start = bufferPointer.baseAddress, count > 0 else {
-                return .leaf
-            }
-            
-            let pointer = UnsafeMutablePointer<Element>.allocate(capacity: count)
-            
-            defer {
-                // deallocate the pointer later
-                pointer.deallocate()
-            }
-            
-            // copy values from the array
-            pointer.initialize(from: start, count: count)
-            
-            return KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth)
-        }
-        
-    }
-    
     private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0) {
         guard endIndex > startIndex else {
             self = .leaf
