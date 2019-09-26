@@ -41,7 +41,7 @@ extension KDTree {
         // copy values from the array
         pointer.initialize(from: values, count: count)
         
-        self = KDTree(values: pointer, startIndex: 0, endIndex: count)
+        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth)
         
         // deallocate the pointer
         pointer.deallocate()
@@ -66,7 +66,7 @@ extension KDTree {
             // copy values from the array
             pointer.initialize(from: start, count: count)
             
-            return KDTree(values: pointer, startIndex: 0, endIndex: count)
+            return KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth)
         }
         
     }
