@@ -28,11 +28,11 @@ import PackageDescription
 let package = Package(
     name: "KDTree",
     platforms: [
-        .iOS(SupportedPlatform.IOSVersion.v11),
-        .macOS(SupportedPlatform.MacOSVersion.v10_13),
-        .tvOS(SupportedPlatform.TVOSVersion.v11),
+        .iOS(SupportedPlatform.IOSVersion.v8),
+        .macOS(SupportedPlatform.MacOSVersion.v10_10),
+        .tvOS(SupportedPlatform.TVOSVersion.v9),
         .watchOS(SupportedPlatform.WatchOSVersion.v4)
-    ],
+    ], // .linux doesn't need the supported platform definition
     products: [
         .library(
             name: "KDTree",
