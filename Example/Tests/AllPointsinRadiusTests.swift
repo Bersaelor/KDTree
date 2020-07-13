@@ -6,6 +6,11 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+#if os(macOS)
+    import AppKit
+#else
+    import UIKit
+#endif
 import XCTest
 import KDTree
 
