@@ -93,6 +93,7 @@ class StarMapView: View {
     
     func commonInit() {
         #if os(macOS)
+            wantsLayer = true
             layer?.backgroundColor = Color.black.cgColor
             recalculatePixelRadii()
         #else
