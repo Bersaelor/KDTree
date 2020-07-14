@@ -6,7 +6,11 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-import Foundation
+#if os(macOS)
+    import AppKit
+#else
+    import UIKit
+#endif
 import KDTree
 import SwiftyHYGDB
 

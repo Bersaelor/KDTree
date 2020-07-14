@@ -18,10 +18,10 @@ class StarMapView: View {
     var tappedPoint: CGPoint?
     var centerPoint = CGPoint(x: 12.0, y: 0.0) {
         didSet {
-            if centerPoint.x > RadialStar.ascensionRange {
-                centerPoint = CGPoint(x: centerPoint.x - RadialStar.ascensionRange, y: centerPoint.y)
+            if centerPoint.x > CGFloat(RadialStar.ascensionRange) {
+                centerPoint = CGPoint(x: centerPoint.x - CGFloat(RadialStar.ascensionRange), y: centerPoint.y)
             } else if centerPoint.x < 0 {
-                centerPoint = CGPoint(x: centerPoint.x + RadialStar.ascensionRange, y: centerPoint.y)
+                centerPoint = CGPoint(x: centerPoint.x + CGFloat(RadialStar.ascensionRange), y: centerPoint.y)
             }
             if centerPoint.y > maxDeclination {
                 centerPoint = CGPoint(x: centerPoint.x, y: maxDeclination)
@@ -59,8 +59,8 @@ class StarMapView: View {
     var verticalScreenRadius: CGFloat = 0.0
     
     private func recalculatePixelRadii() {
-        let radiusInPxH = 0.5 * self.bounds.width / (radius * RadialStar.ascensionRange)
-        let radiusInPxV = 0.5 * self.bounds.width / (radius * RadialStar.declinationRange)
+        let radiusInPxH = 0.5 * self.bounds.width / (radius * CGFloat(RadialStar.ascensionRange))
+        let radiusInPxV = 0.5 * self.bounds.width / (radius * CGFloat(RadialStar.declinationRange))
         pixelRadii = CGPoint(x: radiusInPxH, y: radiusInPxV)
         verticalScreenRadius = self.bounds.midX / pixelRadii.x
     }
@@ -93,6 +93,7 @@ class StarMapView: View {
     
     func commonInit() {
         #if os(macOS)
+            wantsLayer = true
             layer?.backgroundColor = Color.black.cgColor
             recalculatePixelRadii()
         #else
@@ -116,20 +117,27 @@ class StarMapView: View {
 
     func currentRadii() -> CGSize {
         let aspectRatio = self.bounds.size.width / self.bounds.size.height
-        return CGSize(width: radius * RadialStar.ascensionRange, height: radius / aspectRatio * RadialStar.declinationRange)
+        return CGSize(
+            width: radius * CGFloat(RadialStar.ascensionRange),
+            height: radius / aspectRatio * CGFloat(RadialStar.declinationRange)
+        )
     }
     
     func skyPosition(for pointInViewCoordinates: CGPoint) -> CGPoint {
         let relativeToCenter = pointInViewCoordinates - CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         var point = -1.0 * CGPoint(x: 1.0/pixelRadii.x, y: 1.0/pixelRadii.y) * relativeToCenter + centerPoint
-        if point.x < 0.0 { point = CGPoint(x: point.x + RadialStar.ascensionRange, y: point.y) }
-        if point.x > RadialStar.ascensionRange { point = CGPoint(x: point.x - RadialStar.ascensionRange, y: point.y) }
+        if point.x < 0.0 {
+            point = CGPoint(x: point.x + CGFloat(RadialStar.ascensionRange), y: point.y)
+        }
+        if point.x > CGFloat(RadialStar.ascensionRange) {
+            point = CGPoint(x: point.x - CGFloat(RadialStar.ascensionRange), y: point.y)
+        }
         return point
     }
     
     private func pixelPosition(for positionInSky: CGPoint, radii: CGPoint, dotSize: CGFloat) -> CGPoint {
-        let below0h = positionInSky.x + verticalScreenRadius > RadialStar.ascensionRange && centerPoint.x < verticalScreenRadius
-        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > RadialStar.ascensionRange
+        let below0h = positionInSky.x + verticalScreenRadius > CGFloat(RadialStar.ascensionRange) && centerPoint.x < verticalScreenRadius
+        let over24h = positionInSky.x - verticalScreenRadius < 0 && centerPoint.x + verticalScreenRadius > CGFloat(RadialStar.ascensionRange)
         let adjVec = CGPoint(x: below0h ? RadialStar.ascensionRange : over24h ? -RadialStar.ascensionRange : 0, y: 0)
         let starCenter = radii*(centerPoint - (positionInSky - adjVec))
         return starCenter - dotSize * CGPoint(x: 0.5, y: 0.5)
@@ -179,14 +187,14 @@ class StarMapView: View {
                 let size = 12.0 * sqrt(magnification)
                 let attributesLbl = [NSAttributedString.Key.font: Font.systemFont(ofSize: CGFloat(size)),
                                      NSAttributedString.Key.paragraphStyle: paragraphStyleLbl]
-                let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: 0.0)
+                let relativePosition = pixelPosition(for: CGPoint(star.starPoint), radii: pixelRadii, dotSize: 0.0)
                 ("☀️" as NSString).draw(in: CGRect(pointA: relativePosition + CGPoint(x: size, y: size),
                                                        pointB: relativePosition - CGPoint(x: size, y: size)),
                                             withAttributes: attributesLbl)
             } else {
                 let mag = star.starData?.value.mag ?? 0.0
                 let dotSize = CGFloat(StarMapView.vegaSize) * magnification / CGFloat(exp(mag * rootValue))
-                let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: dotSize)
+                let relativePosition = pixelPosition(for: CGPoint(star.starPoint), radii: pixelRadii, dotSize: dotSize)
                 let rect = CGRect(origin: relativePosition, size: CGSize(width: dotSize, height: dotSize))
                 setStarColor(for: star)
                 context.fillEllipse(in: rect)
@@ -243,7 +251,7 @@ class StarMapView: View {
     
     private func drawTapped(context: CGContext, star: RadialStar) {
         let circleSize: CGFloat = 15
-        let relativePosition = pixelPosition(for: star.starPoint, radii: pixelRadii, dotSize: circleSize)
+        let relativePosition = pixelPosition(for: CGPoint(star.starPoint), radii: pixelRadii, dotSize: circleSize)
         let rect: CGRect = CGRect(origin: relativePosition, size: CGSize(width: circleSize, height: circleSize))
         Color.orange.setStroke()
         context.setLineWidth(1.0)
@@ -348,5 +356,11 @@ class StarMapView: View {
         }
         
         return Color(red: r, green: g, blue: b, alpha: 1.0)
+    }
+}
+
+extension CGPoint {
+    init(_ floatPoint: (Float, Float)) {
+        self = CGPoint(x: Double(floatPoint.0), y: Double(floatPoint.1))
     }
 }

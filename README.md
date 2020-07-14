@@ -1,10 +1,6 @@
 # KDTree
 
-[![Swift 5.0](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://swift.org/)
-[![Version](https://img.shields.io/cocoapods/v/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
-[![License](https://img.shields.io/cocoapods/l/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
-[![Platform](https://img.shields.io/cocoapods/p/KDTree.svg?style=flat)](http://cocoapods.org/pods/KDTree)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org/)
 [![CI Status](http://img.shields.io/travis/Bersaelor/KDTree.svg?style=flat)](https://travis-ci.org/Bersaelor/KDTree)
 
 Swift implementation of a k-dimensional binary space partitioning tree.
@@ -106,37 +102,19 @@ The example app in the `Example` folder shows some demo implementations on `iOS`
 
 ## Installation
 
-#### Cocoapods
-
-KDTree is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "KDTree"
-```
-
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
---- 
-
-#### Swift package manager
-
-Add the following to your `Package.swift` dependencies
+In Xcode, open `File` -> `Swift Packages` -> `Add Package Dependency` and copy the project url into the text field:
 
 ```
-.Package(url: "https://github.com/Bersaelor/KDTree", majorVersion: 1, minor: 3),
+https://github.com/Bersaelor/KDTree
 ```
 
----
-
-#### Carthage
-
-To add `KDTree` using Carthage add the following to your Cartfile:
+Or add the following to your `Package.swift` dependencies
 
 ```
-github "Bersaelor/KDTree"
+.Package(url: "https://github.com/Bersaelor/KDTree", majorVersion: 1, minor: 4),
 ```
+
+As of 2020 the Swift package manager covers all use cases and is super convenient, so we felt that supporting other package managers like Carthage or Cocoapods is no longer necessary.
 
 ## License
 

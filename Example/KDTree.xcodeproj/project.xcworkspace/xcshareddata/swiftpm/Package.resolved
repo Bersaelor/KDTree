@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftyBeaver",
+        "repositoryURL": "https://github.com/SwiftyBeaver/SwiftyBeaver",
+        "state": {
+          "branch": null,
+          "revision": "e0fb3a74cb993d7dcf1e56734cdc98ad6e6d8176",
+          "version": "1.9.1"
+        }
+      },
+      {
+        "package": "SwiftyHYGDB",
+        "repositoryURL": "https://github.com/Bersaelor/SwiftyHYGDB",
+        "state": {
+          "branch": null,
+          "revision": "98f632f1ef7c62b9864d77f52b639a7d5193305c",
+          "version": "0.8.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
