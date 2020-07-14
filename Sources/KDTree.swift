@@ -70,11 +70,7 @@ extension KDTree {
         
         let count = endIndex - startIndex
         
-        var usedDimensions = Element.dimensions
-        if dimensionsOverride != nil {
-            usedDimensions = dimensionsOverride!
-        }
-        print("Using ", usedDimensions)
+        let usedDimensions = dimensionsOverride ?? Element.dimensions
         let currentSplittingDimension = depth % usedDimensions
         if count == 1 {
             self = .node(left: .leaf, value: values[startIndex], dimension: currentSplittingDimension, right: .leaf)
@@ -239,10 +235,7 @@ extension KDTree {
         case let .node(left, value, dim, right):
             if value == newValue { return self }
             else {
-                var usedDimensions = Element.dimensions
-                if dimensionsOverride != nil {
-                    usedDimensions = dimensionsOverride!
-                }
+                let usedDimensions = dimensionsOverride ?? Element.dimensions
                
                 let nextDim = (dim + 1) % usedDimensions
                 if newValue.kdDimension(dim) < value.kdDimension(dim) {
@@ -280,10 +273,7 @@ extension KDTree {
                 return KDTree.leaf
             }
             else {
-                var usedDimensions = Element.dimensions
-                if dimensionsOverride != nil {
-                    usedDimensions = dimensionsOverride!
-                }
+                let usedDimensions = dimensionsOverride ?? Element.dimensions
                 let nextDim = (dim + 1) % usedDimensions
                 if valueToBeRemoved.kdDimension(dim) < value.kdDimension(dim) {
                     return KDTree.node(left: left.removing(valueToBeRemoved, dim: nextDim, dimensionsOverride: dimensionsOverride), value: value,
