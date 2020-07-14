@@ -17,4 +17,4 @@ matrix:
       podfile: Example/Podfile
       env: TEST_DESTINATION="OS=12.2,name=iPhone X"
       script:
-        - set -o pipefail && xcodebuild test -project Example/KDTree.xcodeproj -scheme KDTree_Example -destination "$TEST_DESTINATION" | xcpretty
+        - set -o pipefail && xcodebuild test -project Example/KDTree.xcodeproj -scheme KDTree_Example -resolvePackageDependencies -destination "$TEST_DESTINATION" | xcpretty
