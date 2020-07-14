@@ -130,7 +130,6 @@
 		74B9DA121F69CF3A00C9DCE0 /* visibleStars.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = visibleStars.csv; sourceTree = "<group>"; };
 		74B9DA131F69CF4500C9DCE0 /* allStars.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = allStars.csv; sourceTree = "<group>"; };
 		7C2B43EA9C12FFEB9A9CD3C6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		8506A4C5702448A3C135B8E7 /* KDTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KDTree.podspec; path = ../KDTree.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EBAD2F8B727A2480766EA435 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,7 +256,6 @@
 			children = (
 				7189757F1F6F310300264E02 /* .travis.yml */,
 				71143BB3206FF19500D4E50E /* .swiftlint.yml */,
-				8506A4C5702448A3C135B8E7 /* KDTree.podspec */,
 				7C2B43EA9C12FFEB9A9CD3C6 /* README.md */,
 				EBAD2F8B727A2480766EA435 /* LICENSE */,
 			);
