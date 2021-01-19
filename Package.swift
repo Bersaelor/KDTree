@@ -28,7 +28,7 @@ import PackageDescription
 let package = Package(
     name: "KDTree",
     platforms: [
-        .iOS(SupportedPlatform.IOSVersion.v8),
+        .iOS(SupportedPlatform.IOSVersion.v9),
         .macOS(SupportedPlatform.MacOSVersion.v10_10),
         .tvOS(SupportedPlatform.TVOSVersion.v9),
         .watchOS(SupportedPlatform.WatchOSVersion.v4)
