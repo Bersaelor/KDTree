@@ -88,7 +88,7 @@ extension KDTree: Decodable where Element: Decodable {
         }
     }
 }
-
+#if !os(WASI)
 extension KDTree where Element: Encodable {
     
     public func save(to path: URL) throws {
@@ -112,3 +112,4 @@ extension KDTree where Element: Decodable {
 #endif
     }
 }
+#endif

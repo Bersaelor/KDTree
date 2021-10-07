@@ -5,6 +5,7 @@
 
 .build
 /.previous-build
+.swiftpm
 
 # Carthage
 
