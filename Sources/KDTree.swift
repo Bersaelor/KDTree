@@ -43,7 +43,7 @@ fileprivate extension UnsafeMutablePointer {
 }
 
 extension KDTree {
-    public init(values: [Element], depth: Int = 0) {
+    public init(values: [Element], depth: Int = 0, dimensionsOverride: Int? = nil) {
         guard !values.isEmpty else {
             self = .leaf
             return
@@ -56,13 +56,13 @@ extension KDTree {
         // copy values from the array
         pointer.initialize(from: values, count: count)
         
-        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth)
+        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth, dimensionsOverride: dimensionsOverride)
         
         // deallocate the pointer
         pointer.deallocate()
     }
     
-    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0) {
+    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0, dimensionsOverride: Int? = nil) {
         guard endIndex > startIndex else {
             self = .leaf
             return
@@ -70,7 +70,8 @@ extension KDTree {
         
         let count = endIndex - startIndex
         
-        let currentSplittingDimension = depth % Element.dimensions
+        let usedDimensions = dimensionsOverride ?? Element.dimensions
+        let currentSplittingDimension = depth % usedDimensions
         if count == 1 {
             self = .node(left: .leaf, value: values[startIndex], dimension: currentSplittingDimension, right: .leaf)
         }
@@ -87,8 +88,8 @@ extension KDTree {
                 median -= 1
             }
             
-            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1)
-            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1)
+            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1, dimensionsOverride: dimensionsOverride)
+            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1, dimensionsOverride: dimensionsOverride)
             
             self = .node(left: leftTree, value: values[median],
                          dimension: currentSplittingDimension, right: rightTree)
@@ -227,21 +228,23 @@ extension KDTree {
     /// Return a KDTree with the element inserted. Tree might not be balanced anymore after this
     ///
     /// - Complexity: O(n log n )..
-    public func inserting(_ newValue: Element, dim: Int = 0) -> KDTree {
+    public func inserting(_ newValue: Element, dim: Int = 0, dimensionsOverride: Int? = nil) -> KDTree {
         switch self {
         case .leaf:
             return .node(left: .leaf, value: newValue, dimension: dim, right: .leaf)
         case let .node(left, value, dim, right):
             if value == newValue { return self }
             else {
-                let nextDim = (dim + 1) % Element.dimensions
+                let usedDimensions = dimensionsOverride ?? Element.dimensions
+               
+                let nextDim = (dim + 1) % usedDimensions
                 if newValue.kdDimension(dim) < value.kdDimension(dim) {
-                    return KDTree.node(left: left.inserting(newValue, dim: nextDim), value: value,
+                    return KDTree.node(left: left.inserting(newValue, dim: nextDim, dimensionsOverride: dimensionsOverride), value: value,
                                        dimension: dim, right: right)
                 }
                 else {
                     return KDTree.node(left: left, value: value, dimension: dim,
-                                       right: right.inserting(newValue, dim: nextDim))
+                                       right: right.inserting(newValue, dim: nextDim, dimensionsOverride: dimensionsOverride))
                 }
             }
         }    
@@ -250,7 +253,7 @@ extension KDTree {
     /// Return a KDTree with the element removed.
     ///
     /// If element is not contained the new KDTree will be equal to the old one
-    public func removing(_ valueToBeRemoved: Element, dim: Int = 0) -> KDTree {
+    public func removing(_ valueToBeRemoved: Element, dim: Int = 0, dimensionsOverride: Int? = nil) -> KDTree {
         switch self {
         case .leaf:
             return self
@@ -270,20 +273,21 @@ extension KDTree {
                 return KDTree.leaf
             }
             else {
-                let nextDim = (dim + 1) % Element.dimensions
+                let usedDimensions = dimensionsOverride ?? Element.dimensions
+                let nextDim = (dim + 1) % usedDimensions
                 if valueToBeRemoved.kdDimension(dim) < value.kdDimension(dim) {
-                    return KDTree.node(left: left.removing(valueToBeRemoved, dim: nextDim), value: value,
+                    return KDTree.node(left: left.removing(valueToBeRemoved, dim: nextDim, dimensionsOverride: dimensionsOverride), value: value,
                                        dimension: dim, right: right)
                 }
                 else {
                     return KDTree.node(left: left, value: value, dimension: dim,
-                                       right: right.removing(valueToBeRemoved, dim: nextDim))
+                                       right: right.removing(valueToBeRemoved, dim: nextDim, dimensionsOverride: dimensionsOverride))
                 }
             }
         }
     }
     
-    private func findBestReplacement(_ dimOfCut: Int, direction: ReplacementDirection) -> (KDTree, Element?) {
+    private func findBestReplacement(_ dimOfCut: Int, direction: ReplacementDirection, dimensionsOverride: Int? = nil) -> (KDTree, Element?) {
         switch self {
         case .leaf:
             return (self, nil)
@@ -297,7 +301,7 @@ extension KDTree {
                     else { return (.node(left: left, value: value, dimension: dim, right: newSubTree), replacement) }
                 }
                 //the own point is the optimum!
-                return (self.removing(value), value)
+                return (self.removing(value, dimensionsOverride: dimensionsOverride), value)
             }
             else {
                 //look at both side and the value and find the min/max regarding f() along the dimOfCut
@@ -316,7 +320,7 @@ extension KDTree {
                     return (.node(left: left, value: value, dimension: dim, right: newRightSubTree), bestValue)
                 }
                 else { //the own point is the optimum!
-                    return (self.removing(value), value)
+                    return (self.removing(value, dimensionsOverride: dimensionsOverride), value)
                 }
             }
         }
@@ -344,7 +348,7 @@ extension KDTree { //SequenceType like, but keeping the KDTree datastructure
     /// where a map would keep the balance intact.
     ///
     /// - Complexity: O(N).
-    public func map<T: KDTreePoint>(_ transform: (Element) throws -> T) rethrows -> KDTree<T> {
+    public func map<T: KDTreePoint>(_ transform: (Element) throws -> T, dimensionsOverride: Int? = nil) rethrows -> KDTree<T> {
         switch self {
         case .leaf:
             return .leaf
@@ -360,14 +364,14 @@ extension KDTree { //SequenceType like, but keeping the KDTree datastructure
     /// in order, that satisfy the predicate `includeElement`.
     ///
     /// - Complexity: O(N).
-    public func filter(_ includeElement: (Element) throws -> Bool) rethrows -> KDTree {
+    public func filter(_ includeElement: (Element) throws -> Bool, dimensionsOverride: Int? = nil) rethrows -> KDTree {
         switch self {
         case .leaf:
             return self
         case let .node(left, value, dim, right):
             if try !includeElement(value) {
                 let filteredElements = try (left.elements + right.elements).filter(includeElement)
-                return KDTree(values: filteredElements)
+                return KDTree(values: filteredElements, dimensionsOverride: dimensionsOverride)
             }
             else {
                 return try KDTree.node(left: left.filter(includeElement), value: value,
