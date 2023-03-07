@@ -57,7 +57,7 @@ public class SplitAxisEstimator<Element: KDTreePoint>{
 }
 
 extension KDTree {
-    public init(values: [Element], depth: Int = 0, dimensionsOverride: Int? = nil) {
+    public init(values: [Element], depth: Int = 0, splitAxisEstimator: SplitAxisEstimator<Element> = SplitAxisEstimator<Element>(),dimensionsOverride: Int? = nil) {
         guard !values.isEmpty else {
             self = .leaf
             return
@@ -70,13 +70,13 @@ extension KDTree {
         // copy values from the array
         pointer.initialize(from: values, count: count)
         
-        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth, dimensionsOverride: dimensionsOverride)
+        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth, splitAxisEstimator: splitAxisEstimator, dimensionsOverride: dimensionsOverride)
         
         // deallocate the pointer
         pointer.deallocate()
     }
     
-    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0, splitAxisEstimator: SplitAxisEstimator<Element> = SplitAxisEstimator<Element>(),dimensionsOverride: Int? = nil) {
+    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0, splitAxisEstimator: SplitAxisEstimator<Element>,dimensionsOverride: Int? = nil) {
         guard endIndex > startIndex else {
             self = .leaf
             return
@@ -100,8 +100,8 @@ extension KDTree {
                 median -= 1
             }
             
-            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1, dimensionsOverride: dimensionsOverride)
-            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1, dimensionsOverride: dimensionsOverride)
+            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1, splitAxisEstimator: splitAxisEstimator, dimensionsOverride: dimensionsOverride)
+            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1, splitAxisEstimator: splitAxisEstimator, dimensionsOverride: dimensionsOverride)
             
             self = .node(left: leftTree, value: values[median],
                          dimension: currentSplittingDimension, right: rightTree)
