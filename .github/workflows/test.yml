@@ -10,6 +10,10 @@ jobs:
     - name: Show Xcode version
       run: xcodebuild -version
     - name: Test
-      run: set -o pipefail && xcodebuild test -project Example/KDTree.xcodeproj -scheme KDTree_Example -resolvePackageDependencies -destination "$TEST_DESTINATION" | xcpretty
+      run: set -o pipefail && xcodebuild test -project Example/KDTree.xcodeproj -scheme KDTree_Example -resolvePackageDependencies -destination "$TEST_DESTINATION" | xcpretty --report html
       env:
         TEST_DESTINATION: "OS=16.1,name=iPhone 14"
+    - uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: build/reports
