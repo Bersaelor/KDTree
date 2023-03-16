@@ -1,0 +1,19 @@
+name: test
+
+on: [push] 
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: 
+      TEST_DESTINATION: "OS=16.1,name=iPhone 14"
+    steps:
+    - uses: actions/checkout@v3
+    - name: Select Xcode version
+      run: sudo xcode-select -s '/Applications/Xcode_14.1.app/Contents/Developer'
+    - name: Show Xcode version
+      run: xcodebuild -version
+    - name: Install xcpretty
+      run: sudo gem install xcpretty
+    - name: Build
+      run: set -o pipefail && xcodebuild test -project Example/KDTree.xcodeproj -scheme KDTree_Example -resolvePackageDependencies -destination "$TEST_DESTINATION" | xcpretty
