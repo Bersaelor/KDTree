@@ -1,7 +1,5 @@
-name: test
-
+name: CI
 on: [push] 
-
 jobs:
   build:
     runs-on: macos-latest
