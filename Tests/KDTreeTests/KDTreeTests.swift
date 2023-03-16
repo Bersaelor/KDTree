@@ -209,3 +209,32 @@ class KDTreeTests: XCTestCase {
         ("test03_BuildLargeTree", test03_BuildLargeTree)
     ]
 }
+
+class KDTreeCustomOrderSplitAxisEstimatorTests:KDTreeTests {
+    public class CustomSplitAxisEstimator<Element: KDTreePoint>: SplitAxisEstimator<Element>{
+        private var customOrderAxis:Array<Int>
+        override init(){
+            customOrderAxis = (Array<Int>)(0..<Element.dimensions)
+            customOrderAxis.shuffle()
+        }
+        override func currentSplittingDimension(values: UnsafeMutablePointer<Element>, depth: Int, dimensionsOverride: Int? = nil) -> Int {
+            let index = depth % Element.dimensions
+            return customOrderAxis[index]
+        }
+        override func nextSplittingDimension(tree: KDTree<Element>, depth: Int, dimensionsOverride: Int? = nil) -> Int{
+            let index = (depth + 1) % Element.dimensions
+            return customOrderAxis[index]
+        }
+    }
+    override func setUp() {
+        super.setUp()
+        let largeCustomSplitAxisEstimator = CustomSplitAxisEstimator<CGPoint>()
+        points = Array(0..<1000).map({_ in CGPoint(x: CGFloat.random(), y: CGFloat.random())})
+        largeTree = KDTree(values: self.points,splitAxisEstimator: largeCustomSplitAxisEstimator)
+
+        let spaceCustomSplitAxisEstimator = CustomSplitAxisEstimator<STPoint>()
+        spaceTimePoints = Array(0..<100).map({_ in STPoint(x: CGFloat.random(), y: CGFloat.random(),
+                                                           z: CGFloat.random(), t: CGFloat.random())})
+        spaceTimeTree = KDTree(values: self.spaceTimePoints,splitAxisEstimator: spaceCustomSplitAxisEstimator)
+    }
+}

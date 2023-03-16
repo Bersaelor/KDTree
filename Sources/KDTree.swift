@@ -42,8 +42,22 @@ fileprivate extension UnsafeMutablePointer {
     }
 }
 
+public class SplitAxisEstimator<Element: KDTreePoint>{
+    public init(){
+
+    }
+    func currentSplittingDimension(values: UnsafeMutablePointer<Element>, depth: Int, dimensionsOverride: Int? = nil) -> Int {
+        let usedDimensions = dimensionsOverride ?? Element.dimensions
+        return depth % usedDimensions
+    }
+    func nextSplittingDimension(tree: KDTree<Element>, depth: Int, dimensionsOverride: Int? = nil) -> Int{
+        let usedDimensions = dimensionsOverride ?? Element.dimensions       
+        return (depth + 1) % usedDimensions
+    }
+}
+
 extension KDTree {
-    public init(values: [Element], depth: Int = 0, dimensionsOverride: Int? = nil) {
+    public init(values: [Element], depth: Int = 0, splitAxisEstimator: SplitAxisEstimator<Element> = SplitAxisEstimator<Element>(),dimensionsOverride: Int? = nil) {
         guard !values.isEmpty else {
             self = .leaf
             return
@@ -56,22 +70,20 @@ extension KDTree {
         // copy values from the array
         pointer.initialize(from: values, count: count)
         
-        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth, dimensionsOverride: dimensionsOverride)
+        self = KDTree(values: pointer, startIndex: 0, endIndex: count, depth: depth, splitAxisEstimator: splitAxisEstimator, dimensionsOverride: dimensionsOverride)
         
         // deallocate the pointer
         pointer.deallocate()
     }
     
-    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0, dimensionsOverride: Int? = nil) {
+    private init(values: UnsafeMutablePointer<Element>, startIndex: Int, endIndex: Int, depth: Int = 0, splitAxisEstimator: SplitAxisEstimator<Element>,dimensionsOverride: Int? = nil) {
         guard endIndex > startIndex else {
             self = .leaf
             return
         }
         
-        let count = endIndex - startIndex
-        
-        let usedDimensions = dimensionsOverride ?? Element.dimensions
-        let currentSplittingDimension = depth % usedDimensions
+        let count = endIndex - startIndex        
+        let currentSplittingDimension = splitAxisEstimator.currentSplittingDimension(values: values, depth: depth,dimensionsOverride:dimensionsOverride)
         if count == 1 {
             self = .node(left: .leaf, value: values[startIndex], dimension: currentSplittingDimension, right: .leaf)
         }
@@ -88,8 +100,8 @@ extension KDTree {
                 median -= 1
             }
             
-            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1, dimensionsOverride: dimensionsOverride)
-            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1, dimensionsOverride: dimensionsOverride)
+            let leftTree = KDTree(values: values, startIndex: startIndex, endIndex: median, depth: depth+1, splitAxisEstimator: splitAxisEstimator, dimensionsOverride: dimensionsOverride)
+            let rightTree = KDTree(values: values, startIndex: median + 1, endIndex: endIndex, depth: depth+1, splitAxisEstimator: splitAxisEstimator, dimensionsOverride: dimensionsOverride)
             
             self = .node(left: leftTree, value: values[median],
                          dimension: currentSplittingDimension, right: rightTree)
@@ -253,7 +265,7 @@ extension KDTree {
     /// Return a KDTree with the element removed.
     ///
     /// If element is not contained the new KDTree will be equal to the old one
-    public func removing(_ valueToBeRemoved: Element, dim: Int = 0, dimensionsOverride: Int? = nil) -> KDTree {
+    public func removing(_ valueToBeRemoved: Element, dim: Int = 0, splitAxisEstimator: SplitAxisEstimator<Element> = SplitAxisEstimator<Element>(),dimensionsOverride: Int? = nil) -> KDTree {
         switch self {
         case .leaf:
             return self
@@ -273,8 +285,7 @@ extension KDTree {
                 return KDTree.leaf
             }
             else {
-                let usedDimensions = dimensionsOverride ?? Element.dimensions
-                let nextDim = (dim + 1) % usedDimensions
+                let nextDim = splitAxisEstimator.nextSplittingDimension(tree:self ,depth: dim,dimensionsOverride:dimensionsOverride)
                 if valueToBeRemoved.kdDimension(dim) < value.kdDimension(dim) {
                     return KDTree.node(left: left.removing(valueToBeRemoved, dim: nextDim, dimensionsOverride: dimensionsOverride), value: value,
                                        dimension: dim, right: right)
